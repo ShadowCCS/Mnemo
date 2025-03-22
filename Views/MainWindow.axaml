@@ -1,0 +1,105 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MnemoProject.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MnemoProject"
+        mc:Ignorable="d" d:DesignWidth="1300" d:DesignHeight="800"
+        x:Class="MnemoProject.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="avares://MnemoProject/Assets/icon.ico"
+        Background="{x:Null}"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        Title="Mnemo">
+
+  <Window.Resources>
+    <local:ItemTemplateSelector x:Key="ItemTemplateSelector"/>
+  </Window.Resources>
+
+  <Border CornerRadius="10" Background="#121212" ClipToBounds="True">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="40" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <!-- Custom Title Bar -->
+      <Grid Grid.Row="0" Background="#1A1A1A" PointerPressed="TitleBar_PointerPressed">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Window Control Buttons -->
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0,0,7,0" VerticalAlignment="Center" HorizontalAlignment="Right">
+          <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" Command="{Binding CloseButtonCommand}">
+            <Ellipse Width="16" Height="16" Fill="#FF5F57"/>
+          </Button>
+
+          <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" Command="{Binding MinimizeButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+            <Ellipse Width="16" Height="16" Fill="#FDBC2C"/>
+          </Button>
+
+          <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" Command="{Binding FullscreenButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+            <Ellipse Width="16" Height="16" Fill="#28C840"/>
+          </Button>
+
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0,0,7,0">
+          <!-- Add any additional controls here -->
+        </StackPanel>
+      </Grid>
+
+      <SplitView Grid.Row="1" IsPaneOpen="{Binding IsSidebarExpanded}" OpenPaneLength="300" CompactPaneLength="48" DisplayMode="CompactInline" PaneBackground="#1a1a1a">
+        <SplitView.Pane>
+          <!-- Using Grid to allow positioning the label at the bottom -->
+          <Grid Margin="20,25">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <!-- For the logo and toggle button -->
+              <RowDefinition Height="*"/>
+              <!-- For the sidebar items -->
+              <RowDefinition Height="Auto"/>
+              <!-- For the bottom label -->
+            </Grid.RowDefinitions>
+
+            <!-- Logo and Toggle Button -->
+            <Grid Grid.Row="0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <Image Source="{SvgImage /Assets/Icons/Mnemo.svg}" Width="150" HorizontalAlignment="Left" Grid.Column="0" IsVisible="{Binding IsSidebarExpanded}"/>
+              <Border Grid.Column="1" HorizontalAlignment="Right">
+                <Button Background="Transparent" Command="{Binding TriggerSidebarCommand}">
+                  <PathIcon Data="{StaticResource SidebarIcon}" Foreground="White" Width="16" Height="16"/>
+                </Button>
+              </Border>
+            </Grid>
+
+            <!-- Sidebar Items -->
+            <StackPanel Grid.Row="1" Margin="0,15,0,0" IsVisible="{Binding IsSidebarExpanded}">
+              <ListBox Classes="Sidebar"
+                       ItemsSource="{Binding Items}"
+                       SelectedItem="{Binding SelectedSidebarItem}"
+                       SelectedIndex="0"
+                       ItemTemplate="{StaticResource ItemTemplateSelector}">
+              </ListBox>
+            </StackPanel>
+
+            <!-- Bottom Label -->
+            <TextBlock Grid.Row="2" Text="{Binding AppVersion}" Foreground="#797979" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,15,0,0" IsVisible="{Binding IsSidebarExpanded}"/>
+          </Grid>
+        </SplitView.Pane>
+        <SplitView.Content>
+          <Border Margin="5" Padding="5">
+            <TransitioningContentControl Content="{Binding CurrentPage}"/>
+          </Border>
+        </SplitView.Content>
+      </SplitView>
+    </Grid>
+  </Border>
+</Window>

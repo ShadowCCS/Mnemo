@@ -1,0 +1,58 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MnemoProject.Views.DashboardView">
+  <Grid Background="#121212">
+      <Border Padding="5" Margin="5">
+        <StackPanel>
+          <Label Foreground="White" Content="Statistics" FontSize="24" FontWeight="Medium" />
+          <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Spacing="10">
+            <Border Background="#1a1a1a" Width="200" Height="70" CornerRadius="8" Padding="5">
+              <Label Foreground="White" FontFamily="{StaticResource LexendFont}">Widget 1</Label>
+            </Border>
+            <Border Background="#1a1a1a" Width="200" Height="70" CornerRadius="8" Padding="5">
+              <Label Foreground="White">Widget 1</Label>
+            </Border>
+            <Border Background="#1a1a1a" Width="200" Height="70" CornerRadius="8" Padding="5">
+              <Label Foreground="White">Widget 1</Label>
+            </Border>
+          </StackPanel>
+          <Border Margin="20"></Border>
+
+          <Label Foreground="White" Content="Continue Learning" FontSize="24" FontWeight="Medium"/>
+          <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="10" Spacing="50">
+
+            <StackPanel>
+              <Label Foreground="White" Content="Learning Paths" FontSize="16"/>
+
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+            </StackPanel>
+
+            <StackPanel>
+              <Label Foreground="White" Content="Notes" FontSize="16"/>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+            </StackPanel>
+
+            <StackPanel>
+              <Label Foreground="White" Content="Flashcards" FontSize="16"/>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+              <Button Background="Transparent" Foreground="#797979">83% Item 1</Button>
+            </StackPanel>
+            
+          </StackPanel>
+        </StackPanel>
+        
+        
+      </Border>
+  </Grid>
+</UserControl>

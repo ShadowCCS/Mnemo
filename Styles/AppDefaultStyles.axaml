@@ -1,0 +1,143 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+    </Border>
+  </Design.PreviewWith>
+
+  <!-- Add Styles Here -->
+  <Style Selector="Button">
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="Background" Value="Transparent"/>
+  </Style>
+
+  <!-- ListBox Styles for Sidebar -->
+  <Style Selector="ListBox.Sidebar">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="BorderThickness" Value="0"/>
+  </Style>
+
+  <!-- Base style for all ListBoxItems -->
+  <Style Selector="ListBoxItem">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Padding" Value="10"/>
+    <Setter Property="Margin" Value="0 2"/>
+    <Setter Property="CornerRadius" Value="8"/>
+    <Setter Property="Foreground" Value="#898989"/>
+  </Style>
+
+  <!-- Override the default hover behavior -->
+  <Style Selector="ListBoxItem:pointerover">
+    <Setter Property="Foreground" Value="#898989"/>
+  </Style>
+
+  <!-- Override the hover template -->
+  <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="TextBlock.Foreground" Value="#898989"/>
+  </Style>
+
+  <!-- Style for selected items -->
+  <Style Selector="ListBoxItem:selected">
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+
+  <!-- Style for selected item template -->
+  <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+    <Setter Property="Background" Value="#242424"/>
+    <Setter Property="TextBlock.Foreground" Value="White"/>
+  </Style>
+
+  <!-- Ensure selected items keep their style even when hovered -->
+  <Style Selector="ListBoxItem:selected:pointerover">
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+
+  <Style Selector="ListBoxItem:selected:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="#242424"/>
+    <Setter Property="TextBlock.Foreground" Value="White"/>
+  </Style>
+
+
+  <Style Selector="TextBox.DarkTextBox">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="CaretBrush" Value="White"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="5"/>
+    <Setter Property="TextWrapping" Value="Wrap"/>
+  </Style>
+
+  <!-- Remove the default focus styling -->
+  <Style Selector="TextBox.DarkTextBox:focus /template/ Border">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="BorderBrush" Value="Transparent"/>
+  </Style>
+
+  <!-- Remove hover styling -->
+  <Style Selector="TextBox.DarkTextBox:pointerover /template/ Border">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="BorderBrush" Value="Transparent"/>
+  </Style>
+
+  <!-- Style for the Send button -->
+  <Style Selector="Button.SendButton">
+    <Setter Property="Background" Value="#007ACC"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="Padding" Value="15,5"/>
+    <Setter Property="CornerRadius" Value="20"/>
+    <Setter Property="Height" Value="35"/>
+    <Setter Property="Width" Value="35"/>
+  </Style>
+
+  <!-- Style for the Add PDF and Others buttons -->
+  <Style Selector="Button.ActionButton">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="BorderBrush" Value="#555555"/>
+    <Setter Property="Padding" Value="10,5"/>
+  </Style>
+
+  <!-- ComboBox style with left-aligned content -->
+  <Style Selector="ComboBox">
+    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+  </Style>
+
+  <!-- ComboBoxItem style ensuring left alignment -->
+  <Style Selector="ComboBoxItem">
+    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+  </Style>
+
+  <!-- Extra style to ensure content inside ComboBoxItem is also left-aligned -->
+  <Style Selector="ComboBoxItem /template/ ContentPresenter">
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+  </Style>
+  <!-- ComboBox style with left-aligned content -->
+  <Style Selector="ComboBox">
+    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="BorderBrush" Value="#2B2B2B"/>
+    <Setter Property="BorderThickness" Value="2"/>
+    <Setter Property="CornerRadius" Value="10"/>
+  </Style>
+
+  <!-- ComboBoxItem style ensuring full width -->
+  <Style Selector="ComboBoxItem">
+    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="Width" Value="{Binding $parent[ComboBox].Width}"/>
+  </Style>
+
+  <!-- Adjust ContentPresenter to be full width but with left-aligned text -->
+  <Style Selector="ComboBoxItem /template/ ContentPresenter">
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+  </Style>
+  
+</Styles>

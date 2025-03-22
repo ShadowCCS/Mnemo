@@ -1,0 +1,53 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:MnemoProject.Views.Components">
+  <Design.PreviewWith>
+    <controls:ToggleButton />
+  </Design.PreviewWith>
+  <Style Selector="controls|ToggleButton">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border x:Name="PART_Border"
+                Width="50"
+                Height="30"
+                CornerRadius="15"
+                Background="#2B92BE"
+                ClipToBounds="True">
+          <Ellipse x:Name="PART_Indicator"
+                   Width="26"
+                   Height="26"
+                   Fill="White"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,2,0" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <!-- Style for Unchecked state -->
+  <Style Selector="controls|ToggleButton:not(:checked) /template/ Border#PART_Border">
+    <Setter Property="Background" Value="#a4a4a4" />
+  </Style>
+
+  <Style Selector="controls|ToggleButton:not(:checked) /template/ Ellipse#PART_Indicator">
+    <Setter Property="HorizontalAlignment" Value="Left" />
+    <Setter Property="Margin" Value="2,0,0,0" />
+  </Style>
+
+  <!-- Add transition animations -->
+  <Style Selector="controls|ToggleButton /template/ Ellipse#PART_Indicator">
+    <Setter Property="Transitions">
+      <Transitions>
+        <ThicknessTransition Property="Margin" Duration="0:0:0.2" />
+      </Transitions>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|ToggleButton /template/ Border#PART_Border">
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="0:0:0.2" />
+      </Transitions>
+    </Setter>
+  </Style>
+</Styles>

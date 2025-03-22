@@ -1,0 +1,96 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MnemoProject.Views.Settings_DataStorageView">
+  <ScrollViewer Padding="15">
+    <StackPanel Margin="15" Spacing="15">
+      <Label Content="Storage &amp; Data" FontWeight="SemiBold" FontSize="30"/>
+
+      <!-- Storage Location Section -->
+      <StackPanel Spacing="5">
+        <Label Content="Storage Location" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="Where files are saved on your computer, flashcards, quizzes etc." FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+        <Grid ColumnDefinitions="*, Auto" Margin="0,5,0,0">
+          <Border Grid.Column="0"
+                 Background="#222222"
+                 CornerRadius="4"
+                 Padding="10,8"
+                 Margin="0,0,5,0">
+            <TextBlock Text="C:\Users\SamThompson\AppData\Flashcards"
+                      VerticalAlignment="Center"
+                      Foreground="#EEEEEE"/>
+          </Border>
+          <Button Grid.Column="1"
+                 Content="Change"
+                 Padding="15,8"
+                 Background="#333333"
+                 CornerRadius="4"/>
+        </Grid>
+      </StackPanel>
+
+      <!-- Cache Location Section -->
+      <StackPanel Spacing="5">
+        <Label Content="Cache Location" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="Temporary storage for quick access to frequently used data." FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+        <Grid ColumnDefinitions="*, Auto" Margin="0,5,0,0">
+          <Border Grid.Column="0"
+                 Background="#222222"
+                 CornerRadius="4"
+                 Padding="10,8"
+                 Margin="0,0,5,0">
+            <TextBlock Text="C:\Users\SamThompson\AppData\Flashcards\Cache"
+                      VerticalAlignment="Center"
+                      Foreground="#EEEEEE"/>
+          </Border>
+          <Button Grid.Column="1"
+                 Content="Change"
+                 Padding="15,8"
+                 Background="#333333"
+                 CornerRadius="4"/>
+        </Grid>
+        <Button Content="Clear Cache"
+               Background="#B33A3A"
+               Foreground="White"
+               Padding="15,8"
+               HorizontalAlignment="Left"
+               CornerRadius="4"
+               Margin="0,5,0,0"/>
+      </StackPanel>
+
+      <!-- Backup Location Section -->
+      <StackPanel Spacing="5">
+        <Label Content="Backup Location" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="Copies files for safekeeping and restores them if needed" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+        <Grid ColumnDefinitions="*, Auto" Margin="0,5,0,0">
+          <Border Grid.Column="0"
+                 Background="#222222"
+                 CornerRadius="4"
+                 Padding="10,8"
+                 Margin="0,0,5,0">
+            <TextBlock Text="C:\Users\SamThompson\AppData\Flashcards\Backup"
+                      VerticalAlignment="Center"
+                      Foreground="#EEEEEE"/>
+          </Border>
+          <Button Grid.Column="1"
+                 Content="Change"
+                 Padding="15,8"
+                 Background="#333333"
+                 CornerRadius="4"/>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
+          <Button Content="Create Backup"
+                 Background="#222222"
+                 Padding="15,8"
+                 CornerRadius="4"/>
+          <Button Content="Restore Backup"
+                 Background="#3A8C54"
+                 Foreground="White"
+                 Padding="15,8"
+                 CornerRadius="4"/>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

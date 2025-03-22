@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:controls="clr-namespace:MnemoProject.Views.Components"
+             x:Class="MnemoProject.Views.Settings_PreferencesView"
+             x:Name="PreferencesView">
+  <ScrollViewer Padding="15">
+    <StackPanel Margin="15" Spacing="15">
+      <Label Content="Flashcard Preferences" FontWeight="SemiBold" FontSize="30"/>
+
+      <StackPanel Spacing="5">
+        <Label Content="Export Type" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="Default export format" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+        <ComboBox SelectedIndex="0" Width="200" Height="40" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left">
+          <ComboBoxItem Content="Standard (.fcs)" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
+          <ComboBoxItem Content="Anki (.apkg)" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
+          <ComboBoxItem Content="Quizlet (.qzl)" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
+        </ComboBox>
+      </StackPanel>
+
+      <StackPanel Spacing="5">
+        <Label Content="Card Limit per Session" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="Sets a limit on the amount of cards that will be studied in a session" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+        <TextBox Text="20" Watermark="10" HorizontalAlignment="Left" CornerRadius="10" BorderBrush="#2B2B2B" BorderThickness="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="SemiBold"/>
+      </StackPanel>
+
+      <StackPanel Spacing="5">
+        <Label Content="Auto Play Audio" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="Automatically plays audio files on flashcards" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+        <controls:ToggleButton IsChecked="True" HorizontalAlignment="Left"/>
+      </StackPanel>
+
+      <StackPanel Spacing="5">
+        <Label Content="Multimedia Preload" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="Loads multimedia before playing if the deck is considered large to avoid freezes and performance issues" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+        <controls:ToggleButton IsChecked="True" HorizontalAlignment="Left"/>
+      </StackPanel>
+
+      <StackPanel Spacing="5">
+        <Label Content="Auto Play (Flashcards)" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="With this enabled the flashcards will automatically go through not requiring any keypress" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+        <ComboBox SelectedIndex="0" Width="200" Height="40" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left">
+          <ComboBoxItem Content="Interval" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
+          <ComboBoxItem Content="Timer" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
+          <ComboBoxItem Content="Smart" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
+        </ComboBox>
+      </StackPanel>
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

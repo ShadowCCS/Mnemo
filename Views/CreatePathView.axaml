@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:CreatePathViewModel"
+             x:Class="MnemoProject.Views.CreatePathView">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="3*"/>
+    </Grid.RowDefinitions>
+
+    <!-- Top Navigation -->
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5" Margin="10">
+      <Button Command="{Binding GoBack}" Background="{x:Null}">
+        <Image Source="{SvgImage /Assets/Icons/DashboardIcon.svg}" Height="25" Width="25"/>
+      </Button>
+      <Button Command="{Binding GoBack}" Background="{x:Null}">
+        <Image Source="{SvgImage /Assets/Icons/arrow.svg}" Height="18" Width="18"/>
+      </Button>
+      <Label Content="Create new path" Foreground="#777777" VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <!-- Learning Paths Section -->
+    <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="600">
+      <Label Content="Learning Paths" FontWeight="Medium" FontSize="32"/>
+      <Label Content="Discover new things! Add PDFs, YouTube links, camera images and more." FontSize="16" Foreground="#696969"/>
+      <Border Background="#262626" CornerRadius="14" Margin="0,10,0,0" BorderBrush="#1a1a1a" BorderThickness="4">
+        <StackPanel Margin="10">
+          <TextBox Text="" Classes="DarkTextBox" Height="150" Watermark="I want to learn about the cardio-vascular system..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AcceptsReturn="True"/>
+          <Grid Margin="0,10,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+              <Button Content="Add PDF" Classes="ActionButton" Margin="0,0,5,0"/>
+              <Button Content="Others" Classes="ActionButton" Margin="0,0,5,0"/>
+            </StackPanel>
+            <Button Classes="SendButton" HorizontalAlignment="Right">
+              <Image Source="{SvgImage /Assets/Icons/arrowWhite.svg}" Height="20" Width="20">
+                <Image.RenderTransform>
+                  <ScaleTransform ScaleX="-1" />
+                </Image.RenderTransform>
+              </Image>
+            </Button>
+          </Grid>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </Grid>
+
+</UserControl>
