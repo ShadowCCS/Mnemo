@@ -4,11 +4,10 @@ using Avalonia.Markup.Xaml;
 
 namespace MnemoProject.Views;
 
-public partial class Settings_ApperanceView : UserControl
+public partial class learningPathCreateView : UserControl
 {
-    public Settings_ApperanceView()
+    public learningPathCreateView()
     {
         InitializeComponent();
     }
-
 }

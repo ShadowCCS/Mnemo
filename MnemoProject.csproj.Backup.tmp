@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <None Remove="Data\settings.json" />
-    <None Remove="learningpaths.db" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,15 +39,6 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.3">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -85,9 +75,6 @@
     </Compile>
     <Compile Update="Views\FlashcardsView.axaml.cs">
       <DependentUpon>FlashcardsView.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\UnitGuideView.axaml.cs">
-      <DependentUpon>UnitGuideView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

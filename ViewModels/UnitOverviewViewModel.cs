@@ -9,14 +9,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace MnemoProject.ViewModels
 {
-    public partial class CreatePathViewModel : ViewModelBase
+    public partial class UnitOverviewViewModel : ViewModelBase
     {
         private readonly NavigationService _navigationService;
 
-        [ObservableProperty]
-        private string _learningPathText;
-
-        public CreatePathViewModel(NavigationService navigationService)
+        public UnitOverviewViewModel(NavigationService navigationService)
         {
             _navigationService = navigationService;
         }
@@ -31,12 +28,6 @@ namespace MnemoProject.ViewModels
         public void GoHome()
         {
             _navigationService.NavigateTo(new LearningPathViewModel(_navigationService));
-        }
-
-        [RelayCommand]
-        public void sendCommand()
-        {
-            _navigationService.NavigateTo(new learningPathCreateViewModel(_navigationService, LearningPathText));
         }
     }
 }

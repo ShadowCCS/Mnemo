@@ -6,6 +6,9 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using MnemoProject.ViewModels;
 using MnemoProject.Views;
+using MnemoProject.Data;
+using System;
+using System.IO;
 
 namespace MnemoProject;
 
@@ -16,6 +19,12 @@ public partial class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+
+        //using (var db = new LearningPathContext())
+        //{
+        //    db.Database.EnsureCreated();
+        //}
+
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -35,6 +44,7 @@ public partial class App : Application
 
         base.OnFrameworkInitializationCompleted();
     }
+
 
     public void Shutdown()
     {

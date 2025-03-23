@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:learningPathCreateViewModel"
+             x:Class="MnemoProject.Views.learningPathCreateView">
+
+  <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5" Margin="10">
+      <Button Command="{Binding GoHome}" Background="{x:Null}">
+        <Image Source="{SvgImage /Assets/Icons/DashboardIcon.svg}" Height="25" Width="25"/>
+      </Button>
+      <Button Command="{Binding GoBack}" Background="{x:Null}">
+        <Image Source="{SvgImage /Assets/Icons/arrow.svg}" Height="18" Width="18"/>
+      </Button>
+      <Label Content="Generating Path" Foreground="#777777" VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+      <Label Content=" Generating" FontSize="44" FontWeight="Medium" Foreground="#2880b1"/>
+      <Label Content="{Binding GenStatus}" FontSize="44" FontWeight="Medium"/>
+    </StackPanel>
+    
+  </Grid>
+</UserControl>

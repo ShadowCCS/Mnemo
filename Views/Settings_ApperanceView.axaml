@@ -15,57 +15,39 @@
         <Label Content="Language" FontWeight="SemiBold" FontSize="24"/>
         <Label Content="Default app language" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
 
-        <ComboBox SelectedIndex="0" Width="200" Height="40" HorizontalAlignment="Left">
-          <ComboBoxItem>
-            <StackPanel Orientation="Horizontal">
-              <Image Source="avares://MnemoProject/Assets/Icons/english.png" Height="24" Width="24" Margin="0,0,5,0"/>
-              <TextBlock Text="English" VerticalAlignment="Center"/>
-            </StackPanel>
-          </ComboBoxItem>
-          <ComboBoxItem>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-              <Image Source="avares://MnemoProject/Assets/Icons/german.png" Height="24" Width="24" Margin="0,0,5,0"/>
-              <TextBlock Text="German" VerticalAlignment="Center"/>
-            </StackPanel>
-          </ComboBoxItem>
-          <ComboBoxItem>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-              <Image Source="avares://MnemoProject/Assets/Icons/spanish.png" Height="24" Width="24" Margin="0,0,5,0"/>
-              <TextBlock Text="Spanish" VerticalAlignment="Center"/>
-            </StackPanel>
-          </ComboBoxItem>
+        <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}" Width="200" Height="40" HorizontalAlignment="Left">
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Icon, FallbackValue='Assets/Icons/english.png'}"
+                       Width="20" Height="20" Margin="5,0"/>
+                <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+              </StackPanel>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
         </ComboBox>
       </StackPanel>
 
       <StackPanel Spacing="5">
         <Label Content="Theme" FontWeight="SemiBold" FontSize="24"/>
         <Label Content="Default app theme" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
-        <ComboBox SelectedIndex="0" Width="200" Height="40" HorizontalAlignment="Left">
-          <ComboBoxItem>
-            <StackPanel Orientation="Horizontal">
-              <Ellipse Fill="#262626" Height="24" Width="24" Margin="0,0,5,0"/>
-              <TextBlock Text="Dark" VerticalAlignment="Center"/>
-            </StackPanel>
-          </ComboBoxItem>
-          <ComboBoxItem>
-            <StackPanel Orientation="Horizontal">
-              <Ellipse Fill="#bebebe" Height="24" Width="24" Margin="0,0,5,0"/>
-              <TextBlock Text="Light" VerticalAlignment="Center"/>
-            </StackPanel>
-          </ComboBoxItem>
-          <ComboBoxItem>
-            <StackPanel Orientation="Horizontal">
-              <Ellipse Fill="#92c391" Height="24" Width="24" Margin="0,0,5,0"/>
-              <TextBlock Text="Nature" VerticalAlignment="Center"/>
-            </StackPanel>
-          </ComboBoxItem>
+        <ComboBox ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedThemeItem, Mode=TwoWay}" Width="200" Height="40" HorizontalAlignment="Left">
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal">
+                <Ellipse Fill="{Binding Color}" Height="24" Width="24" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+              </StackPanel>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
         </ComboBox>
       </StackPanel>
 
       <StackPanel Spacing="5">
         <Label Content="Animation Toggles" FontWeight="SemiBold" FontSize="24"/>
         <Label Content="Enable/Disable UI animations for performance" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
-        <controls:ToggleButton IsChecked="True" HorizontalAlignment="Left"/>
+        <controls:ToggleButton IsChecked="{Binding AnimationToggle, Mode=TwoWay}" HorizontalAlignment="Left"/>
+
       </StackPanel>
     </StackPanel>
   </ScrollViewer>
