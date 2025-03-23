@@ -11,7 +11,7 @@
     <StyleInclude Source="avares://MnemoProject/Assets/Icons/Icons.axaml"/>
     <StyleInclude Source="avares://MnemoProject/Styles/AppDefaultStyles.axaml"/>
     <StyleInclude Source="avares://MnemoProject/Views/Components/ToggleButton.axaml"/>
-    <StyleInclude Source="avares://MnemoProject/Views/Components/UnitButton.axaml"/>
+    <!-- Set LexendFont as default font for the entire application -->
     <Style Selector="TextBlock">
       <Setter Property="FontFamily" Value="{StaticResource LexendFont}"/>
     </Style>
@@ -23,6 +23,7 @@
     <Style Selector="TextBox">
       <Setter Property="FontFamily" Value="{StaticResource LexendFont}"/>
     </Style>
+    <!-- Add other controls that should use this font -->
     <Style Selector="Button">
       <Setter Property="FontFamily" Value="{StaticResource LexendFont}"/>
       <Setter Property="FontWeight" Value="Regular"/>

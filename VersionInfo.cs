@@ -8,7 +8,7 @@ namespace MnemoProject
 {
     public static class VersionInfo
     {
-        public static string Version => "0.2.0-beta";
+        public static string Version => "0.1.0-beta";
         public static string BuildID => "20004991";
     }
 

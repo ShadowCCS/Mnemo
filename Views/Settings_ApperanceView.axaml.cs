@@ -10,5 +10,4 @@ public partial class Settings_ApperanceView : UserControl
     {
         InitializeComponent();
     }
-
 }

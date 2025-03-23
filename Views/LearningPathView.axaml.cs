@@ -1,13 +1,13 @@
+using Avalonia;
 using Avalonia.Controls;
-using MnemoProject.ViewModels;
+using Avalonia.Markup.Xaml;
 
-namespace MnemoProject.Views
+namespace MnemoProject.Views;
+
+public partial class LearningPathView : UserControl
 {
-    public partial class LearningPathView : UserControl
+    public LearningPathView()
     {
-        public LearningPathView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -35,7 +35,11 @@ namespace MnemoProject.Services
             Action<TParent, ViewModelBase> setNestedProperty)
             where TParent : ViewModelBase
         {
+            // Use the provided action to set the nested ViewModel
             setNestedProperty(parent, nestedViewModel);
+
+            // Optionally track the nested navigation in your stack 
+            // This depends on how you want back navigation to work
         }
     }
 }
