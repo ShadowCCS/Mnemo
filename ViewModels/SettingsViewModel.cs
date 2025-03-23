@@ -35,6 +35,7 @@ namespace MnemoProject.ViewModels
             NavigateToAppearance();
         }
 
+
         private void UpdateCurrentSettingsPage()
         {
             switch (_selectedIndex)

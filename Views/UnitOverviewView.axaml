@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             xmlns:components="clr-namespace:MnemoProject.Views.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:UnitOverviewViewModel"
+             x:Class="MnemoProject.Views.UnitOverviewView">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5" Margin="10">
+      <Button Command="{Binding GoBack}" Background="{x:Null}">
+        <Image Source="{SvgImage /Assets/Icons/DashboardIcon.svg}" Height="25" Width="25"/>
+      </Button>
+      <Button Command="{Binding GoHome}" Background="{x:Null}">
+        <Image Source="{SvgImage /Assets/Icons/arrow.svg}" Height="18" Width="18"/>
+      </Button>
+      <Label Content="Unit Overview" Foreground="#777777" VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Spacing="10" Margin="0,20,0,0">
+        
+        <Border Background="#262626" CornerRadius="20" Width="700" Margin="0,0,0,20">
+          <Label Content="Human Respiratory System" FontWeight="Medium" FontSize="32" Foreground="White"
+                 HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" />
+        </Border>
+
+        <ItemsControl>
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <StackPanel Spacing="20" />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.Items>
+            
+            <components:UnitButton Unit="1" Text="Introduction to the Respiratory System" IsEnabled="True"/>
+            <components:UnitButton Unit="2" Text="Introduction to the Respiratory System" IsEnabled="False" />
+
+          </ItemsControl.Items>
+        </ItemsControl>
+      </StackPanel>
+    </ScrollViewer>
+  </Grid>
+</UserControl>

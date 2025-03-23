@@ -17,6 +17,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Data\settings.json" />
+    <None Remove="learningpaths.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Data\settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AvaloniaResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.2.1" />
     <PackageReference Include="Avalonia.Desktop" Version="11.2.1" />
     <PackageReference Include="Avalonia.Svg" Version="11.2.0.2" />
@@ -29,6 +40,15 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +56,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AvaloniaResource>
     <AvaloniaResource Update="Assets\Icons\english.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Update="Assets\Icons\german.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AvaloniaResource>
     <AvaloniaResource Update="Assets\Icons\Icons.axaml">
@@ -48,18 +71,23 @@
     <AvaloniaResource Update="Assets\Icons\newLessonIcon.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AvaloniaResource>
+    <AvaloniaResource Update="Assets\Icons\spanish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AvaloniaResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Update="Views\learningPathCreateView.axaml.cs">
+      <DependentUpon>learningPathCreateView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Settings_DataStorageView.axaml.cs">
       <DependentUpon>Settings_DataStorageView.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\FlashcardsView.axaml.cs">
       <DependentUpon>FlashcardsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\UnitGuideView.axaml.cs">
+      <DependentUpon>UnitGuideView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
