@@ -8,13 +8,13 @@ public class AIWorker
     private readonly Queue<Func<Task>> _tasks = new();
     private readonly SemaphoreSlim _semaphore = new(1);
 
-    public void Enqueue(Func<Task> task)
+    public async Task Enqueue(Func<Task> task)
     {
         lock (_tasks)
         {
             _tasks.Enqueue(task);
         }
-        _ = ProcessQueueAsync();
+        await ProcessQueueAsync();
     }
 
     private async Task ProcessQueueAsync()

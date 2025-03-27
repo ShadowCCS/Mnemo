@@ -17,9 +17,9 @@ public class AIService
         _worker = worker;
     }
 
-    public void GenerateLearningPathOutline(string userInput, Action<string> onComplete)
+    public async Task GenerateLearningPathOutline(string userInput, Action<string> onComplete)
     {
-        _worker.Enqueue(async () =>
+        await _worker.Enqueue(async () =>
         {
             string basePrompt = $@"Create 3-7 units based on the following content. You should create this using this exact format: 
 {{
@@ -41,11 +41,11 @@ public class AIService
         });
     }
 
-    public void GenerateUnitContent(string userInput, string unitTitle, Action<string> onComplete)
+    public async Task GenerateUnitContent(string userInput, string unitTitle, Action<string> onComplete)
     {
-        _worker.Enqueue(async () =>
+        await _worker.Enqueue(async () =>
         {
-            string prompt = $"Generate an educational text-based study guide with clearly defined sections. The content should be structured, informative, and well-organized. Follow this format:\n\n"
+            string prompt = $"Generate an educational text-based study guide with clearly defined sections. The content should be structured, informative, and well-organized, use markdown. Follow this format:\n\n"
                 + $"Title: {unitTitle}\n\n"
                 + "Introduction:\n"
                 + "- Provide a brief introduction to the topic and explain why it is important.\n\n"

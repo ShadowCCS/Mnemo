@@ -8,6 +8,7 @@ using MnemoProject.Data;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace MnemoProject.ViewModels
 {
@@ -40,13 +41,11 @@ namespace MnemoProject.ViewModels
             set => SetProperty(ref _genStatus, value);
         }
 
-        // Constructor no longer requires external AI dependencies
         public learningPathCreateViewModel(NavigationService navigationService, string userInput)
         {
             _navigationService = navigationService;
 
-            // Instantiate AI dependencies inside the ViewModel
-            var aiProvider = new GeminiProvider();  // Uses ApiKeyManager
+            var aiProvider = new GeminiProvider();
             var aiWorker = new AIWorker();
             _aiService = new AIService(aiProvider, aiWorker);
 
@@ -56,98 +55,184 @@ namespace MnemoProject.ViewModels
             GenerateLearningPath();
         }
 
+        private bool _learningPathProcessed = false;
 
-        public void GenerateLearningPath()
+        public async Task GenerateLearningPath()
         {
-            _aiService.GenerateLearningPathOutline(UserInput, async content =>
+            await _aiService.GenerateLearningPathOutline(UserInput, async content =>
             {
-                await SaveLearningPathToDatabase(content);
-                GenStatus = "Unit 1...";
-                GenerateUnitContent("Rockets", "Introduction To Rockets");
+                if (_learningPathProcessed) return;
+                _learningPathProcessed = true;
+
+                var learningPath = await SaveLearningPathToDatabase(content);
+                if (learningPath != null && learningPath.Units.Any())
+                {
+                    System.Diagnostics.Debug.WriteLine("[GenerateLearningPath] Processing learningPath with units.");
+                    int unitIndex = 1;
+
+                    // Process the first unit separately.
+                    var firstUnit = learningPath.Units.First();
+                    System.Diagnostics.Debug.WriteLine($"[GenerateLearningPath] Processing first unit: {firstUnit.Title}");
+
+                    firstUnit.LearningPathId = learningPath.Id;
+                    firstUnit.UnitNumber = unitIndex++;
+
+                    GenStatus = $"Unit {firstUnit.UnitNumber}...";
+
+                    // Prepare theory content.
+                    string theoryContent = !string.IsNullOrWhiteSpace(firstUnit.TheoryContent)
+                        ? firstUnit.TheoryContent
+                        : $"Generate content for '{firstUnit.Title}'.";
+
+                    // Add the first unit immediately with a placeholder.
+                    if (!Units.Contains(firstUnit))
+                    {
+                        firstUnit.UnitContent = "Loading content...";
+                        Units.Add(firstUnit);
+                        System.Diagnostics.Debug.WriteLine($"[GenerateLearningPath] Added first unit to collection with placeholder content.");
+                    }
+
+                    // Generate content and update the unit.
+                    await GenerateUnitContent(learningPath, firstUnit, theoryContent);
+
+                    // Persist the updated unit content to the database.
+                    await SaveUnitToDatabase(firstUnit);
+
+                    System.Diagnostics.Debug.WriteLine($"[GenerateLearningPath] Finished generating content for first unit: {firstUnit.Title}. UnitContent now: {firstUnit.UnitContent}");
+
+                    // Process remaining units.
+                    foreach (var unit in learningPath.Units.Skip(1))
+                    {
+                        unit.LearningPathId = learningPath.Id;
+                        unit.UnitNumber = unitIndex++;
+                        unit.Id = Guid.NewGuid(); // Ensure unique unit ID
+                        unit.UnitContent = "";  // Set to empty string or a placeholder if needed.
+                        Units.Add(unit);
+                        System.Diagnostics.Debug.WriteLine($"[GenerateLearningPath] Added remaining unit: {unit.Title}");
+                    }
+
+                    ContinueToUnitOverview(learningPath.Id);
+                }
             });
         }
 
-        public void GenerateUnitContent(string userInput, string unitTitle)
+        public async Task GenerateUnitContent(LearningPath learningPath, Unit unit, string theoryContent)
         {
-            _aiService.GenerateUnitContent(userInput, unitTitle, content =>
+            System.Diagnostics.Debug.WriteLine($"[GenerateUnitContent] Starting for unit: {unit.Title}");
+
+            if (string.IsNullOrWhiteSpace(theoryContent))
             {
-                System.Diagnostics.Debug.WriteLine("Unit: " + content);
-                ContinueToUnitOverview();
+                theoryContent = $"Generate detailed content for the unit titled '{unit.Title}'.";
+            }
+
+            var tcs = new TaskCompletionSource<string>();
+
+            // Call the AI service and log the process.
+            System.Diagnostics.Debug.WriteLine($"[GenerateUnitContent] Requesting AI content for unit: {unit.Title} with theoryContent: {theoryContent}");
+
+            await _aiService.GenerateUnitContent(unit.Title, theoryContent, async content =>
+            {
+                System.Diagnostics.Debug.WriteLine($"[GenerateUnitContent Callback] Received content for unit: {unit.Title}. Content: {content}");
+                tcs.SetResult(content);
             });
+
+            // Await the result.
+            string aiContent = await tcs.Task;
+            System.Diagnostics.Debug.WriteLine($"[GenerateUnitContent] AI content awaited for unit: {unit.Title}: {aiContent}");
+
+            unit.UnitContent = string.IsNullOrWhiteSpace(aiContent)
+                ? "Default generated content."
+                : aiContent;
+
+            System.Diagnostics.Debug.WriteLine($"[GenerateUnitContent] Finished updating unit: {unit.Title} with UnitContent: {unit.UnitContent}");
         }
 
-        public async Task SaveLearningPathToDatabase(string aiOutput)
+        public async Task<LearningPath?> SaveLearningPathToDatabase(string aiOutput)
         {
             try
             {
-                // Extract the JSON content from the AI output using the utility class
                 string jsonContent = AIOutputJsonExtractor.ExtractJson(aiOutput);
                 AiResponse = jsonContent;
-                System.Diagnostics.Debug.WriteLine(AiResponse);
 
-                if (string.IsNullOrEmpty(jsonContent))
-                {
-                    System.Diagnostics.Debug.WriteLine("No valid JSON found in the AI output.");
-                    return;
-                }
+                if (string.IsNullOrEmpty(jsonContent) || !IsValidJson(jsonContent))
+                    return null;
 
-                // Validate JSON structure
-                if (!IsValidJson(jsonContent))
-                {
-                    System.Diagnostics.Debug.WriteLine("Invalid JSON structure.");
-                    return;
-                }
-
-                // Set JsonSerializerOptions to make property names case-insensitive
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-
-                // Try to deserialize and save the learning path
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
                 var learningPath = JsonSerializer.Deserialize<LearningPath>(jsonContent, options);
-                if (learningPath != null)
+
+                if (learningPath == null)
+                    return null;
+
+                // Ensure unique IDs
+                if (learningPath.Id == Guid.Empty)
                 {
-                    await _databaseService.AddLearningPath(learningPath);
-                    System.Diagnostics.Debug.WriteLine("Learning Path saved successfully.");
+                    learningPath.Id = Guid.NewGuid();
                 }
-                else
+
+                // Ensure UnitNumber is properly assigned and Ids are unique
+                int unitIndex = 1;
+                foreach (var unit in learningPath.Units)
                 {
-                    System.Diagnostics.Debug.WriteLine("Deserialized learning path is null.");
+                    unit.LearningPathId = learningPath.Id;
+                    unit.UnitNumber = unitIndex++;
+
+                    if (unit.Id == Guid.Empty)
+                    {
+                        unit.Id = Guid.NewGuid();
+                    }
                 }
-            }
-            catch (JsonException jsonEx)
-            {
-                System.Diagnostics.Debug.WriteLine("JSON Error: " + jsonEx.Message);
-                System.Diagnostics.Debug.WriteLine("Stack Trace: " + jsonEx.StackTrace);
-            }
-            catch (SqliteException sqliteEx)
-            {
-                System.Diagnostics.Debug.WriteLine("SQLite Error: " + sqliteEx.Message);
-                System.Diagnostics.Debug.WriteLine("Stack Trace: " + sqliteEx.StackTrace);
-            }
-            catch (DbUpdateException dbUpdateEx)
-            {
-                System.Diagnostics.Debug.WriteLine("DB Update Error: " + dbUpdateEx.Message);
-                if (dbUpdateEx.InnerException != null)
-                {
-                    System.Diagnostics.Debug.WriteLine("Inner Exception: " + dbUpdateEx.InnerException.Message);
-                    System.Diagnostics.Debug.WriteLine("Inner Stack Trace: " + dbUpdateEx.InnerException.StackTrace);
-                }
-                System.Diagnostics.Debug.WriteLine("Stack Trace: " + dbUpdateEx.StackTrace);
+
+                await _databaseService.AddLearningPath(learningPath);
+                return learningPath;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("General Error: " + ex.Message);
-                System.Diagnostics.Debug.WriteLine("Stack Trace: " + ex.StackTrace);
+                System.Diagnostics.Debug.WriteLine("Error saving learning path: " + ex.Message);
+                if (ex.InnerException != null)
+                {
+                    System.Diagnostics.Debug.WriteLine("Inner exception: " + ex.InnerException.Message);
+                }
+                return null;
             }
         }
 
-        private void ContinueToUnitOverview()
+        public async Task SaveUnitToDatabase(Unit unit)
         {
-            _navigationService.NavigateTo(new UnitOverviewViewModel(_navigationService));
+            try
+            {
+                using var db = new LearningPathContext();
+
+                var existingUnit = await db.Units.AsTracking().FirstOrDefaultAsync(u => u.Id == unit.Id);
+                if (existingUnit != null)
+                {
+                    // Update only the changed fields
+                    existingUnit.UnitContent = unit.UnitContent;
+                    db.Entry(existingUnit).State = EntityState.Modified;
+                }
+                else
+                {
+                    // If the unit doesn't exist, add it
+                    db.Units.Add(unit);
+                }
+
+                await db.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error saving unit: " + ex.Message);
+                if (ex.InnerException != null)
+                {
+                    System.Diagnostics.Debug.WriteLine("Inner exception: " + ex.InnerException.ToString());
+                }
+            }
         }
 
+
+
+        private void ContinueToUnitOverview(Guid learningPathId)
+        {
+            _navigationService.NavigateTo(new UnitOverviewViewModel(_navigationService, learningPathId, _userInput));
+        }
 
         private bool IsValidJson(string jsonContent)
         {
@@ -163,7 +248,6 @@ namespace MnemoProject.ViewModels
                 return false;
             }
         }
-
 
         [RelayCommand]
         public void GoBack()

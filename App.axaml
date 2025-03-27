@@ -22,6 +22,7 @@
     
     <Style Selector="TextBox">
       <Setter Property="FontFamily" Value="{StaticResource LexendFont}"/>
+      <Setter Property="FontSize" Value="14"/>
     </Style>
     <Style Selector="Button">
       <Setter Property="FontFamily" Value="{StaticResource LexendFont}"/>

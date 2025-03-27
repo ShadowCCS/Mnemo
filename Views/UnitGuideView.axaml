@@ -34,11 +34,31 @@
 
       <!-- Center Navigation Options -->
       <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center"
-                  VerticalAlignment="Center" Spacing="15">
-        <Button Content="Unit Guide" Classes="nav-button" />
-        <Button Content="Questions" Classes="nav-button" />
-        <Button Content="Flashcards" Classes="nav-button" />
-        <Button Content="Learn Mode" Classes="nav-button" />
+                        VerticalAlignment="Center" Spacing="15">
+        <ToggleButton IsChecked="{Binding IsUnitGuideSelected}" Classes="nav-button">
+          <StackPanel Orientation="Horizontal" Spacing="5">
+            <Image Source="{SvgImage /Assets/Icons/UnitGuideIcon.svg}" Height="18" Width="18"/>
+            <TextBlock Text="Unit Guide"/>
+          </StackPanel>
+        </ToggleButton>
+        <ToggleButton IsChecked="{Binding IsQuestionsSelected}" Classes="nav-button">
+          <StackPanel Orientation="Horizontal" Spacing="5">
+            <Image Source="{SvgImage /Assets/Icons/QuestionsIcon.svg}" Height="18" Width="18"/>
+            <TextBlock Text="Questions"/>
+          </StackPanel>
+        </ToggleButton>
+        <ToggleButton IsChecked="{Binding IsFlashcardsSelected}" Classes="nav-button">
+          <StackPanel Orientation="Horizontal" Spacing="5">
+            <Image Source="{SvgImage /Assets/Icons/FlashcardsIcon.svg}" Height="18" Width="18"/>
+            <TextBlock Text="Flashcards"/>
+          </StackPanel>
+        </ToggleButton>
+        <ToggleButton IsChecked="{Binding IsLearnModeSelected}" Classes="nav-button">
+          <StackPanel Orientation="Horizontal" Spacing="5">
+            <Image Source="{SvgImage /Assets/Icons/LearnModeIcon.svg}" Height="18" Width="18"/>
+            <TextBlock Text="Learn Mode"/>
+          </StackPanel>
+        </ToggleButton>
       </StackPanel>
 
       <!-- Right Side Export Button -->
@@ -47,8 +67,17 @@
     </Grid>
 
     <!-- Content Area -->
-    <ScrollViewer Grid.Row="1" Margin="10">
-      <TextBlock Text="{Binding UnitGuideText}" Foreground="White" FontSize="16" TextWrapping="Wrap" />
+
+    <ScrollViewer Grid.Row="1"
+                  Margin="20"
+                  Padding="20"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto">
+      <StackPanel VerticalAlignment="Top"
+                  HorizontalAlignment="Stretch"
+                  MaxWidth="950">
+        <ContentControl Content="{Binding RenderedMarkdown}" />
+      </StackPanel>
     </ScrollViewer>
   </Grid>
 </UserControl>

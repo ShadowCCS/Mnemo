@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:components="clr-namespace:MnemoProject.Views.Components">
   <Style Selector="components|UnitButton">
-    <Setter Property="Background" Value="{x:Null}"/>
+    <Setter Property="Background" Value="Transparent"/>
     <Setter Property="Foreground" Value="White"/>
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -13,30 +13,33 @@
                 Background="{TemplateBinding Background}"
                 CornerRadius="20"
                 Width="{TemplateBinding Width}">
-          <Button Background="{x:Null}"
-                  HorizontalAlignment="Stretch"
-                  HorizontalContentAlignment="Center"
-                  IsEnabled="{TemplateBinding IsEnabled}">
-            <StackPanel Margin="20">
-              <TextBlock x:Name="PART_UnitText"
-                         Text="{Binding Unit, StringFormat='Unit {0}', RelativeSource={RelativeSource TemplatedParent}}"
-                         FontWeight="Medium"
-                         FontSize="16"
-                         Foreground="{TemplateBinding Foreground}"
-                         HorizontalAlignment="Center" />
-              <TextBlock x:Name="PART_ContentText"
-                         Text="{TemplateBinding Text}"
-                         FontWeight="Medium"
-                         FontSize="24"
-                         Foreground="{TemplateBinding Foreground}"
-                         HorizontalAlignment="Center"
-                         Margin="0,5,0,0"
-                         TextWrapping="Wrap"/>
-            </StackPanel>
-          </Button>
+          <StackPanel Margin="20"
+                      HorizontalAlignment="Center">
+            <TextBlock x:Name="PART_UnitText"
+                       Text="{Binding Unit, StringFormat='Unit {0}', RelativeSource={RelativeSource TemplatedParent}}"
+                       FontWeight="Medium"
+                       FontSize="16"
+                       Foreground="{TemplateBinding Foreground}"
+                       HorizontalAlignment="Center" />
+            <TextBlock x:Name="PART_ContentText"
+                       Text="{TemplateBinding Text}"
+                       FontWeight="Medium"
+                       FontSize="24"
+                       Foreground="{TemplateBinding Foreground}"
+                       HorizontalAlignment="Center"
+                       Margin="0,5,0,0"
+                       TextWrapping="Wrap"/>
+          </StackPanel>
         </Border>
       </ControlTemplate>
     </Setter>
+
+    <!-- Hover effect for entire button -->
+    <Style Selector="^:pointerover">
+      <Setter Property="Background" Value="#2C2C2C"/>
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <!-- Disabled state styles -->
     <Style Selector="^:disabled /template/ Border#PART_Border">
       <Setter Property="Background" Value="#151515"/>
       <Setter Property="CornerRadius" Value="20"/>
@@ -45,6 +48,7 @@
       <Setter Property="Foreground" Value="#5C5C5C"/>
     </Style>
   </Style>
+
   <Design.PreviewWith>
     <StackPanel Spacing="10">
       <components:UnitButton Unit="1" Text="Introduction to the Respiratory System" IsEnabled="True"/>

@@ -13,6 +13,8 @@ namespace MnemoProject.Models
         public int UnitNumber { get; set; }
         public string Title { get; set; }
         public string TheoryContent { get; set; }
+
+        public string UnitContent { get; set; } = string.Empty;
         public LearningPath LearningPath { get; set; }
     }
 

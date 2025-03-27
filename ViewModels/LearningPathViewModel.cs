@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia.Threading;
@@ -25,7 +26,6 @@ namespace MnemoProject.ViewModels
         }
 
         public ICommand NavigateToCreatePath { get; }
-
         public ICommand NavigateToSkip { get; }
 
         private void ExecuteNavigateToCreatePath()
@@ -35,8 +35,14 @@ namespace MnemoProject.ViewModels
 
         private void ExecuteNavigateToSkip()
         {
-            _navigationService.NavigateTo(new UnitGuideViewModel(_navigationService, "Introduction To Rockets", "Text about rockets"));
+            //_navigationService.NavigateTo(new UnitOverviewViewModel(_navigationService));
         }
+
+        //[RelayCommand]
+        //private void OpenLearningPathCommand(Guid learningPathId)
+        //{
+        //    _navigationService.NavigateTo(new UnitOverviewViewModel(_navigationService, learningPathId));
+        //}
 
         public async Task LoadLearningPaths()
         {
