@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using MnemoProject.Models;
 using System.Runtime.CompilerServices;
+using MnemoProject.Services;
 
 namespace MnemoProject.ViewModels
 {

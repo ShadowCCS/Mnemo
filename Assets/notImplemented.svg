@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 80 240 240" width="240" height="240">
+  <!-- Central Icon -->
+  <circle cx="200" cy="200" r="80" fill="#333333"/>
+  <path d="M175 200L200 175L225 200L200 225L175 200Z" fill="#4682B4"/>
+  <circle cx="200" cy="200" r="120" stroke="#3a3a3a" stroke-width="4" stroke-dasharray="12 12" fill="none"/>
+</svg>

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MnemoProject"
+        xmlns:controls="clr-namespace:MnemoProject.Views.Controls"
         mc:Ignorable="d" d:DesignWidth="1300" d:DesignHeight="800"
         x:Class="MnemoProject.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -100,6 +101,9 @@
           </Border>
         </SplitView.Content>
       </SplitView>
+      
+      <!-- Notification Control - positioned over content -->
+      <controls:NotificationControl Grid.Row="1" ZIndex="100" />
     </Grid>
   </Border>
 </Window>

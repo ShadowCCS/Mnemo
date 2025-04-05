@@ -49,6 +49,7 @@
                   Unit="{Binding UnitNumber}"
                   Text="{Binding Title}"
                   IsEnabled="{Binding IsEnabled}"
+                  IsGenerating="{Binding IsGeneratingNextUnit}"
                   Command="{Binding OpenUnitGuideCommand}"/>
             </DataTemplate>
           </ItemsControl.ItemTemplate>

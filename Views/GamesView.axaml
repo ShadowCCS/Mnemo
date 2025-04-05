@@ -7,5 +7,10 @@
              x:DataType="vm:GamesViewModel"
              x:Class="MnemoProject.Views.GamesView">
 
-  This is the games view
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Image Source="{SvgImage avares://MnemoProject/Assets/notImplemented.svg}" Height="200" Margin="20"/>
+    <Label Content="Games" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
+    <Label Content="Feature Under Development" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24"/>
+    <Label Content="We're working on bringing this functionality to you soon." Foreground="#696969" HorizontalAlignment="Center" FontSize="16"/>
+  </StackPanel>
 </UserControl>

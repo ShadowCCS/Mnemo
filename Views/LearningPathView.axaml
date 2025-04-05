@@ -6,16 +6,15 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              x:DataType="vm:LearningPathViewModel"
+             x:Name="RootControl"
              x:Class="MnemoProject.Views.LearningPathView">
   <Grid Background="#121212">
     <StackPanel Margin="10">
-
       <Border Padding="5" Margin="5">
         <StackPanel Spacing="15">
           <Border Height="30"/>
           <Label Foreground="White" Content="Learning Paths" FontSize="24" FontWeight="Medium" />
           <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Spacing="10">
-
             <Button Background="Transparent" Command="{Binding NavigateToCreatePath}">
               <Border Background="#1a1a1a" Width="260" Height="110" CornerRadius="8" Padding="8">
                 <StackPanel Orientation="Horizontal" Spacing="15">
@@ -31,8 +30,7 @@
                 </StackPanel>
               </Border>
             </Button>
-
-            <Button Background="Transparent" Command="{Binding NavigateToSkip}">
+            <Button Background="Transparent">
               <Border Background="#1a1a1a" Width="260" Height="110" CornerRadius="8" Padding="8">
                 <StackPanel Orientation="Horizontal" Spacing="15">
                   <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -47,11 +45,9 @@
                 </StackPanel>
               </Border>
             </Button>
-
             <Border Margin="20"></Border>
           </StackPanel>
         </StackPanel>
-
       </Border>
       <StackPanel>
         <TabControl>
@@ -63,10 +59,14 @@
                     <DataTemplate>
                       <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
                         <TextBlock Foreground="White" Margin="5" FontSize="16" Text="{Binding Title}"/>
-                        <!--<Button Command="{Binding $parent[ItemsControl].((vm:LearningPathViewModel)DataContext).OpenLearningPathCommand}"
+                        <Button Command="{Binding $parent[UserControl].((vm:LearningPathViewModel)DataContext).OpenLearningPathCommand}"
                                 CommandParameter="{Binding Id}">
                           <TextBlock Text="Continue" Foreground="White"/>
-                        </Button>-->
+                        </Button>
+                        <Button Command="{Binding $parent[UserControl].((vm:LearningPathViewModel)DataContext).DeleteLearningPathCommand}"
+                                CommandParameter="{Binding Id}">
+                          <TextBlock Text="Delete" Foreground="White"/>
+                        </Button>
                       </StackPanel>
                     </DataTemplate>
                   </ItemsControl.ItemTemplate>
@@ -74,7 +74,6 @@
               </StackPanel>
             </ScrollViewer>
           </TabItem>
-
           <TabItem Header="Lessons" FontSize="24" Foreground="White">
             <StackPanel Spacing="10">
               <StackPanel Orientation="Horizontal">
@@ -84,20 +83,16 @@
               </StackPanel>
             </StackPanel>
           </TabItem>
-
           <TabItem Header="Problems" FontSize="24" Foreground="White">
             <StackPanel Spacing="10">
               <StackPanel Orientation="Horizontal">
                 <TextBlock Foreground="White" Margin="5" FontSize="16">Solve for X</TextBlock>
                 <TextBlock Foreground="#797979" Margin="5" FontSize="16">21 hours ago</TextBlock>
               </StackPanel>
-
             </StackPanel>
           </TabItem>
-
         </TabControl>
       </StackPanel>
-
     </StackPanel>
   </Grid>
 </UserControl>

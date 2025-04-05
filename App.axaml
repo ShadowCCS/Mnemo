@@ -2,9 +2,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="MnemoProject.App"
              xmlns:local="using:MnemoProject"
+             xmlns:converters="using:MnemoProject.Converters"
              RequestedThemeVariant="Default">
   <Application.Resources>
     <FontFamily x:Key="LexendFont">avares://MnemoProject/Assets/Fonts#Lexend</FontFamily>
+    <converters:EnumToVisibilityConverter x:Key="EnumToVisibilityConverter"/>
+    <converters:EnumToIconConverter x:Key="EnumToIconConverter"/>
   </Application.Resources>
   <Application.Styles>
     <FluentTheme />

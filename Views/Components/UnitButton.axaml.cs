@@ -14,6 +14,10 @@ namespace MnemoProject.Views.Components
             AvaloniaProperty.Register<UnitButton, string>(
                 nameof(Text), "");
 
+        public static readonly StyledProperty<bool> IsGeneratingProperty =
+            AvaloniaProperty.Register<UnitButton, bool>(
+                nameof(IsGenerating), false);
+
         public int Unit
         {
             get => GetValue(UnitProperty);
@@ -24,6 +28,12 @@ namespace MnemoProject.Views.Components
         {
             get => GetValue(TextProperty);
             set => SetValue(TextProperty, value);
+        }
+
+        public bool IsGenerating
+        {
+            get => GetValue(IsGeneratingProperty);
+            set => SetValue(IsGeneratingProperty, value);
         }
     }
 }

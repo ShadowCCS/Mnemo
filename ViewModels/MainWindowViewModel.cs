@@ -8,12 +8,15 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using System.Collections.Generic;
+using MnemoProject.Services;
 
 namespace MnemoProject.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
         private readonly NavigationService _navigationService;
+
+        private static bool _notificationSent = false;
 
         [ObservableProperty]
         private bool isSidebarExpanded = true;
@@ -40,6 +43,12 @@ namespace MnemoProject.ViewModels
             _navigationService.NavigateTo(new DashboardViewModel(_navigationService));
 
             AppVersion = VersionInfo.Version;
+
+            if (!_notificationSent)
+            {
+                NotificationService.Info($"You are running {AppVersion}", "Welcome To Mnemo!");
+                _notificationSent = true;
+            }
         }
 
         [RelayCommand]
@@ -128,32 +137,6 @@ namespace MnemoProject.ViewModels
 
         [RelayCommand]
         public void NavigateTo(ViewModelBase viewModel) => _navigationService.NavigateTo(viewModel);
-    }
-
-    public class NavigationService
-    {
-        private readonly Stack<ViewModelBase> _navigationStack = new Stack<ViewModelBase>();
-
-        public ViewModelBase? CurrentView => _navigationStack.Count > 0 ? _navigationStack.Peek() : null;
-
-        public event Action? NavigationChanged;
-
-        public void NavigateTo(ViewModelBase viewModel)
-        {
-            _navigationStack.Push(viewModel);
-            NavigationChanged?.Invoke();
-        }
-
-        public bool CanGoBack => _navigationStack.Count > 1;
-
-        public void GoBack()
-        {
-            if (CanGoBack)
-            {
-                _navigationStack.Pop();
-                NavigationChanged?.Invoke();
-            }
-        }
     }
 
     public class ListItemTemplate

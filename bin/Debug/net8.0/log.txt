@@ -1,0 +1,1341 @@
+[2025-04-05 17:14:20] Application started at 4/5/2025 5:14:20 PM
+[2025-04-05 17:14:25] Application started at 4/5/2025 5:14:25 PM
+[2025-04-05 17:14:25] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:14:25] Navigated to: DashboardViewModel
+[2025-04-05 17:14:25] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:14:25] Navigated to: DashboardViewModel
+[2025-04-05 17:14:26] Application started at 4/5/2025 5:14:26 PM
+[2025-04-05 17:14:28] Navigated to: LearningPathViewModel
+[2025-04-05 17:14:28] Navigated to: NotesViewModel
+[2025-04-05 17:14:29] Navigated to: LearningPathViewModel
+[2025-04-05 17:14:31] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:14:33] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 17:14:36] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:14:40] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 17:14:40] Navigated to: NotesViewModel
+[2025-04-05 17:14:41] Navigated to: FlashcardsViewModel
+[2025-04-05 17:14:41] Navigated to: QuizzesViewModel
+[2025-04-05 17:14:42] Navigated to: GamesViewModel
+[2025-04-05 17:14:43] Navigated to: ExtensionsViewModel
+[2025-04-05 17:14:43] Navigated to: GamesViewModel
+[2025-04-05 17:14:44] Navigated to: SettingsViewModel
+[2025-04-05 17:14:45] Navigated to: ExtensionsViewModel
+[2025-04-05 17:14:45] Navigated to: GamesViewModel
+[2025-04-05 17:14:45] Navigated to: QuizzesViewModel
+[2025-04-05 17:14:46] Navigated to: FlashcardsViewModel
+[2025-04-05 17:14:47] Navigated to: NotesViewModel
+[2025-04-05 17:14:48] Navigated to: LearningPathViewModel
+[2025-04-05 17:14:49] Navigated to: DashboardViewModel
+[2025-04-05 17:14:49] Navigated to: LearningPathViewModel
+[2025-04-05 17:14:49] Navigated to: NotesViewModel
+[2025-04-05 17:14:50] Navigated to: FlashcardsViewModel
+[2025-04-05 17:14:50] Navigated to: NotesViewModel
+[2025-04-05 17:14:50] Navigated to: LearningPathViewModel
+[2025-04-05 17:14:51] Navigated to: DashboardViewModel
+[2025-04-05 17:14:51] Navigated to: LearningPathViewModel
+[2025-04-05 17:14:51] Navigated to: DashboardViewModel
+[2025-04-05 17:14:52] Navigated to: LearningPathViewModel
+[2025-04-05 17:14:55] Navigated to: NotesViewModel
+[2025-04-05 17:14:56] Navigated to: LearningPathViewModel
+[2025-04-05 17:14:56] Navigated to: DashboardViewModel
+[2025-04-05 17:14:56] Navigated to: NotesViewModel
+[2025-04-05 17:14:57] Navigated to: FlashcardsViewModel
+[2025-04-05 17:14:57] Navigated to: NotesViewModel
+[2025-04-05 17:14:57] Navigated to: FlashcardsViewModel
+[2025-04-05 17:14:58] Navigated to: QuizzesViewModel
+[2025-04-05 17:14:58] Navigated to: GamesViewModel
+[2025-04-05 17:15:00] Navigated to: QuizzesViewModel
+[2025-04-05 17:15:02] Navigated to: FlashcardsViewModel
+[2025-04-05 17:15:03] Navigated to: NotesViewModel
+[2025-04-05 17:15:04] Navigated to: SettingsViewModel
+[2025-04-05 17:15:15] Navigated to: DashboardViewModel
+[2025-04-05 17:15:15] Navigated to: LearningPathViewModel
+[2025-04-05 17:15:17] Navigated to: CreatePathViewModel
+[2025-04-05 17:15:46] [Info] Generating learning path...
+[2025-04-05 17:15:46] Navigated to: LearningPathCreateViewModel
+[2025-04-05 17:15:49] Learning path saved to database: Introduction to Rocketry with 5 units
+[2025-04-05 17:15:49] [Info] Creating learning path: Introduction to Rocketry
+[2025-04-05 17:15:49] [Info] Generating unit 1: The Fundamentals of Rocket Propulsion
+[2025-04-05 17:15:49] Generating content for unit: The Fundamentals of Rocket Propulsion
+[2025-04-05 17:15:52] Navigated to: DashboardViewModel
+[2025-04-05 17:15:53] Navigated to: LearningPathViewModel
+[2025-04-05 17:15:55] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:15:56] Generated content for unit: The Fundamentals of Rocket Propulsion
+[2025-04-05 17:15:56] Unit saved to database: The Fundamentals of Rocket Propulsion
+[2025-04-05 17:15:56] [Success] Learning path created successfully!
+[2025-04-05 17:15:56] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 17:15:58] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:15:59] Navigated to: UnitGuideViewModel
+[2025-04-05 17:16:09] Navigated to: LearningPathViewModel
+[2025-04-05 17:16:11] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:16:12] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 17:16:13] Navigated to: NotesViewModel
+[2025-04-05 17:16:13] Navigated to: LearningPathViewModel
+[2025-04-05 17:16:14] Navigated to: DashboardViewModel
+[2025-04-05 17:16:14] Navigated to: LearningPathViewModel
+[2025-04-05 17:16:15] Navigated to: CreatePathViewModel
+[2025-04-05 17:16:47] [Warning] Please enter a topic for your learning path
+[2025-04-05 17:16:53] [Info] Generating learning path...
+[2025-04-05 17:16:53] Navigated to: LearningPathCreateViewModel
+[2025-04-05 17:16:56] Learning path saved to database: Rockets: Principles and Applications with 5 units
+[2025-04-05 17:16:56] [Info] Creating learning path: Rockets: Principles and Applications
+[2025-04-05 17:16:56] [Info] Generating unit 1: Introduction to Rockets: History and Basic Principles
+[2025-04-05 17:16:56] Generating content for unit: Introduction to Rockets: History and Basic Principles
+[2025-04-05 17:17:03] Generated content for unit: Introduction to Rockets: History and Basic Principles
+[2025-04-05 17:17:03] Unit saved to database: Introduction to Rockets: History and Basic Principles
+[2025-04-05 17:17:03] [Success] Learning path created successfully!
+[2025-04-05 17:17:03] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:18:59] Navigated to: UnitGuideViewModel
+[2025-04-05 17:19:07] Navigated to: LearningPathViewModel
+[2025-04-05 17:19:08] Navigated to: CreatePathViewModel
+[2025-04-05 17:20:36] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 17:20:37] Navigated to: CreatePathViewModel
+[2025-04-05 17:20:38] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 17:20:38] Navigated to: CreatePathViewModel
+[2025-04-05 17:20:40] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 17:20:41] Navigated to: CreatePathViewModel
+[2025-04-05 17:20:42] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 17:20:43] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:20:46] Navigated to: UnitGuideViewModel
+[2025-04-05 17:21:01] Navigated to: ExtensionsViewModel
+[2025-04-05 17:21:02] Navigated to: GamesViewModel
+[2025-04-05 17:21:02] Navigated to: QuizzesViewModel
+[2025-04-05 17:21:03] Navigated to: FlashcardsViewModel
+[2025-04-05 17:21:03] Navigated to: NotesViewModel
+[2025-04-05 17:21:04] Navigated to: LearningPathViewModel
+[2025-04-05 17:21:04] Navigated to: DashboardViewModel
+[2025-04-05 17:21:05] Navigated to: NotesViewModel
+[2025-04-05 17:21:05] Navigated to: LearningPathViewModel
+[2025-04-05 17:21:06] Navigated to: CreatePathViewModel
+[2025-04-05 17:21:07] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 17:23:23] Application started at 4/5/2025 5:23:23 PM
+[2025-04-05 17:25:40] Application started at 4/5/2025 5:25:40 PM
+[2025-04-05 17:25:54] Application started at 4/5/2025 5:25:54 PM
+[2025-04-05 17:26:48] Application started at 4/5/2025 5:26:48 PM
+[2025-04-05 17:26:48] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:26:48] Navigated to: DashboardViewModel
+[2025-04-05 17:26:48] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:26:48] Navigated to: DashboardViewModel
+[2025-04-05 17:26:49] Application started at 4/5/2025 5:26:49 PM
+[2025-04-05 17:26:51] Navigated to: LearningPathViewModel
+[2025-04-05 17:26:53] Navigated to: CreatePathViewModel
+[2025-04-05 17:26:59] [Info] Generating learning path...
+[2025-04-05 17:26:59] Navigated to: LearningPathCreateViewModel
+[2025-04-05 17:27:02] Learning path saved to database: Rocket Science: From Basics to Beyond with 5 units
+[2025-04-05 17:27:02] [Info] Creating learning path: Rocket Science: From Basics to Beyond
+[2025-04-05 17:27:02] [Info] Generating unit 1: Introduction to Rockets: Principles and History
+[2025-04-05 17:27:02] Generating content for unit: Introduction to Rockets: Principles and History
+[2025-04-05 17:27:09] Generated content for unit: Introduction to Rockets: Principles and History
+[2025-04-05 17:27:09] Unit saved to database: Introduction to Rockets: Principles and History
+[2025-04-05 17:27:09] [Success] Learning path created successfully!
+[2025-04-05 17:27:09] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:27:15] Navigated back from: UnitOverviewViewModel to: LearningPathCreateViewModel
+[2025-04-05 17:27:22] Navigated back from: LearningPathCreateViewModel to: CreatePathViewModel
+[2025-04-05 17:27:27] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 17:27:30] Navigated to: CreatePathViewModel
+[2025-04-05 17:27:34] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 17:27:36] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:27:39] Navigated to: LearningPathViewModel
+[2025-04-05 17:27:42] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:27:44] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 17:27:46] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:27:47] Navigated to: UnitGuideViewModel
+[2025-04-05 17:27:55] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 17:27:58] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 17:28:01] Navigated to: CreatePathViewModel
+[2025-04-05 17:31:33] Application started at 4/5/2025 5:31:33 PM
+[2025-04-05 17:31:33] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:31:33] Navigated to: DashboardViewModel
+[2025-04-05 17:31:33] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:31:33] Navigated to: DashboardViewModel
+[2025-04-05 17:34:17] Application started at 4/5/2025 5:34:17 PM
+[2025-04-05 17:34:17] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:34:17] Navigated to: DashboardViewModel
+[2025-04-05 17:34:17] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:34:17] Navigated to: DashboardViewModel
+[2025-04-05 17:34:19] Navigated to: LearningPathViewModel
+[2025-04-05 17:34:23] Navigated to: CreatePathViewModel
+[2025-04-05 17:34:30] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 17:40:01] Application started at 4/5/2025 5:40:01 PM
+[2025-04-05 17:40:01] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:40:01] Navigated to: DashboardViewModel
+[2025-04-05 17:40:01] NavigationService: Added event handler. Count: 1
+[2025-04-05 17:40:01] Navigated to: DashboardViewModel
+[2025-04-05 17:40:03] Navigated to: LearningPathViewModel
+[2025-04-05 17:40:04] Navigated to: CreatePathViewModel
+[2025-04-05 17:40:09] [Info] Generating learning path...
+[2025-04-05 17:40:09] Navigated to: LearningPathCreateViewModel
+[2025-04-05 17:40:12] Learning path saved to database: Introduction to Rocketry with 5 units
+[2025-04-05 17:40:12] [Info] Creating learning path: Introduction to Rocketry
+[2025-04-05 17:40:12] [Info] Generating unit 1: The History of Rockets
+[2025-04-05 17:40:12] Generating content for unit: The History of Rockets
+[2025-04-05 17:40:17] Generated content for unit: The History of Rockets
+[2025-04-05 17:40:17] Unit saved to database: The History of Rockets
+[2025-04-05 17:40:17] [Success] Learning path created successfully!
+[2025-04-05 17:40:17] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:40:21] Navigated to: UnitGuideViewModel
+[2025-04-05 17:40:40] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 17:41:00] Navigated to: UnitGuideViewModel
+[2025-04-05 17:41:01] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 17:41:01] Navigated back from: UnitOverviewViewModel to: LearningPathCreateViewModel
+[2025-04-05 17:41:06] Navigated back from: LearningPathCreateViewModel to: CreatePathViewModel
+[2025-04-05 17:41:08] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 17:41:09] Navigated to: NotesViewModel
+[2025-04-05 17:41:10] Navigated to: LearningPathViewModel
+[2025-04-05 17:41:12] Navigated to: UnitOverviewViewModel
+[2025-04-05 17:41:16] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 17:41:17] Navigated to: ExtensionsViewModel
+[2025-04-05 17:41:18] Navigated to: SettingsViewModel
+[2025-04-05 17:41:26] Navigated to: DashboardViewModel
+[2025-04-05 17:41:27] Navigated to: LearningPathViewModel
+[2025-04-05 17:41:28] Navigated to: DashboardViewModel
+[2025-04-05 17:41:28] Navigated to: LearningPathViewModel
+[2025-04-05 17:41:29] Navigated to: DashboardViewModel
+[2025-04-05 17:41:29] Navigated to: LearningPathViewModel
+[2025-04-05 17:41:30] Navigated to: DashboardViewModel
+[2025-04-05 17:41:30] Navigated to: LearningPathViewModel
+[2025-04-05 17:41:32] Navigated to: NotesViewModel
+[2025-04-05 17:41:33] Navigated to: DashboardViewModel
+[2025-04-05 17:41:33] Navigated to: QuizzesViewModel
+[2025-04-05 17:41:34] Navigated to: FlashcardsViewModel
+[2025-04-05 17:41:34] Navigated to: DashboardViewModel
+[2025-04-05 17:41:36] Navigated to: LearningPathViewModel
+[2025-04-05 17:41:38] Navigated to: CreatePathViewModel
+[2025-04-05 17:41:48] [Warning] Please enter a topic for your learning path
+[2025-04-05 18:07:03] Application started at 4/5/2025 6:07:03 PM
+[2025-04-05 18:07:03] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:07:03] Navigated to: DashboardViewModel
+[2025-04-05 18:07:03] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:07:03] Navigated to: DashboardViewModel
+[2025-04-05 18:07:06] Navigated to: LearningPathViewModel
+[2025-04-05 18:07:08] Navigated to: CreatePathViewModel
+[2025-04-05 18:07:15] [Info]   Generating learning path...
+[2025-04-05 18:07:15] Navigated to: LearningPathCreateViewModel
+[2025-04-05 18:07:18] Learning path saved to database: The Cardiovascular System: A Journey Through the Heart and Vessels with 6 units
+[2025-04-05 18:07:18] [Info]   Creating learning path: The Cardiovascular System: A Journey Through the Heart and Vessels
+[2025-04-05 18:07:18] [Info]   Generating unit 1: Introduction to the Cardiovascular System
+[2025-04-05 18:07:18] Generating content for unit: Introduction to the Cardiovascular System
+[2025-04-05 18:07:25] Generated content for unit: Introduction to the Cardiovascular System
+[2025-04-05 18:07:25] Unit saved to database: Introduction to the Cardiovascular System
+[2025-04-05 18:07:25] [Success]   Learning path created successfully!
+[2025-04-05 18:07:25] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:08:02] Application started at 4/5/2025 6:08:02 PM
+[2025-04-05 18:08:02] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:08:02] Navigated to: DashboardViewModel
+[2025-04-05 18:08:02] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:08:02] Navigated to: DashboardViewModel
+[2025-04-05 18:08:05] Navigated to: LearningPathViewModel
+[2025-04-05 18:08:06] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:08:09] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 18:08:10] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:08:12] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 18:08:14] Navigated to: NotesViewModel
+[2025-04-05 18:08:15] Navigated to: FlashcardsViewModel
+[2025-04-05 18:08:15] Navigated to: LearningPathViewModel
+[2025-04-05 18:08:18] Navigated to: CreatePathViewModel
+[2025-04-05 18:08:22] [Info]   Generating learning path...
+[2025-04-05 18:08:22] Navigated to: LearningPathCreateViewModel
+[2025-04-05 18:08:25] Learning path saved to database: The Wonderful World of Cars with 5 units
+[2025-04-05 18:08:25] [Info]   Creating learning path: The Wonderful World of Cars
+[2025-04-05 18:08:25] [Info]   Generating unit 1: Introduction to Cars: History and Evolution
+[2025-04-05 18:08:25] Generating content for unit: Introduction to Cars: History and Evolution
+[2025-04-05 18:08:31] Generated content for unit: Introduction to Cars: History and Evolution
+[2025-04-05 18:08:31] Unit saved to database: Introduction to Cars: History and Evolution
+[2025-04-05 18:08:31] [Success]   Learning path created successfully!
+[2025-04-05 18:08:31] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:09:34] Application started at 4/5/2025 6:09:34 PM
+[2025-04-05 18:09:34] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:09:34] Navigated to: DashboardViewModel
+[2025-04-05 18:09:34] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:09:34] Navigated to: DashboardViewModel
+[2025-04-05 18:09:36] Navigated to: LearningPathViewModel
+[2025-04-05 18:09:40] Navigated to: CreatePathViewModel
+[2025-04-05 18:09:49] [Info]   Generating learning path...
+[2025-04-05 18:09:49] Navigated to: LearningPathCreateViewModel
+[2025-04-05 18:09:54] Learning path saved to database: The Ventricles of the Brain: A Comprehensive Overview with 7 units
+[2025-04-05 18:09:54] [Info]   Creating learning path: The Ventricles of the Brain: A Comprehensive Overview
+[2025-04-05 18:09:54] [Info]   Generating unit 1: Introduction to Brain Ventricles: Structure and Location
+[2025-04-05 18:09:54] Generating content for unit: Introduction to Brain Ventricles: Structure and Location
+[2025-04-05 18:10:00] Generated content for unit: Introduction to Brain Ventricles: Structure and Location
+[2025-04-05 18:10:00] Unit saved to database: Introduction to Brain Ventricles: Structure and Location
+[2025-04-05 18:10:00] [Success]   Learning path created successfully!
+[2025-04-05 18:10:00] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:10:03] Navigated to: UnitGuideViewModel
+[2025-04-05 18:10:06] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 18:10:08] Navigated to: UnitGuideViewModel
+[2025-04-05 18:10:12] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 18:10:13] Navigated to: UnitGuideViewModel
+[2025-04-05 18:14:19] Application started at 4/5/2025 6:14:19 PM
+[2025-04-05 18:14:19] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:14:19] Navigated to: DashboardViewModel
+[2025-04-05 18:14:19] [Info] Info Title:   This is an info message
+[2025-04-05 18:14:19] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:14:19] Navigated to: DashboardViewModel
+[2025-04-05 18:14:19] [Info] Info Title:   This is an info message
+[2025-04-05 18:14:43] Application started at 4/5/2025 6:14:43 PM
+[2025-04-05 18:14:43] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:14:43] Navigated to: DashboardViewModel
+[2025-04-05 18:14:43] [Info] Info Title:   This is an info message
+[2025-04-05 18:14:43] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:14:43] Navigated to: DashboardViewModel
+[2025-04-05 18:14:43] [Info] Info Title:   This is an info message
+[2025-04-05 18:14:57] Application started at 4/5/2025 6:14:57 PM
+[2025-04-05 18:14:57] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:14:57] Navigated to: DashboardViewModel
+[2025-04-05 18:14:57] [Info]   This is an info message
+[2025-04-05 18:14:57] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:14:57] Navigated to: DashboardViewModel
+[2025-04-05 18:14:57] [Info]   This is an info message
+[2025-04-05 18:18:38] Application started at 4/5/2025 6:18:38 PM
+[2025-04-05 18:18:38] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:18:38] Navigated to: DashboardViewModel
+[2025-04-05 18:18:38] [Info] Description:   Title
+[2025-04-05 18:18:38] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:18:38] Navigated to: DashboardViewModel
+[2025-04-05 18:18:38] [Info] Description:   Title
+[2025-04-05 18:19:21] Application started at 4/5/2025 6:19:21 PM
+[2025-04-05 18:19:21] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:19:21] Navigated to: DashboardViewModel
+[2025-04-05 18:19:21] [Info] Information Message:   This is a info message
+[2025-04-05 18:19:21] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:19:21] Navigated to: DashboardViewModel
+[2025-04-05 18:19:21] [Info] Information Message:   This is a info message
+[2025-04-05 18:19:38] Application started at 4/5/2025 6:19:38 PM
+[2025-04-05 18:19:38] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:19:38] Navigated to: DashboardViewModel
+[2025-04-05 18:19:38] [Info]   This is a info message
+[2025-04-05 18:19:38] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:19:38] Navigated to: DashboardViewModel
+[2025-04-05 18:19:38] [Info]   This is a info message
+[2025-04-05 18:19:54] Application started at 4/5/2025 6:19:54 PM
+[2025-04-05 18:19:54] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:19:54] Navigated to: DashboardViewModel
+[2025-04-05 18:19:54] [Error]   This is a info message
+[2025-04-05 18:19:54] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:19:54] Navigated to: DashboardViewModel
+[2025-04-05 18:19:54] [Error]   This is a info message
+[2025-04-05 18:21:06] Application started at 4/5/2025 6:21:06 PM
+[2025-04-05 18:24:12] Application started at 4/5/2025 6:24:11 PM
+[2025-04-05 18:24:12] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:24:12] Navigated to: DashboardViewModel
+[2025-04-05 18:24:12] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:24:12] Navigated to: DashboardViewModel
+[2025-04-05 18:24:12] Application started at 4/5/2025 6:24:12 PM
+[2025-04-05 18:24:27] Application started at 4/5/2025 6:24:27 PM
+[2025-04-05 18:24:27] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:24:27] Navigated to: DashboardViewModel
+[2025-04-05 18:24:27] [Info]   App version: 0.1.0-beta
+[2025-04-05 18:24:27] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:24:27] Navigated to: DashboardViewModel
+[2025-04-05 18:24:27] [Info]   App version: 0.1.0-beta
+[2025-04-05 18:28:59] Application started at 4/5/2025 6:28:59 PM
+[2025-04-05 18:28:59] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:28:59] Navigated to: DashboardViewModel
+[2025-04-05 18:28:59] [Info] Info:   This is an information message
+[2025-04-05 18:28:59] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:28:59] Navigated to: DashboardViewModel
+[2025-04-05 18:28:59] [Info] Info:   This is an information message
+[2025-04-05 18:29:16] Application started at 4/5/2025 6:29:16 PM
+[2025-04-05 18:29:16] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:29:16] Navigated to: DashboardViewModel
+[2025-04-05 18:29:16] [Info]   This is an information message
+[2025-04-05 18:29:16] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:29:16] Navigated to: DashboardViewModel
+[2025-04-05 18:29:16] [Info]   This is an information message
+[2025-04-05 18:29:45] Application started at 4/5/2025 6:29:45 PM
+[2025-04-05 18:29:45] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:29:45] Navigated to: DashboardViewModel
+[2025-04-05 18:29:45] [Info] Info Title:   This is an info message
+[2025-04-05 18:29:45] [Success] Success:   Operation completed!
+[2025-04-05 18:29:45] [Warning] Warning:   Please check your input
+[2025-04-05 18:29:45] [Error] Error:   Something went wrong
+[2025-04-05 18:29:45] [AIGeneration] AI Status:   AI is working...
+[2025-04-05 18:29:45] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:29:45] Navigated to: DashboardViewModel
+[2025-04-05 18:29:45] [Info] Info Title:   This is an info message
+[2025-04-05 18:29:45] [Success] Success:   Operation completed!
+[2025-04-05 18:29:45] [Warning] Warning:   Please check your input
+[2025-04-05 18:29:45] [Error] Error:   Something went wrong
+[2025-04-05 18:29:45] [AIGeneration] AI Status:   AI is working...
+[2025-04-05 18:30:05] Application started at 4/5/2025 6:30:05 PM
+[2025-04-05 18:30:05] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:30:05] Navigated to: DashboardViewModel
+[2025-04-05 18:30:05] [Info] Info Title:   This is an info message
+[2025-04-05 18:30:05] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:30:05] Navigated to: DashboardViewModel
+[2025-04-05 18:30:05] [Info] Info Title:   This is an info message
+[2025-04-05 18:31:34] Application started at 4/5/2025 6:31:34 PM
+[2025-04-05 18:31:34] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:31:34] Navigated to: DashboardViewModel
+[2025-04-05 18:31:34] [Info] Welcome To Mnemo!:    You are running 0.1.0-beta
+[2025-04-05 18:31:34] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:31:34] Navigated to: DashboardViewModel
+[2025-04-05 18:31:34] [Info] Welcome To Mnemo!:    You are running 0.1.0-beta
+[2025-04-05 18:33:24] Application started at 4/5/2025 6:33:24 PM
+[2025-04-05 18:33:24] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:33:24] Navigated to: DashboardViewModel
+[2025-04-05 18:33:24] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:33:24] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:33:24] Navigated to: DashboardViewModel
+[2025-04-05 18:33:32] Navigated to: LearningPathViewModel
+[2025-04-05 18:33:34] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:33:35] Navigated to: UnitGuideViewModel
+[2025-04-05 18:38:03] Application started at 4/5/2025 6:38:03 PM
+[2025-04-05 18:38:03] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:38:03] Navigated to: DashboardViewModel
+[2025-04-05 18:38:03] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:38:03] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:38:03] Navigated to: DashboardViewModel
+[2025-04-05 18:38:06] Navigated to: LearningPathViewModel
+[2025-04-05 18:38:11] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:38:12] Navigated to: UnitGuideViewModel
+[2025-04-05 18:38:26] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 18:38:27] Navigated to: UnitGuideViewModel
+[2025-04-05 18:39:06] Navigated to: NotesViewModel
+[2025-04-05 18:39:07] Navigated to: LearningPathViewModel
+[2025-04-05 18:39:09] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:39:12] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 18:39:13] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:39:14] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 18:39:15] Navigated to: UnitOverviewViewModel
+[2025-04-05 18:39:16] Navigated to: UnitGuideViewModel
+[2025-04-05 18:39:18] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 18:39:19] Navigated to: LearningPathViewModel
+[2025-04-05 18:39:20] Navigated to: CreatePathViewModel
+[2025-04-05 18:39:23] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 18:39:26] Navigated to: NotesViewModel
+[2025-04-05 18:39:27] Navigated to: LearningPathViewModel
+[2025-04-05 18:39:27] Navigated to: DashboardViewModel
+[2025-04-05 18:39:28] Navigated to: LearningPathViewModel
+[2025-04-05 18:39:38] Navigated to: ExtensionsViewModel
+[2025-04-05 18:40:08] Application started at 4/5/2025 6:40:08 PM
+[2025-04-05 18:40:09] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:40:09] Navigated to: DashboardViewModel
+[2025-04-05 18:40:09] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:40:09] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:40:09] Navigated to: DashboardViewModel
+[2025-04-05 18:40:11] Navigated to: GamesViewModel
+[2025-04-05 18:40:11] Navigated to: ExtensionsViewModel
+[2025-04-05 18:45:25] Application started at 4/5/2025 6:45:25 PM
+[2025-04-05 18:45:25] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:45:25] Navigated to: DashboardViewModel
+[2025-04-05 18:45:25] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:45:25] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:45:25] Navigated to: DashboardViewModel
+[2025-04-05 18:45:28] Navigated to: LearningPathViewModel
+[2025-04-05 18:45:29] Navigated to: ExtensionsViewModel
+[2025-04-05 18:45:33] Navigated to: GamesViewModel
+[2025-04-05 18:45:34] Navigated to: ExtensionsViewModel
+[2025-04-05 18:46:04] Application started at 4/5/2025 6:46:04 PM
+[2025-04-05 18:46:04] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:46:04] Navigated to: DashboardViewModel
+[2025-04-05 18:46:04] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:46:04] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:46:04] Navigated to: DashboardViewModel
+[2025-04-05 18:46:06] Navigated to: ExtensionsViewModel
+[2025-04-05 18:47:05] Application started at 4/5/2025 6:47:05 PM
+[2025-04-05 18:47:05] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:47:05] Navigated to: DashboardViewModel
+[2025-04-05 18:47:05] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:47:05] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:47:05] Navigated to: DashboardViewModel
+[2025-04-05 18:47:16] Navigated to: ExtensionsViewModel
+[2025-04-05 18:47:53] Application started at 4/5/2025 6:47:53 PM
+[2025-04-05 18:47:53] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:47:53] Navigated to: DashboardViewModel
+[2025-04-05 18:47:53] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:47:53] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:47:53] Navigated to: DashboardViewModel
+[2025-04-05 18:48:33] Application started at 4/5/2025 6:48:33 PM
+[2025-04-05 18:48:33] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:48:33] Navigated to: DashboardViewModel
+[2025-04-05 18:48:33] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:48:33] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:48:33] Navigated to: DashboardViewModel
+[2025-04-05 18:48:35] Navigated to: ExtensionsViewModel
+[2025-04-05 18:49:50] Application started at 4/5/2025 6:49:50 PM
+[2025-04-05 18:49:50] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:49:50] Navigated to: DashboardViewModel
+[2025-04-05 18:49:50] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:49:50] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:49:50] Navigated to: DashboardViewModel
+[2025-04-05 18:49:52] Navigated to: ExtensionsViewModel
+[2025-04-05 18:51:39] Application started at 4/5/2025 6:51:39 PM
+[2025-04-05 18:51:40] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:51:40] Navigated to: DashboardViewModel
+[2025-04-05 18:51:40] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:51:40] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:51:40] Navigated to: DashboardViewModel
+[2025-04-05 18:51:44] Navigated to: ExtensionsViewModel
+[2025-04-05 18:53:52] Application started at 4/5/2025 6:53:52 PM
+[2025-04-05 18:53:52] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:53:52] Navigated to: DashboardViewModel
+[2025-04-05 18:53:52] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:53:52] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:53:52] Navigated to: DashboardViewModel
+[2025-04-05 18:53:53] Navigated to: ExtensionsViewModel
+[2025-04-05 18:55:14] Application started at 4/5/2025 6:55:14 PM
+[2025-04-05 18:55:14] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:55:14] Navigated to: DashboardViewModel
+[2025-04-05 18:55:14] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:55:14] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:55:14] Navigated to: DashboardViewModel
+[2025-04-05 18:55:16] Navigated to: ExtensionsViewModel
+[2025-04-05 18:56:00] Application started at 4/5/2025 6:56:00 PM
+[2025-04-05 18:56:00] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:56:00] Navigated to: DashboardViewModel
+[2025-04-05 18:56:00] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:56:00] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:56:00] Navigated to: DashboardViewModel
+[2025-04-05 18:56:02] Navigated to: ExtensionsViewModel
+[2025-04-05 18:56:18] Navigated to: GamesViewModel
+[2025-04-05 18:56:19] Navigated to: ExtensionsViewModel
+[2025-04-05 18:57:05] Application started at 4/5/2025 6:57:05 PM
+[2025-04-05 18:57:05] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:57:05] Navigated to: DashboardViewModel
+[2025-04-05 18:57:05] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:57:05] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:57:05] Navigated to: DashboardViewModel
+[2025-04-05 18:57:06] Navigated to: ExtensionsViewModel
+[2025-04-05 18:57:29] Application started at 4/5/2025 6:57:29 PM
+[2025-04-05 18:57:29] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:57:29] Navigated to: DashboardViewModel
+[2025-04-05 18:57:29] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:57:29] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:57:29] Navigated to: DashboardViewModel
+[2025-04-05 18:57:31] Navigated to: ExtensionsViewModel
+[2025-04-05 18:58:38] Application started at 4/5/2025 6:58:38 PM
+[2025-04-05 18:58:38] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:58:38] Navigated to: DashboardViewModel
+[2025-04-05 18:58:38] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:58:38] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:58:38] Navigated to: DashboardViewModel
+[2025-04-05 18:58:40] Navigated to: ExtensionsViewModel
+[2025-04-05 18:59:07] Application started at 4/5/2025 6:59:07 PM
+[2025-04-05 18:59:07] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:59:07] Navigated to: DashboardViewModel
+[2025-04-05 18:59:07] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:59:07] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:59:07] Navigated to: DashboardViewModel
+[2025-04-05 18:59:08] Navigated to: ExtensionsViewModel
+[2025-04-05 18:59:49] Application started at 4/5/2025 6:59:49 PM
+[2025-04-05 18:59:49] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:59:49] Navigated to: DashboardViewModel
+[2025-04-05 18:59:49] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 18:59:49] NavigationService: Added event handler. Count: 1
+[2025-04-05 18:59:49] Navigated to: DashboardViewModel
+[2025-04-05 18:59:51] Navigated to: ExtensionsViewModel
+[2025-04-05 19:01:53] Application started at 4/5/2025 7:01:53 PM
+[2025-04-05 19:01:53] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:01:53] Navigated to: DashboardViewModel
+[2025-04-05 19:01:53] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:01:53] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:01:53] Navigated to: DashboardViewModel
+[2025-04-05 19:01:54] Navigated to: NotesViewModel
+[2025-04-05 19:02:21] Navigated to: FlashcardsViewModel
+[2025-04-05 19:03:13] Application started at 4/5/2025 7:03:13 PM
+[2025-04-05 19:03:13] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:03:13] Navigated to: DashboardViewModel
+[2025-04-05 19:03:13] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:03:13] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:03:13] Navigated to: DashboardViewModel
+[2025-04-05 19:03:14] Navigated to: ExtensionsViewModel
+[2025-04-05 19:03:16] Navigated to: GamesViewModel
+[2025-04-05 19:03:17] Navigated to: QuizzesViewModel
+[2025-04-05 19:03:18] Navigated to: FlashcardsViewModel
+[2025-04-05 19:03:19] Navigated to: NotesViewModel
+[2025-04-05 19:03:21] Navigated to: LearningPathViewModel
+[2025-04-05 19:03:24] Navigated to: DashboardViewModel
+[2025-04-05 19:03:25] Navigated to: LearningPathViewModel
+[2025-04-05 19:03:26] Navigated to: NotesViewModel
+[2025-04-05 19:03:29] Navigated to: FlashcardsViewModel
+[2025-04-05 19:03:30] Navigated to: QuizzesViewModel
+[2025-04-05 19:03:37] Navigated to: ExtensionsViewModel
+[2025-04-05 19:03:38] Navigated to: GamesViewModel
+[2025-04-05 19:03:39] Navigated to: NotesViewModel
+[2025-04-05 19:03:40] Navigated to: FlashcardsViewModel
+[2025-04-05 19:03:41] Navigated to: QuizzesViewModel
+[2025-04-05 19:03:43] Navigated to: GamesViewModel
+[2025-04-05 19:03:43] Navigated to: ExtensionsViewModel
+[2025-04-05 19:08:22] Navigated to: FlashcardsViewModel
+[2025-04-05 19:08:23] Navigated to: DashboardViewModel
+[2025-04-05 19:08:25] Navigated to: NotesViewModel
+[2025-04-05 19:08:26] Navigated to: FlashcardsViewModel
+[2025-04-05 19:08:27] Navigated to: QuizzesViewModel
+[2025-04-05 19:08:28] Navigated to: ExtensionsViewModel
+[2025-04-05 19:08:29] Navigated to: GamesViewModel
+[2025-04-05 19:08:29] Navigated to: ExtensionsViewModel
+[2025-04-05 19:08:30] Navigated to: SettingsViewModel
+[2025-04-05 19:09:56] Navigated to: DashboardViewModel
+[2025-04-05 19:09:56] Navigated to: LearningPathViewModel
+[2025-04-05 19:09:57] Navigated to: FlashcardsViewModel
+[2025-04-05 19:09:57] Navigated to: NotesViewModel
+[2025-04-05 19:09:57] Navigated to: DashboardViewModel
+[2025-04-05 19:09:58] Navigated to: LearningPathViewModel
+[2025-04-05 19:09:59] Navigated to: NotesViewModel
+[2025-04-05 19:10:00] Navigated to: FlashcardsViewModel
+[2025-04-05 19:10:00] Navigated to: NotesViewModel
+[2025-04-05 19:10:00] Navigated to: LearningPathViewModel
+[2025-04-05 19:10:01] Navigated to: CreatePathViewModel
+[2025-04-05 19:10:08] [Info]   Starting learning path generation...
+[2025-04-05 19:10:08] Navigated to: LearningPathCreateViewModel
+[2025-04-05 19:10:11] Learning path saved to database: Exploring the Art of Italian Pizza with 5 units
+[2025-04-05 19:10:11] [Info]   Creating learning path: Exploring the Art of Italian Pizza
+[2025-04-05 19:10:11] [Info]   Generating unit 1/5: Introduction to Authentic Italian Pizza
+[2025-04-05 19:10:11] Generating content for unit: Introduction to Authentic Italian Pizza
+[2025-04-05 19:10:18] Generated content for unit: Introduction to Authentic Italian Pizza
+[2025-04-05 19:10:18] Unit saved to database: Introduction to Authentic Italian Pizza
+[2025-04-05 19:10:18] [Info]   Generating unit 2/5: The Foundation: Dough Preparation
+[2025-04-05 19:10:18] Generating content for unit: The Foundation: Dough Preparation
+[2025-04-05 19:10:24] Generated content for unit: The Foundation: Dough Preparation
+[2025-04-05 19:10:24] Unit saved to database: The Foundation: Dough Preparation
+[2025-04-05 19:10:24] [Info]   Generating unit 3/5: Crafting the Sauce: Tomato Perfection
+[2025-04-05 19:10:24] Generating content for unit: Crafting the Sauce: Tomato Perfection
+[2025-04-05 19:10:31] Generated content for unit: Crafting the Sauce: Tomato Perfection
+[2025-04-05 19:10:31] Unit saved to database: Crafting the Sauce: Tomato Perfection
+[2025-04-05 19:10:31] [Info]   Generating unit 4/5: Toppings: Quality and Balance
+[2025-04-05 19:10:31] Generating content for unit: Toppings: Quality and Balance
+[2025-04-05 19:10:38] Generated content for unit: Toppings: Quality and Balance
+[2025-04-05 19:10:38] Unit saved to database: Toppings: Quality and Balance
+[2025-04-05 19:10:38] [Info]   Generating unit 5/5: The Oven: Heat and Technique
+[2025-04-05 19:10:38] Generating content for unit: The Oven: Heat and Technique
+[2025-04-05 19:10:46] Generated content for unit: The Oven: Heat and Technique
+[2025-04-05 19:10:46] Unit saved to database: The Oven: Heat and Technique
+[2025-04-05 19:10:46] [Success]   Learning path created successfully!
+[2025-04-05 19:10:46] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:10:47] Navigated to: UnitGuideViewModel
+[2025-04-05 19:10:56] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:10:57] Navigated to: UnitGuideViewModel
+[2025-04-05 19:10:59] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:14:49] Application started at 4/5/2025 7:14:49 PM
+[2025-04-05 19:14:49] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:14:49] Navigated to: DashboardViewModel
+[2025-04-05 19:14:49] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:14:49] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:14:49] Navigated to: DashboardViewModel
+[2025-04-05 19:14:52] Navigated to: GamesViewModel
+[2025-04-05 19:14:53] Navigated to: ExtensionsViewModel
+[2025-04-05 19:14:53] Navigated to: QuizzesViewModel
+[2025-04-05 19:14:55] Navigated to: LearningPathViewModel
+[2025-04-05 19:14:56] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:14:58] Navigated to: UnitGuideViewModel
+[2025-04-05 19:15:00] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:15:02] Navigated to: LearningPathViewModel
+[2025-04-05 19:15:03] Navigated to: CreatePathViewModel
+[2025-04-05 19:15:09] [Info]   Starting learning path generation...
+[2025-04-05 19:15:09] Navigated to: LearningPathCreateViewModel
+[2025-04-05 19:15:13] Learning path saved to database: The Cardiovascular System: A Journey Through the Heart and Vessels with 5 units
+[2025-04-05 19:15:13] [Info]   Creating learning path: The Cardiovascular System: A Journey Through the Heart and Vessels
+[2025-04-05 19:15:13] [Info]   Generating unit 1/5: Introduction to the Cardiovascular System
+[2025-04-05 19:15:13] Generating content for unit: Introduction to the Cardiovascular System
+[2025-04-05 19:15:20] Generated content for unit: Introduction to the Cardiovascular System
+[2025-04-05 19:15:20] Unit saved to database: Introduction to the Cardiovascular System
+[2025-04-05 19:15:20] Unit saved to database: The Heart: Structure and Function
+[2025-04-05 19:15:20] Unit saved to database: Blood Vessels: Arteries, Veins, and Capillaries
+[2025-04-05 19:15:20] Unit saved to database: Blood: Composition and Function
+[2025-04-05 19:15:20] Unit saved to database: Circulatory Pathways: Systemic and Pulmonary
+[2025-04-05 19:15:20] [Success]   Learning path created successfully!
+[2025-04-05 19:15:20] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:15:22] Navigated to: UnitGuideViewModel
+[2025-04-05 19:15:25] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:15:26] Navigated to: UnitGuideViewModel
+[2025-04-05 19:15:29] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:15:33] Navigated to: UnitGuideViewModel
+[2025-04-05 19:15:34] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:17:56] Navigated to: UnitGuideViewModel
+[2025-04-05 19:18:07] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:19:57] Application started at 4/5/2025 7:19:57 PM
+[2025-04-05 19:19:57] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:19:57] Navigated to: DashboardViewModel
+[2025-04-05 19:19:57] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:19:57] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:19:57] Navigated to: DashboardViewModel
+[2025-04-05 19:20:00] Navigated to: LearningPathViewModel
+[2025-04-05 19:20:02] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:20:04] Navigated to: UnitGuideViewModel
+[2025-04-05 19:20:04] [Info]   Generating content for Unit 2: The Heart: Structure and Function
+[2025-04-05 19:20:05] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:20:11] [Success]   Unit 2 content generated successfully!
+[2025-04-05 19:20:13] Navigated to: LearningPathViewModel
+[2025-04-05 19:20:15] Navigated to: CreatePathViewModel
+[2025-04-05 19:20:23] [Info]   Starting learning path generation...
+[2025-04-05 19:20:23] Navigated to: LearningPathCreateViewModel
+[2025-04-05 19:20:26] Learning path saved to database: Exploring the World of Pizzerias with 5 units
+[2025-04-05 19:20:26] [Info]   Creating learning path: Exploring the World of Pizzerias
+[2025-04-05 19:20:26] [Info]   Generating unit 1/5: A Slice of History: The Origins of Pizza and Pizzerias
+[2025-04-05 19:20:26] Generating content for unit: A Slice of History: The Origins of Pizza and Pizzerias
+[2025-04-05 19:20:34] Generated content for unit: A Slice of History: The Origins of Pizza and Pizzerias
+[2025-04-05 19:20:34] Unit saved to database: A Slice of History: The Origins of Pizza and Pizzerias
+[2025-04-05 19:20:34] Unit saved to database: Pizza Styles Around the Globe: A Culinary Tour
+[2025-04-05 19:20:34] Unit saved to database: The Anatomy of a Great Pizzeria: Ingredients and Techniques
+[2025-04-05 19:20:34] Unit saved to database: Running a Pizzeria: Business and Operations
+[2025-04-05 19:20:34] Unit saved to database: Beyond the Pizza: Exploring Pizzeria Menus and Side Dishes
+[2025-04-05 19:20:34] [Success]   Learning path created successfully!
+[2025-04-05 19:20:34] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:20:37] Navigated to: UnitGuideViewModel
+[2025-04-05 19:20:37] [Info]   Generating content for Unit 2: Pizza Styles Around the Globe: A Culinary Tour
+[2025-04-05 19:20:45] [Success]   Unit 2 content generated successfully!
+[2025-04-05 19:20:49] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:20:52] Navigated to: UnitGuideViewModel
+[2025-04-05 19:20:52] [Info]   Generating content for Unit 3: The Anatomy of a Great Pizzeria: Ingredients and Techniques
+[2025-04-05 19:20:54] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:20:58] Navigated to: UnitGuideViewModel
+[2025-04-05 19:20:58] [Info]   Generating content for Unit 5: Beyond the Pizza: Exploring Pizzeria Menus and Side Dishes
+[2025-04-05 19:20:59] [Success]   Unit 3 content generated successfully!
+[2025-04-05 19:20:59] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:21:05] [Success]   Unit 5 content generated successfully!
+[2025-04-05 19:21:36] Navigated to: UnitGuideViewModel
+[2025-04-05 19:21:36] [Info]   Generating content for Unit 4: Running a Pizzeria: Business and Operations
+[2025-04-05 19:21:37] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:21:43] [Success]   Unit 4 content generated successfully!
+[2025-04-05 19:23:25] Application started at 4/5/2025 7:23:25 PM
+[2025-04-05 19:23:25] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:23:25] Navigated to: DashboardViewModel
+[2025-04-05 19:23:25] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:23:25] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:23:25] Navigated to: DashboardViewModel
+[2025-04-05 19:23:27] Navigated to: LearningPathViewModel
+[2025-04-05 19:23:28] Navigated to: CreatePathViewModel
+[2025-04-05 19:23:35] [Info]   Starting learning path generation...
+[2025-04-05 19:23:35] Navigated to: LearningPathCreateViewModel
+[2025-04-05 19:23:38] Learning path saved to database: Mars Exploration: From Curiosity to Colonization with 4 units
+[2025-04-05 19:23:38] [Info]   Creating learning path: Mars Exploration: From Curiosity to Colonization
+[2025-04-05 19:23:38] [Info]   Generating unit 1/4: Why Mars? The Scientific Rationale
+[2025-04-05 19:23:38] Generating content for unit: Why Mars? The Scientific Rationale
+[2025-04-05 19:23:44] Generated content for unit: Why Mars? The Scientific Rationale
+[2025-04-05 19:23:44] Unit saved to database: Why Mars? The Scientific Rationale
+[2025-04-05 19:23:44] Unit saved to database: A History of Robotic Missions: From Vikings to Perseverance
+[2025-04-05 19:23:44] Unit saved to database: The Martian Environment: Challenges and Opportunities
+[2025-04-05 19:23:44] Unit saved to database: The Future of Mars Exploration: Human Missions and Colonization
+[2025-04-05 19:23:44] [Success]   Learning path created successfully!
+[2025-04-05 19:23:44] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:23:48] Navigated to: UnitGuideViewModel
+[2025-04-05 19:23:48] [Info]   Generating content for Unit 2: A History of Robotic Missions: From Vikings to Perseverance
+[2025-04-05 19:23:49] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:23:57] [Success]   Unit 2 content generated successfully!
+[2025-04-05 19:25:36] Application started at 4/5/2025 7:25:36 PM
+[2025-04-05 19:25:36] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:25:36] Navigated to: DashboardViewModel
+[2025-04-05 19:25:36] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:25:36] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:25:36] Navigated to: DashboardViewModel
+[2025-04-05 19:25:38] Navigated to: LearningPathViewModel
+[2025-04-05 19:25:42] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:25:45] Navigated to: UnitGuideViewModel
+[2025-04-05 19:25:47] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:25:49] Navigated to: LearningPathViewModel
+[2025-04-05 19:25:50] Navigated to: CreatePathViewModel
+[2025-04-05 19:25:58] [Info]   Starting learning path generation...
+[2025-04-05 19:25:58] Navigated to: LearningPathCreateViewModel
+[2025-04-05 19:26:01] Learning path saved to database: Exploring Jupiter: A Giant of Our Solar System with 5 units
+[2025-04-05 19:26:01] [Info]   Creating learning path: Exploring Jupiter: A Giant of Our Solar System
+[2025-04-05 19:26:01] [Info]   Generating unit 1/5: Introduction to Jupiter: The King of Planets
+[2025-04-05 19:26:01] Generating content for unit: Introduction to Jupiter: The King of Planets
+[2025-04-05 19:26:09] Generated content for unit: Introduction to Jupiter: The King of Planets
+[2025-04-05 19:26:09] Unit saved to database: Introduction to Jupiter: The King of Planets
+[2025-04-05 19:26:09] Unit saved to database: Jupiter's Atmosphere and Composition: Swirling Clouds and Hidden Depths
+[2025-04-05 19:26:09] Unit saved to database: Jupiter's Moons: A Mini Solar System
+[2025-04-05 19:26:09] Unit saved to database: Jupiter's Magnetosphere and Radiation Belts: A Powerful Force Field
+[2025-04-05 19:26:09] Unit saved to database: Spacecraft Exploration of Jupiter: Past, Present, and Future Missions
+[2025-04-05 19:26:09] [Success]   Learning path created successfully!
+[2025-04-05 19:26:09] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:26:11] Navigated to: UnitGuideViewModel
+[2025-04-05 19:26:11] [Info]   Generating content for Unit 2: Jupiter's Atmosphere and Composition: Swirling Clouds and Hidden Depths
+[2025-04-05 19:26:16] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:26:19] [Success]   Unit 2 content generated successfully!
+[2025-04-05 19:26:20] Navigated to: UnitGuideViewModel
+[2025-04-05 19:26:20] [Info]   Generating content for Unit 3: Jupiter's Moons: A Mini Solar System
+[2025-04-05 19:26:27] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:26:28] [Success]   Unit 3 content generated successfully!
+[2025-04-05 19:26:34] Navigated to: LearningPathViewModel
+[2025-04-05 19:26:36] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:26:37] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 19:26:39] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:26:46] Navigated to: UnitGuideViewModel
+[2025-04-05 19:26:47] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:27:01] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 19:28:25] Application started at 4/5/2025 7:28:25 PM
+[2025-04-05 19:28:25] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:28:25] Navigated to: DashboardViewModel
+[2025-04-05 19:28:25] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:28:25] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:28:25] Navigated to: DashboardViewModel
+[2025-04-05 19:28:32] Navigated to: LearningPathViewModel
+[2025-04-05 19:28:36] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:28:37] Navigated to: UnitGuideViewModel
+[2025-04-05 19:28:37] [Info]   Generating content for Unit 4: Jupiter's Magnetosphere and Radiation Belts: A Powerful Force Field
+[2025-04-05 19:28:45] [Success]   Unit 4 content generated successfully!
+[2025-04-05 19:28:48] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:28:50] Navigated to: UnitGuideViewModel
+[2025-04-05 19:28:50] [Info]   Generating content for Unit 5: Spacecraft Exploration of Jupiter: Past, Present, and Future Missions
+[2025-04-05 19:28:50] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:28:54] Navigated to: UnitGuideViewModel
+[2025-04-05 19:28:54] [Info]   Generating content for Unit 5: Spacecraft Exploration of Jupiter: Past, Present, and Future Missions
+[2025-04-05 19:28:59] [Success]   Unit 5 content generated successfully!
+[2025-04-05 19:29:02] [Success]   Unit 5 content generated successfully!
+[2025-04-05 19:29:04] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:29:06] Navigated to: LearningPathViewModel
+[2025-04-05 19:29:07] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:30:54] Application started at 4/5/2025 7:30:54 PM
+[2025-04-05 19:30:54] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:30:54] Navigated to: DashboardViewModel
+[2025-04-05 19:30:54] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:30:54] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:30:54] Navigated to: DashboardViewModel
+[2025-04-05 19:30:57] Navigated to: LearningPathViewModel
+[2025-04-05 19:31:04] Navigated to: ExtensionsViewModel
+[2025-04-05 19:31:04] Navigated to: GamesViewModel
+[2025-04-05 19:31:05] Navigated to: LearningPathViewModel
+[2025-04-05 19:31:08] Navigated to: DashboardViewModel
+[2025-04-05 19:31:08] Navigated to: LearningPathViewModel
+[2025-04-05 19:31:08] Navigated to: DashboardViewModel
+[2025-04-05 19:31:09] Navigated to: LearningPathViewModel
+[2025-04-05 19:31:09] Navigated to: DashboardViewModel
+[2025-04-05 19:31:09] Navigated to: LearningPathViewModel
+[2025-04-05 19:31:09] Navigated to: DashboardViewModel
+[2025-04-05 19:31:10] Navigated to: LearningPathViewModel
+[2025-04-05 19:37:29] Application started at 4/5/2025 7:37:29 PM
+[2025-04-05 19:37:29] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:37:29] Navigated to: DashboardViewModel
+[2025-04-05 19:37:29] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:37:29] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:37:29] Navigated to: DashboardViewModel
+[2025-04-05 19:37:32] Navigated to: LearningPathViewModel
+[2025-04-05 19:37:34] Navigated to: CreatePathViewModel
+[2025-04-05 19:37:39] [Info]   Starting learning path generation...
+[2025-04-05 19:37:39] Navigated to: LearningPathCreateViewModel
+[2025-04-05 19:37:43] Learning path saved to database: Exploring Jupiter: A Giant World with 5 units
+[2025-04-05 19:37:43] [Info]   Creating learning path: Exploring Jupiter: A Giant World
+[2025-04-05 19:37:43] [Info]   Generating unit 1/5: Introduction to Jupiter: A Gas Giant Overview
+[2025-04-05 19:37:43] Generating content for unit: Introduction to Jupiter: A Gas Giant Overview
+[2025-04-05 19:37:50] Generated content for unit: Introduction to Jupiter: A Gas Giant Overview
+[2025-04-05 19:37:50] Unit saved to database: Introduction to Jupiter: A Gas Giant Overview
+[2025-04-05 19:37:50] Unit saved to database: Jupiter's Atmosphere: Bands, Zones, and the Great Red Spot
+[2025-04-05 19:37:50] Unit saved to database: Jupiter's Moons: The Galilean Satellites and Beyond
+[2025-04-05 19:37:50] Unit saved to database: Jupiter's Magnetic Field and Magnetosphere
+[2025-04-05 19:37:51] Unit saved to database: Past and Future Jupiter Missions: Exploration and Discoveries
+[2025-04-05 19:37:51] [Success]   Learning path created successfully!
+[2025-04-05 19:37:51] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:41:50] Application started at 4/5/2025 7:41:50 PM
+[2025-04-05 19:41:50] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:41:50] Navigated to: DashboardViewModel
+[2025-04-05 19:41:50] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:41:50] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:41:50] Navigated to: DashboardViewModel
+[2025-04-05 19:41:52] Navigated to: LearningPathViewModel
+[2025-04-05 19:41:54] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:41:59] Navigated back from: UnitOverviewViewModel to: LearningPathViewModel
+[2025-04-05 19:42:52] Application started at 4/5/2025 7:42:52 PM
+[2025-04-05 19:42:52] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:42:52] Navigated to: DashboardViewModel
+[2025-04-05 19:42:52] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:42:52] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:42:52] Navigated to: DashboardViewModel
+[2025-04-05 19:42:54] Navigated to: LearningPathViewModel
+[2025-04-05 19:42:56] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:43:22] Application started at 4/5/2025 7:43:22 PM
+[2025-04-05 19:43:22] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:43:22] Navigated to: DashboardViewModel
+[2025-04-05 19:43:22] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:43:22] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:43:22] Navigated to: DashboardViewModel
+[2025-04-05 19:43:24] Navigated to: LearningPathViewModel
+[2025-04-05 19:43:27] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:43:37] Navigated to: UnitGuideViewModel
+[2025-04-05 19:43:40] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:43:43] Navigated to: DashboardViewModel
+[2025-04-05 19:43:44] Navigated to: LearningPathViewModel
+[2025-04-05 19:43:45] Navigated to: CreatePathViewModel
+[2025-04-05 19:43:51] [Info]   Starting learning path generation...
+[2025-04-05 19:43:51] Navigated to: LearningPathCreateViewModel
+[2025-04-05 19:43:54] Learning path saved to database: Exploring Mars: A Journey to the Red Planet with 5 units
+[2025-04-05 19:43:54] [Info]   Creating learning path: Exploring Mars: A Journey to the Red Planet
+[2025-04-05 19:43:54] [Info]   Generating unit 1/5: Introduction to Mars: The Red Planet
+[2025-04-05 19:43:54] Generating content for unit: Introduction to Mars: The Red Planet
+[2025-04-05 19:44:01] Generated content for unit: Introduction to Mars: The Red Planet
+[2025-04-05 19:44:01] Unit saved to database: Introduction to Mars: The Red Planet
+[2025-04-05 19:44:01] Unit saved to database: The Martian Environment: Challenges and Opportunities
+[2025-04-05 19:44:01] Unit saved to database: Past and Present: Searching for Life on Mars
+[2025-04-05 19:44:01] Unit saved to database: Human Exploration: Missions to Mars and Future Plans
+[2025-04-05 19:44:01] Unit saved to database: Terraforming Mars: A Hypothetical Transformation
+[2025-04-05 19:44:01] [Success]   Learning path created successfully!
+[2025-04-05 19:44:01] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:44:03] Navigated to: UnitGuideViewModel
+[2025-04-05 19:44:08] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 19:44:21] Application started at 4/5/2025 7:44:21 PM
+[2025-04-05 19:44:21] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:44:21] Navigated to: DashboardViewModel
+[2025-04-05 19:44:21] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:44:21] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:44:21] Navigated to: DashboardViewModel
+[2025-04-05 19:44:24] Navigated to: LearningPathViewModel
+[2025-04-05 19:44:25] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:44:26] Navigated to: UnitGuideViewModel
+[2025-04-05 19:46:45] Application started at 4/5/2025 7:46:45 PM
+[2025-04-05 19:46:45] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:46:45] Navigated to: DashboardViewModel
+[2025-04-05 19:46:45] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 19:46:45] NavigationService: Added event handler. Count: 1
+[2025-04-05 19:46:45] Navigated to: DashboardViewModel
+[2025-04-05 19:46:48] Navigated to: LearningPathViewModel
+[2025-04-05 19:46:49] Navigated to: UnitOverviewViewModel
+[2025-04-05 19:46:50] Navigated to: UnitGuideViewModel
+[2025-04-05 19:46:50] [Info]   Generating content for Unit 2: Jupiter's Atmosphere: Bands, Zones, and the Great Red Spot
+[2025-04-05 19:46:58] [Success]   Unit 2 content generated successfully!
+[2025-04-05 20:34:35] Application started at 4/5/2025 8:34:35 PM
+[2025-04-05 20:34:36] NavigationService: Added event handler. Count: 1
+[2025-04-05 20:34:36] Navigated to: DashboardViewModel
+[2025-04-05 20:34:36] [Info] Welcome To Mnemo!:   You are running 0.1.0-beta
+[2025-04-05 20:34:36] NavigationService: Added event handler. Count: 1
+[2025-04-05 20:34:36] Navigated to: DashboardViewModel
+[2025-04-05 20:34:53] Navigated to: LearningPathViewModel
+[2025-04-05 20:34:58] Navigated to: CreatePathViewModel
+[2025-04-05 20:35:18] [Info]   Starting learning path generation...
+[2025-04-05 20:35:18] Navigated to: LearningPathCreateViewModel
+[2025-04-05 20:35:21] Learning path saved to database: Exploring Our Solar System: A Journey Through the Planets with 5 units
+[2025-04-05 20:35:21] [Info]   Creating learning path: Exploring Our Solar System: A Journey Through the Planets
+[2025-04-05 20:35:21] [Info]   Generating unit 1/5: Introduction to Planets: What are they?
+[2025-04-05 20:35:21] Generating content for unit: Introduction to Planets: What are they?
+[2025-04-05 20:35:28] Generated content for unit: Introduction to Planets: What are they?
+[2025-04-05 20:35:28] Unit saved to database: Introduction to Planets: What are they?
+[2025-04-05 20:35:28] Unit saved to database: The Inner, Rocky Planets: Mercury, Venus, Earth, and Mars
+[2025-04-05 20:35:28] Unit saved to database: The Outer, Gas Giant Planets: Jupiter and Saturn
+[2025-04-05 20:35:28] Unit saved to database: The Ice Giants: Uranus and Neptune
+[2025-04-05 20:35:28] Unit saved to database: Beyond Neptune: Dwarf Planets and the Kuiper Belt
+[2025-04-05 20:35:28] [Success]   Learning path created successfully!
+[2025-04-05 20:35:29] Navigated to: UnitOverviewViewModel
+[2025-04-05 20:36:35] Navigated to: UnitGuideViewModel
+[2025-04-05 20:36:35] [Info]   Generating content for Unit 2: The Inner, Rocky Planets: Mercury, Venus, Earth, and Mars
+[2025-04-05 20:36:37] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 20:36:38] Navigated to: UnitGuideViewModel
+[2025-04-05 20:36:38] [Info]   Generating content for Unit 2: The Inner, Rocky Planets: Mercury, Venus, Earth, and Mars
+[2025-04-05 20:36:45] [Success]   Unit 2 content generated successfully!
+[2025-04-05 20:36:49] [Success]   Unit 2 content generated successfully!
+[2025-04-05 20:37:40] Navigated to: LearningPathViewModel
+[2025-04-05 20:37:43] Navigated to: UnitOverviewViewModel
+[2025-04-05 20:37:48] Navigated to: UnitGuideViewModel
+[2025-04-05 20:37:48] [Info]   Generating content for Unit 3: The Outer, Gas Giant Planets: Jupiter and Saturn
+[2025-04-05 20:37:49] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 20:37:56] [Success]   Unit 3 content generated successfully!
+[2025-04-05 20:37:58] Navigated to: UnitGuideViewModel
+[2025-04-05 20:37:58] [Info]   Generating content for Unit 4: The Ice Giants: Uranus and Neptune
+[2025-04-05 20:38:01] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 20:38:04] Navigated to: NotesViewModel
+[2025-04-05 20:38:05] Navigated to: LearningPathViewModel
+[2025-04-05 20:38:05] [Success]   Unit 4 content generated successfully!
+[2025-04-05 20:38:12] Navigated to: NotesViewModel
+[2025-04-05 20:38:13] Navigated to: FlashcardsViewModel
+[2025-04-05 20:38:14] Navigated to: QuizzesViewModel
+[2025-04-05 20:38:15] Navigated to: GamesViewModel
+[2025-04-05 20:38:16] Navigated to: ExtensionsViewModel
+[2025-04-05 20:38:16] Navigated to: SettingsViewModel
+[2025-04-05 20:38:25] Navigated to: ExtensionsViewModel
+[2025-04-05 20:38:26] Navigated to: SettingsViewModel
+[2025-04-05 20:45:39] Application started at 4/5/2025 8:45:39 PM
+[2025-04-05 20:45:39] NavigationService: Added event handler. Count: 1
+[2025-04-05 20:45:39] Navigated to: DashboardViewModel
+[2025-04-05 20:45:39] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 20:45:39] NavigationService: Added event handler. Count: 1
+[2025-04-05 20:45:39] Navigated to: DashboardViewModel
+[2025-04-05 20:45:41] Navigated to: LearningPathViewModel
+[2025-04-05 20:45:43] Navigated to: CreatePathViewModel
+[2025-04-05 20:46:48] [Info]   Starting learning path generation...
+[2025-04-05 20:46:48] Navigated to: LearningPathCreateViewModel
+[2025-04-05 20:46:51] Learning path saved to database: Markdown Mastery: A Journey Through Formatting Fun with 5 units
+[2025-04-05 20:46:51] [Info]   Creating learning path: Markdown Mastery: A Journey Through Formatting Fun
+[2025-04-05 20:46:51] [Info]   Generating unit 1/5: *Introduction to Markdown: The Basics*
+[2025-04-05 20:46:51] Generating content for unit: *Introduction to Markdown: The Basics*
+[2025-04-05 20:46:58] Generated content for unit: *Introduction to Markdown: The Basics*
+[2025-04-05 20:46:58] Unit saved to database: *Introduction to Markdown: The Basics*
+[2025-04-05 20:46:58] Unit saved to database: > Blockquotes and Beyond: Advanced Text Formatting
+[2025-04-05 20:46:58] Unit saved to database: ![Images and Links](alt text): Embedding Media
+[2025-04-05 20:46:58] Unit saved to database: - [ ] Task Lists: Managing and Completing
+[2025-04-05 20:46:58] Unit saved to database: `Code` and ~~Strikethrough~~ : Extra Features
+[2025-04-05 20:46:58] [Success]   Learning path created successfully!
+[2025-04-05 20:46:58] Navigated to: UnitOverviewViewModel
+[2025-04-05 20:47:04] Navigated to: UnitGuideViewModel
+[2025-04-05 20:47:04] [Info]   Generating content for Unit 2: > Blockquotes and Beyond: Advanced Text Formatting
+[2025-04-05 20:47:10] [Success]   Unit 2 content generated successfully!
+[2025-04-05 20:47:39] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 20:47:40] Navigated to: UnitGuideViewModel
+[2025-04-05 20:47:40] [Info]   Generating content for Unit 3: ![Images and Links](alt text): Embedding Media
+[2025-04-05 20:47:44] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 20:47:47] [Success]   Unit 3 content generated successfully!
+[2025-04-05 20:47:50] Navigated to: UnitGuideViewModel
+[2025-04-05 20:47:50] [Info]   Generating content for Unit 4: - [ ] Task Lists: Managing and Completing
+[2025-04-05 20:47:56] [Success]   Unit 4 content generated successfully!
+[2025-04-05 20:48:07] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 20:48:09] Navigated to: UnitGuideViewModel
+[2025-04-05 20:48:09] [Info]   Generating content for Unit 5: `Code` and ~~Strikethrough~~ : Extra Features
+[2025-04-05 20:48:14] [Success]   Unit 5 content generated successfully!
+[2025-04-05 21:04:24] Application started at 4/5/2025 9:04:24 PM
+[2025-04-05 21:04:24] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:04:24] Navigated to: DashboardViewModel
+[2025-04-05 21:04:24] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:04:24] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:04:24] Navigated to: DashboardViewModel
+[2025-04-05 21:04:33] Navigated to: LearningPathViewModel
+[2025-04-05 21:04:34] Navigated to: CreatePathViewModel
+[2025-04-05 21:04:42] [Info]   Starting learning path generation...
+[2025-04-05 21:04:42] Navigated to: LearningPathCreateViewModel
+[2025-04-05 21:04:45] Learning path saved to database: Mastering Markdown: From Basics to Advanced with 5 units
+[2025-04-05 21:04:45] [Info]   Creating learning path: Mastering Markdown: From Basics to Advanced
+[2025-04-05 21:04:45] [Info]   Generating unit 1/5: Markdown Fundamentals: Headings, Paragraphs, and Emphasis
+[2025-04-05 21:04:45] Generating content for unit: Markdown Fundamentals: Headings, Paragraphs, and Emphasis
+[2025-04-05 21:04:52] Generated content for unit: Markdown Fundamentals: Headings, Paragraphs, and Emphasis
+[2025-04-05 21:04:52] Unit saved to database: Markdown Fundamentals: Headings, Paragraphs, and Emphasis
+[2025-04-05 21:04:52] Unit saved to database: Lists, Links, and Images: Adding Structure and Media
+[2025-04-05 21:04:52] Unit saved to database: Code Blocks and Tables: Representing Technical Information
+[2025-04-05 21:04:52] Unit saved to database: Advanced Markdown: Blockquotes, Horizontal Rules, and Emojis
+[2025-04-05 21:04:52] Unit saved to database: Markdown Editors and Platforms: Tools for Writing and Publishing
+[2025-04-05 21:04:52] [Success]   Learning path created successfully!
+[2025-04-05 21:04:52] Navigated to: UnitOverviewViewModel
+[2025-04-05 21:05:08] Navigated to: UnitGuideViewModel
+[2025-04-05 21:05:08] [Info]   Generating content for Unit 2: Lists, Links, and Images: Adding Structure and Media
+[2025-04-05 21:05:15] [Success]   Unit 2 content generated successfully!
+[2025-04-05 21:16:27] Application started at 4/5/2025 9:16:27 PM
+[2025-04-05 21:16:27] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:16:27] Navigated to: DashboardViewModel
+[2025-04-05 21:16:27] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:16:27] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:16:27] Navigated to: DashboardViewModel
+[2025-04-05 21:16:30] Navigated to: LearningPathViewModel
+[2025-04-05 21:16:35] Navigated to: UnitOverviewViewModel
+[2025-04-05 21:17:13] Navigated to: UnitGuideViewModel
+[2025-04-05 21:19:52] Application started at 4/5/2025 9:19:52 PM
+[2025-04-05 21:19:52] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:19:52] Navigated to: DashboardViewModel
+[2025-04-05 21:19:52] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:19:52] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:19:52] Navigated to: DashboardViewModel
+[2025-04-05 21:19:54] Navigated to: LearningPathViewModel
+[2025-04-05 21:19:58] Navigated to: UnitOverviewViewModel
+[2025-04-05 21:20:05] Navigated to: UnitGuideViewModel
+[2025-04-05 21:28:42] Application started at 4/5/2025 9:28:42 PM
+[2025-04-05 21:28:43] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:28:43] Navigated to: DashboardViewModel
+[2025-04-05 21:28:43] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:28:43] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:28:43] Navigated to: DashboardViewModel
+[2025-04-05 21:28:50] Navigated to: LearningPathViewModel
+[2025-04-05 21:28:54] Navigated to: UnitOverviewViewModel
+[2025-04-05 21:29:08] Application started at 4/5/2025 9:29:08 PM
+[2025-04-05 21:29:08] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:29:08] Navigated to: DashboardViewModel
+[2025-04-05 21:29:08] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:29:08] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:29:08] Navigated to: DashboardViewModel
+[2025-04-05 21:29:13] Navigated to: LearningPathViewModel
+[2025-04-05 21:29:13] Navigated to: NotesViewModel
+[2025-04-05 21:29:14] Navigated to: LearningPathViewModel
+[2025-04-05 21:29:23] Navigated to: UnitOverviewViewModel
+[2025-04-05 21:30:14] Application started at 4/5/2025 9:30:14 PM
+[2025-04-05 21:30:14] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:30:14] Navigated to: DashboardViewModel
+[2025-04-05 21:30:14] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:30:14] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:30:14] Navigated to: DashboardViewModel
+[2025-04-05 21:30:17] Navigated to: LearningPathViewModel
+[2025-04-05 21:30:19] Navigated to: CreatePathViewModel
+[2025-04-05 21:30:21] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 21:30:23] Navigated to: UnitOverviewViewModel
+[2025-04-05 21:33:01] Application started at 4/5/2025 9:33:01 PM
+[2025-04-05 21:33:01] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:33:01] Navigated to: DashboardViewModel
+[2025-04-05 21:33:01] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:33:01] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:33:01] Navigated to: DashboardViewModel
+[2025-04-05 21:33:03] Navigated to: LearningPathViewModel
+[2025-04-05 21:33:06] Navigated to: UnitOverviewViewModel
+[2025-04-05 21:33:20] Application started at 4/5/2025 9:33:20 PM
+[2025-04-05 21:33:20] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:33:20] Navigated to: DashboardViewModel
+[2025-04-05 21:33:20] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:33:20] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:33:20] Navigated to: DashboardViewModel
+[2025-04-05 21:33:24] Navigated to: LearningPathViewModel
+[2025-04-05 21:33:25] Navigated to: CreatePathViewModel
+[2025-04-05 21:33:27] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 21:33:30] Navigated to: UnitOverviewViewModel
+[2025-04-05 21:36:15] Application started at 4/5/2025 9:36:15 PM
+[2025-04-05 21:36:15] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:36:15] Navigated to: DashboardViewModel
+[2025-04-05 21:36:15] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:36:15] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:36:15] Navigated to: DashboardViewModel
+[2025-04-05 21:36:18] Navigated to: LearningPathViewModel
+[2025-04-05 21:36:19] Navigated to: DashboardViewModel
+[2025-04-05 21:36:20] Navigated to: LearningPathViewModel
+[2025-04-05 21:36:24] Application started at 4/5/2025 9:36:24 PM
+[2025-04-05 21:36:24] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:36:24] Navigated to: DashboardViewModel
+[2025-04-05 21:36:24] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:36:24] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:36:24] Navigated to: DashboardViewModel
+[2025-04-05 21:36:27] Navigated to: LearningPathViewModel
+[2025-04-05 21:36:28] Navigated to: DashboardViewModel
+[2025-04-05 21:36:29] Navigated to: LearningPathViewModel
+[2025-04-05 21:45:18] Application started at 4/5/2025 9:45:18 PM
+[2025-04-05 21:45:18] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:45:18] Navigated to: DashboardViewModel
+[2025-04-05 21:45:18] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 21:45:18] NavigationService: Added event handler. Count: 1
+[2025-04-05 21:45:18] Navigated to: DashboardViewModel
+[2025-04-05 21:45:20] Navigated to: LearningPathViewModel
+[2025-04-05 21:45:23] Navigated to: UnitOverviewViewModel
+[2025-04-05 21:45:23] Navigated to: UnitGuideViewModel
+[2025-04-05 21:45:59] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 21:46:01] Navigated to: UnitGuideViewModel
+[2025-04-05 21:46:01] [Info]   Generating content for Unit 3: Code Blocks and Tables: Representing Technical Information
+[2025-04-05 21:46:08] [Success]   Unit 3 content generated successfully!
+[2025-04-05 22:06:57] Application started at 4/5/2025 10:06:57 PM
+[2025-04-05 22:06:57] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:06:57] Navigated to: DashboardViewModel
+[2025-04-05 22:06:57] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 22:06:57] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:06:57] Navigated to: DashboardViewModel
+[2025-04-05 22:06:59] Navigated to: LearningPathViewModel
+[2025-04-05 22:07:04] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:07:06] Navigated to: UnitGuideViewModel
+[2025-04-05 22:07:52] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:07:53] Navigated to: UnitGuideViewModel
+[2025-04-05 22:08:01] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:08:02] Navigated to: UnitGuideViewModel
+[2025-04-05 22:08:14] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:08:15] Navigated to: UnitGuideViewModel
+[2025-04-05 22:09:10] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:09:10] Navigated to: UnitGuideViewModel
+[2025-04-05 22:09:15] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:09:16] Navigated to: UnitGuideViewModel
+[2025-04-05 22:09:19] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:09:20] Navigated to: UnitGuideViewModel
+[2025-04-05 22:09:41] Navigated to: LearningPathViewModel
+[2025-04-05 22:09:45] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:09:46] Navigated to: UnitGuideViewModel
+[2025-04-05 22:09:49] Navigated to: LearningPathViewModel
+[2025-04-05 22:09:51] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:09:52] Navigated to: UnitGuideViewModel
+[2025-04-05 22:12:27] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:12:28] Navigated to: UnitGuideViewModel
+[2025-04-05 22:14:54] Application started at 4/5/2025 10:14:54 PM
+[2025-04-05 22:14:54] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:14:54] Navigated to: DashboardViewModel
+[2025-04-05 22:14:54] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 22:14:54] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:14:54] Navigated to: DashboardViewModel
+[2025-04-05 22:14:59] Navigated to: LearningPathViewModel
+[2025-04-05 22:15:03] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:15:04] Navigated to: UnitGuideViewModel
+[2025-04-05 22:15:09] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:15:10] Navigated to: UnitGuideViewModel
+[2025-04-05 22:16:24] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:16:24] Navigated to: LearningPathViewModel
+[2025-04-05 22:16:26] Navigated to: CreatePathViewModel
+[2025-04-05 22:16:45] [Info]   Starting learning path generation...
+[2025-04-05 22:16:45] Navigated to: LearningPathCreateViewModel
+[2025-04-05 22:16:47] Learning path saved to database: Mastering Markdown with 5 units
+[2025-04-05 22:16:47] [Info]   Creating learning path: Mastering Markdown
+[2025-04-05 22:16:47] [Info]   Generating unit 1/5: *Introduction to Markdown*
+[2025-04-05 22:16:47] Generating content for unit: *Introduction to Markdown*
+[2025-04-05 22:16:55] Generated content for unit: *Introduction to Markdown*
+[2025-04-05 22:16:55] Unit saved to database: *Introduction to Markdown*
+[2025-04-05 22:16:55] Unit saved to database: **Formatting Text: Emphasis and More**
+[2025-04-05 22:16:55] Unit saved to database: _Lists and Links_
+[2025-04-05 22:16:55] Unit saved to database: `Code Blocks and Images`
+[2025-04-05 22:16:55] Unit saved to database: Beyond the Basics: Tables
+[2025-04-05 22:16:55] [Success]   Learning path created successfully!
+[2025-04-05 22:16:55] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:16:58] Navigated to: UnitGuideViewModel
+[2025-04-05 22:16:58] [Info]   Generating content for Unit 2: **Formatting Text: Emphasis and More**
+[2025-04-05 22:17:04] [Success]   Unit 2 content generated successfully!
+[2025-04-05 22:17:54] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:17:55] Navigated to: UnitGuideViewModel
+[2025-04-05 22:17:55] [Info]   Generating content for Unit 3: _Lists and Links_
+[2025-04-05 22:18:03] [Success]   Unit 3 content generated successfully!
+[2025-04-05 22:20:05] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:20:06] Navigated to: UnitGuideViewModel
+[2025-04-05 22:20:06] [Info]   Generating content for Unit 4: `Code Blocks and Images`
+[2025-04-05 22:20:14] [Success]   Unit 4 content generated successfully!
+[2025-04-05 22:20:25] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:20:26] Navigated to: UnitGuideViewModel
+[2025-04-05 22:20:26] [Info]   Generating content for Unit 5: Beyond the Basics: Tables
+[2025-04-05 22:20:32] [Success]   Unit 5 content generated successfully!
+[2025-04-05 22:28:42] Application started at 4/5/2025 10:28:42 PM
+[2025-04-05 22:28:42] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:28:42] Navigated to: DashboardViewModel
+[2025-04-05 22:28:42] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 22:28:42] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:28:42] Navigated to: DashboardViewModel
+[2025-04-05 22:28:45] Navigated to: LearningPathViewModel
+[2025-04-05 22:28:50] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:28:51] Navigated to: UnitGuideViewModel
+[2025-04-05 22:28:56] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:28:57] Navigated to: UnitGuideViewModel
+[2025-04-05 22:29:25] Navigated to: LearningPathViewModel
+[2025-04-05 22:29:26] Navigated to: CreatePathViewModel
+[2025-04-05 22:29:42] [Info]   Starting learning path generation...
+[2025-04-05 22:29:42] Navigated to: LearningPathCreateViewModel
+[2025-04-05 22:29:45] Learning path saved to database: Creating Engaging Online Pizzeria Content with 5 units
+[2025-04-05 22:29:45] [Info]   Creating learning path: Creating Engaging Online Pizzeria Content
+[2025-04-05 22:29:45] [Info]   Generating unit 1/5: Understanding the Importance of Visuals for Pizzerias
+[2025-04-05 22:29:45] Generating content for unit: Understanding the Importance of Visuals for Pizzerias
+[2025-04-05 22:29:51] Generated content for unit: Understanding the Importance of Visuals for Pizzerias
+[2025-04-05 22:29:51] Unit saved to database: Understanding the Importance of Visuals for Pizzerias
+[2025-04-05 22:29:51] Unit saved to database: Showcasing Pizza: Capturing Mouthwatering Pizza Images
+[2025-04-05 22:29:51] Unit saved to database: Beyond Pizza: Photographing Other Menu Items & the Ambiance
+[2025-04-05 22:29:51] Unit saved to database: Image Optimization and Usage on Websites and Social Media
+[2025-04-05 22:29:51] Unit saved to database: Finding or Creating Images: Photography vs. Stock Photography
+[2025-04-05 22:29:51] [Success]   Learning path created successfully!
+[2025-04-05 22:29:51] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:29:53] Navigated to: UnitGuideViewModel
+[2025-04-05 22:29:53] [Info]   Generating content for Unit 2: Showcasing Pizza: Capturing Mouthwatering Pizza Images
+[2025-04-05 22:29:58] [Success]   Unit 2 content generated successfully!
+[2025-04-05 22:32:35] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:32:36] Navigated to: UnitGuideViewModel
+[2025-04-05 22:32:36] [Info]   Generating content for Unit 3: Beyond Pizza: Photographing Other Menu Items & the Ambiance
+[2025-04-05 22:32:44] [Success]   Unit 3 content generated successfully!
+[2025-04-05 22:32:46] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:32:48] Navigated to: UnitGuideViewModel
+[2025-04-05 22:32:48] [Info]   Generating content for Unit 4: Image Optimization and Usage on Websites and Social Media
+[2025-04-05 22:32:56] [Success]   Unit 4 content generated successfully!
+[2025-04-05 22:33:27] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:33:29] Navigated to: UnitGuideViewModel
+[2025-04-05 22:33:29] [Info]   Generating content for Unit 5: Finding or Creating Images: Photography vs. Stock Photography
+[2025-04-05 22:33:37] [Success]   Unit 5 content generated successfully!
+[2025-04-05 22:33:44] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:33:47] Navigated to: UnitGuideViewModel
+[2025-04-05 22:34:08] Application started at 4/5/2025 10:34:08 PM
+[2025-04-05 22:34:08] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:34:08] Navigated to: DashboardViewModel
+[2025-04-05 22:34:08] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 22:34:08] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:34:08] Navigated to: DashboardViewModel
+[2025-04-05 22:34:10] Navigated to: LearningPathViewModel
+[2025-04-05 22:34:16] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:34:18] Navigated to: UnitGuideViewModel
+[2025-04-05 22:34:20] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:34:21] Navigated to: UnitGuideViewModel
+[2025-04-05 22:34:22] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:34:23] Navigated to: UnitGuideViewModel
+[2025-04-05 22:34:37] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:34:38] Navigated to: UnitGuideViewModel
+[2025-04-05 22:34:45] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:34:46] Navigated to: UnitGuideViewModel
+[2025-04-05 22:37:15] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:37:16] Navigated to: UnitGuideViewModel
+[2025-04-05 22:37:20] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:37:21] Navigated to: UnitGuideViewModel
+[2025-04-05 22:37:23] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:37:24] Navigated to: UnitGuideViewModel
+[2025-04-05 22:37:45] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:37:47] Navigated to: DashboardViewModel
+[2025-04-05 22:37:48] Navigated to: LearningPathViewModel
+[2025-04-05 22:37:52] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:37:53] Navigated to: UnitGuideViewModel
+[2025-04-05 22:38:16] Application started at 4/5/2025 10:38:16 PM
+[2025-04-05 22:38:16] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:38:16] Navigated to: DashboardViewModel
+[2025-04-05 22:38:16] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 22:38:16] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:38:16] Navigated to: DashboardViewModel
+[2025-04-05 22:38:19] Navigated to: LearningPathViewModel
+[2025-04-05 22:38:26] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:38:27] Navigated to: UnitGuideViewModel
+[2025-04-05 22:38:30] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:38:31] Navigated to: UnitGuideViewModel
+[2025-04-05 22:38:34] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:38:35] Navigated to: UnitGuideViewModel
+[2025-04-05 22:38:53] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:38:55] Navigated to: UnitGuideViewModel
+[2025-04-05 22:39:55] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:39:57] Navigated to: UnitGuideViewModel
+[2025-04-05 22:39:58] Navigated to: DashboardViewModel
+[2025-04-05 22:39:59] Navigated to: LearningPathViewModel
+[2025-04-05 22:40:02] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:40:03] Navigated to: UnitGuideViewModel
+[2025-04-05 22:41:04] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:41:04] Navigated to: UnitGuideViewModel
+[2025-04-05 22:41:26] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:41:27] Navigated to: UnitGuideViewModel
+[2025-04-05 22:41:27] [Info]   Generating content for Unit 4: Advanced Markdown: Blockquotes, Horizontal Rules, and Emojis
+[2025-04-05 22:41:33] [Success]   Unit 4 content generated successfully!
+[2025-04-05 22:41:58] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:42:00] Navigated to: UnitGuideViewModel
+[2025-04-05 22:42:00] [Info]   Generating content for Unit 5: Markdown Editors and Platforms: Tools for Writing and Publishing
+[2025-04-05 22:42:07] [Success]   Unit 5 content generated successfully!
+[2025-04-05 22:43:07] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:43:07] Navigated to: UnitGuideViewModel
+[2025-04-05 22:46:15] Application started at 4/5/2025 10:46:15 PM
+[2025-04-05 22:46:15] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:46:15] Navigated to: DashboardViewModel
+[2025-04-05 22:46:15] [Info] Welcome To Mnemo!:   You are running 0.2.0-beta
+[2025-04-05 22:46:15] NavigationService: Added event handler. Count: 1
+[2025-04-05 22:46:15] Navigated to: DashboardViewModel
+[2025-04-05 22:46:18] Navigated to: LearningPathViewModel
+[2025-04-05 22:46:19] Navigated to: CreatePathViewModel
+[2025-04-05 22:46:20] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 22:46:25] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:46:26] Navigated to: UnitGuideViewModel
+[2025-04-05 22:46:41] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:46:42] Navigated to: UnitGuideViewModel
+[2025-04-05 22:47:04] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:47:06] Navigated to: UnitGuideViewModel
+[2025-04-05 22:51:25] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:51:27] Navigated to: UnitGuideViewModel
+[2025-04-05 22:51:33] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:51:33] Navigated to: UnitGuideViewModel
+[2025-04-05 22:51:36] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:51:37] Navigated to: UnitGuideViewModel
+[2025-04-05 22:51:56] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:51:58] Navigated to: UnitGuideViewModel
+[2025-04-05 22:52:03] Navigated to: LearningPathViewModel
+[2025-04-05 22:52:04] Navigated to: CreatePathViewModel
+[2025-04-05 22:52:06] Navigated back from: CreatePathViewModel to: LearningPathViewModel
+[2025-04-05 22:52:09] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:52:09] Navigated to: UnitGuideViewModel
+[2025-04-05 22:52:16] Navigated to: LearningPathViewModel
+[2025-04-05 22:52:17] Navigated to: CreatePathViewModel
+[2025-04-05 22:52:22] [Info]   Starting learning path generation...
+[2025-04-05 22:52:22] Navigated to: LearningPathCreateViewModel
+[2025-04-05 22:52:25] Learning path saved to database: Exploring Jupiter: A Giant Among Planets with 5 units
+[2025-04-05 22:52:25] [Info]   Creating learning path: Exploring Jupiter: A Giant Among Planets
+[2025-04-05 22:52:25] [Info]   Generating unit 1/5: Introduction to Jupiter: A Gas Giant Overview
+[2025-04-05 22:52:25] Generating content for unit: Introduction to Jupiter: A Gas Giant Overview
+[2025-04-05 22:52:30] Generated content for unit: Introduction to Jupiter: A Gas Giant Overview
+[2025-04-05 22:52:30] Unit saved to database: Introduction to Jupiter: A Gas Giant Overview
+[2025-04-05 22:52:30] Unit saved to database: Jupiter's Atmosphere: Bands, Zones, and the Great Red Spot
+[2025-04-05 22:52:30] Unit saved to database: Jupiter's Interior: Metallic Hydrogen and a Possible Core
+[2025-04-05 22:52:30] Unit saved to database: Jupiter's Moons: A Diverse System
+[2025-04-05 22:52:30] Unit saved to database: Exploring Jupiter: Past, Present, and Future Missions
+[2025-04-05 22:52:30] [Success]   Learning path created successfully!
+[2025-04-05 22:52:30] Navigated to: UnitOverviewViewModel
+[2025-04-05 22:53:56] Navigated to: UnitGuideViewModel
+[2025-04-05 22:53:56] [Info]   Generating content for Unit 2: Jupiter's Atmosphere: Bands, Zones, and the Great Red Spot
+[2025-04-05 22:54:01] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:54:02] [Success]   Unit 2 content generated successfully!
+[2025-04-05 22:54:02] Navigated to: UnitGuideViewModel
+[2025-04-05 22:54:02] [Info]   Generating content for Unit 3: Jupiter's Interior: Metallic Hydrogen and a Possible Core
+[2025-04-05 22:54:08] [Success]   Unit 3 content generated successfully!
+[2025-04-05 22:54:09] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:54:10] Navigated to: UnitGuideViewModel
+[2025-04-05 22:54:10] [Info]   Generating content for Unit 4: Jupiter's Moons: A Diverse System
+[2025-04-05 22:54:17] [Success]   Unit 4 content generated successfully!
+[2025-04-05 22:54:29] Navigated back from: UnitGuideViewModel to: UnitOverviewViewModel
+[2025-04-05 22:54:32] Navigated to: DashboardViewModel
+[2025-04-06 01:19:16] Application started at 4/6/2025 1:19:16 AM
+[2025-04-06 01:19:16] NavigationService: Added event handler. Count: 1
+[2025-04-06 01:19:16] Navigated to: DashboardViewModel
+[2025-04-06 01:19:16] [Info] Welcome To Mnemo!:   You are running 0.2.3-beta
+[2025-04-06 01:19:16] NavigationService: Added event handler. Count: 1
+[2025-04-06 01:19:16] Navigated to: DashboardViewModel
+[2025-04-06 01:19:23] Navigated to: LearningPathViewModel
+[2025-04-06 01:19:27] Navigated to: NotesViewModel
+[2025-04-06 01:19:27] Navigated to: LearningPathViewModel
+[2025-04-06 01:19:28] Navigated to: DashboardViewModel
+[2025-04-06 01:19:28] Navigated to: NotesViewModel
+[2025-04-06 01:21:44] Navigated to: FlashcardsViewModel
+[2025-04-06 01:21:45] Navigated to: QuizzesViewModel
+[2025-04-06 01:21:45] Navigated to: FlashcardsViewModel
+[2025-04-06 01:21:46] Navigated to: NotesViewModel
+[2025-04-06 01:21:46] Navigated to: FlashcardsViewModel
+[2025-04-06 01:21:46] Navigated to: QuizzesViewModel

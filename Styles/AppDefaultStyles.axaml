@@ -157,4 +157,16 @@
     <Setter Property="Background" Value="#242424"/>
     <Setter Property="Foreground" Value="White"/>
   </Style>
+
+  <!-- ProgressBar Styles -->
+  <Style Selector="ProgressBar">
+    <Setter Property="Background" Value="#333333"/>
+    <Setter Property="Foreground" Value="#2880b1"/>
+    <Setter Property="Height" Value="4"/>
+    <Setter Property="CornerRadius" Value="2"/>
+  </Style>
+  
+  <Style Selector="ProgressBar:indeterminate /template/ Border#PART_Indicator">
+    <Setter Property="Background" Value="#2880b1"/>
+  </Style>
 </Styles>

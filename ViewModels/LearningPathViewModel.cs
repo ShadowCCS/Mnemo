@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia.Threading;
@@ -20,41 +21,50 @@ namespace MnemoProject.ViewModels
         {
             _navigationService = navigationService;
             NavigateToCreatePath = new RelayCommand(ExecuteNavigateToCreatePath);
-            NavigateToSkip = new RelayCommand(ExecuteNavigateToSkip);
+            DeleteLearningPathCommand = new RelayCommand<Guid>(ExecuteDeleteLearningPath);
+            OpenLearningPathCommand = new RelayCommand<Guid>(ExecuteOpenLearningPath);
 
-            Task.Run(async () => await LoadLearningPaths());
+            LoadLearningPaths();
         }
 
         public ICommand NavigateToCreatePath { get; }
-        public ICommand NavigateToSkip { get; }
+        public ICommand DeleteLearningPathCommand { get; }
+        public ICommand OpenLearningPathCommand { get; }
 
         private void ExecuteNavigateToCreatePath()
         {
-            _navigationService.NavigateTo(new CreatePathViewModel(_navigationService));
+            System.Diagnostics.Debug.WriteLine("Before navigation");
+            System.Diagnostics.Debug.WriteLine($"Current view before navigation: {_navigationService.CurrentView?.GetType().Name}");
+
+            var createPathViewModel = new CreatePathViewModel(_navigationService);
+            
+            _navigationService.NavigateTo(createPathViewModel);
+            
+            System.Diagnostics.Debug.WriteLine($"After navigation, CurrentView is: {_navigationService.CurrentView?.GetType().Name}");
         }
 
-        private void ExecuteNavigateToSkip()
+        private async void LoadLearningPaths()
         {
-            //_navigationService.NavigateTo(new UnitOverviewViewModel(_navigationService));
-        }
-
-        //[RelayCommand]
-        //private void OpenLearningPathCommand(Guid learningPathId)
-        //{
-        //    _navigationService.NavigateTo(new UnitOverviewViewModel(_navigationService, learningPathId));
-        //}
-
-        public async Task LoadLearningPaths()
-        {
-            var paths = await _databaseService.GetAllLearningPaths();
-            await Dispatcher.UIThread.InvokeAsync(() =>
+            var learningPaths = await _databaseService.GetAllLearningPaths();
+            foreach (var learningPath in learningPaths)
             {
-                LearningPaths.Clear();
-                foreach (var path in paths)
-                {
-                    LearningPaths.Add(path);
-                }
-            });
+                LearningPaths.Add(learningPath);
+            }
+        }
+
+        private async void ExecuteDeleteLearningPath(Guid learningPathId)
+        {
+            await _databaseService.DeleteLearningPath(learningPathId);
+            var learningPath = LearningPaths.FirstOrDefault(lp => lp.Id == learningPathId);
+            if (learningPath != null)
+            {
+                LearningPaths.Remove(learningPath);
+            }
+        }
+
+        private void ExecuteOpenLearningPath(Guid learningPathId)
+        {
+            _navigationService.NavigateTo(new UnitOverviewViewModel(_navigationService, learningPathId));
         }
     }
 }

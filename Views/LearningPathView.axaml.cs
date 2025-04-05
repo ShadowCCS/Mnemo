@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using MnemoProject.ViewModels;
+using MnemoProject.Services;
 
 namespace MnemoProject.Views
 {
@@ -8,6 +9,7 @@ namespace MnemoProject.Views
         public LearningPathView()
         {
             InitializeComponent();
+            // DataContext will be set from MainWindowViewModel
         }
     }
 }

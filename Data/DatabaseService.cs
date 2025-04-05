@@ -62,7 +62,7 @@ namespace MnemoProject.Data
         public async Task DeleteLearningPath(Guid id)
         {
             using var db = new LearningPathContext();
-            var learningPath = await db.LearningPaths.FindAsync(id);
+            var learningPath = await db.LearningPaths.Include(lp => lp.Units).FirstOrDefaultAsync(lp => lp.Id == id);
             if (learningPath != null)
             {
                 db.LearningPaths.Remove(learningPath);
@@ -107,6 +107,5 @@ namespace MnemoProject.Data
             db.Units.Update(unit);
             await db.SaveChangesAsync();
         }
-
     }
 }

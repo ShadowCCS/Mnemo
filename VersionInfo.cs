@@ -8,8 +8,8 @@ namespace MnemoProject
 {
     public static class VersionInfo
     {
-        public static string Version => "0.2.0-beta";
-        public static string BuildID => "20004991";
+        public static string Version => "0.2.3-beta";
+        public static string BuildID => "20004991"; //Does nothing, placeholder?
     }
 
 }

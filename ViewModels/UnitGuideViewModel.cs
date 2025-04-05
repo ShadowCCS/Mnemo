@@ -8,6 +8,7 @@ using MnemoProject.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Avalonia.Controls;
 using Microsoft.EntityFrameworkCore.Diagnostics.Internal;
+using MnemoProject.Helpers;
 
 namespace MnemoProject.ViewModels
 {
@@ -17,25 +18,11 @@ namespace MnemoProject.ViewModels
 
         private string _unitTitle = "Unit Guide";
 
-        int unitTitleMaxLength = 25;
+        private const int UnitTitleMaxLength = 25;
         public string UnitTitle
         {
             get => _unitTitle;
-
-            set
-            {
-                if (value.Length > unitTitleMaxLength)
-                {
-                    value = value.Substring(0, unitTitleMaxLength);
-                    value += "...";
-                }
-                else
-                {
-                    value = value;
-                }
-
-                SetProperty(ref _unitTitle, value);
-            }
+            set => SetProperty(ref _unitTitle, StringHelper.Truncate(value, UnitTitleMaxLength));
         }
 
         private readonly MarkdownRendererService _markdownRenderer;

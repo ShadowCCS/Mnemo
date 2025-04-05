@@ -7,29 +7,44 @@
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
     <Setter Property="HorizontalContentAlignment" Value="Center"/>
     <Setter Property="Width" Value="700"/>
+    <Setter Property="IsGenerating" Value="False"/>
     <Setter Property="Template">
       <ControlTemplate>
         <Border x:Name="PART_Border"
                 Background="{TemplateBinding Background}"
                 CornerRadius="20"
                 Width="{TemplateBinding Width}">
-          <StackPanel Margin="20"
-                      HorizontalAlignment="Center">
-            <TextBlock x:Name="PART_UnitText"
-                       Text="{Binding Unit, StringFormat='Unit {0}', RelativeSource={RelativeSource TemplatedParent}}"
-                       FontWeight="Medium"
-                       FontSize="16"
-                       Foreground="{TemplateBinding Foreground}"
-                       HorizontalAlignment="Center" />
-            <TextBlock x:Name="PART_ContentText"
-                       Text="{TemplateBinding Text}"
-                       FontWeight="Medium"
-                       FontSize="24"
-                       Foreground="{TemplateBinding Foreground}"
-                       HorizontalAlignment="Center"
-                       Margin="0,5,0,0"
-                       TextWrapping="Wrap"/>
-          </StackPanel>
+          <Grid>
+            <StackPanel Margin="20">
+              <TextBlock x:Name="PART_UnitText"
+                         Text="{Binding Unit, StringFormat='Unit {0}', RelativeSource={RelativeSource TemplatedParent}}"
+                         FontWeight="Medium"
+                         FontSize="16"
+                         Foreground="{TemplateBinding Foreground}"
+                         HorizontalAlignment="Center" />
+              <TextBlock x:Name="PART_ContentText"
+                         Text="{TemplateBinding Text}"
+                         FontWeight="Medium"
+                         FontSize="24"
+                         Foreground="{TemplateBinding Foreground}"
+                         HorizontalAlignment="Center"
+                         Margin="0,5,0,0"
+                         TextWrapping="Wrap"/>
+              
+              <!-- Loading Indicator - moved inside main StackPanel -->
+              <StackPanel IsVisible="{TemplateBinding IsGenerating}" 
+                         Margin="0,15,0,0">
+                <TextBlock Text="Generating next unit..." 
+                          FontSize="12" 
+                          Foreground="#2880b1"
+                          HorizontalAlignment="Center" 
+                          Margin="0,0,0,5"/>
+                <ProgressBar IsIndeterminate="True" 
+                            Width="200" 
+                            Height="4"/>
+              </StackPanel>
+            </StackPanel>
+          </Grid>
         </Border>
       </ControlTemplate>
     </Setter>

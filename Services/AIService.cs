@@ -45,7 +45,7 @@ public class AIService
     {
         await _worker.Enqueue(async () =>
         {
-            string prompt = $"Generate an educational text-based study guide with clearly defined sections. The content should be structured, informative, and well-organized, use markdown. Follow this format:\n\n"
+            string prompt = $"Generate an educational text-based study guide with clearly defined sections. The content should be structured, informative, and well-organized, use markdown. Use these markdown elements: # to ###### for headers, ** for bold, * for italic, ``` for code blocks, > for quotes, - or * for lists, [text](url) for links, ![alt](url) for images, tables with |, and ~~text~~ for strikethrough.\n\n"
                 + $"Title: {unitTitle}\n\n"
                 + "Introduction:\n"
                 + "- Provide a brief introduction to the topic and explain why it is important.\n\n"
