@@ -17,7 +17,7 @@
       <Button Command="{Binding GoBackCommand}" Background="{x:Null}">
         <Image Source="{SvgImage /Assets/Icons/arrow.svg}" Height="18" Width="18"/>
       </Button>
-      <TextBlock Text="Generating Learning Path" VerticalAlignment="Center" FontSize="20" Foreground="#777777"/>
+      <TextBlock Text="Generating Learning Path" VerticalAlignment="Center" FontSize="14" Foreground="#777777"/>
     </StackPanel>
 
     <Grid Grid.Row="1">

@@ -2,25 +2,86 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:MnemoProject"
+             xmlns:vm="using:MnemoProject.ViewModels"
+             xmlns:widgets="using:MnemoProject.Views.Controls.Widgets"
+             x:DataType="vm:DashboardViewModel"
+             x:CompileBindings="False"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="MnemoProject.Views.DashboardView">
+  
+  <UserControl.Resources>
+    <local:WidgetTemplateSelector x:Key="WidgetTemplateSelector"/>
+  </UserControl.Resources>
+  
   <Grid Background="#121212">
       <Border Padding="5" Margin="5">
         <StackPanel>
           <Label Foreground="White" Content="Statistics" FontSize="24" FontWeight="Medium" />
-          <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Spacing="10">
-            <Border Background="#1a1a1a" Width="200" Height="70" CornerRadius="8" Padding="5">
-              <Label Foreground="White" FontFamily="{StaticResource LexendFont}">Widget 1</Label>
-            </Border>
-            <Border Background="#1a1a1a" Width="200" Height="70" CornerRadius="8" Padding="5">
-              <Label Foreground="White">Widget 1</Label>
-            </Border>
-            <Border Background="#1a1a1a" Width="200" Height="70" CornerRadius="8" Padding="5">
-              <Label Foreground="White">Widget 1</Label>
-            </Border>
-          </StackPanel>
-          <Border Margin="20"></Border>
-
+          
+          <!-- Widgets Area -->
+          <Border MaxWidth="800" MaxHeight="400" HorizontalAlignment="Left">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+              <!-- Loading Indicator -->
+              <Grid>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                          IsVisible="{Binding IsLoading}">
+                  <ProgressBar IsIndeterminate="True" Width="200" Height="4" Margin="0,0,0,10"/>
+                  <TextBlock Text="Loading widgets..." Foreground="#BBBBBB" 
+                           HorizontalAlignment="Center"/>
+                </StackPanel>
+                
+                <!-- Widgets WrapPanel (hidden while loading) -->
+                <WrapPanel Orientation="Horizontal" Margin="0,10,0,20" HorizontalAlignment="Left"
+                         IsVisible="{Binding !IsLoading}">
+                  <!-- Dynamic Widgets -->
+                  <ItemsControl ItemsSource="{Binding EnabledWidgets}" Margin="0" HorizontalAlignment="Left">
+                    <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" />
+                      </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                        <ContentControl Content="{Binding}" 
+                                        ContentTemplate="{StaticResource WidgetTemplateSelector}"
+                                        Margin="0,0,10,10"
+                                        Width="180" Height="100" 
+                                        HorizontalAlignment="Left" />
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+                  
+                  <!-- New Widget Button -->
+                  <Button Command="{Binding OpenWidgetManagementCommand}"
+                          Background="#1A1A1A" 
+                          CornerRadius="8" Padding="10" 
+                          Width="130" Height="100" Margin="0,0,10,10">
+                    <StackPanel VerticalAlignment="Center">
+                      <Grid>
+                        <Border Width="30" Height="30" Background="#999999" CornerRadius="15" 
+                                IsVisible="{Binding !CanAddMoreWidgets}"
+                                HorizontalAlignment="Center" VerticalAlignment="Center">
+                          <TextBlock Text="•" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                   FontSize="20" FontWeight="Bold" Foreground="White"/>
+                        </Border>
+                        
+                        <Border Width="30" Height="30" Background="#3a84f1" CornerRadius="15" 
+                                IsVisible="{Binding CanAddMoreWidgets}"
+                                HorizontalAlignment="Center" VerticalAlignment="Center">
+                          <TextBlock Text="+" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                   FontSize="20" FontWeight="Bold" Foreground="White"/>
+                        </Border>
+                      </Grid>
+                      <TextBlock Text="Manage Widgets" HorizontalAlignment="Center" Margin="0,8,0,0" 
+                                Foreground="White" FontSize="12"/>
+                    </StackPanel>
+                  </Button>
+                </WrapPanel>
+              </Grid>
+            </ScrollViewer>
+          </Border>
+          
           <Label Foreground="White" Content="Continue Learning" FontSize="24" FontWeight="Medium"/>
           <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="10" Spacing="50">
 
@@ -51,8 +112,6 @@
             
           </StackPanel>
         </StackPanel>
-        
-        
       </Border>
   </Grid>
 </UserControl>

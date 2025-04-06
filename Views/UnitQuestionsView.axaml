@@ -3,20 +3,255 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="MnemoProject.Views.UnitQuestionsView"
              x:DataType="vm:UnitQuestionsViewModel">
-  <ScrollViewer Margin="20" Padding="20"
-                HorizontalScrollBarVisibility="Auto"
-                VerticalScrollBarVisibility="Auto">
-    <StackPanel VerticalAlignment="Top"
-                HorizontalAlignment="Stretch"
-                MaxWidth="950">
-      <TextBlock Text="{Binding PlaceholderText}" 
-                 FontSize="18" 
-                 HorizontalAlignment="Center" 
-                 VerticalAlignment="Center" 
-                 Margin="0,50,0,0" />
-    </StackPanel>
-  </ScrollViewer>
+
+  <StackPanel Spacing="20" VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Border Height="512" Width="680" BorderThickness="2" BorderBrush="#262626" CornerRadius="8" Background="#1e1e1e">
+      <Grid>
+        <!-- Loading View -->
+        <StackPanel IsVisible="{Binding IsLoading}"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+          <TextBlock Text="Generating Questions" 
+                     FontSize="24" 
+                     FontWeight="Bold" 
+                     HorizontalAlignment="Center" 
+                     Foreground="White"
+                     Margin="0,0,0,20"/>
+          <TextBlock Text="{Binding LoadingStatus}" 
+                     FontSize="16" 
+                     HorizontalAlignment="Center" 
+                     Foreground="#2880b1"/>
+          <ProgressBar IsIndeterminate="True" 
+                       Width="200" 
+                       Height="4" 
+                       Margin="0,30,0,0"/>
+        </StackPanel>
+
+        <!-- Question content - hidden when loading -->
+        <Grid IsVisible="{Binding !IsLoading}">
+          <!-- Top bar with progress bar -->
+          <Grid VerticalAlignment="Top" Margin="20,20,20,0">
+            <!-- Progress bar centered at the top -->
+            <ProgressBar Value="{Binding ProgressValue}" 
+                        Maximum="100" 
+                        Width="200" 
+                        Height="6"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Foreground="White" 
+                        Background="#3a3a3a"/>
+          </Grid>
+
+          <!-- Main content - Question display -->
+          <Grid VerticalAlignment="Center" Margin="0,20,0,0">
+            <!-- Question text -->
+            <StackPanel Margin="0,0,0,20">
+              <TextBlock Text="Question" 
+                         Foreground="#2880b1"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         Margin="0,0,0,10"/>
+              
+              <Border Width="540" 
+                      Background="#262626" 
+                      CornerRadius="8" 
+                      Padding="20"
+                      HorizontalAlignment="Center"
+                      Margin="0,0,0,30">
+                <TextBlock Text="{Binding CurrentQuestion}" 
+                           Foreground="White"
+                           FontSize="22"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           FontWeight="Medium"
+                           TextWrapping="Wrap"/>
+              </Border>
+              
+              <!-- 2x2 Grid for answer options -->
+              <Grid ColumnDefinitions="*,*" 
+                    RowDefinitions="*,*" 
+                    Width="540" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0,0,0,20">
+                
+                <!-- Answer Option 1 -->
+                <Border Grid.Row="0" Grid.Column="0" 
+                        Margin="5" 
+                        Background="{Binding Option1Background}" 
+                        BorderBrush="{Binding Option1BorderBrush}" 
+                        BorderThickness="2"
+                        CornerRadius="8">
+                  <Button Command="{Binding SelectAnswerCommand}" 
+                          CommandParameter="0"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="Center"
+                          Background="Transparent"
+                          Padding="10">
+                    <TextBlock Text="{Binding AnswerOptions[0]}" 
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"/>
+                  </Button>
+                </Border>
+                
+                <!-- Answer Option 2 -->
+                <Border Grid.Row="0" Grid.Column="1" 
+                        Margin="5" 
+                        Background="{Binding Option2Background}" 
+                        BorderBrush="{Binding Option2BorderBrush}" 
+                        BorderThickness="2"
+                        CornerRadius="8">
+                  <Button Command="{Binding SelectAnswerCommand}" 
+                          CommandParameter="1"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="Center"
+                          Background="Transparent"
+                          Padding="10">
+                    <TextBlock Text="{Binding AnswerOptions[1]}" 
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"/>
+                  </Button>
+                </Border>
+                
+                <!-- Answer Option 3 -->
+                <Border Grid.Row="1" Grid.Column="0" 
+                        Margin="5" 
+                        Background="{Binding Option3Background}" 
+                        BorderBrush="{Binding Option3BorderBrush}" 
+                        BorderThickness="2"
+                        CornerRadius="8">
+                  <Button Command="{Binding SelectAnswerCommand}" 
+                          CommandParameter="2"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="Center"
+                          Background="Transparent"
+                          Padding="10">
+                    <TextBlock Text="{Binding AnswerOptions[2]}" 
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"/>
+                  </Button>
+                </Border>
+                
+                <!-- Answer Option 4 -->
+                <Border Grid.Row="1" Grid.Column="1" 
+                        Margin="5" 
+                        Background="{Binding Option4Background}" 
+                        BorderBrush="{Binding Option4BorderBrush}" 
+                        BorderThickness="2"
+                        CornerRadius="8">
+                  <Button Command="{Binding SelectAnswerCommand}" 
+                          CommandParameter="3"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="Center"
+                          Background="Transparent"
+                          Padding="10">
+                    <TextBlock Text="{Binding AnswerOptions[3]}" 
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"/>
+                  </Button>
+                </Border>
+              </Grid>
+              
+              <!-- Confirmation button and Try Again button -->
+              <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                <Button Content="Submit Answer" 
+                        Command="{Binding SubmitAnswerCommand}"
+                        IsEnabled="{Binding HasSelectedAnswer}"
+                        IsVisible="{Binding !HasSubmittedAnswer}"
+                        HorizontalAlignment="Center"
+                        Padding="15,8"
+                        Background="#2880b1"
+                        Foreground="White"/>
+                        
+                <Button Content="Try Again" 
+                        Command="{Binding TryAgainCommand}"
+                        IsVisible="{Binding HasSubmittedAnswer}"
+                        HorizontalAlignment="Center"
+                        Padding="15,8"
+                        Background="#505050"
+                        Foreground="White"/>
+              </StackPanel>
+            </StackPanel>
+          </Grid>
+
+          <!-- Bottom navigation -->
+          <Grid VerticalAlignment="Bottom" Margin="20,0,20,20">
+            <Button Command="{Binding PreviousQuestionCommand}"
+                    IsEnabled="{Binding CanGoPrevious}"
+                    HorizontalAlignment="Left">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock Text="←" Margin="0,0,5,0"/>
+                  <TextBlock Text="Previous"/>
+                </StackPanel>
+              </Button.Content>
+            </Button>
+
+            <Button Command="{Binding NextQuestionCommand}"
+                    IsEnabled="{Binding CanGoNext}"
+                    HorizontalAlignment="Right">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock Text="Next"/>
+                  <TextBlock Text="→" Margin="5,0,0,0"/>
+                </StackPanel>
+              </Button.Content>
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Border>
+
+    <!-- Generate more questions section -->
+    <Border Width="600"
+            Background="#262626"
+            BorderBrush="#3a3a3a"
+            BorderThickness="1"
+            CornerRadius="6"
+            Padding="15,10"
+            Margin="0,0,0,70"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom">
+      <StackPanel Orientation="Horizontal"
+                  HorizontalAlignment="Center"
+                  Spacing="10">
+        <TextBlock Text="Want more questions?"
+                   Foreground="White"
+                   VerticalAlignment="Center"/>
+        <Button Command="{Binding GenerateMoreQuestionsCommand}"
+                IsEnabled="{Binding !IsGeneratingMore}"
+                Padding="8,4"
+                Background="#2880b1"
+                Foreground="White">
+          <Panel>
+            <!-- Button content -->
+            <TextBlock Text="Generate More"
+                       IsVisible="{Binding !IsGeneratingMore}"/>
+
+            <!-- Loading indicator -->
+            <StackPanel Orientation="Horizontal"
+                        IsVisible="{Binding IsGeneratingMore}"
+                        Spacing="5">
+              <TextBlock Text="Generating..." VerticalAlignment="Center"/>
+              <ProgressBar IsIndeterminate="True"
+                           Width="20"
+                           Height="2"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+          </Panel>
+        </Button>
+      </StackPanel>
+    </Border>
+  </StackPanel>
 </UserControl> 

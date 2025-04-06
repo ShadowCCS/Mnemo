@@ -65,10 +65,16 @@ namespace MnemoProject.ViewModels
             {
                 if (SetProperty(ref _isQuestionsSelected, value) && value)
                 {
+                    // Reset other tab selections
                     IsUnitGuideSelected = false;
                     IsFlashcardsSelected = false;
                     IsLearnModeSelected = false;
+                    
+                    // Set active view model
                     ActiveViewModel = _unitQuestionsViewModel;
+                    
+                    // Activate the view model to load questions
+                    _unitQuestionsViewModel.OnActivated();
                 }
             }
         }
@@ -81,13 +87,15 @@ namespace MnemoProject.ViewModels
             {
                 if (SetProperty(ref _isFlashcardsSelected, value) && value)
                 {
+                    // Reset other tab selections
                     IsUnitGuideSelected = false;
                     IsQuestionsSelected = false;
                     IsLearnModeSelected = false;
+                    
+                    // Set active view model
                     ActiveViewModel = _unitFlashcardsViewModel;
                     
-                    // Activate the flashcards view model when selected
-                    System.Diagnostics.Debug.WriteLine("Flashcards tab selected, activating view model");
+                    // Activate the view model to load flashcards
                     _unitFlashcardsViewModel.OnActivated();
                 }
             }
@@ -134,7 +142,10 @@ namespace MnemoProject.ViewModels
         private void InitializeViewModels()
         {
             _unitGuideContentViewModel = new UnitGuideContentViewModel(_unitGuideText, _markdownRenderer);
-            _unitQuestionsViewModel = new UnitQuestionsViewModel();
+            
+            // Initialize with unit content
+            System.Diagnostics.Debug.WriteLine($"Initializing UnitQuestionsViewModel with content length: {_unitGuideText?.Length ?? 0}");
+            _unitQuestionsViewModel = new UnitQuestionsViewModel(_unitGuideText ?? string.Empty);
             
             // Ensure we're passing the unit content for flashcards generation
             System.Diagnostics.Debug.WriteLine($"Initializing UnitFlashcardsViewModel with content length: {_unitGuideText?.Length ?? 0}");

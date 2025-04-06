@@ -155,13 +155,13 @@ namespace MnemoProject.Services
                     }
                     i++;
                 }
-                // Table detection
-                else if (line.Contains("|") && i < lines.Length - 1 && lines[i + 1].Contains("|") && 
-                          Regex.IsMatch(lines[i + 1], @"^\|?\s*[:\-]+\s*(?:\|[:\-]*\s*)*\|?$"))
+                // Enhanced table detection (supports various formats and indentation)
+                else if (i < lines.Length && !string.IsNullOrWhiteSpace(lines[i]) && 
+                         lines[i].Trim().Contains("|") && TryDetectTable(lines, i, out var tableLines, out var endIndex))
                 {
-                    var (tableControl, newIndex) = ParseTable(lines, i);
+                    var tableControl = CreateTable(tableLines);
                     stackPanel.Children.Add(tableControl);
-                    i = newIndex;
+                    i = endIndex;
                 }
                 // Definition list detection
                 else if (i < lines.Length - 1 && lines[i+1].StartsWith(": "))
@@ -214,18 +214,26 @@ namespace MnemoProject.Services
 
         private (Control, int) ParseTable(string[] lines, int startIndex)
         {
+            // Leverage our more robust table detection logic
+            if (TryDetectTable(lines, startIndex, out var tableLines, out var endIndex))
+            {
+                var tableControl = CreateTable(tableLines);
+                return (tableControl, endIndex);
+            }
+            
+            // Fallback to simple handling if our detection fails (shouldn't happen with proper tables)
             var tableRows = new List<string[]>();
             int currentIndex = startIndex;
             bool hasHeader = false;
             
-            // Process the header row
+            // Process the header row - trim to handle indentation
             string headerRow = lines[currentIndex].Trim();
             var headerCells = ProcessTableRow(headerRow);
             tableRows.Add(headerCells);
             currentIndex++;
             
             // Process the delimiter row (skip it from the data)
-            if (currentIndex < lines.Length && Regex.IsMatch(lines[currentIndex], @"^\|?\s*[:\-]+\s*(?:\|[:\-]*\s*)*\|?$"))
+            if (currentIndex < lines.Length && Regex.IsMatch(lines[currentIndex].Trim(), @"^\|?\s*[:\-]+\s*(?:\|[:\-]*\s*)*\|?$"))
             {
                 hasHeader = true;
                 currentIndex++;
@@ -243,7 +251,7 @@ namespace MnemoProject.Services
                 currentIndex++;
             }
             
-            // Create modern dark-themed table UI
+            // Apply the same styling as in CreateTable method
             var grid = new Grid { 
                 Margin = new Avalonia.Thickness(0),
                 Background = new SolidColorBrush(Color.FromRgb(30, 34, 42))
@@ -264,8 +272,6 @@ namespace MnemoProject.Services
                 
                 for (int colIndex = 0; colIndex < rowData.Length && colIndex < columnCount; colIndex++)
                 {
-                    // Instead of using CreateFormattedParagraph directly, we'll create a new TextBlock
-                    // and apply ParseInline to it to handle formatting within cells
                     var cellContent = new TextBlock
                     {
                         FontFamily = _customFont,
@@ -276,10 +282,8 @@ namespace MnemoProject.Services
                         Foreground = new SolidColorBrush(Color.FromRgb(220, 220, 220))
                     };
                     
-                    // Parse the cell content for markdown formatting
                     ParseInline(rowData[colIndex], cellContent);
                     
-                    // Create border for cell with modern styling
                     var border = new Border
                     {
                         Child = cellContent,
@@ -289,18 +293,14 @@ namespace MnemoProject.Services
                         Margin = new Avalonia.Thickness(0)
                     };
                     
-                    // Add styling for header row
                     if (hasHeader && rowIndex == 0)
                     {
-                        // For header cells, we'll apply bold to the whole cell
                         cellContent.FontWeight = FontWeight.Bold;
                         border.Background = new SolidColorBrush(Color.FromRgb(50, 54, 62));
-                        // Remove bottom border for header cells
                         border.BorderThickness = new Avalonia.Thickness(0, 0, 1, 0);
                     }
                     else
                     {
-                        // Alternate row colors for better readability
                         if (rowIndex % 2 == 0)
                         {
                             border.Background = new SolidColorBrush(Color.FromRgb(37, 41, 49));
@@ -317,7 +317,6 @@ namespace MnemoProject.Services
                 }
             }
             
-            // Wrap the grid in a border for a cleaner look
             var tableBorder = new Border
             {
                 Child = grid,
@@ -326,7 +325,7 @@ namespace MnemoProject.Services
                 CornerRadius = new Avalonia.CornerRadius(4),
                 ClipToBounds = true,
                 Padding = new Avalonia.Thickness(0),
-                Margin = new Avalonia.Thickness(0, 10, 0, 10) // Keep vertical spacing between elements
+                Margin = new Avalonia.Thickness(0, 10, 0, 10)
             };
             
             return (tableBorder, currentIndex);
@@ -1532,6 +1531,202 @@ namespace MnemoProject.Services
             }
             
             return (currentQuote, currentIndex);
+        }
+
+        private bool TryDetectTable(string[] lines, int startIndex, out string[] tableLines, out int endIndex)
+        {
+            if (startIndex >= lines.Length)
+            {
+                tableLines = Array.Empty<string>();
+                endIndex = startIndex;
+                return false;
+            }
+            
+            string currentLine = lines[startIndex].Trim();
+            
+            // Check if this looks like a potential table line
+            if (!currentLine.Contains("|"))
+            {
+                tableLines = Array.Empty<string>();
+                endIndex = startIndex;
+                return false;
+            }
+            
+            // Check if there's at least one more line (for the separator row)
+            if (startIndex + 1 >= lines.Length)
+            {
+                tableLines = Array.Empty<string>();
+                endIndex = startIndex;
+                return false;
+            }
+            
+            // Get the next line and check if it's a table separator
+            string nextLine = lines[startIndex + 1].Trim();
+            if (!nextLine.Contains("|") || !Regex.IsMatch(nextLine, @"^\|?\s*[:\-]+\s*(?:\|[:\-]*\s*)*\|?$"))
+            {
+                tableLines = Array.Empty<string>();
+                endIndex = startIndex;
+                return false;
+            }
+            
+            // This appears to be a table. Determine indentation level
+            int baseIndentation = lines[startIndex].Length - lines[startIndex].TrimStart().Length;
+            
+            var detectedTableLines = new List<string>();
+            int currentIndex = startIndex;
+            
+            // Collect all table lines with similar indentation
+            while (currentIndex < lines.Length)
+            {
+                string line = lines[currentIndex];
+                
+                // Skip blank lines completely
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    break;
+                }
+                
+                string trimmed = line.Trim();
+                
+                // If the line doesn't contain a pipe, we're done with the table
+                if (!trimmed.Contains("|"))
+                {
+                    break;
+                }
+                
+                // Check for consistently similar indentation
+                int indentation = line.Length - line.TrimStart().Length;
+                
+                // Allow some flexibility in indentation for tables within lists
+                if (Math.Abs(indentation - baseIndentation) > 4)
+                {
+                    break;
+                }
+                
+                // Add this line to our table
+                detectedTableLines.Add(trimmed);
+                currentIndex++;
+            }
+            
+            // A valid table needs at least 3 lines (header, separator, and at least one data row)
+            if (detectedTableLines.Count < 3)
+            {
+                tableLines = Array.Empty<string>();
+                endIndex = startIndex;
+                return false;
+            }
+            
+            tableLines = detectedTableLines.ToArray();
+            endIndex = currentIndex;
+            return true;
+        }
+        
+        private Control CreateTable(string[] tableLines)
+        {
+            // This is a simplified version of ParseTable that works with the pre-filtered table lines
+            var tableRows = new List<string[]>();
+            bool hasHeader = true; // Always assume first row is header
+            
+            // Process the header row
+            var headerCells = ProcessTableRow(tableLines[0]);
+            tableRows.Add(headerCells);
+            
+            // Skip the delimiter row (we know it exists because we checked in TryDetectTable)
+            
+            // Process data rows (starting from index 2, skipping header and delimiter)
+            for (int i = 2; i < tableLines.Length; i++)
+            {
+                var cells = ProcessTableRow(tableLines[i]);
+                tableRows.Add(cells);
+            }
+            
+            // Create the table UI using the grid-based approach from the existing ParseTable method
+            var grid = new Grid { 
+                Margin = new Avalonia.Thickness(0),
+                Background = new SolidColorBrush(Color.FromRgb(30, 34, 42))
+            };
+            
+            // Define columns
+            int columnCount = tableRows.Count > 0 ? tableRows[0].Length : 0;
+            for (int colIdx = 0; colIdx < columnCount; colIdx++)
+            {
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new Avalonia.Controls.GridLength(1, Avalonia.Controls.GridUnitType.Star) });
+            }
+            
+            // Add rows
+            for (int rowIndex = 0; rowIndex < tableRows.Count; rowIndex++)
+            {
+                grid.RowDefinitions.Add(new RowDefinition { Height = Avalonia.Controls.GridLength.Auto });
+                var rowData = tableRows[rowIndex];
+                
+                for (int colIndex = 0; colIndex < rowData.Length && colIndex < columnCount; colIndex++)
+                {
+                    // Instead of using CreateFormattedParagraph directly, we'll create a new TextBlock
+                    // and apply ParseInline to it to handle formatting within cells
+                    var cellContent = new TextBlock
+                    {
+                        FontFamily = _customFont,
+                        FontSize = 16,
+                        TextWrapping = TextWrapping.Wrap,
+                        Padding = new Avalonia.Thickness(8, 6, 8, 6),
+                        Margin = new Avalonia.Thickness(0),
+                        Foreground = new SolidColorBrush(Color.FromRgb(220, 220, 220))
+                    };
+                    
+                    // Parse the cell content for markdown formatting
+                    ParseInline(rowData[colIndex], cellContent);
+                    
+                    // Create border for cell with modern styling
+                    var border = new Border
+                    {
+                        Child = cellContent,
+                        BorderBrush = new SolidColorBrush(Color.FromRgb(60, 64, 72)),
+                        BorderThickness = new Avalonia.Thickness(0, 0, 1, 1),
+                        Padding = new Avalonia.Thickness(0),
+                        Margin = new Avalonia.Thickness(0)
+                    };
+                    
+                    // Add styling for header row
+                    if (hasHeader && rowIndex == 0)
+                    {
+                        // For header cells, we'll apply bold to the whole cell
+                        cellContent.FontWeight = FontWeight.Bold;
+                        border.Background = new SolidColorBrush(Color.FromRgb(50, 54, 62));
+                        // Remove bottom border for header cells
+                        border.BorderThickness = new Avalonia.Thickness(0, 0, 1, 0);
+                    }
+                    else
+                    {
+                        // Alternate row colors for better readability
+                        if (rowIndex % 2 == 0)
+                        {
+                            border.Background = new SolidColorBrush(Color.FromRgb(37, 41, 49));
+                        }
+                        else
+                        {
+                            border.Background = new SolidColorBrush(Color.FromRgb(30, 34, 42));
+                        }
+                    }
+                    
+                    Grid.SetRow(border, rowIndex);
+                    Grid.SetColumn(border, colIndex);
+                    grid.Children.Add(border);
+                }
+            }
+            
+            // Wrap the grid in a border for a cleaner look
+            var tableBorder = new Border
+            {
+                Child = grid,
+                BorderBrush = new SolidColorBrush(Color.FromRgb(60, 64, 72)),
+                BorderThickness = new Avalonia.Thickness(1),
+                CornerRadius = new Avalonia.CornerRadius(4),
+                ClipToBounds = true,
+                Padding = new Avalonia.Thickness(0),
+                Margin = new Avalonia.Thickness(0, 10, 0, 10) // Keep vertical spacing between elements
+            };
+            
+            return tableBorder;
         }
     }
 

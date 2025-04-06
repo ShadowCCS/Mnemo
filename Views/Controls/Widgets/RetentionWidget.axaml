@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="100"
+             x:Class="MnemoProject.Views.Controls.Widgets.RetentionWidget">
+
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    
+    <StackPanel Grid.Column="0">
+      <TextBlock Text="78%" Foreground="White" FontSize="24" FontWeight="Bold"/>
+      <TextBlock Text="Retention Rate" Foreground="#a0a0a0" FontSize="12"/>
+    </StackPanel>
+
+    <Canvas Width="50" Height="50" Grid.Column="1" HorizontalAlignment="Right">
+      <!-- Background Circle -->
+      <Ellipse Width="50" Height="50" Fill="Transparent" Stroke="#333333" StrokeThickness="4"/>
+      
+      <!-- Progress Arc (approx 78% complete) -->
+      <Path Stroke="#4a6cd0" StrokeThickness="4" StrokeLineCap="Round">
+        <Path.Data>
+          <PathGeometry>
+            <PathFigure StartPoint="25,4" IsClosed="False">
+              <ArcSegment Size="21,21" RotationAngle="0" IsLargeArc="False" 
+                           SweepDirection="Clockwise" Point="46,25"/>
+            </PathFigure>
+          </PathGeometry>
+        </Path.Data>
+      </Path>
+      
+      <!-- Indicator dot at the end of the progress -->
+      <Ellipse Width="8" Height="8" Fill="#4a6cd0" Canvas.Left="42" Canvas.Top="25" ZIndex="2"/>
+    </Canvas>
+  </Grid>
+</UserControl> 

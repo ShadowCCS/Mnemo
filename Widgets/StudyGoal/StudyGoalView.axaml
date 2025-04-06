@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="using:MnemoProject.Widgets.StudyGoal"
+             mc:Ignorable="d" d:DesignWidth="190" d:DesignHeight="100"
+             x:Class="MnemoProject.Widgets.StudyGoal.StudyGoalView"
+             x:DataType="local:StudyGoal">
+
+  <Border Background="#1A1A1A" CornerRadius="8" Padding="15">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      
+      <!-- Widget Title -->
+      <TextBlock Grid.Row="0" Text="{Binding Title}" 
+                 Foreground="White" FontWeight="SemiBold"
+                 FontSize="14" Margin="0,0,0,2"/>
+      
+      <!-- Widget Content -->
+      <Grid Grid.Row="1">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Progress Percentage -->
+        <TextBlock Grid.Row="0" 
+                   Text="{Binding ProgressPercentage, StringFormat='{}{0}%'}"
+                   Foreground="#FF9800" FontSize="24" 
+                   FontWeight="Bold" HorizontalAlignment="Center"/>
+        
+        <!-- Progress Bar -->
+        <Grid Grid.Row="1" Height="4" Margin="0,4,0,4">
+          <Border Background="#333333" CornerRadius="2"/>
+          <Border Background="#FF9800" CornerRadius="2" HorizontalAlignment="Left" 
+                  Width="{Binding ProgressPercentage, Converter={x:Static local:PercentToWidthConverter.Instance}}"/>
+        </Grid>
+        
+        <!-- Minutes Text -->
+        <TextBlock Grid.Row="2" 
+                   Text="{Binding FormattedProgress}" 
+                   Foreground="#CCCCCC" FontSize="11" 
+                   HorizontalAlignment="Center"/>
+      </Grid>
+    </Grid>
+  </Border>
+</UserControl> 

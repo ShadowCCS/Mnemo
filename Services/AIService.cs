@@ -147,6 +147,132 @@ Unit Content:
         });
     }
     
+    public async Task GenerateMultipleChoiceQuestions(string unitContent, Action<string> onComplete)
+    {
+        await _worker.Enqueue(async () =>
+        {
+            if (string.IsNullOrEmpty(unitContent))
+            {
+                System.Diagnostics.Debug.WriteLine("WARNING: Empty unit content passed to GenerateMultipleChoiceQuestions");
+                unitContent = "This is a sample unit for demonstration purposes.";
+            }
+                
+            System.Diagnostics.Debug.WriteLine($"Generating multiple-choice questions for content length: {unitContent.Length}");
+            
+            string prompt = $@"Based on the following unit content, generate 5 multiple-choice questions. 
+Each question should have 4 possible answers with exactly one correct answer.
+The questions should cover the most important concepts, facts, and terminology from the unit content provided.
+
+IMPORTANT: 
+1. Make sure questions are directly related to the unit content provided
+2. Include a mix of definition, concept, and application questions
+3. Make sure the correct answer is not obvious and that the distractors (wrong options) are plausible
+4. Format your response EXACTLY as a valid JSON array of question objects with the following structure:
+
+Example format:
+[
+  {{
+    ""question"": ""What is the primary function of the respiratory system?"",
+    ""options"": [
+      ""Transport nutrients throughout the body"",
+      ""Gas exchange - bringing oxygen into the body and removing carbon dioxide"", 
+      ""Filter waste products from the blood"", 
+      ""Generate heat for the body""
+    ],
+    ""correctOptionIndex"": 1
+  }},
+  {{
+    ""question"": ""Which organ is NOT part of the respiratory system?"",
+    ""options"": [
+      ""Lungs"", 
+      ""Trachea"", 
+      ""Liver"", 
+      ""Bronchi""
+    ],
+    ""correctOptionIndex"": 2
+  }}
+]
+
+Your response should be PURE JSON that can be parsed directly, with NO additional text before or after the JSON array.
+DO NOT include any explanations, markdown formatting, or other text. ONLY return the JSON array.
+
+Unit Content:
+{unitContent}";
+
+            try
+            {
+                System.Diagnostics.Debug.WriteLine("Calling AI provider to generate multiple-choice questions...");
+                string response = await _aiProvider.GenerateTextAsync(prompt);
+
+                System.Diagnostics.Debug.WriteLine($"Received raw response from AI: [{response.Substring(0, Math.Min(100, response.Length))}...]");
+
+                // Attempt to clean the response to ensure valid JSON
+                response = CleanJsonResponse(response);
+
+                System.Diagnostics.Debug.WriteLine($"Cleaned response: [{response.Substring(0, Math.Min(100, response.Length))}...]");
+
+                // For debugging, provide some simple questions if the response is empty
+                if (string.IsNullOrEmpty(response) || response.Trim() == "[]")
+                {
+                    System.Diagnostics.Debug.WriteLine("Empty response received, using fallback questions");
+                    response = @"[
+                        {
+                            ""question"": ""What is this question?"", 
+                            ""options"": [
+                                ""A sample question"", 
+                                ""A fallback question because the AI didn't generate valid content"", 
+                                ""A test of multiple choice"", 
+                                ""None of the above""
+                            ],
+                            ""correctOptionIndex"": 1
+                        },
+                        {
+                            ""question"": ""Why am I seeing this?"", 
+                            ""options"": [
+                                ""The AI is working correctly"", 
+                                ""You selected the wrong option"", 
+                                ""The AI response was empty or could not be parsed properly"", 
+                                ""The system is offline""
+                            ],
+                            ""correctOptionIndex"": 2
+                        }
+                    ]";
+                }
+
+                System.Diagnostics.Debug.WriteLine($"Sending multiple-choice questions response to ViewModel: {response}");
+                onComplete(response);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error generating multiple-choice questions: {ex.Message}");
+
+                // Return fallback questions instead of empty array
+                string fallbackJson = @"[
+                    {
+                        ""question"": ""What is this question?"", 
+                        ""options"": [
+                            ""A sample question"", 
+                            ""A fallback question because an error occurred"", 
+                            ""A test of multiple choice"", 
+                            ""None of the above""
+                        ],
+                        ""correctOptionIndex"": 1
+                    },
+                    {
+                        ""question"": ""What error occurred?"", 
+                        ""options"": [
+                            ""The AI is working correctly"", 
+                            ""You selected the wrong option"", 
+                            """ + ex.Message.Replace("\"", "'") + @""", 
+                            ""The system is offline""
+                        ],
+                        ""correctOptionIndex"": 2
+                    }
+                ]";
+            }
+        });
+    }
+
     private string CleanJsonResponse(string response)
     {
         try

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MnemoProject"
         xmlns:controls="clr-namespace:MnemoProject.Views.Controls"
+        xmlns:converters="clr-namespace:MnemoProject.Converters"
         mc:Ignorable="d" d:DesignWidth="1300" d:DesignHeight="800"
         x:Class="MnemoProject.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -17,6 +18,7 @@
 
   <Window.Resources>
     <local:ItemTemplateSelector x:Key="ItemTemplateSelector"/>
+    <converters:IntConverter x:Key="IntConverter"/>
   </Window.Resources>
 
   <Border CornerRadius="10" Background="#121212" ClipToBounds="True">
@@ -103,7 +105,10 @@
       </SplitView>
       
       <!-- Notification Control - positioned over content -->
-      <controls:NotificationControl Grid.Row="1" ZIndex="100" />
+      <controls:NotificationControl Grid.Row="1" ZIndex="{x:Static local:ZIndexes.Notifications}" />
+      
+      <!-- Overlay Control - positioned over everything -->
+      <controls:OverlayControl Grid.Row="0" Grid.RowSpan="2" ZIndex="{x:Static local:ZIndexes.Overlays}" />
     </Grid>
   </Border>
 </Window>

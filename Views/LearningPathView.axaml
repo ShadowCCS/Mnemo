@@ -15,35 +15,62 @@
           <Border Height="30"/>
           <Label Foreground="White" Content="Learning Paths" FontSize="24" FontWeight="Medium" />
           <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Spacing="10">
-            <Button Background="Transparent" Command="{Binding NavigateToCreatePath}">
-              <Border Background="#1a1a1a" Width="260" Height="110" CornerRadius="8" Padding="8">
-                <StackPanel Orientation="Horizontal" Spacing="15">
-                  <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <Border Width="40" Height="40" Background="#262626" CornerRadius="13">
-                      <PathIcon Data="{StaticResource NewLessonsIcon}" Foreground="#2881b1" Width="24" Height="24"/>
+            <Button Command="{Binding NavigateToCreatePath}" 
+                    Width="260" Height="110" 
+                    CornerRadius="8" Padding="8"
+                    Background="#1a1a1a" 
+                    Name="NewLessonButton">
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#262626"/>
+                    </Style>
+                    <Style Selector="Button:pressed /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#303030"/>
+                    </Style>
+                </Button.Styles>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Border Width="40" Height="40" Background="#262626" CornerRadius="13" Margin="0,0,15,0">
+                        <PathIcon Data="{StaticResource NewLessonsIcon}" Foreground="#2881b1" Width="24" Height="24"/>
                     </Border>
-                  </StackPanel>
-                  <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <Label Foreground="White">New Lesson</Label>
-                    <TextBlock  Foreground="#797979" MaxWidth="200" TextWrapping="Wrap">Learn something new!</TextBlock >
-                  </StackPanel>
-                </StackPanel>
-              </Border>
+                    
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <Label Foreground="White" Padding="0,0,0,2">New Lesson</Label>
+                        <TextBlock Foreground="#797979" MaxWidth="180" TextWrapping="Wrap">Learn something new!</TextBlock>
+                    </StackPanel>
+                </Grid>
             </Button>
-            <Button Background="Transparent">
-              <Border Background="#1a1a1a" Width="260" Height="110" CornerRadius="8" Padding="8">
-                <StackPanel Orientation="Horizontal" Spacing="15">
-                  <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <Border Width="40" Height="40" Background="#262626" CornerRadius="13">
-                      <PathIcon Data="{StaticResource NewLessonsIcon}" Foreground="#2881b1" Width="24" Height="24"/>
+            <Button Width="260" Height="110" 
+                    CornerRadius="8" Padding="8"
+                    Background="#1a1a1a" 
+                    Name="ProblemSolverButton">
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#262626"/>
+                    </Style>
+                    <Style Selector="Button:pressed /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#303030"/>
+                    </Style>
+                </Button.Styles>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Border Width="40" Height="40" Background="#262626" CornerRadius="13" Margin="0,0,15,0">
+                        <PathIcon Data="{StaticResource NewLessonsIcon}" Foreground="#2881b1" Width="24" Height="24"/>
                     </Border>
-                  </StackPanel>
-                  <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <Label Foreground="White">Problem Solver</Label>
-                    <TextBlock  Foreground="#797979" MaxWidth="200" TextWrapping="Wrap">Helps you solve your problems.</TextBlock >
-                  </StackPanel>
-                </StackPanel>
-              </Border>
+                    
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <Label Foreground="White" Padding="0,0,0,2">Problem Solver</Label>
+                        <TextBlock Foreground="#797979" MaxWidth="180" TextWrapping="Wrap">Helps you solve your problems.</TextBlock>
+                    </StackPanel>
+                </Grid>
             </Button>
             <Border Margin="20"></Border>
           </StackPanel>
@@ -105,4 +132,18 @@
       </StackPanel>
     </StackPanel>
   </Grid>
+  <UserControl.Styles>
+    <!-- Button styles to disable default behaviors -->
+    <Style Selector="Button">
+      <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+      <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+    </Style>
+    <Style Selector="Button:pressed /template/ ContentPresenter">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="RenderTransform" Value="none"/>
+    </Style>
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+      <Setter Property="Background" Value="Transparent"/>
+    </Style>
+  </UserControl.Styles>
 </UserControl>

@@ -6,17 +6,10 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="MnemoProject.Views.UnitLearnModeView"
              x:DataType="vm:UnitLearnModeViewModel">
-  <ScrollViewer Margin="20" Padding="20"
-                HorizontalScrollBarVisibility="Auto"
-                VerticalScrollBarVisibility="Auto">
-    <StackPanel VerticalAlignment="Top"
-                HorizontalAlignment="Stretch"
-                MaxWidth="950">
-      <TextBlock Text="{Binding PlaceholderText}" 
-                 FontSize="18" 
-                 HorizontalAlignment="Center" 
-                 VerticalAlignment="Center" 
-                 Margin="0,50,0,0" />
-    </StackPanel>
-  </ScrollViewer>
+  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Image Source="{SvgImage avares://MnemoProject/Assets/notImplemented.svg}" Height="200" Margin="20"/>
+    <Label Content="Learn Mode" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
+    <Label Content="Feature Under Development" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24"/>
+    <Label Content="We're working on bringing this functionality to you soon." Foreground="#696969" HorizontalAlignment="Center" FontSize="16"/>
+  </StackPanel>
 </UserControl> 

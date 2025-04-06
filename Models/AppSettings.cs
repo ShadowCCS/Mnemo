@@ -3,6 +3,9 @@ using System.IO;
 using System.Text.Json;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using MnemoProject.Models;
 
 public class AppSettings : INotifyPropertyChanged
 {
@@ -46,6 +49,14 @@ public class AppSettings : INotifyPropertyChanged
         set => SetProperty(ref _animationToggle, value, nameof(AnimationToggle), Save);
     }
 
+    // Widget configuration
+    private List<WidgetConfig> _enabledWidgets = new();
+    public List<WidgetConfig> EnabledWidgets
+    {
+        get => _enabledWidgets;
+        set => SetProperty(ref _enabledWidgets, value, nameof(EnabledWidgets), Save);
+    }
+
     protected void OnPropertyChanged(string propertyName) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
@@ -59,7 +70,27 @@ public class AppSettings : INotifyPropertyChanged
                 return JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
             }
         }
-        catch { }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading settings: {ex.Message}");
+        }
+        return new AppSettings();
+    }
+
+    public static async Task<AppSettings> LoadAsync()
+    {
+        try
+        {
+            if (File.Exists(SettingsFilePath))
+            {
+                var json = await File.ReadAllTextAsync(SettingsFilePath);
+                return JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading settings asynchronously: {ex.Message}");
+        }
         return new AppSettings();
     }
 
@@ -73,6 +104,33 @@ public class AppSettings : INotifyPropertyChanged
             var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(SettingsFilePath, json);
         }
-        catch { }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving settings: {ex.Message}");
+        }
     }
+
+    public async Task SaveAsync()
+    {
+        try
+        {
+            if (!Directory.Exists(SettingsDirectory))
+                Directory.CreateDirectory(SettingsDirectory);
+
+            var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+            await File.WriteAllTextAsync(SettingsFilePath, json);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving settings asynchronously: {ex.Message}");
+        }
+    }
+}
+
+// Widget configuration for storage in settings
+public class WidgetConfig
+{
+    public WidgetType Type { get; set; }
+    public int DisplayOrder { get; set; }
+    public bool IsEnabled { get; set; } = true;
 }

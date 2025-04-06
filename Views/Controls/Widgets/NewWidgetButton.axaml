@@ -1,0 +1,24 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="100"
+             x:DataType="vm:DashboardViewModel"
+             x:Class="MnemoProject.Views.Controls.Widgets.NewWidgetButton">
+  
+  <Button Name="AddWidgetButton" Background="#1a1a1a" 
+          CornerRadius="8" Padding="10" 
+          MinWidth="80" MinHeight="90"
+          Command="{Binding OpenWidgetManagementCommand}">
+    <StackPanel>
+      <Border Width="30" Height="30" Background="#3a84f1" CornerRadius="15" 
+              HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="+" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="20" FontWeight="Bold" Foreground="White"/>
+      </Border>
+      <TextBlock Text="New Widget" HorizontalAlignment="Center" Margin="0,8,0,0" 
+                 Foreground="White" FontSize="12"/>
+    </StackPanel>
+  </Button>
+</UserControl> 

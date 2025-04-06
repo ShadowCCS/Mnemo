@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:services="clr-namespace:MnemoProject.Services"
+             xmlns:converters="clr-namespace:MnemoProject.Converters"
+             xmlns:local="clr-namespace:MnemoProject"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:DataType="services:OverlayService"
+             x:CompileBindings="False"
+             x:Class="MnemoProject.Views.Controls.OverlayControl">
+  
+  <UserControl.Resources>
+    <converters:IntConverter x:Key="IntConverter"/>
+  </UserControl.Resources>
+  
+  <Panel IsVisible="{Binding IsOverlayVisible, Mode=OneWay}">
+    <!-- Semi-transparent background overlay -->
+    <Rectangle Fill="#99000000" 
+               PointerPressed="OverlayBackground_PointerPressed"/>
+    
+    <!-- Content area that displays the actual overlay -->
+    <ContentControl Content="{Binding CurrentOverlay, Mode=OneWay}"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    ZIndex="{x:Static local:ZIndexes.Overlays}" />
+  </Panel>
+</UserControl> 

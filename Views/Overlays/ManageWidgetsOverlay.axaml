@@ -1,0 +1,123 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MnemoProject.ViewModels.Overlays"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
+             x:DataType="vm:ManageWidgetsOverlayViewModel"
+             x:CompileBindings="False"
+             x:Class="MnemoProject.Views.Overlays.ManageWidgetsOverlay">
+
+  <Border Background="#1E1E1E" CornerRadius="8" Width="500" MaxHeight="600">
+    <Grid Margin="20">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>  <!-- Header -->
+        <RowDefinition Height="*"/>     <!-- Content -->
+      </Grid.RowDefinitions>
+      
+      <!-- Header with close button -->
+      <Grid Grid.Row="0">
+        <TextBlock Text="Select Widgets" Foreground="White" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Left"/>
+        <Button Content="✖" Command="{Binding CloseCommand}" 
+                Background="Transparent" Foreground="White" 
+                VerticalAlignment="Top" HorizontalAlignment="Right"/>
+      </Grid>
+      
+      <!-- Main content -->
+      <ScrollViewer Grid.Row="1" Margin="0,20,0,0">
+        <StackPanel Spacing="15">
+          <!-- Enabled Widgets -->
+          <TextBlock Text="Active Widgets" Foreground="#CCCCCC" FontSize="18" FontWeight="Medium" Margin="0,0,0,5"/>
+          <TextBlock Foreground="#999999" FontSize="12" Margin="0,0,0,5">
+            <Run Text="{Binding EnabledWidgets.Count}"/> of <Run Text="{Binding MaxWidgets}"/> widgets active
+          </TextBlock>
+          <ItemsControl ItemsSource="{Binding EnabledWidgets}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Background="#262626" CornerRadius="4" Margin="0,0,0,5" Padding="12">
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="Auto"/> <!-- Widget Preview -->
+                      <ColumnDefinition Width="*"/>    <!-- Widget Info -->
+                      <ColumnDefinition Width="Auto"/> <!-- Buttons -->
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Widget Preview -->
+                    <Border Grid.Column="0" Width="120" Height="80" Margin="0,0,12,0">
+                      <ContentControl Content="{Binding WidgetPreview}" />
+                    </Border>
+                    
+                    <!-- Widget Info -->
+                    <StackPanel Grid.Column="1" Spacing="3" VerticalAlignment="Center">
+                      <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="Medium"/>
+                      <TextBlock Text="{Binding Description}" Foreground="#999999" FontSize="12" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    
+                    <!-- Widget Controls -->
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="5">
+                      <!-- Move Up button -->
+                      <Button Command="{Binding DataContext.MoveWidgetUpCommand, 
+                                RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                              CommandParameter="{Binding}"
+                              Background="Transparent" Foreground="#CCCCCC">↑</Button>
+                      
+                      <!-- Move Down button -->
+                      <Button Command="{Binding DataContext.MoveWidgetDownCommand, 
+                                RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                              CommandParameter="{Binding}"
+                              Background="Transparent" Foreground="#CCCCCC">↓</Button>
+                      
+                      <!-- Disable button -->
+                      <Button Command="{Binding DataContext.DisableWidgetCommand, 
+                                RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                              CommandParameter="{Binding}"
+                              Background="Transparent" Foreground="#CCCCCC">−</Button>
+                    </StackPanel>
+                  </Grid>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+          
+          <!-- Disabled Widgets -->
+          <TextBlock Text="Available Widgets" Foreground="#CCCCCC" FontSize="18" FontWeight="Medium" Margin="0,15,0,5"/>
+          <ItemsControl ItemsSource="{Binding DisabledWidgets}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Background="#262626" CornerRadius="4" Margin="0,0,0,5" Padding="12">
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="Auto"/> <!-- Widget Preview -->
+                      <ColumnDefinition Width="*"/>    <!-- Widget Info -->
+                      <ColumnDefinition Width="Auto"/> <!-- Button -->
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Widget Preview -->
+                    <Border Grid.Column="0" Width="120" Height="80" Margin="0,0,12,0">
+                      <ContentControl Content="{Binding WidgetPreview}" />
+                    </Border>
+                    
+                    <!-- Widget Info -->
+                    <StackPanel Grid.Column="1" Spacing="3" VerticalAlignment="Center">
+                      <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="Medium"/>
+                      <TextBlock Text="{Binding Description}" Foreground="#999999" FontSize="12" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    
+                    <!-- Enable button -->
+                    <Button Grid.Column="2" Content="+" 
+                            Command="{Binding DataContext.EnableWidgetCommand, 
+                              RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                            CommandParameter="{Binding}"
+                            IsEnabled="{Binding DataContext.CanAddMoreWidgets, 
+                              RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            Background="Transparent" Foreground="#CCCCCC"/>
+                  </Grid>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </ScrollViewer>
+    </Grid>
+  </Border>
+</UserControl> 
