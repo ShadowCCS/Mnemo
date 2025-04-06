@@ -65,4 +65,129 @@ public class AIService
             onComplete(response);
         });
     }
+    
+    public async Task GenerateFlashcards(string unitContent, Action<string> onComplete)
+    {
+        await _worker.Enqueue(async () =>
+        {
+            if (string.IsNullOrEmpty(unitContent))
+            {
+                System.Diagnostics.Debug.WriteLine("WARNING: Empty unit content passed to GenerateFlashcards");
+                unitContent = "This is a sample unit for demonstration purposes.";
+            }
+                
+            System.Diagnostics.Debug.WriteLine($"Generating flashcards for content length: {unitContent.Length}");
+            
+            string prompt = $@"Based on the following unit content, generate 10 specific flashcards in a question and answer format. 
+The flashcards should cover the most important concepts, facts, and terminology from the unit content provided.
+Each flashcard should have a clear, concise question on one side and a brief, accurate answer on the other.
+Questions should focus on testing understanding of the topics covered in the unit content.
+
+IMPORTANT: 
+1. Make sure questions are directly related to the unit content provided
+2. Keep answers concise and focused
+3. Include a mix of definition, concept, and application questions
+4. Format your response EXACTLY as a valid JSON array of flashcard objects with 'question' and 'answer' properties
+
+Example format:
+[
+  {{
+    ""question"": ""What is the primary function of the respiratory system?"",
+    ""answer"": ""The primary function of the respiratory system is gas exchange - bringing oxygen into the body and removing carbon dioxide.""
+  }},
+  {{
+    ""question"": ""What are alveoli?"",
+    ""answer"": ""Alveoli are tiny air sacs in the lungs where gas exchange occurs between the air and bloodstream.""
+  }}
+]
+
+Your response should be PURE JSON that can be parsed directly, with NO additional text before or after the JSON array.
+DO NOT include any explanations, markdown formatting, or other text. ONLY return the JSON array.
+
+Unit Content:
+{unitContent}";
+
+            try 
+            {
+                System.Diagnostics.Debug.WriteLine("Calling AI provider to generate flashcards...");
+                string response = await _aiProvider.GenerateTextAsync(prompt);
+                
+                System.Diagnostics.Debug.WriteLine($"Received raw response from AI: [{response.Substring(0, Math.Min(100, response.Length))}...]");
+                
+                // Attempt to clean the response to ensure valid JSON
+                response = CleanJsonResponse(response);
+                
+                System.Diagnostics.Debug.WriteLine($"Cleaned response: [{response.Substring(0, Math.Min(100, response.Length))}...]");
+                
+                // For debugging, provide some simple flashcards if the response is empty
+                if (string.IsNullOrEmpty(response) || response.Trim() == "[]")
+                {
+                    System.Diagnostics.Debug.WriteLine("Empty response received, using fallback flashcards");
+                    response = @"[
+                        {""question"": ""What is this flashcard?"", ""answer"": ""This is a fallback flashcard because the AI didn't generate valid content.""},
+                        {""question"": ""Why am I seeing this?"", ""answer"": ""The AI response was empty or could not be parsed properly.""}
+                    ]";
+                }
+                
+                System.Diagnostics.Debug.WriteLine($"Sending flashcards response to ViewModel: {response}");
+                onComplete(response);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error generating flashcards: {ex.Message}");
+                
+                // Return fallback flashcards instead of empty array
+                string fallbackJson = @"[
+                    {""question"": ""What is this flashcard?"", ""answer"": ""This is a fallback flashcard because an error occurred.""},
+                    {""question"": ""What error occurred?"", ""answer"": """ + ex.Message.Replace("\"", "'") + @"""}
+                ]";
+                
+                onComplete(fallbackJson);
+            }
+        });
+    }
+    
+    private string CleanJsonResponse(string response)
+    {
+        try
+        {
+            // Try to extract just the JSON array from the response
+            int startBracket = response.IndexOf('[');
+            int endBracket = response.LastIndexOf(']');
+            
+            if (startBracket >= 0 && endBracket > startBracket)
+            {
+                string jsonContent = response.Substring(startBracket, endBracket - startBracket + 1);
+                
+                // Validate that it's parseable JSON
+                var options = new System.Text.Json.JsonSerializerOptions
+                {
+                    AllowTrailingCommas = true
+                };
+                
+                try
+                {
+                    // Try to parse as JSON to verify it's valid
+                    var testParse = System.Text.Json.JsonSerializer.Deserialize<object>(jsonContent, options);
+                    return jsonContent;
+                }
+                catch (System.Text.Json.JsonException ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Cleaned JSON is still invalid: {ex.Message}");
+                    // Fall through to create a valid JSON array
+                }
+            }
+            
+            // If we couldn't extract valid JSON, generate a fallback
+            return @"[
+                {""question"": ""What is this flashcard?"", ""answer"": ""This is a fallback flashcard because the AI response was not valid JSON.""},
+                {""question"": ""Why am I seeing this?"", ""answer"": ""The AI generated a response that could not be properly formatted as JSON.""}
+            ]";
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error in CleanJsonResponse: {ex.Message}");
+            return "[]";
+        }
+    }
 }

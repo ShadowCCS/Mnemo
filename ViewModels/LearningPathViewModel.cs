@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia.Threading;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MnemoProject.Data;
 using MnemoProject.Models;
@@ -15,7 +16,12 @@ namespace MnemoProject.ViewModels
     {
         private readonly NavigationService _navigationService;
         private readonly DatabaseService _databaseService = new();
+
+        [ObservableProperty]
+        private bool _isLoading = true;
+
         public ObservableCollection<LearningPath> LearningPaths { get; set; } = new();
+
 
         public LearningPathViewModel(NavigationService navigationService)
         {
@@ -24,8 +30,14 @@ namespace MnemoProject.ViewModels
             DeleteLearningPathCommand = new RelayCommand<Guid>(ExecuteDeleteLearningPath);
             OpenLearningPathCommand = new RelayCommand<Guid>(ExecuteOpenLearningPath);
 
-            LoadLearningPaths();
+            InitializeAsync();
         }
+
+        private async void InitializeAsync()
+        {
+            await LoadLearningPaths();
+        }
+
 
         public ICommand NavigateToCreatePath { get; }
         public ICommand DeleteLearningPathCommand { get; }
@@ -43,13 +55,20 @@ namespace MnemoProject.ViewModels
             System.Diagnostics.Debug.WriteLine($"After navigation, CurrentView is: {_navigationService.CurrentView?.GetType().Name}");
         }
 
-        private async void LoadLearningPaths()
+        private async Task LoadLearningPaths()
         {
-            var learningPaths = await _databaseService.GetAllLearningPaths();
-            foreach (var learningPath in learningPaths)
+            IsLoading = true;
+            var learningPaths = await Task.Run(() => _databaseService.GetAllLearningPaths());
+            
+            await Dispatcher.UIThread.InvokeAsync(() => 
             {
-                LearningPaths.Add(learningPath);
-            }
+                LearningPaths.Clear();
+                foreach (var learningPath in learningPaths)
+                {
+                    LearningPaths.Add(learningPath);
+                }
+                IsLoading = false;
+            });
         }
 
         private async void ExecuteDeleteLearningPath(Guid learningPathId)

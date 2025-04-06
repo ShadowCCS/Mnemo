@@ -19,30 +19,30 @@
       <StackPanel Spacing="1">
         <Label Content="Webpages" FontWeight="SemiBold" FontSize="24"/>
 
-        <HyperlinkButton NavigateUri="https://flashcards.github.net/Home">
+        <HyperlinkButton NavigateUri="https://Mnemo.github.net/Home">
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Flashcards.github.net/" Foreground="#969696" FontWeight="Regular"/>
+            <TextBlock Text="Mnemo.github.net/" Foreground="#969696" FontWeight="Regular"/>
             <TextBlock Text="Home" Foreground="#0078D7" FontWeight="SemiBold"/>
           </StackPanel>
         </HyperlinkButton>
 
-        <HyperlinkButton NavigateUri="https://flashcards.github.net/Home">
+        <HyperlinkButton NavigateUri="https://Mnemo.github.net/Home">
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Flashcards.github.net/" Foreground="#969696" FontWeight="Regular"/>
+            <TextBlock Text="Mnemo.github.net/" Foreground="#969696" FontWeight="Regular"/>
             <TextBlock Text="Tutorials" Foreground="#0078D7" FontWeight="SemiBold"/>
           </StackPanel>
         </HyperlinkButton>
 
-        <HyperlinkButton NavigateUri="https://flashcards.github.net/Home">
+        <HyperlinkButton NavigateUri="https://Mnemo.github.net/Home">
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Flashcards.github.net/" Foreground="#969696" FontWeight="Regular"/>
+            <TextBlock Text="Mnemo.github.net/" Foreground="#969696" FontWeight="Regular"/>
             <TextBlock Text="Documentation" Foreground="#0078D7" FontWeight="SemiBold"/>
           </StackPanel>
         </HyperlinkButton>
 
-        <HyperlinkButton NavigateUri="https://flashcards.github.net/Home">
+        <HyperlinkButton NavigateUri="https://Mnemo.github.net/Home">
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Flashcards.github.net/" Foreground="#969696" FontWeight="Regular"/>
+            <TextBlock Text="Mnemo.github.net/" Foreground="#969696" FontWeight="Regular"/>
             <TextBlock Text="Support" Foreground="#0078D7" FontWeight="SemiBold"/>
           </StackPanel>
         </HyperlinkButton>
@@ -50,7 +50,13 @@
 
       <StackPanel Spacing="5">
         <Label Content="License" FontWeight="SemiBold" FontSize="24"/>
-        <TextBlock  MaxWidth="1200" FontSize="14" Foreground="#969696" HorizontalAlignment="Left" TextWrapping="Wrap" Text="This software is under the Creative Commons Non-Commercial license, which means it can be freely modified and used for non-commercial purposes, but it cannot be sold or used for commercial gain. This is in place to keep the software free of charge and open source."/>
+        <TextBlock  MaxWidth="1200" FontSize="14" Foreground="#969696" HorizontalAlignment="Left" TextWrapping="Wrap" Text="This software is licensed under a combination of the MIT and Creative Commons Non-Commercial (BY-NC) licenses. You can freely modify and use it for non-commercial purposes, but it cannot be sold or used for commercial gain. This keeps the software free and open source. For more information, see the full MIT License and Creative Commons Non-Commercial License"/>
+        <HyperlinkButton NavigateUri="https://opensource.org/licenses/MIT">
+          <TextBlock Text="MIT License" Foreground="#0078D7" FontWeight="SemiBold"/>
+        </HyperlinkButton>
+                <HyperlinkButton NavigateUri="https://creativecommons.org/licenses/by-nc/4.0/">
+          <TextBlock Text="Creative Commons Non-Commercial License" Foreground="#0078D7" FontWeight="SemiBold"/>
+        </HyperlinkButton>
       </StackPanel>
 
     </StackPanel>

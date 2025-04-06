@@ -54,6 +54,16 @@
           <TabItem Header="All" FontSize="24" Foreground="White">
             <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="400">
               <StackPanel Spacing="10">
+                <!-- Loading indicator -->
+                <StackPanel Orientation="Horizontal"
+                            IsVisible="{Binding IsLoading}"
+                            Spacing="5">
+                  <TextBlock Text="Loading..." VerticalAlignment="Center" Margin="10"/>
+                  <ProgressBar IsIndeterminate="True"
+                               Width="20"
+                               Height="2"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
                 <ItemsControl ItemsSource="{Binding LearningPaths}">
                   <ItemsControl.ItemTemplate>
                     <DataTemplate>

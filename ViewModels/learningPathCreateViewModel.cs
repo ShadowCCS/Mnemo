@@ -63,10 +63,15 @@ namespace MnemoProject.ViewModels
 
             GenStatus = "Analyzing request...";
             NotificationService.Info("Starting learning path generation...");
-            
-            // Start the generation process
-            GenerateLearningPath();
+
+            InitializeAsync();
         }
+
+        private async void InitializeAsync()
+        {
+            await GenerateLearningPath();
+        }
+
 
         private void ExecuteGoBack()
         {
@@ -192,11 +197,12 @@ namespace MnemoProject.ViewModels
                 // Call the AI service and log the process
                 System.Diagnostics.Debug.WriteLine($"[GenerateUnitContent] Requesting AI content for unit: {unit.Title} with theoryContent: {theoryContent}");
 
-                await _aiService.GenerateUnitContent(unit.Title, theoryContent, async content =>
+                await _aiService.GenerateUnitContent(unit.Title, theoryContent, content =>
                 {
                     System.Diagnostics.Debug.WriteLine($"[GenerateUnitContent Callback] Received content for unit: {unit.Title}. Content: {content}");
                     tcs.SetResult(content);
                 });
+
 
                 // Await the result
                 string aiContent = await tcs.Task;

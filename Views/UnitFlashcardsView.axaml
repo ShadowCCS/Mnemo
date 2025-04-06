@@ -1,0 +1,170 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="MnemoProject.Views.UnitFlashcardsView"
+             x:DataType="vm:UnitFlashcardsViewModel">
+
+  <StackPanel Spacing="20" VerticalAlignment="Center" HorizontalAlignment="Center">
+  <Border Height="512" Width="680" BorderThickness="2" BorderBrush="#262626" CornerRadius="8" Background="#1e1e1e">
+    <Grid>
+      <!-- Loading View -->
+      <StackPanel IsVisible="{Binding IsLoading}"
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center">
+        <TextBlock Text="Generating Flashcards" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center" 
+                   Foreground="White"
+                   Margin="0,0,0,20"/>
+        <TextBlock Text="{Binding LoadingStatus}" 
+                   FontSize="16" 
+                   HorizontalAlignment="Center" 
+                   Foreground="#2880b1"/>
+        <ProgressBar IsIndeterminate="True" 
+                     Width="200" 
+                     Height="4" 
+                     Margin="0,30,0,0"/>
+      </StackPanel>
+
+      <!-- Flashcard content - hidden when loading -->
+      <Grid IsVisible="{Binding !IsLoading}">
+        <!-- Top bar with hint button and progress bar -->
+        <Grid VerticalAlignment="Top" Margin="20,20,20,0">
+          <Button Command="{Binding FlipCardCommand}"
+                  HorizontalAlignment="Left" 
+                  Background="Transparent" 
+                  Foreground="White">
+            <Button.Content>
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Text="💡" FontSize="14" Margin="0,0,5,0"/>
+                <TextBlock Text="Flip" FontSize="14"/>
+              </StackPanel>
+            </Button.Content>
+          </Button>
+
+          <!-- Progress bar centered at the top -->
+          <ProgressBar Value="{Binding ProgressValue}" 
+                      Maximum="100" 
+                      Width="200" 
+                      Height="6"
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Center"
+                      Foreground="White" 
+                      Background="#3a3a3a"/>
+        </Grid>
+
+        <!-- Main content - Clickable flashcard -->
+        <Border Width="540" 
+                Height="300" 
+                Background="#262626" 
+                CornerRadius="8" 
+                Margin="0,50,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                PointerPressed="OnFlashcardPressed">
+          <StackPanel VerticalAlignment="Center" 
+                      HorizontalAlignment="Center" 
+                      Margin="20">
+            <!-- Side label: Question or Answer -->
+            <TextBlock Text="{Binding IsFlipped, Converter={StaticResource BoolToContentConverter}, ConverterParameter='Question|Answer'}"
+                       Foreground="#2880b1"
+                       FontSize="16"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,10"/>
+            
+            <!-- Explicitly display Question -->
+            <TextBlock Text="{Binding CurrentQuestion}" 
+                       IsVisible="{Binding !IsFlipped}"
+                       Foreground="White"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       FontWeight="Medium"
+                       TextWrapping="Wrap"/>
+            
+            <!-- Explicitly display Answer -->
+            <TextBlock Text="{Binding CurrentAnswer}" 
+                       IsVisible="{Binding IsFlipped}"
+                       Foreground="White"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       FontWeight="Medium"
+                       TextWrapping="Wrap"/>
+          </StackPanel>
+        </Border>
+
+        <!-- Bottom navigation -->
+        <Grid VerticalAlignment="Bottom" Margin="20,0,20,20">
+          <Button Command="{Binding PreviousCardCommand}"
+                  IsEnabled="{Binding CanGoPrevious}"
+                  HorizontalAlignment="Left">
+            <Button.Content>
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Text="←" Margin="0,0,5,0"/>
+                <TextBlock Text="Previous"/>
+              </StackPanel>
+            </Button.Content>
+          </Button>
+
+          <Button Command="{Binding NextCardCommand}"
+                  IsEnabled="{Binding CanGoNext}"
+                  HorizontalAlignment="Right">
+            <Button.Content>
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Next"/>
+                <TextBlock Text="→" Margin="5,0,0,0"/>
+              </StackPanel>
+            </Button.Content>
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
+  </Border>
+
+  <!-- Need more practice section -->
+  <Border Width="600"
+          Background="#262626"
+          BorderBrush="#3a3a3a"
+          BorderThickness="1"
+          CornerRadius="6"
+          Padding="15,10"
+          Margin="0,0,0,70"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Bottom">
+    <StackPanel Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                Spacing="10">
+      <TextBlock Text="Need more practice?"
+                 Foreground="White"
+                 VerticalAlignment="Center"/>
+      <Button Command="{Binding GenerateMoreCardsCommand}"
+              IsEnabled="{Binding !IsGeneratingMore}"
+              Padding="8,4"
+              Background="#2880b1"
+              Foreground="White">
+        <Panel>
+          <!-- Button content -->
+          <TextBlock Text="Generate More"
+                     IsVisible="{Binding !IsGeneratingMore}"/>
+
+          <!-- Loading indicator -->
+          <StackPanel Orientation="Horizontal"
+                      IsVisible="{Binding IsGeneratingMore}"
+                      Spacing="5">
+            <TextBlock Text="Generating..." VerticalAlignment="Center"/>
+            <ProgressBar IsIndeterminate="True"
+                         Width="20"
+                         Height="2"
+                         VerticalAlignment="Center"/>
+          </StackPanel>
+        </Panel>
+      </Button>
+    </StackPanel>
+  </Border>
+  </StackPanel>
+</UserControl>

@@ -15,23 +15,30 @@ namespace MnemoProject.ViewModels
     partial class UnitGuideViewModel : ViewModelBase
     {
         private readonly NavigationService _navigationService;
-
         private string _unitTitle = "Unit Guide";
-
         private const int UnitTitleMaxLength = 25;
+        private readonly string _unitGuideText;
+        private readonly MarkdownRendererService _markdownRenderer;
+
+        // Child view models for each tab
+        private UnitGuideContentViewModel _unitGuideContentViewModel;
+        private UnitQuestionsViewModel _unitQuestionsViewModel;
+        private UnitFlashcardsViewModel _unitFlashcardsViewModel;
+        private UnitLearnModeViewModel _unitLearnModeViewModel;
+
+        // Active view model
+        private ViewModelBase _activeViewModel;
+
         public string UnitTitle
         {
             get => _unitTitle;
             set => SetProperty(ref _unitTitle, StringHelper.Truncate(value, UnitTitleMaxLength));
         }
 
-        private readonly MarkdownRendererService _markdownRenderer;
-        private Control _renderedMarkdown;
-
-        public Control RenderedMarkdown
+        public ViewModelBase ActiveViewModel
         {
-            get => _renderedMarkdown;
-            set => SetProperty(ref _renderedMarkdown, value);
+            get => _activeViewModel;
+            set => SetProperty(ref _activeViewModel, value);
         }
 
         private bool _isUnitGuideSelected;
@@ -45,6 +52,7 @@ namespace MnemoProject.ViewModels
                     IsQuestionsSelected = false;
                     IsFlashcardsSelected = false;
                     IsLearnModeSelected = false;
+                    ActiveViewModel = _unitGuideContentViewModel;
                 }
             }
         }
@@ -60,6 +68,7 @@ namespace MnemoProject.ViewModels
                     IsUnitGuideSelected = false;
                     IsFlashcardsSelected = false;
                     IsLearnModeSelected = false;
+                    ActiveViewModel = _unitQuestionsViewModel;
                 }
             }
         }
@@ -75,6 +84,11 @@ namespace MnemoProject.ViewModels
                     IsUnitGuideSelected = false;
                     IsQuestionsSelected = false;
                     IsLearnModeSelected = false;
+                    ActiveViewModel = _unitFlashcardsViewModel;
+                    
+                    // Activate the flashcards view model when selected
+                    System.Diagnostics.Debug.WriteLine("Flashcards tab selected, activating view model");
+                    _unitFlashcardsViewModel.OnActivated();
                 }
             }
         }
@@ -90,21 +104,43 @@ namespace MnemoProject.ViewModels
                     IsUnitGuideSelected = false;
                     IsQuestionsSelected = false;
                     IsFlashcardsSelected = false;
+                    ActiveViewModel = _unitLearnModeViewModel;
                 }
             }
         }
-
+        
         public UnitGuideViewModel(NavigationService navigationService, string unitTitle, string unitGuideText)
         {
             _navigationService = navigationService;
-
             UnitTitle = unitTitle;
-
+            _unitGuideText = unitGuideText;
+            
+            // Debug unit content
+            System.Diagnostics.Debug.WriteLine($"UnitGuideViewModel constructor - Content length: {unitGuideText?.Length ?? 0}");
+            if (string.IsNullOrEmpty(unitGuideText))
+            {
+                System.Diagnostics.Debug.WriteLine("WARNING: Unit guide text is empty in UnitGuideViewModel constructor");
+            }
+            
             _markdownRenderer = new MarkdownRendererService();
 
-            RenderedMarkdown = _markdownRenderer.RenderMarkdown(unitGuideText);
+            // Initialize tab view models
+            InitializeViewModels();
 
-            IsUnitGuideSelected = true; // Default selection
+            // Set default tab
+            IsUnitGuideSelected = true;
+        }
+
+        private void InitializeViewModels()
+        {
+            _unitGuideContentViewModel = new UnitGuideContentViewModel(_unitGuideText, _markdownRenderer);
+            _unitQuestionsViewModel = new UnitQuestionsViewModel();
+            
+            // Ensure we're passing the unit content for flashcards generation
+            System.Diagnostics.Debug.WriteLine($"Initializing UnitFlashcardsViewModel with content length: {_unitGuideText?.Length ?? 0}");
+            _unitFlashcardsViewModel = new UnitFlashcardsViewModel(_unitGuideText ?? string.Empty);
+            
+            _unitLearnModeViewModel = new UnitLearnModeViewModel();
         }
 
         [RelayCommand]

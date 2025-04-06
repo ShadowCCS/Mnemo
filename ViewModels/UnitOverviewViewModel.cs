@@ -20,9 +20,6 @@ namespace MnemoProject.ViewModels
         private readonly DatabaseService _databaseService = new();
         public LearningPath CurrentLearningPath { get; private set; }
 
-        string _userInput = "";
-
-
         [ObservableProperty]
         private ObservableCollection<UnitViewModel> _units;
 

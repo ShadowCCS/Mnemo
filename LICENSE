@@ -1,0 +1,40 @@
+MIT License (Modified for Non-Commercial Use)
+
+Copyright (c) 2025 Mnemo
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, and distribute copies of the Software,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE MAY NOT BE USED FOR COMMERCIAL PURPOSES. This means you may not sell, license, or otherwise commercially benefit from this software or derivative works based on it.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+Monetization: While Mnemo remains completely free and open source with all its core features available to everyone, we plan to offer optional premium services in the future to simplify the setup process and add convenience.
+
+These premium features will include:
+
+Automated AI model configuration, so users can easily get started without needing to manually input API keys or deal with setup.
+
+Access to premium AI models (if available) with no need for individual configuration.
+
+Users who prefer to set up their own AI models can still use Mnemo for free and will need to handle the setup themselves, including managing API keys and updates if the AI companies change them.
+
+The premium features will provide a hassle-free experience and are available for a monthly subscription. However, they are completely optional—you will still be able to access all the features without these services, but it may require more effort to configure and maintain.
+---
+
+All non-code content in this repository (such as documentation, icons, and UI assets) is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License.
+
+See https://creativecommons.org/licenses/by-nc/4.0/ for full details.
