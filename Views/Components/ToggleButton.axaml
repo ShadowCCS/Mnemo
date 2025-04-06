@@ -1,9 +1,11 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="clr-namespace:MnemoProject.Views.Components">
+        xmlns:controls="using:MnemoProject.Views.Components">
+
   <Design.PreviewWith>
     <controls:ToggleButton />
   </Design.PreviewWith>
+
   <Style Selector="controls|ToggleButton">
     <Setter Property="Template">
       <ControlTemplate>
@@ -11,7 +13,7 @@
                 Width="50"
                 Height="30"
                 CornerRadius="15"
-                Background="#2B92BE"
+                Background="{TemplateBinding CheckedBackground}"
                 ClipToBounds="True">
           <Ellipse x:Name="PART_Indicator"
                    Width="26"
@@ -24,9 +26,8 @@
     </Setter>
   </Style>
 
-  <!-- Style for Unchecked state -->
   <Style Selector="controls|ToggleButton:not(:checked) /template/ Border#PART_Border">
-    <Setter Property="Background" Value="#a4a4a4" />
+    <Setter Property="Background" Value="{Binding UncheckedBackground, RelativeSource={RelativeSource TemplatedParent}}" />
   </Style>
 
   <Style Selector="controls|ToggleButton:not(:checked) /template/ Ellipse#PART_Indicator">
@@ -34,7 +35,6 @@
     <Setter Property="Margin" Value="2,0,0,0" />
   </Style>
 
-  <!-- Add transition animations -->
   <Style Selector="controls|ToggleButton /template/ Ellipse#PART_Indicator">
     <Setter Property="Transitions">
       <Transitions>

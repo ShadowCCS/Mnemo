@@ -2,30 +2,214 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:controls="clr-namespace:MnemoProject.Views.Components"
-             x:Class="MnemoProject.Views.Settings_ExperimentalView">
+             xmlns:controls="using:MnemoProject.Views.Components"
+             x:Class="MnemoProject.Views.Settings_ExperimentalView"
+             x:DataType="vm:Settings_ExperimentalViewModel"
+             VerticalAlignment="Stretch"
+             HorizontalAlignment="Stretch">
 
-  <ScrollViewer Padding="15">
-    <StackPanel Margin="15" Spacing="15">
-      <Label Content="Experimental" FontWeight="SemiBold" FontSize="30"/>
+  <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+    <ScrollViewer VerticalScrollBarVisibility="Visible"
+                  HorizontalScrollBarVisibility="Disabled">
+      <StackPanel Margin="30" Spacing="30">
+        <Label Content="AI Features" FontWeight="SemiBold" FontSize="32"/>
+        
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
+          <StackPanel Spacing="15">
+            <Label Content="Important Information" FontWeight="SemiBold" FontSize="22"/>
+            <TextBlock MaxWidth="1200" 
+                      FontSize="14" 
+                      Foreground="#969696" 
+                      HorizontalAlignment="Left" 
+                      TextWrapping="Wrap" 
+                      Margin="0,0,0,5"
+                      Text="These features are experimental and may not function as intended. Additionally, there is no guarantee that they will be included in future updates."/>
+                      
+            <TextBlock MaxWidth="1200" 
+                      FontSize="14" 
+                      Foreground="#969696" 
+                      HorizontalAlignment="Left" 
+                      TextWrapping="Wrap" 
+                      Text="To access AI features for free, you will need to obtain your own API key from the selected model (completely free for personal use). Providing free access to users incurs significant costs, so this step is sadly necessary, but it only needs to be done once. Please note that AI features may also produce false or unexpected responses"/>
+          </StackPanel>
+        </Border>
 
-
-      <StackPanel Spacing="5">
-        <Label Content="IMPORTANT!" FontWeight="SemiBold" FontSize="24"/>
-        <StackPanel Spacing="15">
-          <TextBlock  MaxWidth="1200" FontSize="14" Foreground="#969696" HorizontalAlignment="Left" TextWrapping="Wrap" Text="These features are experimental and may not function as intended. Additionally, there is no guarantee that they will be included in future updates."/>
-          <TextBlock  MaxWidth="1200" FontSize="14" Foreground="#969696" HorizontalAlignment="Left" TextWrapping="Wrap" Text="To access AI features for free, you will need to obtain your own API key from the selected model (completely free for personal use). Providing free access to users incurs significant costs, so this step is sadly necessary, but it only needs to be done once. Please note that AI features may also produce false or unexpected responses"/>
-        </StackPanel>
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
+          <StackPanel Spacing="15">
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,0,0,5">
+              <StackPanel Grid.Column="0" Spacing="5">
+                <TextBlock Text="Enable AI Features" FontWeight="SemiBold" FontSize="18"/>
+                <TextBlock Text="Must be enabled for AI tools to be accessible" FontSize="14" Foreground="#969696"/>
+              </StackPanel>
+              <controls:ToggleButton x:Name="AIToggle" Grid.Column="2" IsChecked="{Binding AIEnabled}" HorizontalAlignment="Right"/>
+            </Grid>
+          </StackPanel>
+        </Border>
+        
+        <!-- AI settings that appear when the toggle is enabled -->
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20" IsVisible="{Binding #AIToggle.IsChecked}">
+          <StackPanel Spacing="20">
+            <Label Content="AI Model Settings" FontWeight="SemiBold" FontSize="22"/>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" Margin="0,0,0,10">
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="AI Provider" VerticalAlignment="Center"/>
+              <ComboBox Grid.Row="0" Grid.Column="2" 
+                       SelectedIndex="0" 
+                       Width="220" 
+                       Height="40" 
+                       HorizontalAlignment="Right">
+                <ComboBoxItem>
+                  <StackPanel Orientation="Horizontal" Spacing="10">
+                    <Ellipse Fill="#74AA9C" Width="20" Height="20"/>
+                    <TextBlock Text="OpenAI (GPT-4)" FontWeight="SemiBold"/>
+                  </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                  <StackPanel Orientation="Horizontal" Spacing="10">
+                    <Ellipse Fill="#5436DA" Width="20" Height="20"/>
+                    <TextBlock Text="Anthropic (Claude)" FontWeight="SemiBold"/>
+                  </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                  <StackPanel Orientation="Horizontal" Spacing="10">
+                    <Ellipse Fill="#FFAC1C" Width="20" Height="20"/>
+                    <TextBlock Text="Gemini Pro" FontWeight="SemiBold"/>
+                  </StackPanel>
+                </ComboBoxItem>
+              </ComboBox>
+            </Grid>
+            
+            <StackPanel Spacing="10">
+              <TextBlock Text="API Key" FontWeight="SemiBold"/>
+              <Grid ColumnDefinitions="*,Auto">
+                <TextBox Grid.Column="0" 
+                        Classes="ApiKeyTextBox"
+                        Height="40" 
+                        Margin="0,0,10,0"/>
+                <Button Grid.Column="1" 
+                       Content="Verify" 
+                       Width="100" 
+                       Height="40" 
+                       Background="#2D6CA7" 
+                       Foreground="White" 
+                       CornerRadius="6">
+                  <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                      <Setter Property="Background" Value="#367AB9"/>
+                    </Style>
+                  </Button.Styles>
+                </Button>
+              </Grid>
+              <TextBlock Text="Your API key is stored locally and never shared" 
+                        Foreground="#777777" 
+                        FontSize="12" 
+                        Margin="0,5,0,0"/>
+            </StackPanel>
+          </StackPanel>
+        </Border>
+        
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20" IsVisible="{Binding #AIToggle.IsChecked}">
+          <StackPanel Spacing="15">
+            <Label Content="Available AI Features" FontWeight="SemiBold" FontSize="22"/>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,5,0,0">
+              <TextBlock Grid.Column="0" Text="Automatic flashcard generation" VerticalAlignment="Center"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+            </Grid>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
+              <TextBlock Grid.Column="0" Text="Smart content suggestions" VerticalAlignment="Center"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+            </Grid>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
+              <TextBlock Grid.Column="0" Text="Quiz generation from notes" VerticalAlignment="Center"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+            </Grid>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
+              <TextBlock Grid.Column="0" Text="Study schedule optimization" VerticalAlignment="Center"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="False" HorizontalAlignment="Right"/>
+            </Grid>
+          </StackPanel>
+        </Border>
+        
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20" IsVisible="{Binding #AIToggle.IsChecked}">
+          <StackPanel Spacing="15">
+            <Label Content="Content Generation Settings" FontWeight="SemiBold" FontSize="22"/>
+            
+            <StackPanel Spacing="10">
+              <TextBlock Text="Response Quality" FontWeight="SemiBold"/>
+              <Grid ColumnDefinitions="Auto,*,Auto">
+                <TextBlock Grid.Column="0" Text="Fast" VerticalAlignment="Center" Foreground="#969696"/>
+                <Slider Grid.Column="1" Minimum="1" Maximum="5" Value="3" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,0"/>
+                <TextBlock Grid.Column="2" Text="Accurate" VerticalAlignment="Center" Foreground="#969696"/>
+              </Grid>
+            </StackPanel>
+            
+            <StackPanel Spacing="10" Margin="0,10,0,0">
+              <TextBlock Text="Content Type Preference" FontWeight="SemiBold"/>
+              <RadioButton GroupName="ContentType" Content="Conceptual (theoretical understanding)" IsChecked="True"/>
+              <RadioButton GroupName="ContentType" Content="Practical (real-world applications)"/>
+              <RadioButton GroupName="ContentType" Content="Balanced (mix of both)"/>
+            </StackPanel>
+            
+            <StackPanel Spacing="10" Margin="0,10,0,0">
+              <TextBlock Text="Response Language" FontWeight="SemiBold"/>
+              <ComboBox SelectedIndex="0" Width="200" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Same as application language"/>
+                <ComboBoxItem Content="English"/>
+                <ComboBoxItem Content="Spanish"/>
+                <ComboBoxItem Content="French"/>
+                <ComboBoxItem Content="German"/>
+                <ComboBoxItem Content="Japanese"/>
+              </ComboBox>
+            </StackPanel>
+          </StackPanel>
+        </Border>
+        
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20" IsVisible="{Binding #AIToggle.IsChecked}">
+          <StackPanel Spacing="15">
+            <Label Content="Usage &amp; Privacy" FontWeight="SemiBold" FontSize="22"/>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,5,0,0">
+              <TextBlock Grid.Column="0" Text="Locally process data when possible" VerticalAlignment="Center"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+            </Grid>
+            
+            <TextBlock Text="When enabled, smaller AI tasks will be processed on your device for better privacy" 
+                      Foreground="#777777" 
+                      FontSize="12" 
+                      Margin="0,0,0,10"/>
+                      
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,5,0,0">
+              <TextBlock Grid.Column="0" Text="Save AI usage data" VerticalAlignment="Center"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="False" HorizontalAlignment="Right"/>
+            </Grid>
+            
+            <TextBlock Text="When enabled, your AI usage will be saved in your account to improve future results" 
+                      Foreground="#777777" 
+                      FontSize="12" 
+                      Margin="0,0,0,10"/>
+            
+            <Button Content="Clear AI Usage History" 
+                   Background="#B33A3A" 
+                   Foreground="White" 
+                   Padding="15,8" 
+                   CornerRadius="6"
+                   HorizontalAlignment="Left"
+                   Margin="0,10,0,0">
+              <Button.Styles>
+                <Style Selector="Button:pointerover /template/ ContentPresenter">
+                  <Setter Property="Background" Value="#CC4444"/>
+                </Style>
+              </Button.Styles>
+            </Button>
+          </StackPanel>
+        </Border>
       </StackPanel>
-
-      <StackPanel Spacing="5">
-        <Label Content="AI Features" FontWeight="SemiBold" FontSize="24"/>
-        <TextBlock MaxWidth="1200" FontSize="14" Foreground="#969696" HorizontalAlignment="Left" TextWrapping="Wrap" Text="This must be enabled for AI features to be accessible, including smart suggestions, AI-generated flashcards/quizzes, and more."/>
-        <controls:ToggleButton IsChecked="True" HorizontalAlignment="Left"/>
-      </StackPanel>
-
-      </StackPanel>
-  </ScrollViewer>
-
+    </ScrollViewer>
+  </Grid>
 </UserControl>

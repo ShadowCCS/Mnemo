@@ -5,11 +5,16 @@
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:SettingsViewModel"
-             x:Class="MnemoProject.Views.SettingsView">
+             x:Class="MnemoProject.Views.SettingsView"
+             VerticalAlignment="Stretch"
+             HorizontalAlignment="Stretch">
 
   <SplitView IsPaneOpen="True"
              DisplayMode="Inline"
-             OpenPaneLength="220">
+             OpenPaneLength="220"
+             PanePlacement="Left"
+             VerticalAlignment="Stretch"
+             HorizontalAlignment="Stretch">
     <SplitView.Pane>
       <StackPanel Background="#121212">
         <Label Content="Settings" FontSize="24" FontWeight="Medium" Foreground="White" Margin="10"/>
@@ -22,7 +27,11 @@
         </ListBox>
       </StackPanel>
     </SplitView.Pane>
-    <ContentControl Content="{Binding CurrentSettingsPage}"/>
+    <ContentControl Content="{Binding CurrentSettingsPage}" 
+                    VerticalAlignment="Stretch" 
+                    HorizontalAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"/>
   </SplitView>
 
 </UserControl>

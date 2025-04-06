@@ -5,49 +5,186 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:controls="clr-namespace:MnemoProject.Views.Components"
              x:Class="MnemoProject.Views.Settings_PreferencesView"
-             x:Name="PreferencesView">
-  <ScrollViewer Padding="15">
-    <StackPanel Margin="15" Spacing="15">
-      <Label Content="Flashcard Preferences" FontWeight="SemiBold" FontSize="30"/>
+             x:Name="PreferencesView"
+             VerticalAlignment="Stretch"
+             HorizontalAlignment="Stretch">
+  <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+    <ScrollViewer VerticalScrollBarVisibility="Visible"
+                  HorizontalScrollBarVisibility="Disabled">
+      <StackPanel Margin="30" Spacing="30">
+        <Label Content="Flashcard Preferences" FontWeight="SemiBold" FontSize="32"/>
 
-      <StackPanel Spacing="5">
-        <Label Content="Export Type" FontWeight="SemiBold" FontSize="24"/>
-        <Label Content="Default export format" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
-        <ComboBox SelectedIndex="0" Width="200" Height="40" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left">
-          <ComboBoxItem Content="Standard (.fcs)" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
-          <ComboBoxItem Content="Anki (.apkg)" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
-          <ComboBoxItem Content="Quizlet (.qzl)" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
-        </ComboBox>
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
+          <StackPanel Spacing="15">
+            <Label Content="Export Options" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="Configure your default export settings" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            
+            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" Margin="0,10,0,0">
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="Default export format" VerticalAlignment="Center"/>
+              <ComboBox Grid.Row="0" Grid.Column="1" 
+                       SelectedIndex="0" 
+                       Width="200" 
+                       Height="40" 
+                       HorizontalAlignment="Right">
+                <ComboBox.Styles>
+                  <Style Selector="ComboBoxItem">
+                    <Setter Property="Padding" Value="10,5"/>
+                  </Style>
+                </ComboBox.Styles>
+                <ComboBoxItem>
+                  <StackPanel Orientation="Horizontal" Spacing="10">
+                    <TextBlock Text="Standard (.fcs)" FontWeight="SemiBold"/>
+                  </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                  <StackPanel Orientation="Horizontal" Spacing="10">
+                    <TextBlock Text="Anki (.apkg)" FontWeight="SemiBold"/>
+                  </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                  <StackPanel Orientation="Horizontal" Spacing="10">
+                    <TextBlock Text="Quizlet (.qzl)" FontWeight="SemiBold"/>
+                  </StackPanel>
+                </ComboBoxItem>
+              </ComboBox>
+            </Grid>
+          </StackPanel>
+        </Border>
+
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
+          <StackPanel Spacing="15">
+            <Label Content="Study Session" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="Configure your flashcard study behavior" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
+              <StackPanel Grid.Column="0" Spacing="5">
+                <TextBlock Text="Cards per session" FontWeight="SemiBold"/>
+                <TextBlock Text="Maximum number of cards to study in one session" FontSize="12" Foreground="#969696"/>
+              </StackPanel>
+              <NumericUpDown Grid.Column="2" 
+                            Value="20" 
+                            Minimum="5"
+                            Maximum="100"
+                            Increment="5"
+                            Width="120"
+                            Height="40"
+                            HorizontalAlignment="Right"/>
+            </Grid>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,15,0,0">
+              <TextBlock Grid.Column="0" Text="Auto-play audio" VerticalAlignment="Center"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+            </Grid>
+            
+            <TextBlock Text="When enabled, audio files on flashcards will play automatically" 
+                      Foreground="#777777" 
+                      FontSize="12" 
+                      Margin="0,0,0,10"/>
+                      
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
+              <TextBlock Grid.Column="0" Text="Preload multimedia content" VerticalAlignment="Center"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+            </Grid>
+            
+            <TextBlock Text="Improves performance by loading multimedia before playing with large decks" 
+                      Foreground="#777777" 
+                      FontSize="12" 
+                      Margin="0,0,0,10"/>
+          </StackPanel>
+        </Border>
+        
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
+          <StackPanel Spacing="15">
+            <Label Content="Auto-Play Mode" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="Configure automatic flashcard progression" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" Margin="0,10,0,0">
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="Auto-play mode" VerticalAlignment="Center"/>
+              <ComboBox Grid.Row="0" Grid.Column="2" 
+                       SelectedIndex="0" 
+                       Width="180" 
+                       Height="40" 
+                       HorizontalAlignment="Right">
+                <ComboBox.Styles>
+                  <Style Selector="ComboBoxItem">
+                    <Setter Property="Padding" Value="10,5"/>
+                  </Style>
+                </ComboBox.Styles>
+                <ComboBoxItem>
+                  <StackPanel Orientation="Horizontal" Spacing="10">
+                    <PathIcon Data="M7 17V7l8 5-8 5Z" Width="16" Height="16"/>
+                    <TextBlock Text="Interval" FontWeight="SemiBold"/>
+                  </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                  <StackPanel Orientation="Horizontal" Spacing="10">
+                    <PathIcon Data="M12 6v6l4 2M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20Z" Width="16" Height="16"/>
+                    <TextBlock Text="Timer" FontWeight="SemiBold"/>
+                  </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                  <StackPanel Orientation="Horizontal" Spacing="10">
+                    <PathIcon Data="M9 3v2m1.5-2v2m1.5-2v2M9 19v2m1.5-2v2m1.5-2v2M5 8H3m2 1.5H3m2 1.5H3m16-3h-2m2 1.5h-2m2 1.5h-2M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" Width="16" Height="16"/>
+                    <TextBlock Text="Smart" FontWeight="SemiBold"/>
+                  </StackPanel>
+                </ComboBoxItem>
+              </ComboBox>
+            </Grid>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="30,15,0,0">
+              <StackPanel Grid.Column="0" Spacing="5">
+                <TextBlock Text="Interval duration" FontWeight="SemiBold"/>
+                <TextBlock Text="Seconds between cards (for Interval mode)" FontSize="12" Foreground="#969696"/>
+              </StackPanel>
+              <NumericUpDown Grid.Column="2" 
+                            Value="5" 
+                            Minimum="1"
+                            Maximum="30"
+                            Increment="1"
+                            Width="120"
+                            Height="40"
+                            HorizontalAlignment="Right"/>
+            </Grid>
+          </StackPanel>
+        </Border>
+        
+        <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
+          <StackPanel Spacing="15">
+            <Label Content="Review Reminders" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="Configure spaced repetition reminders" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
+              <TextBlock Grid.Column="0" Text="Enable review reminders" VerticalAlignment="Center"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+            </Grid>
+            
+            <TextBlock Text="Sends notifications when it's time to review your flashcards" 
+                      Foreground="#777777" 
+                      FontSize="12" 
+                      Margin="0,0,0,5"/>
+                      
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,15,0,0">
+              <TextBlock Grid.Column="0" Text="Quiet hours" VerticalAlignment="Center"/>
+              <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
+                <ComboBox SelectedIndex="3" Width="100">
+                  <ComboBoxItem Content="8:00 PM"/>
+                  <ComboBoxItem Content="9:00 PM"/>
+                  <ComboBoxItem Content="10:00 PM"/>
+                  <ComboBoxItem Content="11:00 PM"/>
+                  <ComboBoxItem Content="12:00 AM"/>
+                </ComboBox>
+                <TextBlock Text="to" VerticalAlignment="Center"/>
+                <ComboBox SelectedIndex="1" Width="100">
+                  <ComboBoxItem Content="6:00 AM"/>
+                  <ComboBoxItem Content="7:00 AM"/>
+                  <ComboBoxItem Content="8:00 AM"/>
+                  <ComboBoxItem Content="9:00 AM"/>
+                </ComboBox>
+              </StackPanel>
+            </Grid>
+          </StackPanel>
+        </Border>
       </StackPanel>
-
-      <StackPanel Spacing="5">
-        <Label Content="Card Limit per Session" FontWeight="SemiBold" FontSize="24"/>
-        <Label Content="Sets a limit on the amount of cards that will be studied in a session" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
-        <TextBox Text="20" Watermark="10" HorizontalAlignment="Left" CornerRadius="10" BorderBrush="#2B2B2B" BorderThickness="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="SemiBold"/>
-      </StackPanel>
-
-      <StackPanel Spacing="5">
-        <Label Content="Auto Play Audio" FontWeight="SemiBold" FontSize="24"/>
-        <Label Content="Automatically plays audio files on flashcards" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
-        <controls:ToggleButton IsChecked="True" HorizontalAlignment="Left"/>
-      </StackPanel>
-
-      <StackPanel Spacing="5">
-        <Label Content="Multimedia Preload" FontWeight="SemiBold" FontSize="24"/>
-        <Label Content="Loads multimedia before playing if the deck is considered large to avoid freezes and performance issues" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
-        <controls:ToggleButton IsChecked="True" HorizontalAlignment="Left"/>
-      </StackPanel>
-
-      <StackPanel Spacing="5">
-        <Label Content="Auto Play (Flashcards)" FontWeight="SemiBold" FontSize="24"/>
-        <Label Content="With this enabled the flashcards will automatically go through not requiring any keypress" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
-        <ComboBox SelectedIndex="0" Width="200" Height="40" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left">
-          <ComboBoxItem Content="Interval" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
-          <ComboBoxItem Content="Timer" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
-          <ComboBoxItem Content="Smart" FontWeight="SemiBold" HorizontalContentAlignment="Stretch"/>
-        </ComboBox>
-      </StackPanel>
-
-    </StackPanel>
-  </ScrollViewer>
+    </ScrollViewer>
+  </Grid>
 </UserControl>

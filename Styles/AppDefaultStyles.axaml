@@ -1,7 +1,8 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:md="using:Markdown.Avalonia"
         xmlns:ctxt="using:ColorTextBlock.Avalonia"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:components="clr-namespace:MnemoProject.Views.Components">
   <Design.PreviewWith>
     <Border Padding="20">
       <!-- Add Controls for Previewer Here -->
@@ -104,41 +105,160 @@
     <Setter Property="Padding" Value="10,5"/>
   </Style>
 
-  <!-- ComboBox style with left-aligned content -->
+  <!-- Improved ComboBox Styles -->
   <Style Selector="ComboBox">
+    <Setter Property="Background" Value="#252525"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="BorderBrush" Value="#3B3B3B"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="CornerRadius" Value="4"/>
+    <Setter Property="Padding" Value="12,8"/>
     <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="MaxDropDownHeight" Value="300"/>
+    <Setter Property="MinHeight" Value="38"/>
+    <Setter Property="FontSize" Value="14"/>
   </Style>
 
-  <!-- ComboBoxItem style ensuring left alignment -->
+  <Style Selector="ComboBox:pointerover /template/ Border#Background">
+    <Setter Property="Background" Value="#303030"/>
+    <Setter Property="BorderBrush" Value="#4B4B4B"/>
+  </Style>
+
+  <Style Selector="ComboBox:focus /template/ Border#Background">
+    <Setter Property="BorderBrush" Value="#2880b1"/>
+    <Setter Property="BorderThickness" Value="1"/>
+  </Style>
+
+  <Style Selector="ComboBox /template/ PathIcon">
+    <Setter Property="Foreground" Value="#969696"/>
+  </Style>
+
+  <Style Selector="ComboBox:pointerover /template/ PathIcon">
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+
   <Style Selector="ComboBoxItem">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="Padding" Value="12,8"/>
     <Setter Property="HorizontalContentAlignment" Value="Left"/>
-    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="CornerRadius" Value="2"/>
+    <Setter Property="FontSize" Value="14"/>
   </Style>
 
-  <!-- Extra style to ensure content inside ComboBoxItem is also left-aligned -->
-  <Style Selector="ComboBoxItem /template/ ContentPresenter">
-    <Setter Property="HorizontalAlignment" Value="Left"/>
-  </Style>
-  <!-- ComboBox style with left-aligned content -->
-  <Style Selector="ComboBox">
-    <Setter Property="HorizontalContentAlignment" Value="Left"/>
-    <Setter Property="HorizontalAlignment" Value="Stretch"/>
-    <Setter Property="BorderBrush" Value="#2B2B2B"/>
-    <Setter Property="BorderThickness" Value="2"/>
-    <Setter Property="CornerRadius" Value="10"/>
+  <Style Selector="ComboBoxItem:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="#2C2C2C"/>
   </Style>
 
-  <!-- ComboBoxItem style ensuring full width -->
-  <Style Selector="ComboBoxItem">
-    <Setter Property="HorizontalContentAlignment" Value="Left"/>
-    <Setter Property="HorizontalAlignment" Value="Stretch"/>
-    <Setter Property="Width" Value="{Binding $parent[ComboBox].Width}"/>
+  <Style Selector="ComboBoxItem:selected /template/ ContentPresenter">
+    <Setter Property="Background" Value="#2880b1"/>
   </Style>
 
-  <!-- Adjust ContentPresenter to be full width but with left-aligned text -->
-  <Style Selector="ComboBoxItem /template/ ContentPresenter">
-    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+  <Style Selector="ComboBox /template/ Popup">
+    <Style.Resources>
+    </Style.Resources>
+  </Style>
+
+  <Style Selector="ComboBox /template/ Popup Border">
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="BorderBrush" Value="#3B3B3B"/>
+  </Style>
+
+
+  <!-- Improved NumericUpDown Styles -->
+  <Style Selector="NumericUpDown">
+    <Setter Property="Background" Value="#252525"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="BorderBrush" Value="#3B3B3B"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="CornerRadius" Value="4"/>
+    <Setter Property="Padding" Value="8,4"/>
+    <Setter Property="MinHeight" Value="38"/>
     <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="ButtonSpinnerLocation" Value="Right"/>
+    <Setter Property="ShowButtonSpinner" Value="True"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="MinWidth" Value="120"/>
+    <Setter Property="AllowSpin" Value="True"/>
+  </Style>
+
+  <Style Selector="NumericUpDown:pointerover /template/ Border#border">
+    <Setter Property="Background" Value="#303030"/>
+    <Setter Property="BorderBrush" Value="#4B4B4B"/>
+  </Style>
+
+  <Style Selector="NumericUpDown:focus /template/ Border#border">
+    <Setter Property="BorderBrush" Value="#2880b1"/>
+    <Setter Property="BorderThickness" Value="1"/>
+  </Style>
+
+  <Style Selector="ButtonSpinner">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+  </Style>
+
+  <Style Selector="ButtonSpinner /template/ RepeatButton#PART_IncreaseButton">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="4"/>
+    <Setter Property="Height" Value="18"/>
+    <Setter Property="Foreground" Value="#969696"/>
+  </Style>
+
+  <Style Selector="ButtonSpinner /template/ RepeatButton#PART_DecreaseButton">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="4"/>
+    <Setter Property="Height" Value="18"/>
+    <Setter Property="Foreground" Value="#969696"/>
+  </Style>
+
+  <Style Selector="ButtonSpinner /template/ RepeatButton#PART_IncreaseButton:pointerover">
+    <Setter Property="Background" Value="#323232"/>
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+
+  <Style Selector="ButtonSpinner /template/ RepeatButton#PART_DecreaseButton:pointerover">
+    <Setter Property="Background" Value="#323232"/>
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+
+  <Style Selector="ButtonSpinner /template/ RepeatButton#PART_IncreaseButton:pressed">
+    <Setter Property="Background" Value="#2880b1"/>
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+
+  <Style Selector="ButtonSpinner /template/ RepeatButton#PART_DecreaseButton:pressed">
+    <Setter Property="Background" Value="#2880b1"/>
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+
+  <Style Selector="NumericUpDown /template/ TextBox">
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="CaretBrush" Value="White"/>
+    <Setter Property="MinHeight" Value="36"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+  </Style>
+
+  <!-- UnitButton Colors -->
+  <Style Selector="components|UnitButton">
+    <Setter Property="Background" Value="#1A1A1A"/>
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+
+  <Style Selector="components|UnitButton:pointerover">
+    <Setter Property="Background" Value="#242424"/>
+  </Style>
+
+  <Style Selector="components|UnitButton:disabled">
+    <Setter Property="Background" Value="#151515"/>
+    <Setter Property="Foreground" Value="#5C5C5C"/>
   </Style>
 
   <Style Selector="Button.nav-button">
@@ -168,5 +288,55 @@
   
   <Style Selector="ProgressBar:indeterminate /template/ Border#PART_Indicator">
     <Setter Property="Background" Value="#2880b1"/>
+  </Style>
+
+  <!-- Improved TextBox Styles -->
+  <Style Selector="TextBox">
+    <Setter Property="Background" Value="#252525"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="CaretBrush" Value="White"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="BorderBrush" Value="#3B3B3B"/>
+    <Setter Property="CornerRadius" Value="4"/>
+    <Setter Property="Padding" Value="12,8"/>
+    <Setter Property="MinHeight" Value="38"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="FontSize" Value="14"/>
+  </Style>
+
+  <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="#303030"/>
+    <Setter Property="BorderBrush" Value="#4B4B4B"/>
+  </Style>
+
+  <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="#303030"/>
+    <Setter Property="BorderBrush" Value="#2880b1"/>
+    <Setter Property="BorderThickness" Value="1"/>
+  </Style>
+
+  <Style Selector="TextBox.ApiKeyTextBox">
+    <Setter Property="Background" Value="#252525"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="CaretBrush" Value="White"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="BorderBrush" Value="#3B3B3B"/>
+    <Setter Property="CornerRadius" Value="4"/>
+    <Setter Property="Padding" Value="12,8"/>
+    <Setter Property="MinHeight" Value="40"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="PasswordChar" Value="•"/>
+    <Setter Property="Watermark" Value="Enter your API key here"/>
+  </Style>
+
+  <Style Selector="TextBox.ApiKeyTextBox:pointerover /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="#303030"/>
+    <Setter Property="BorderBrush" Value="#4B4B4B"/>
+  </Style>
+
+  <Style Selector="TextBox.ApiKeyTextBox:focus /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="#303030"/>
+    <Setter Property="BorderBrush" Value="#2880b1"/>
   </Style>
 </Styles>
