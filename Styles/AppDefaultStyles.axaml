@@ -70,17 +70,18 @@
     <Setter Property="BorderThickness" Value="0"/>
     <Setter Property="Padding" Value="5"/>
     <Setter Property="TextWrapping" Value="Wrap"/>
+    <Setter Property="VerticalContentAlignment" Value="Top"/>
   </Style>
 
   <!-- Remove the default focus styling -->
-  <Style Selector="TextBox.DarkTextBox:focus /template/ Border">
+  <Style Selector="TextBox.DarkTextBox:focus /template/ Border#PART_BorderElement">
     <Setter Property="Background" Value="Transparent"/>
     <Setter Property="BorderThickness" Value="0"/>
     <Setter Property="BorderBrush" Value="Transparent"/>
   </Style>
 
   <!-- Remove hover styling -->
-  <Style Selector="TextBox.DarkTextBox:pointerover /template/ Border">
+  <Style Selector="TextBox.DarkTextBox:pointerover /template/ Border#PART_BorderElement">
     <Setter Property="Background" Value="Transparent"/>
     <Setter Property="BorderThickness" Value="0"/>
     <Setter Property="BorderBrush" Value="Transparent"/>
@@ -315,6 +316,30 @@
     <Setter Property="BorderThickness" Value="1"/>
   </Style>
 
+  <Style Selector="TextBox.LearningPathTextBox">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="CaretBrush" Value="White"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="BorderBrush" Value="Transparent"/>
+    <Setter Property="CornerRadius" Value="0"/>
+    <Setter Property="Padding" Value="5"/>
+    <Setter Property="MinHeight" Value="38"/>
+    <Setter Property="VerticalContentAlignment" Value="Top"/>
+    <Setter Property="FontSize" Value="14"/>
+  </Style>
+
+  <Style Selector="TextBox.LearningPathTextBox:pointerover /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="Transparent"/>
+  </Style>
+
+  <Style Selector="TextBox.LearningPathTextBox:focus /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="Transparent"/>
+  </Style>
+
+  <!-- API Key TextBox Style -->
   <Style Selector="TextBox.ApiKeyTextBox">
     <Setter Property="Background" Value="#252525"/>
     <Setter Property="Foreground" Value="White"/>

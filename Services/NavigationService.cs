@@ -17,12 +17,12 @@ namespace MnemoProject.Services
             add 
             {
                 _navigationChanged += value;
-                NotificationService.LogToFile($"NavigationService: Added event handler. Count: {GetHandlerCount()}");
+                LogService.Log.Debug($"NavigationService: Added event handler. Count: {GetHandlerCount()}");
             }
             remove 
             {
                 _navigationChanged -= value;
-                NotificationService.LogToFile($"NavigationService: Removed event handler. Count: {GetHandlerCount()}");
+                LogService.Log.Debug($"NavigationService: Removed event handler. Count: {GetHandlerCount()}");
             }
         }
         
@@ -34,29 +34,29 @@ namespace MnemoProject.Services
 
         public void NavigateTo(ViewModelBase viewModel)
         {
+            if (viewModel == null)
+            {
+                LogService.Log.Error("Attempted to navigate to null view model");
+                throw new ArgumentNullException(nameof(viewModel));
+            }
+
             try
             {
                 // Check if trying to navigate to the same view model type
                 if (CurrentView != null && CurrentView.GetType() == viewModel.GetType())
                 {
-                    System.Diagnostics.Debug.WriteLine($"Attempted to navigate to the same view type: {viewModel.GetType().Name}");
+                    LogService.Log.Debug($"Skipping navigation to same view type: {viewModel.GetType().Name}");
                     return;
                 }
                 
-                if (viewModel == null)
-                {
-                    NotificationService.Error("Invalid navigation: view model is null");
-                    return;
-                }
-                
+                LogService.Log.Info($"Navigating to: {viewModel.GetType().Name}");
                 _navigationStack.Push(viewModel);
                 OnNavigationChanged();
-                NotificationService.LogToFile($"Navigated to: {viewModel.GetType().Name}");
             }
             catch (Exception ex)
             {
-                NotificationService.Error($"Navigation error: {ex.Message}");
-                NotificationService.LogToFile($"[ERROR] NavigateTo: {ex}");
+                LogService.Log.Error($"Navigation error: {ex.Message}");
+                throw;
             }
         }
 
@@ -71,23 +71,30 @@ namespace MnemoProject.Services
                     var previousView = _navigationStack.Peek();
                     _navigationStack.Pop();
                     OnNavigationChanged();
-                    NotificationService.LogToFile($"Navigated back from: {previousView.GetType().Name} to: {CurrentView?.GetType().Name}");
+                    LogService.Log.Info($"Navigated back from: {previousView.GetType().Name} to: {CurrentView?.GetType().Name ?? "null"}");
                 }
                 else
                 {
-                    NotificationService.LogToFile("Cannot go back: at root of navigation stack");
+                    LogService.Log.Debug("Cannot go back: at root of navigation stack");
                 }
             }
             catch (Exception ex)
             {
-                NotificationService.Error($"Navigation error while going back: {ex.Message}");
-                NotificationService.LogToFile($"[ERROR] GoBack: {ex}");
+                LogService.Log.Error($"Navigation error while going back: {ex.Message}");
+                throw;
             }
         }
 
         private void OnNavigationChanged()
         {
-            _navigationChanged?.Invoke();
+            try
+            {
+                _navigationChanged?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                LogService.Log.Error($"Error in navigation changed event: {ex.Message}");
+            }
         }
 
         public void NavigateToNested<TParent>(
@@ -96,7 +103,34 @@ namespace MnemoProject.Services
             Action<TParent, ViewModelBase> setNestedProperty)
             where TParent : ViewModelBase
         {
-            setNestedProperty(parent, nestedViewModel);
+            if (parent == null)
+            {
+                LogService.Log.Error("Attempted to navigate to nested view with null parent");
+                throw new ArgumentNullException(nameof(parent));
+            }
+
+            if (nestedViewModel == null)
+            {
+                LogService.Log.Error("Attempted to navigate to null nested view model");
+                throw new ArgumentNullException(nameof(nestedViewModel));
+            }
+
+            if (setNestedProperty == null)
+            {
+                LogService.Log.Error("Attempted to navigate to nested view with null setter");
+                throw new ArgumentNullException(nameof(setNestedProperty));
+            }
+
+            try
+            {
+                LogService.Log.Debug($"Navigating to nested view: {nestedViewModel.GetType().Name} in parent: {parent.GetType().Name}");
+                setNestedProperty(parent, nestedViewModel);
+            }
+            catch (Exception ex)
+            {
+                LogService.Log.Error($"Error navigating to nested view: {ex.Message}");
+                throw;
+            }
         }
     }
 }

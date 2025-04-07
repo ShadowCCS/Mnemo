@@ -11,6 +11,7 @@
     <converters:BoolToContentConverter x:Key="BoolToContentConverter"/>
     <converters:BoolChoiceConverter x:Key="BoolChoiceConverter"/>
     <converters:StringNotEmptyConverter x:Key="StringNotEmptyConverter"/>
+    <converters:EqualityConverter x:Key="EqualityConverter"/>
   </Application.Resources>
   <Application.Styles>
     <FluentTheme />

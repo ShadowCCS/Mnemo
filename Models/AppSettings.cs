@@ -49,6 +49,161 @@ public class AppSettings : INotifyPropertyChanged
         set => SetProperty(ref _animationToggle, value, nameof(AnimationToggle), Save);
     }
 
+    // AI Features settings
+    private bool _aiEnabled = false;
+    public bool AIEnabled
+    {
+        get => _aiEnabled;
+        set => SetProperty(ref _aiEnabled, value, nameof(AIEnabled), Save);
+    }
+
+    private string _aiProvider = "OpenAI (GPT-4)";
+    public string AIProvider
+    {
+        get => _aiProvider;
+        set => SetProperty(ref _aiProvider, value, nameof(AIProvider), Save);
+    }
+
+    private string _apiKey = string.Empty;
+    public string APIKey
+    {
+        get => _apiKey;
+        set => SetProperty(ref _apiKey, value, nameof(APIKey), Save);
+    }
+
+    // AI Features toggles
+    private bool _autoFlashcardGeneration = true;
+    public bool AutoFlashcardGeneration
+    {
+        get => _autoFlashcardGeneration;
+        set => SetProperty(ref _autoFlashcardGeneration, value, nameof(AutoFlashcardGeneration), Save);
+    }
+
+    private bool _smartContentSuggestions = true;
+    public bool SmartContentSuggestions
+    {
+        get => _smartContentSuggestions;
+        set => SetProperty(ref _smartContentSuggestions, value, nameof(SmartContentSuggestions), Save);
+    }
+
+    private bool _quizGenerationFromNotes = true;
+    public bool QuizGenerationFromNotes
+    {
+        get => _quizGenerationFromNotes;
+        set => SetProperty(ref _quizGenerationFromNotes, value, nameof(QuizGenerationFromNotes), Save);
+    }
+
+    private bool _studyScheduleOptimization = false;
+    public bool StudyScheduleOptimization
+    {
+        get => _studyScheduleOptimization;
+        set => SetProperty(ref _studyScheduleOptimization, value, nameof(StudyScheduleOptimization), Save);
+    }
+
+    // Content Generation settings
+    private int _responseQuality = 3;
+    public int ResponseQuality
+    {
+        get => _responseQuality;
+        set => SetProperty(ref _responseQuality, value, nameof(ResponseQuality), Save);
+    }
+
+    private string _contentTypePreference = "Balanced";
+    public string ContentTypePreference
+    {
+        get => _contentTypePreference;
+        set => SetProperty(ref _contentTypePreference, value, nameof(ContentTypePreference), Save);
+    }
+
+    private string _responseLanguage = "Same as application language";
+    public string ResponseLanguage
+    {
+        get => _responseLanguage;
+        set => SetProperty(ref _responseLanguage, value, nameof(ResponseLanguage), Save);
+    }
+
+    // Usage & Privacy settings
+    private bool _processDataLocally = true;
+    public bool ProcessDataLocally
+    {
+        get => _processDataLocally;
+        set => SetProperty(ref _processDataLocally, value, nameof(ProcessDataLocally), Save);
+    }
+
+    private bool _saveAIUsageData = false;
+    public bool SaveAIUsageData
+    {
+        get => _saveAIUsageData;
+        set => SetProperty(ref _saveAIUsageData, value, nameof(SaveAIUsageData), Save);
+    }
+
+    // Export Options
+    private string _defaultExportFormat = "Standard (.fcs)";
+    public string DefaultExportFormat
+    {
+        get => _defaultExportFormat;
+        set => SetProperty(ref _defaultExportFormat, value, nameof(DefaultExportFormat), Save);
+    }
+
+    // Study Session settings
+    private int _cardsPerSession = 15;
+    public int CardsPerSession
+    {
+        get => _cardsPerSession;
+        set => SetProperty(ref _cardsPerSession, value, nameof(CardsPerSession), Save);
+    }
+
+    private bool _autoPlayAudio = false;
+    public bool AutoPlayAudio
+    {
+        get => _autoPlayAudio;
+        set => SetProperty(ref _autoPlayAudio, value, nameof(AutoPlayAudio), Save);
+    }
+
+    private bool _preloadMultimedia = true;
+    public bool PreloadMultimedia
+    {
+        get => _preloadMultimedia;
+        set => SetProperty(ref _preloadMultimedia, value, nameof(PreloadMultimedia), Save);
+    }
+
+    // Auto-Play Mode settings
+    private string _autoPlayMode = "Interval";
+    public string AutoPlayMode
+    {
+        get => _autoPlayMode;
+        set => SetProperty(ref _autoPlayMode, value, nameof(AutoPlayMode), Save);
+    }
+
+    private int _intervalDuration = 5;
+    public int IntervalDuration
+    {
+        get => _intervalDuration;
+        set => SetProperty(ref _intervalDuration, value, nameof(IntervalDuration), Save);
+    }
+
+    // Review Reminders settings
+    private bool _enableReviewReminders = true;
+    public bool EnableReviewReminders
+    {
+        get => _enableReviewReminders;
+        set => SetProperty(ref _enableReviewReminders, value, nameof(EnableReviewReminders), Save);
+    }
+
+    private string _quietHoursStart = "8:00 PM";
+    public string QuietHoursStart
+    {
+        get => _quietHoursStart;
+        set => SetProperty(ref _quietHoursStart, value, nameof(QuietHoursStart), Save);
+    }
+
+    private string _quietHoursEnd = "7:00 AM";
+    public string QuietHoursEnd
+    {
+        get => _quietHoursEnd;
+        set => SetProperty(ref _quietHoursEnd, value, nameof(QuietHoursEnd), Save);
+    }
+
     // Widget configuration
     private List<WidgetConfig> _enabledWidgets = new();
     public List<WidgetConfig> EnabledWidgets

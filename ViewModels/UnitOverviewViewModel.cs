@@ -135,15 +135,6 @@ namespace MnemoProject.ViewModels
             string unitContent = unit.UnitContent;
 
             _navigationService.NavigateTo(new UnitGuideViewModel(_navigationService, unit.Title, unitContent));
-            
-            // Optionally save content to a file
-            string directoryPath = "D:\\Temp";
-            Directory.CreateDirectory(directoryPath); // Ensure directory exists
-
-            string sanitizedTitle = string.Concat(unit.Title.Split(Path.GetInvalidFileNameChars()));
-            string filePath = Path.Combine(directoryPath, $"{sanitizedTitle}.txt");
-
-            File.WriteAllText(filePath, unitContent);
 
             // After opening the current unit, start generating the next unit if needed
             var nextUnitNumber = unit.UnitNumber + 1;

@@ -95,7 +95,10 @@
                   <ItemsControl.ItemTemplate>
                     <DataTemplate>
                       <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <TextBlock Foreground="White" Margin="5" FontSize="16" Text="{Binding Title}"/>
+                        <TextBox Classes="LearningPathTextBox"
+                                Text="{Binding Title}"
+                                MinWidth="200"
+                                Margin="5"/>
                         <Button Command="{Binding $parent[UserControl].((vm:LearningPathViewModel)DataContext).OpenLearningPathCommand}"
                                 CommandParameter="{Binding Id}">
                           <TextBlock Text="Continue" Foreground="White"/>

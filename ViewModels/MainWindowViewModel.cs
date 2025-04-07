@@ -15,8 +15,8 @@ namespace MnemoProject.ViewModels
     public partial class MainWindowViewModel : ViewModelBase
     {
         private readonly NavigationService _navigationService;
-
         private static bool _notificationSent = false;
+        private string _appVersion = string.Empty;
 
         [ObservableProperty]
         private bool isSidebarExpanded = true;
@@ -26,9 +26,6 @@ namespace MnemoProject.ViewModels
         [ObservableProperty]
         private ListItemTemplate? _selectedSidebarItem;
 
-
-        private string _appVersion;
-
         public string AppVersion
         {
             get => _appVersion;
@@ -37,6 +34,7 @@ namespace MnemoProject.ViewModels
 
         public MainWindowViewModel()
         {
+            LogService.Log.Info("Initializing MainWindowViewModel");
             _navigationService = new NavigationService();
             _navigationService.NavigationChanged += () => OnPropertyChanged(nameof(CurrentPage));
 
@@ -46,6 +44,7 @@ namespace MnemoProject.ViewModels
 
             if (!_notificationSent)
             {
+                LogService.Log.Info("Showing welcome notification");
                 NotificationService.Info($"You are running {AppVersion}", "Welcome To Mnemo!");
                 _notificationSent = true;
             }
@@ -54,26 +53,29 @@ namespace MnemoProject.ViewModels
         [RelayCommand]
         public void CloseButtonCommand()
         {
-            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
+            LogService.Log.Info("Closing application");
+            if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
             {
                 desktopLifetime.Shutdown();
             }
         }
 
         [RelayCommand]
-        public void MinimizeButtonCommand(object window)
+        public void MinimizeButtonCommand(object? window)
         {
             if (window is Window win)
             {
+                LogService.Log.Debug("Minimizing window");
                 win.WindowState = WindowState.Minimized;
             }
         }
 
         [RelayCommand]
-        public void FullscreenButtonCommand(object window)
+        public void FullscreenButtonCommand(object? window)
         {
             if (window is Window win)
             {
+                LogService.Log.Debug("Toggling fullscreen");
                 if (win.WindowState == WindowState.Normal)
                 {
                     win.WindowState = WindowState.Maximized;
@@ -89,6 +91,7 @@ namespace MnemoProject.ViewModels
         {
             if (value != null)
             {
+                LogService.Log.Debug($"Selected sidebar item: {value.Label}");
                 // Create instance with navigation service
                 var constructor = value.ModelType.GetConstructor(new[] { typeof(NavigationService) });
                 if (constructor != null)
@@ -129,29 +132,45 @@ namespace MnemoProject.ViewModels
         [RelayCommand]
         private void TriggerSidebar()
         {
+            LogService.Log.Debug($"Toggling sidebar: {(IsSidebarExpanded ? "collapsing" : "expanding")}");
             IsSidebarExpanded = !IsSidebarExpanded;
         }
 
         [RelayCommand]
-        public void GoBack() => _navigationService.GoBack();
+        public void GoBack()
+        {
+            LogService.Log.Debug("Navigating back");
+            _navigationService.GoBack();
+        }
 
         [RelayCommand]
-        public void NavigateTo(ViewModelBase viewModel) => _navigationService.NavigateTo(viewModel);
+        public void NavigateTo(ViewModelBase viewModel)
+        {
+            LogService.Log.Debug($"Navigating to {viewModel.GetType().Name}");
+            _navigationService.NavigateTo(viewModel);
+        }
     }
 
     public class ListItemTemplate
     {
+        public string Label { get; }
+        public Type ModelType { get; }
+        public StreamGeometry ListItemIcon { get; }
+
         public ListItemTemplate(Type type, string iconKey)
         {
             ModelType = type;
             Label = FormatLabel(type.Name.Replace("ViewModel", ""));
-            Application.Current!.TryFindResource(iconKey, out var res);
-            ListItemIcon = (StreamGeometry)res!;
+            if (Application.Current?.TryFindResource(iconKey, out var res) == true && res is StreamGeometry geometry)
+            {
+                ListItemIcon = geometry;
+            }
+            else
+            {
+                ListItemIcon = new StreamGeometry();
+                LogService.Log.Warning($"Icon resource '{iconKey}' not found for {type.Name}");
+            }
         }
-
-        public string Label { get; }
-        public Type ModelType { get; }
-        public StreamGeometry ListItemIcon { get; }
 
         private string FormatLabel(string name)
         {
@@ -168,5 +187,4 @@ namespace MnemoProject.ViewModels
             Label = label;
         }
     }
-    
 }

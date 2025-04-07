@@ -43,7 +43,7 @@
                 <TextBlock Text="Enable AI Features" FontWeight="SemiBold" FontSize="18"/>
                 <TextBlock Text="Must be enabled for AI tools to be accessible" FontSize="14" Foreground="#969696"/>
               </StackPanel>
-              <controls:ToggleButton x:Name="AIToggle" Grid.Column="2" IsChecked="{Binding AIEnabled}" HorizontalAlignment="Right"/>
+              <controls:ToggleButton x:Name="AIToggle" Grid.Column="2" IsChecked="{Binding AIEnabled, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
           </StackPanel>
         </Border>
@@ -56,28 +56,15 @@
             <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" Margin="0,0,0,10">
               <TextBlock Grid.Row="0" Grid.Column="0" Text="AI Provider" VerticalAlignment="Center"/>
               <ComboBox Grid.Row="0" Grid.Column="2" 
+                       x:Name="AIProviderComboBox"
                        SelectedIndex="0" 
                        Width="220" 
-                       Height="40" 
+                       Height="40"
+                       SelectedItem="{Binding AIProvider}"
                        HorizontalAlignment="Right">
-                <ComboBoxItem>
-                  <StackPanel Orientation="Horizontal" Spacing="10">
-                    <Ellipse Fill="#74AA9C" Width="20" Height="20"/>
-                    <TextBlock Text="OpenAI (GPT-4)" FontWeight="SemiBold"/>
-                  </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem>
-                  <StackPanel Orientation="Horizontal" Spacing="10">
-                    <Ellipse Fill="#5436DA" Width="20" Height="20"/>
-                    <TextBlock Text="Anthropic (Claude)" FontWeight="SemiBold"/>
-                  </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem>
-                  <StackPanel Orientation="Horizontal" Spacing="10">
-                    <Ellipse Fill="#FFAC1C" Width="20" Height="20"/>
-                    <TextBlock Text="Gemini Pro" FontWeight="SemiBold"/>
-                  </StackPanel>
-                </ComboBoxItem>
+                <ComboBoxItem Content="OpenAI (GPT-4)" />
+                <ComboBoxItem Content="Anthropic (Claude)" />
+                <ComboBoxItem Content="Gemini Pro" />
               </ComboBox>
             </Grid>
             
@@ -86,6 +73,7 @@
               <Grid ColumnDefinitions="*,Auto">
                 <TextBox Grid.Column="0" 
                         Classes="ApiKeyTextBox"
+                        Text="{Binding APIKey}"
                         Height="40" 
                         Margin="0,0,10,0"/>
                 <Button Grid.Column="1" 
@@ -116,22 +104,22 @@
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,5,0,0">
               <TextBlock Grid.Column="0" Text="Automatic flashcard generation" VerticalAlignment="Center"/>
-              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="{Binding AutoFlashcardGeneration, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
               <TextBlock Grid.Column="0" Text="Smart content suggestions" VerticalAlignment="Center"/>
-              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="{Binding SmartContentSuggestions, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
               <TextBlock Grid.Column="0" Text="Quiz generation from notes" VerticalAlignment="Center"/>
-              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="{Binding QuizGenerationFromNotes, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
               <TextBlock Grid.Column="0" Text="Study schedule optimization" VerticalAlignment="Center"/>
-              <controls:ToggleButton Grid.Column="2" IsChecked="False" HorizontalAlignment="Right"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="{Binding StudyScheduleOptimization, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
           </StackPanel>
         </Border>
@@ -144,21 +132,25 @@
               <TextBlock Text="Response Quality" FontWeight="SemiBold"/>
               <Grid ColumnDefinitions="Auto,*,Auto">
                 <TextBlock Grid.Column="0" Text="Fast" VerticalAlignment="Center" Foreground="#969696"/>
-                <Slider Grid.Column="1" Minimum="1" Maximum="5" Value="3" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,0"/>
+                <Slider Grid.Column="1" Minimum="1" Maximum="5" Value="{Binding ResponseQuality}" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,0"/>
                 <TextBlock Grid.Column="2" Text="Accurate" VerticalAlignment="Center" Foreground="#969696"/>
               </Grid>
             </StackPanel>
             
             <StackPanel Spacing="10" Margin="0,10,0,0">
               <TextBlock Text="Content Type Preference" FontWeight="SemiBold"/>
-              <RadioButton GroupName="ContentType" Content="Conceptual (theoretical understanding)" IsChecked="True"/>
-              <RadioButton GroupName="ContentType" Content="Practical (real-world applications)"/>
-              <RadioButton GroupName="ContentType" Content="Balanced (mix of both)"/>
+              <RadioButton GroupName="ContentType" Content="Conceptual (theoretical understanding)" IsChecked="{Binding ContentTypePreference, Converter={StaticResource EqualityConverter}, ConverterParameter=Conceptual}"/>
+              <RadioButton GroupName="ContentType" Content="Practical (real-world applications)" IsChecked="{Binding ContentTypePreference, Converter={StaticResource EqualityConverter}, ConverterParameter=Practical}"/>
+              <RadioButton GroupName="ContentType" Content="Balanced (mix of both)" IsChecked="{Binding ContentTypePreference, Converter={StaticResource EqualityConverter}, ConverterParameter=Balanced}"/>
             </StackPanel>
             
             <StackPanel Spacing="10" Margin="0,10,0,0">
               <TextBlock Text="Response Language" FontWeight="SemiBold"/>
-              <ComboBox SelectedIndex="0" Width="200" HorizontalAlignment="Left">
+              <ComboBox x:Name="ResponseLanguageComboBox" 
+                      SelectedIndex="0" 
+                      Width="200" 
+                      HorizontalAlignment="Left" 
+                      SelectedItem="{Binding ResponseLanguage}">
                 <ComboBoxItem Content="Same as application language"/>
                 <ComboBoxItem Content="English"/>
                 <ComboBoxItem Content="Spanish"/>
@@ -176,7 +168,7 @@
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,5,0,0">
               <TextBlock Grid.Column="0" Text="Locally process data when possible" VerticalAlignment="Center"/>
-              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="{Binding ProcessDataLocally, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
             <TextBlock Text="When enabled, smaller AI tasks will be processed on your device for better privacy" 
@@ -186,7 +178,7 @@
                       
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,5,0,0">
               <TextBlock Grid.Column="0" Text="Save AI usage data" VerticalAlignment="Center"/>
-              <controls:ToggleButton Grid.Column="2" IsChecked="False" HorizontalAlignment="Right"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="{Binding SaveAIUsageData, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
             <TextBlock Text="When enabled, your AI usage will be saved in your account to improve future results" 

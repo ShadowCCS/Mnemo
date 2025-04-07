@@ -36,42 +36,39 @@ namespace MnemoProject.Models
         // Check if we need to reset weekly stats
         public void CheckWeeklyReset()
         {
-            var currentWeekStart = GetStartOfWeek(DateTime.Today);
-            if (WeekStartDate < currentWeekStart)
+            var now = DateTime.Now;
+            var lastStudy = LastStudyDate;
+
+            // If it's been more than 7 days since the last study, reset weekly stats
+            if ((now - lastStudy).TotalDays >= 7)
             {
-                // Reset weekly statistics
                 WeeklyStudyTimeSeconds = 0;
-                WeekStartDate = currentWeekStart;
+                CurrentStudyGoalMinutes = 0;
             }
         }
         
         // Check and update streak
         public void UpdateStreak(DateTime studyDate)
         {
-            if (LastStudyDate.Date == studyDate.Date)
+            var lastStudy = LastStudyDate;
+            var timeSinceLastStudy = studyDate - lastStudy;
+
+            if (timeSinceLastStudy.TotalDays <= 1)
             {
-                // Already recorded for today
-                return;
-            }
-            
-            if ((studyDate.Date - LastStudyDate.Date).Days == 1)
-            {
-                // Consecutive day, increment streak
+                // Same day or next day, increment streak
                 CurrentStreak++;
+                if (CurrentStreak > LongestStreak)
+                {
+                    LongestStreak = CurrentStreak;
+                }
             }
-            else if ((studyDate.Date - LastStudyDate.Date).Days > 1)
+            else if (timeSinceLastStudy.TotalDays > 1)
             {
-                // Streak broken
+                // More than one day gap, reset streak
                 CurrentStreak = 1;
             }
-            
-            // Update longest streak if current is longer
-            if (CurrentStreak > LongestStreak)
-            {
-                LongestStreak = CurrentStreak;
-            }
-            
-            LastStudyDate = studyDate.Date;
+
+            LastStudyDate = studyDate;
         }
     }
 }

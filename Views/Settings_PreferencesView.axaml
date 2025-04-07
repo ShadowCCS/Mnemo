@@ -2,9 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:controls="clr-namespace:MnemoProject.Views.Components"
              x:Class="MnemoProject.Views.Settings_PreferencesView"
+             x:DataType="vm:Settings_PreferencesViewModel"
              x:Name="PreferencesView"
              VerticalAlignment="Stretch"
              HorizontalAlignment="Stretch">
@@ -22,30 +24,20 @@
             <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" Margin="0,10,0,0">
               <TextBlock Grid.Row="0" Grid.Column="0" Text="Default export format" VerticalAlignment="Center"/>
               <ComboBox Grid.Row="0" Grid.Column="1" 
+                       x:Name="DefaultExportFormatComboBox"
                        SelectedIndex="0" 
                        Width="200" 
                        Height="40" 
+                       SelectedItem="{Binding DefaultExportFormat}"
                        HorizontalAlignment="Right">
                 <ComboBox.Styles>
                   <Style Selector="ComboBoxItem">
                     <Setter Property="Padding" Value="10,5"/>
                   </Style>
                 </ComboBox.Styles>
-                <ComboBoxItem>
-                  <StackPanel Orientation="Horizontal" Spacing="10">
-                    <TextBlock Text="Standard (.fcs)" FontWeight="SemiBold"/>
-                  </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem>
-                  <StackPanel Orientation="Horizontal" Spacing="10">
-                    <TextBlock Text="Anki (.apkg)" FontWeight="SemiBold"/>
-                  </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem>
-                  <StackPanel Orientation="Horizontal" Spacing="10">
-                    <TextBlock Text="Quizlet (.qzl)" FontWeight="SemiBold"/>
-                  </StackPanel>
-                </ComboBoxItem>
+                <ComboBoxItem Content="Standard (.fcs)" />
+                <ComboBoxItem Content="Anki (.apkg)" />
+                <ComboBoxItem Content="Quizlet (.qzl)" />
               </ComboBox>
             </Grid>
           </StackPanel>
@@ -62,7 +54,7 @@
                 <TextBlock Text="Maximum number of cards to study in one session" FontSize="12" Foreground="#969696"/>
               </StackPanel>
               <NumericUpDown Grid.Column="2" 
-                            Value="20" 
+                            Value="{Binding CardsPerSession}"
                             Minimum="5"
                             Maximum="100"
                             Increment="5"
@@ -73,7 +65,7 @@
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,15,0,0">
               <TextBlock Grid.Column="0" Text="Auto-play audio" VerticalAlignment="Center"/>
-              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="{Binding AutoPlayAudio, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
             <TextBlock Text="When enabled, audio files on flashcards will play automatically" 
@@ -83,7 +75,7 @@
                       
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
               <TextBlock Grid.Column="0" Text="Preload multimedia content" VerticalAlignment="Center"/>
-              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="{Binding PreloadMultimedia, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
             <TextBlock Text="Improves performance by loading multimedia before playing with large decks" 
@@ -101,33 +93,20 @@
             <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" Margin="0,10,0,0">
               <TextBlock Grid.Row="0" Grid.Column="0" Text="Auto-play mode" VerticalAlignment="Center"/>
               <ComboBox Grid.Row="0" Grid.Column="2" 
+                       x:Name="AutoPlayModeComboBox"
                        SelectedIndex="0" 
                        Width="180" 
                        Height="40" 
+                       SelectedItem="{Binding AutoPlayMode}"
                        HorizontalAlignment="Right">
                 <ComboBox.Styles>
                   <Style Selector="ComboBoxItem">
                     <Setter Property="Padding" Value="10,5"/>
                   </Style>
                 </ComboBox.Styles>
-                <ComboBoxItem>
-                  <StackPanel Orientation="Horizontal" Spacing="10">
-                    <PathIcon Data="M7 17V7l8 5-8 5Z" Width="16" Height="16"/>
-                    <TextBlock Text="Interval" FontWeight="SemiBold"/>
-                  </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem>
-                  <StackPanel Orientation="Horizontal" Spacing="10">
-                    <PathIcon Data="M12 6v6l4 2M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20Z" Width="16" Height="16"/>
-                    <TextBlock Text="Timer" FontWeight="SemiBold"/>
-                  </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem>
-                  <StackPanel Orientation="Horizontal" Spacing="10">
-                    <PathIcon Data="M9 3v2m1.5-2v2m1.5-2v2M9 19v2m1.5-2v2m1.5-2v2M5 8H3m2 1.5H3m2 1.5H3m16-3h-2m2 1.5h-2m2 1.5h-2M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" Width="16" Height="16"/>
-                    <TextBlock Text="Smart" FontWeight="SemiBold"/>
-                  </StackPanel>
-                </ComboBoxItem>
+                <ComboBoxItem Content="Interval" />
+                <ComboBoxItem Content="Timer" />
+                <ComboBoxItem Content="Smart" />
               </ComboBox>
             </Grid>
             
@@ -137,7 +116,7 @@
                 <TextBlock Text="Seconds between cards (for Interval mode)" FontSize="12" Foreground="#969696"/>
               </StackPanel>
               <NumericUpDown Grid.Column="2" 
-                            Value="5" 
+                            Value="{Binding IntervalDuration}"
                             Minimum="1"
                             Maximum="30"
                             Increment="1"
@@ -155,7 +134,7 @@
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
               <TextBlock Grid.Column="0" Text="Enable review reminders" VerticalAlignment="Center"/>
-              <controls:ToggleButton Grid.Column="2" IsChecked="True" HorizontalAlignment="Right"/>
+              <controls:ToggleButton Grid.Column="2" IsChecked="{Binding EnableReviewReminders, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
             <TextBlock Text="Sends notifications when it's time to review your flashcards" 
@@ -166,7 +145,7 @@
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,15,0,0">
               <TextBlock Grid.Column="0" Text="Quiet hours" VerticalAlignment="Center"/>
               <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
-                <ComboBox SelectedIndex="3" Width="100">
+                <ComboBox x:Name="QuietHoursStartComboBox" SelectedIndex="3" Width="100" SelectedItem="{Binding QuietHoursStart}">
                   <ComboBoxItem Content="8:00 PM"/>
                   <ComboBoxItem Content="9:00 PM"/>
                   <ComboBoxItem Content="10:00 PM"/>
@@ -174,7 +153,7 @@
                   <ComboBoxItem Content="12:00 AM"/>
                 </ComboBox>
                 <TextBlock Text="to" VerticalAlignment="Center"/>
-                <ComboBox SelectedIndex="1" Width="100">
+                <ComboBox x:Name="QuietHoursEndComboBox" SelectedIndex="1" Width="100" SelectedItem="{Binding QuietHoursEnd}">
                   <ComboBoxItem Content="6:00 AM"/>
                   <ComboBoxItem Content="7:00 AM"/>
                   <ComboBoxItem Content="8:00 AM"/>

@@ -1,19 +1,29 @@
 using System;
 using System.IO;
-using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Security.Cryptography;
+using System.Collections.Generic;
+using MnemoProject.Services;
 using MnemoProject.Models;
 
 namespace MnemoProject.Services
 {
     public class StatisticsService
     {
-        private static StatisticsService _instance;
-        public static StatisticsService Instance => _instance ??= new StatisticsService();
+        private static readonly StatisticsService _instance = new();
+        public static StatisticsService Instance => _instance;
+
 
         // Cached statistics to avoid repeatedly loading from file
-        private static UserStatistics _cachedStatistics;
+        private static UserStatistics _cachedStatistics = new()
+        {
+            WeeklyStudyTimeSeconds = 0,
+            LongestStreak = 0,
+            Retention = 0,
+            StudyGoalMinutes = 15,
+            CurrentStudyGoalMinutes = 0
+        };
 
         // Static methods for easy access from anywhere in the application
         public static object Get(string statisticName)
@@ -108,10 +118,18 @@ namespace MnemoProject.Services
         // Private constructor for singleton pattern
         private StatisticsService()
         {
-            // Set file path in the application's data directory
-            string dataDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            LogService.Log.Info("Initializing StatisticsService");
+            
+            // Create data directory if it doesn't exist
+            string dataDirectory = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "MnemoProject",
+                "Data"
+            );
+            
             if (!Directory.Exists(dataDirectory))
             {
+                LogService.Log.Info($"Creating data directory at {dataDirectory}");
                 Directory.CreateDirectory(dataDirectory);
             }
             
@@ -119,7 +137,11 @@ namespace MnemoProject.Services
             
             // Generate encryption keys (not used for now but keeping the code)
             string encryptionPassword = "DefaultPassword"; // Should be changed in production
-            using (var deriveBytes = new Rfc2898DeriveBytes(encryptionPassword, Encoding.UTF8.GetBytes("YourSaltHere"), 10000))
+            using (var deriveBytes = new Rfc2898DeriveBytes(
+                password: encryptionPassword,
+                salt: Encoding.UTF8.GetBytes("YourSaltHere"),
+                iterations: 100000,
+                hashAlgorithm: HashAlgorithmName.SHA256))
             {
                 _encryptionKey = deriveBytes.GetBytes(32); // 256 bits
                 _iv = deriveBytes.GetBytes(16); // 128 bits
@@ -128,12 +150,14 @@ namespace MnemoProject.Services
             // Create default statistics file if it doesn't exist
             if (!File.Exists(_filePath))
             {
+                LogService.Log.Info("Creating default statistics file");
                 SaveStatistics(CreateDefaultStatistics());
             }
         }
         
         private UserStatistics CreateDefaultStatistics()
         {
+            LogService.Log.Debug("Creating default statistics");
             return new UserStatistics
             {
                 WeeklyStudyTimeSeconds = 0,
@@ -146,49 +170,61 @@ namespace MnemoProject.Services
         
         public void SaveStatistics(UserStatistics statistics)
         {
+            LogService.Log.Debug("Saving statistics");
             // Update cache
             _cachedStatistics = statistics;
             
-            // Serialize to JSON
-            string json = JsonSerializer.Serialize(statistics, new JsonSerializerOptions { WriteIndented = true });
-            
-            if (_useEncryption)
+            try
             {
-                // Encrypt and save
-                File.WriteAllBytes(_filePath, EncryptData(json));
+                // Serialize to JSON
+                string json = JsonSerializer.Serialize(statistics, new JsonSerializerOptions { WriteIndented = true });
+                
+                if (_useEncryption)
+                {
+                    // Encrypt and save
+                    File.WriteAllBytes(_filePath, EncryptData(json));
+                }
+                else
+                {
+                    // Save without encryption
+                    File.WriteAllText(_filePath, json);
+                }
+                LogService.Log.Info("Statistics saved successfully");
             }
-            else
+            catch (Exception ex)
             {
-                // Save without encryption
-                File.WriteAllText(_filePath, json);
+                LogService.Log.Error($"Error saving statistics: {ex.Message}");
+                throw;
             }
         }
-        
+
         public UserStatistics LoadStatistics()
         {
+            LogService.Log.Debug("Loading statistics");
             // Return cached statistics if available
             if (_cachedStatistics != null)
             {
                 return _cachedStatistics;
             }
-            
+
             if (!File.Exists(_filePath))
             {
+                LogService.Log.Info("Statistics file not found, creating default");
                 var defaultStats = CreateDefaultStatistics();
                 SaveStatistics(defaultStats);
                 return defaultStats;
             }
-            
+
             try
             {
-                UserStatistics loadedStats;
-                
+                UserStatistics? loadedStats;
+
                 if (_useEncryption)
                 {
                     // Read and decrypt
                     byte[] encryptedData = File.ReadAllBytes(_filePath);
                     string json = DecryptData(encryptedData);
-                    
+
                     // Deserialize
                     loadedStats = JsonSerializer.Deserialize<UserStatistics>(json);
                 }
@@ -198,65 +234,87 @@ namespace MnemoProject.Services
                     string json = File.ReadAllText(_filePath);
                     loadedStats = JsonSerializer.Deserialize<UserStatistics>(json);
                 }
-                
+
+                // Ensure we have valid statistics, use default if deserialization failed
+                UserStatistics validStats = loadedStats ?? CreateDefaultStatistics();
+
                 // Cache the loaded statistics
-                _cachedStatistics = loadedStats;
-                return loadedStats;
+                _cachedStatistics = validStats;
+                LogService.Log.Info("Statistics loaded successfully");
+                return validStats;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error loading statistics: {ex.Message}");
+                LogService.Log.Error($"Error loading statistics: {ex.Message}");
                 var defaultStats = CreateDefaultStatistics();
                 SaveStatistics(defaultStats);
                 return defaultStats;
             }
         }
-        
+
+
         private byte[] EncryptData(string plainText)
         {
-            using (Aes aes = Aes.Create())
+            try
             {
-                aes.Key = _encryptionKey;
-                aes.IV = _iv;
-                
-                using (MemoryStream output = new MemoryStream())
+                using (Aes aes = Aes.Create())
                 {
-                    using (CryptoStream cryptoStream = new CryptoStream(output, aes.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter writer = new StreamWriter(cryptoStream))
-                        {
-                            writer.Write(plainText);
-                        }
-                    }
+                    aes.Key = _encryptionKey;
+                    aes.IV = _iv;
                     
-                    return output.ToArray();
+                    using (MemoryStream output = new MemoryStream())
+                    {
+                        using (CryptoStream cryptoStream = new CryptoStream(output, aes.CreateEncryptor(), CryptoStreamMode.Write))
+                        {
+                            using (StreamWriter writer = new StreamWriter(cryptoStream))
+                            {
+                                writer.Write(plainText);
+                            }
+                        }
+                        
+                        return output.ToArray();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                LogService.Log.Error($"Error encrypting data: {ex.Message}");
+                throw;
             }
         }
         
         private string DecryptData(byte[] encryptedData)
         {
-            using (Aes aes = Aes.Create())
+            try
             {
-                aes.Key = _encryptionKey;
-                aes.IV = _iv;
-                
-                using (MemoryStream input = new MemoryStream(encryptedData))
+                using (Aes aes = Aes.Create())
                 {
-                    using (CryptoStream cryptoStream = new CryptoStream(input, aes.CreateDecryptor(), CryptoStreamMode.Read))
+                    aes.Key = _encryptionKey;
+                    aes.IV = _iv;
+                    
+                    using (MemoryStream input = new MemoryStream(encryptedData))
                     {
-                        using (StreamReader reader = new StreamReader(cryptoStream))
+                        using (CryptoStream cryptoStream = new CryptoStream(input, aes.CreateDecryptor(), CryptoStreamMode.Read))
                         {
-                            return reader.ReadToEnd();
+                            using (StreamReader reader = new StreamReader(cryptoStream))
+                            {
+                                return reader.ReadToEnd();
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                LogService.Log.Error($"Error decrypting data: {ex.Message}");
+                throw;
             }
         }
 
         // Method to record a study session
         public static void RecordStudySession(int durationSeconds)
         {
+            LogService.Log.Debug($"Recording study session of {durationSeconds} seconds");
             var stats = _cachedStatistics ?? Instance.LoadStatistics();
             
             // Check if we need to reset weekly stats
@@ -273,11 +331,13 @@ namespace MnemoProject.Services
             
             // Save changes
             Instance.SaveStatistics(stats);
+            LogService.Log.Info($"Study session recorded: {durationSeconds} seconds");
         }
         
         // Method to record a card review result (correct/incorrect)
         public static void RecordCardReview(bool isCorrect)
         {
+            LogService.Log.Debug($"Recording card review: {(isCorrect ? "correct" : "incorrect")}");
             var stats = _cachedStatistics ?? Instance.LoadStatistics();
             
             // Simple exponential moving average for retention calculation
@@ -289,6 +349,7 @@ namespace MnemoProject.Services
             
             // Save changes
             Instance.SaveStatistics(stats);
+            LogService.Log.Info($"Card review recorded: {(isCorrect ? "correct" : "incorrect")}");
         }
     }
 }

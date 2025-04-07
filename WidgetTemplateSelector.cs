@@ -9,7 +9,7 @@ namespace MnemoProject
 {
     public class WidgetTemplateSelector : IDataTemplate
     {
-        public Control Build(object param)
+        public Control? Build(object? param)
         {
             if (param is Widget widget)
             {
@@ -24,9 +24,9 @@ namespace MnemoProject
             throw new NotSupportedException($"Unsupported widget parameter type: {param?.GetType().Name ?? "null"}");
         }
 
-        public bool Match(object data)
+        public bool Match(object? data)
         {
             return data is Widget || (data is string str && str == "NewWidgetButton");
         }
     }
-} 
+}
