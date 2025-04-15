@@ -7,7 +7,7 @@
 **A free and open-source flashcard and spaced repetition application to enhance your learning journey**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-0.3.0-green.svg)](https://github.com/ShadowCCS/mnemo/releases)
+[![Version](https://img.shields.io/badge/version-0.2.0-green.svg)](https://github.com/ShadowCCS/mnemo/releases)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
 ![Framework](https://img.shields.io/badge/framework-.NET%208.0-purple.svg)
 ![UI](https://img.shields.io/badge/UI-Avalonia%2011-orange.svg)
@@ -27,14 +27,10 @@ Mnemo is a powerful, intuitive study application designed to help students, rese
 - Organize content into logical units with theory and practice sections
 - Track completion and progress through each learning module
 
-![Learning Path Overview](./gitAssets/learningpath.png)
-
 ### 🗂️ Comprehensive Study Tools
 - **Interactive Flashcards**: Create and practice with multiple study modes (Spaced Repetition, Batch, Endless)
 - **Detailed Notes**: Take and organize rich-text notes with markdown support
 - **Custom Quizzes**: Test your knowledge with various question types
-
-![Questions & Practice](./gitAssets/question.png)
 
 ### 📊 Advanced Progress Tracking
 - Monitor study time and session history
@@ -46,18 +42,18 @@ Mnemo is a powerful, intuitive study application designed to help students, rese
 - Configure data storage and backup options
 - Tailor the application to your unique learning style
 
-![Settings](./gitAssets/settings.png)
-
 ## 📷 More Screenshots
-
-<div align="center">
-  <img src="./gitAssets/learningpath_unitoverview.png" alt="Unit Overview" width="400"/>
-  <img src="./gitAssets/learningpath_theory.png" alt="Theory Section" width="400"/>
-</div>
-
-<div align="center">
-  <img src="./gitAssets/learningpath_geneatingUnit.png" alt="Creating Units" width="400"/>
-</div>
+ 
+ <div align="center">
+   <img src="./gitAssets/learningpath_unitoverview.png" alt="Unit Overview" width="400"/>
+   <img src="./gitAssets/learningpath_theory.png" alt="Theory Section" width="400"/>
+ </div>
+ 
+ <div align="center">
+   <img src="./gitAssets/learningpathUnit.png" alt="Mnemo Learning Unit" width="400"/>
+   <img src="./gitAssets/learningpathGuide.png" alt="Mnemo Learning Path Guide" width="400"/>
+   <img src="./gitAssets/learningpath_geneatingUnit.png" alt="Creating Units" width="400"/>
+ </div>
 
 ## 🚀 Getting Started
 
