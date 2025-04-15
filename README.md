@@ -1,5 +1,3 @@
-# Mnemo
-
 <div align="center">
   
 ![Mnemo Logo](./gitAssets/Mnemo.svg)
@@ -7,10 +5,14 @@
 **A free and open-source flashcard and spaced repetition application to enhance your learning journey**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-0.2.0-green.svg)](https://github.com/ShadowCCS/mnemo/releases)
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
+[![Version](https://img.shields.io/badge/version-0.3.0-green.svg)](https://github.com/ShadowCCS/mnemo/releases)
 ![Framework](https://img.shields.io/badge/framework-.NET%208.0-purple.svg)
 ![UI](https://img.shields.io/badge/UI-Avalonia%2011-orange.svg)
+
+![Linux](https://img.shields.io/badge/-Linux-333?logo=linux&logoColor=white)
+![macOS](https://img.shields.io/badge/-macOS-333?logo=apple&logoColor=white)
+![Windows](https://img.shields.io/badge/-Windows-333?logo=windows&logoColor=white)
+
 
 </div>
 
@@ -20,28 +22,29 @@ Mnemo is a powerful, intuitive study application designed to help students, rese
 
 ![Mnemo Dashboard](./gitAssets/dashboard.png)
 
-| Unit Overview | Theory Section |
-|:-------------:|:--------------:|
-| <img src="./gitAssets/learningpath_unitoverview.png" width="300"/> | <img src="./gitAssets/learningpath_theory.png" width="300"/> | <img src="./gitAssets/question.png" width="300"/>|
+| Unit Overview | Theory Section | Question Preview |
+|:-------------:|:--------------:|:----------------:|
+| <img src="./gitAssets/learningpath_unitoverview.png" width="300"/> | <img src="./gitAssets/learningpath_theory.png" width="300"/> | <img src="./gitAssets/question.png" width="300"/> |
 
-## ✨ Features
 
-### 📋 Structured Learning Paths
+## 👀 Features
+
+###  Structured Learning Paths
 - Create customized learning journeys for any subject
 - Organize content into logical units with theory and practice sections
 - Track completion and progress through each learning module
 
-### 🗂️ Comprehensive Study Tools
+###  Comprehensive Study Tools
 - **Interactive Flashcards**: Create and practice with multiple study modes (Spaced Repetition, Batch, Endless)
 - **Detailed Notes**: Take and organize rich-text notes with markdown support
 - **Custom Quizzes**: Test your knowledge with various question types
 
-### 📊 Advanced Progress Tracking
+###  Advanced Progress Tracking
 - Monitor study time and session history
 - Track retention rates across subjects
 - Visualize learning progress with detailed statistics
 
-### ⚙️ Customization & Settings
+###  Customization & Settings
 - Personalize themes and layout
 - Configure data storage and backup options
 - Tailor the application to your unique learning style
