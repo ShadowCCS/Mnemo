@@ -20,6 +20,10 @@ Mnemo is a powerful, intuitive study application designed to help students, rese
 
 ![Mnemo Dashboard](./gitAssets/dashboard.png)
 
+| Unit Overview | Theory Section |
+|:-------------:|:--------------:|
+| <img src="./gitAssets/learningpath_unitoverview.png" width="300"/> | <img src="./gitAssets/learningpath_theory.png" width="300"/> | <img src="./gitAssets/question.png" width="300"/>|
+
 ## ✨ Features
 
 ### 📋 Structured Learning Paths
@@ -43,17 +47,11 @@ Mnemo is a powerful, intuitive study application designed to help students, rese
 - Tailor the application to your unique learning style
 
 ## 📷 More Screenshots
- 
- <div align="center">
-   <img src="./gitAssets/learningpath_unitoverview.png" alt="Unit Overview" width="400"/>
-   <img src="./gitAssets/learningpath_theory.png" alt="Theory Section" width="400"/>
- </div>
- 
- <div align="center">
-   <img src="./gitAssets/learningpathUnit.png" alt="Mnemo Learning Unit" width="400"/>
-   <img src="./gitAssets/learningpathGuide.png" alt="Mnemo Learning Path Guide" width="400"/>
-   <img src="./gitAssets/learningpath_geneatingUnit.png" alt="Creating Units" width="400"/>
- </div>
+<div align="center">
+  <img src="./gitAssets/learningpath.png" alt="Learning Path Overview" width="400"/>
+  <img src="./gitAssets/learningpath_generateUnit.png" alt="Creating a Unit" width="400"/>
+  <img src="./gitAssets/settings.png" alt="Settings" width="400"/>
+</div>
 
 ## 🚀 Getting Started
 
