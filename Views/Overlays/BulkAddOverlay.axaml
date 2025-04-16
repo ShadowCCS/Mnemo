@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MnemoProject.ViewModels.Overlays"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
+             x:DataType="vm:BulkAddOverlayViewModel"
+             x:CompileBindings="False"
+             x:Class="MnemoProject.Views.Overlays.BulkAddOverlay">
+
+  <Border Background="#1E1E1E" CornerRadius="8" Width="600" MaxHeight="500">
+    <Grid Margin="24">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/> <!-- Header -->
+        <RowDefinition Height="*"/>    <!-- Content -->
+        <RowDefinition Height="Auto"/> <!-- Buttons -->
+      </Grid.RowDefinitions>
+      
+      <!-- Header with close button -->
+      <Grid Grid.Row="0">
+        <TextBlock Text="Bulk Add Cards" Foreground="White" FontSize="28" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+        <Button Content="✖" Command="{Binding CloseCommand}" 
+                Background="Transparent" Foreground="White" 
+                VerticalAlignment="Top" HorizontalAlignment="Right"/>
+      </Grid>
+      
+      <!-- Main content -->
+      <StackPanel Grid.Row="1" Margin="0,20,0,0" Spacing="15">
+        <!-- Explanation text -->
+        <TextBlock Text="Enter multiple cards at once, one per line. Each line should contain the front and back of a card, separated by a comma." 
+                  Foreground="White" TextWrapping="Wrap"/>
+                  
+        <TextBlock Text="Example: 'What is the capital of France?, Paris'" 
+                  Foreground="#999" FontStyle="Italic" TextWrapping="Wrap"/>
+        
+        <!-- Bulk text input -->
+        <TextBox Text="{Binding BulkText}" 
+                 Watermark="front1, back1&#x0A;front2, back2&#x0A;front3, back3" 
+                 AcceptsReturn="True" 
+                 Height="200"
+                 FontFamily="Consolas, Menlo, Monospace"/>
+      </StackPanel>
+      
+      <!-- Bottom buttons -->
+      <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,20,0,0">
+        <Button Content="Cancel" Command="{Binding CloseCommand}"/>
+        <Button Content="Add Cards" Command="{Binding AddBulkCardsCommand}" Classes="accent"/>
+      </StackPanel>
+    </Grid>
+  </Border>
+</UserControl> 

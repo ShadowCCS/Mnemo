@@ -9,6 +9,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using System.Collections.Generic;
 using MnemoProject.Services;
+using MnemoProject.Views.Overlays;
 
 namespace MnemoProject.ViewModels
 {
@@ -22,9 +23,13 @@ namespace MnemoProject.ViewModels
         private bool isSidebarExpanded = true;
 
         public ViewModelBase? CurrentPage => _navigationService.CurrentView;
+        public NavigationService NavigationService => _navigationService;
 
         [ObservableProperty]
         private ListItemTemplate? _selectedSidebarItem;
+
+        [ObservableProperty]
+        private int _selectedIndex = 1;
 
         public string AppVersion
         {
@@ -40,6 +45,10 @@ namespace MnemoProject.ViewModels
 
             _navigationService.NavigateTo(new DashboardViewModel(_navigationService));
 
+            // Initialize dashboard as the selected item
+            SelectedIndex = 1; // This is the Dashboard item
+            SelectedSidebarItem = Items[1] as ListItemTemplate;
+            
             AppVersion = VersionInfo.Version;
 
             if (!_notificationSent)
@@ -85,6 +94,14 @@ namespace MnemoProject.ViewModels
                     win.WindowState = WindowState.Normal;
                 }
             }
+        }
+
+        [RelayCommand]
+        private void ShowShortcutsOverlay()
+        {
+            LogService.Log.Debug("Showing shortcuts overlay");
+            var shortcutsOverlay = new ShortcutsOverlay();
+            OverlayService.Instance.ShowOverlay(shortcutsOverlay);
         }
 
         partial void OnSelectedSidebarItemChanged(ListItemTemplate? value)

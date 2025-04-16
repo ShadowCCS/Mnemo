@@ -4,57 +4,71 @@
   
 ![Mnemo Logo](./gitAssets/Mnemo.svg)
 
-**A free and open-source study application to enhance your learning journey**
+**A free and open-source flashcard and spaced repetition application to enhance your learning journey**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-0.2.0-green.svg)](https://github.com/ShadowCCS/mnemo/releases)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
+![Framework](https://img.shields.io/badge/framework-.NET%208.0-purple.svg)
+![UI](https://img.shields.io/badge/UI-Avalonia%2011-orange.svg)
 
 </div>
 
 ## 📚 Overview
 
-Mnemo is a powerful, intuitive study application designed to help students, researchers, and lifelong learners optimize their educational journey. With customizable learning paths, interactive flashcards, comprehensive note-taking, and progress tracking, Mnemo provides all the tools you need to master any subject.
+Mnemo is a powerful, intuitive study application designed to help students, researchers, and lifelong learners optimize their educational journey. Built with Avalonia UI for cross-platform compatibility, it provides customizable learning paths, interactive flashcards, comprehensive note-taking capabilities, and detailed progress tracking to help you master any subject.
 
 ![Mnemo Dashboard](./gitAssets/dashboard.png)
 
 ## ✨ Features
 
-### 📋 Learning Paths
-- Create structured learning paths for any subject
-- Track your progress through learning units
-- Customize your learning journey with flexible content organization
+### 📋 Structured Learning Paths
+- Create customized learning journeys for any subject
+- Organize content into logical units with theory and practice sections
+- Track completion and progress through each learning module
 
-### 🗂️ Comprehensive Content Management
-- **Notes**: Take and organize detailed notes for any subject
-- **Flashcards**: Create interactive flashcards with spaced repetition support
-- **Quizzes**: Test your knowledge with customizable quizzes
+![Learning Path Overview](./gitAssets/learningpath.png)
 
-### 📊 Progress Tracking
-- Monitor time spent studying
+### 🗂️ Comprehensive Study Tools
+- **Interactive Flashcards**: Create and practice with multiple study modes (Spaced Repetition, Batch, Endless)
+- **Detailed Notes**: Take and organize rich-text notes with markdown support
+- **Custom Quizzes**: Test your knowledge with various question types
+
+![Questions & Practice](./gitAssets/question.png)
+
+### 📊 Advanced Progress Tracking
+- Monitor study time and session history
 - Track retention rates across subjects
-- Visualize your learning progress with intuitive statistics
+- Visualize learning progress with detailed statistics
 
-### 🎮 Extra Learning Tools
-- Educational games to reinforce learning
-- Extensions to enhance functionality
-- Personalization options to match your learning style
+### ⚙️ Customization & Settings
+- Personalize themes and layout
+- Configure data storage and backup options
+- Tailor the application to your unique learning style
 
-## 🖥️ Screenshots
+![Settings](./gitAssets/settings.png)
+
+## 📷 More Screenshots
 
 <div align="center">
-  <img src="./gitAssets/learningpathUnit.png" alt="Mnemo Learning Unit" width="400"/>
-  <img src="./gitAssets/learningpathGuide.png" alt="Mnemo Learning Path Guide" width="400"/>
+  <img src="./gitAssets/learningpath_unitoverview.png" alt="Unit Overview" width="400"/>
+  <img src="./gitAssets/learningpath_theory.png" alt="Theory Section" width="400"/>
+</div>
+
+<div align="center">
+  <img src="./gitAssets/learningpath_geneatingUnit.png" alt="Creating Units" width="400"/>
 </div>
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or newer
-- Dependencies:
-  - Avalonia UI
-  - Avalonia.Skia
-  - Other Avalonia MVVM dependencies
+- Dependencies (automatically handled by the package manager):
+  - Avalonia UI 11.2+
+  - Avalonia.Svg.Skia
+  - Entity Framework Core (SQLite provider)
+  - CommunityToolkit.Mvvm
+  - Markdown.Avalonia
 
 ### Installation
 
@@ -90,31 +104,35 @@ dotnet publish -c Release -r linux-x64 --self-contained
 ## 📋 Usage Guide
 
 ### Creating a Learning Path
-1. Navigate to the Learning Path section
+1. Navigate to the Learning Path section from the sidebar
 2. Click "New Learning Path"
-3. Add units, set learning goals, and import or create content
-4. Track your progress as you advance through the material
+3. Define your units, topics, and learning objectives
+4. Add theory content and practice questions
+5. Follow your progress with the built-in tracking system
 
 ### Working with Flashcards
-1. Select or create a flashcard deck
-2. Add new cards with questions and answers
-3. Study using the spaced repetition system
-4. Review your retention statistics
+1. Go to the Flashcards section
+2. Create a new deck or select an existing one
+3. Add cards with questions, answers, and optional hints
+4. Choose your study mode:
+   - Spaced Repetition for long-term retention
+   - Batch mode for focused study sessions
+   - Endless mode for continuous practice
 
-### Taking Notes
-1. Create a new note in the Notes section
-2. Use the rich text editor for formatting
-3. Link notes to specific learning paths or subjects
-4. Export notes in various formats including PDF and Markdown
+### Quiz and Assessment
+1. Create custom quizzes from your learning materials
+2. Include various question types (multiple choice, short answer, etc.)
+3. Review results and identify areas for improvement
 
-## 🛠️ Customization
+## 🛠️ Technical Architecture
 
-Mnemo offers extensive customization options:
-
-- **Themes**: Choose between light, dark, and custom themes
-- **Layout**: Customize the dashboard and learning interfaces
-- **Extensions**: Install community-created extensions to add functionality
-- **Settings**: Fine-tune application behavior to match your workflow
+Mnemo is built using:
+- **Language**: C# with .NET 8.0
+- **UI Framework**: Avalonia UI 11 (cross-platform UI framework)
+- **Architecture**: MVVM (Model-View-ViewModel)
+- **Data Storage**: Entity Framework Core with SQLite
+- **Graphics**: Avalonia.Svg.Skia for vector graphics support
+- **Packages**: CommunityToolkit.Mvvm for MVVM implementation, Markdown.Avalonia for rich text
 
 ## 🤝 Contributing
 
@@ -126,34 +144,24 @@ Contributions are what make the open-source community such an amazing place to l
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
-
-## 🧰 Technical Stack
-
-Mnemo is built using:
-- [C#](https://docs.microsoft.com/en-us/dotnet/csharp/) - Primary programming language
-- [.NET](https://dotnet.microsoft.com/) - Framework
-- [Avalonia UI](https://avaloniaui.net/) - Cross-platform UI framework
-- [MVVM Architecture](https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/patterns-wpf-apps-with-the-model-view-viewmodel-design-pattern) - Design pattern
-- [Avalonia.Skia](https://github.com/AvaloniaUI/Avalonia) - Graphics rendering
-
 ## 📝 License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ## 👨‍💻 Developers
 
-- Me - [@ShadowCCS](https://github.com/ShadowCCS)
+- [@ShadowCCS](https://github.com/ShadowCCS) - Creator and Main Developer
 
 ## 🙏 Acknowledgments
 
-- Special thanks [Avalonia UI](https://avaloniaui.net/)
+- Thanks to [Avalonia UI](https://avaloniaui.net/) for making cross-platform UI development possible
 - Inspired by modern learning science and spaced repetition research
+- Special thanks to all contributors and early testers
 
 ---
 
 <div align="center">
   
-**[Website](https://mnemo-app.com) • [Documentation](https://docs.mnemo-app.com) • [Community Forum](https://community.mnemo-app.com) • [Report Bug](https://github.com/ShadowCCS/mnemo/issues)**
+**Made with ❤️ for learners everywhere**
 
 </div>

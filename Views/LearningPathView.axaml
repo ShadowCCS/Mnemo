@@ -19,6 +19,7 @@
                     Width="260" Height="110" 
                     CornerRadius="8" Padding="8"
                     Background="#1a1a1a" 
+                    Cursor="Hand"
                     Name="NewLessonButton">
                 <Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter">
@@ -46,16 +47,16 @@
             </Button>
             <Button Width="260" Height="110" 
                     CornerRadius="8" Padding="8"
-                    Background="#1a1a1a" 
+                    Background="#141414" 
                     Name="ProblemSolverButton">
-                <Button.Styles>
+                <!--<Button.Styles>
                     <Style Selector="Button:pointerover /template/ ContentPresenter">
                         <Setter Property="Background" Value="#262626"/>
                     </Style>
                     <Style Selector="Button:pressed /template/ ContentPresenter">
                         <Setter Property="Background" Value="#303030"/>
                     </Style>
-                </Button.Styles>
+                </Button.Styles>-->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -63,12 +64,12 @@
                     </Grid.ColumnDefinitions>
                     
                     <Border Width="40" Height="40" Background="#262626" CornerRadius="13" Margin="0,0,15,0">
-                        <PathIcon Data="{StaticResource NewLessonsIcon}" Foreground="#2881b1" Width="24" Height="24"/>
+                        <PathIcon Data="{StaticResource NewLessonsIcon}" Foreground="#2D2D2D" Width="24" Height="24"/>
                     </Border>
                     
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <Label Foreground="White" Padding="0,0,0,2">Problem Solver</Label>
-                        <TextBlock Foreground="#797979" MaxWidth="180" TextWrapping="Wrap">Helps you solve your problems.</TextBlock>
+                        <Label Foreground="#2D2D2D" Padding="0,0,0,2">Problem Solver</Label>
+                        <TextBlock Foreground="#2D2D2D" MaxWidth="180" TextWrapping="Wrap">Helps you solve your problems.</TextBlock>
                     </StackPanel>
                 </Grid>
             </Button>
@@ -78,7 +79,7 @@
       </Border>
       <StackPanel>
         <TabControl>
-          <TabItem Header="All" FontSize="24" Foreground="White">
+          <TabItem Header="All" FontSize="24" Foreground="White" Cursor="Hand">
             <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="400">
               <StackPanel Spacing="10">
                 <!-- Loading indicator -->
@@ -95,16 +96,19 @@
                   <ItemsControl.ItemTemplate>
                     <DataTemplate>
                       <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <TextBox Classes="LearningPathTextBox"
-                                Text="{Binding Title}"
-                                MinWidth="200"
-                                Margin="5"/>
+                        <TextBlock Text="{Binding Title}"
+                                  MinWidth="200"
+                                  Margin="5"
+                                  Foreground="White"
+                                  VerticalAlignment="Center"/>
                         <Button Command="{Binding $parent[UserControl].((vm:LearningPathViewModel)DataContext).OpenLearningPathCommand}"
-                                CommandParameter="{Binding Id}">
+                                CommandParameter="{Binding Id}"
+                                Cursor="Hand">
                           <TextBlock Text="Continue" Foreground="White"/>
                         </Button>
                         <Button Command="{Binding $parent[UserControl].((vm:LearningPathViewModel)DataContext).DeleteLearningPathCommand}"
-                                CommandParameter="{Binding Id}">
+                                CommandParameter="{Binding Id}"
+                                Cursor="Hand">
                           <TextBlock Text="Delete" Foreground="White"/>
                         </Button>
                       </StackPanel>

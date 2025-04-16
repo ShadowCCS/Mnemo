@@ -6,10 +6,100 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:FlashcardsViewModel"
              x:Class="MnemoProject.Views.FlashcardsView">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-    <Image Source="{SvgImage avares://MnemoProject/Assets/notImplemented.svg}" Height="200" Margin="20"/>
-    <Label Content="Flashcards" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
-    <Label Content="Feature Under Development" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24"/>
-    <Label Content="We're working on bringing this functionality to you soon." Foreground="#696969" HorizontalAlignment="Center" FontSize="16"/>
-  </StackPanel>
+  
+  <!-- Main Content Grid -->
+  <Grid>
+    <!-- Show "No Flashcards" message when HasFlashcards is false -->
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding !HasFlashcards}">
+      <Label Content="No Flashcards Found" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
+      <Label Content="Create your first flashcard deck to get started" HorizontalAlignment="Center" FontSize="16" Foreground="#696969"/>
+      <Button Content="Create Deck" Command="{Binding CreateDeckCommand}" Margin="0,20,0,0" Classes="accent" HorizontalAlignment="Center" Background="#262626"/>
+    </StackPanel>
+    
+    <!-- Show Flashcards UI when HasFlashcards is true -->
+    <Grid IsVisible="{Binding HasFlashcards}" ColumnDefinitions="300,*">
+      <!-- Left sidebar with decks list -->
+      <Grid Grid.Column="0" RowDefinitions="Auto,*,Auto">
+        <TextBlock Grid.Row="0" Text="Flashcard Decks" FontWeight="Bold" Margin="15,20,15,10" FontSize="32" Foreground="White"/>
+        
+        <!-- List of Flashcard Decks -->
+        <ListBox Grid.Row="1" 
+                 ItemsSource="{Binding FlashcardDecks}" 
+                 SelectedItem="{Binding SelectedDeck}"
+                 Margin="5,0,15,0"
+                 Background="Transparent">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Grid ColumnDefinitions="*,Auto" Width="220">
+                <TextBlock Grid.Column="0" Text="{Binding Title}" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" 
+                           Text="{Binding CardCount, StringFormat='{}{0} cards'}" 
+                           Foreground="Gray" 
+                           FontSize="12" 
+                           VerticalAlignment="Center"/>
+              </Grid>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <!-- Create Button -->
+        <Button Grid.Row="2" 
+                Content="+ Create Deck" 
+                Command="{Binding CreateDeckCommand}" 
+                HorizontalAlignment="Stretch" 
+                Margin="15,10,15,15"/>
+      </Grid>
+      
+      <!-- Right content area showing selected deck -->
+      <Grid Grid.Column="1" RowDefinitions="Auto,*,Auto" Margin="40,20,20,20">
+        <!-- Selected Deck Header -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20" Spacing="10" IsVisible="{Binding IsDeckSelected}">
+          <TextBlock Text="{Binding SelectedDeck.Title}" FontWeight="Bold" FontSize="24"/>
+          <TextBlock Text="{Binding SelectedDeck.CardCount, StringFormat='({0} cards)'}" 
+                     VerticalAlignment="Center" 
+                     Foreground="#262626"/>
+        </StackPanel>
+        
+        <!-- Cards List -->
+        <ScrollViewer Grid.Row="1" IsVisible="{Binding IsDeckSelected}">
+          <ItemsRepeater ItemsSource="{Binding SelectedDeck.Decks}">
+            <ItemsRepeater.Layout>
+              <UniformGridLayout MinItemWidth="500" MinItemHeight="95" MinColumnSpacing="10" MinRowSpacing="10" Orientation="Vertical"/>
+            </ItemsRepeater.Layout>
+            <ItemsRepeater.ItemTemplate>
+              <DataTemplate>
+                <Border Background="#262626" 
+                        CornerRadius="5"
+                        Padding="15">
+                  <Grid RowDefinitions="Auto,*">
+                    <TextBlock Grid.Row="0" Text="{Binding Front}" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,5"/>
+                    <TextBlock Grid.Row="1" Text="{Binding Back}" FontWeight="Light" FontSize="14" Foreground="#969696" TextWrapping="Wrap"/>
+                  </Grid>
+                </Border>
+              </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+          </ItemsRepeater>
+        </ScrollViewer>
+        
+        <!-- Action Buttons -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    Margin="0,20,0,0" 
+                    Spacing="10"
+                    IsVisible="{Binding IsDeckSelected}">
+          <Button Content="Learn" 
+                  Command="{Binding LearnDeckCommand}"
+                  CommandParameter="{Binding SelectedDeck}"
+                  Classes="accent"/>
+          <Button Content="Edit Deck" 
+                  Command="{Binding EditDeckCommand}"
+                  CommandParameter="{Binding SelectedDeck}"/>
+          <Button Content="Delete" 
+                  Command="{Binding DeleteDeckCommand}"
+                  CommandParameter="{Binding SelectedDeck}"
+                  Classes="danger"/>
+        </StackPanel>
+      </Grid>
+    </Grid>
+  </Grid>
 </UserControl>

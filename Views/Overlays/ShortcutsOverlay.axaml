@@ -1,0 +1,152 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MnemoProject.ViewModels.Overlays"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:DataType="vm:ShortcutsOverlayViewModel"
+             x:CompileBindings="False"
+             x:Class="MnemoProject.Views.Overlays.ShortcutsOverlay">
+
+  <Border Background="#1E1E1E" CornerRadius="8" Width="800" MaxHeight="600">
+    <Grid Margin="24">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/> <!-- Header -->
+        <RowDefinition Height="*"/>    <!-- Content -->
+      </Grid.RowDefinitions>
+      
+      <!-- Header with close button -->
+      <Grid Grid.Row="0">
+        <TextBlock Text="Shortcuts" Foreground="White" FontSize="36" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+        <Button Content="✖" Command="{Binding CloseCommand}" 
+                Background="Transparent" Foreground="White" 
+                VerticalAlignment="Top" HorizontalAlignment="Right"/>
+      </Grid>
+      
+      <!-- Main content -->
+      <ScrollViewer Grid.Row="1" Margin="0,20,0,0" Padding="10">
+        <StackPanel Spacing="30" Margin="20">
+          <!-- Navigation Shortcuts -->
+          <StackPanel>
+            <TextBlock Text="Navigation Shortcuts" Foreground="White" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,15"/>
+            
+            <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" Margin="0,0,0,10">
+              <!-- Home -->
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="Home" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+              <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Spacing="8">
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="H" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+              </StackPanel>
+              
+              <!-- Dashboard -->
+              <TextBlock Grid.Row="1" Grid.Column="0" Text="Dashboard" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="D" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+              </StackPanel>
+              
+              <!-- Learning Path -->
+              <TextBlock Grid.Row="2" Grid.Column="0" Text="Learning Path" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="L" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+              </StackPanel>
+              
+              <!-- Notes -->
+              <TextBlock Grid.Row="3" Grid.Column="0" Text="Notes" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="N" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+              </StackPanel>
+              
+              <!-- Flashcards -->
+              <TextBlock Grid.Row="4" Grid.Column="0" Text="Flashcards" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="F" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+              </StackPanel>
+              
+              <!-- Quizzes -->
+              <TextBlock Grid.Row="5" Grid.Column="0" Text="Quizzes" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="Q" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+              </StackPanel>
+              
+              <!-- Games -->
+              <TextBlock Grid.Row="6" Grid.Column="0" Text="Games" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="G" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+              </StackPanel>
+              
+              <!-- Settings -->
+              <TextBlock Grid.Row="7" Grid.Column="0" Text="Settings" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                  <TextBlock Text="S" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                </Border>
+              </StackPanel>
+            </Grid>
+          </StackPanel>
+          
+          <!-- Flashcard Controls -->
+          <StackPanel>
+            <TextBlock Text="Flashcard Controls" Foreground="White" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,15"/>
+            
+            <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto,Auto,Auto" Margin="0,0,0,10">
+              <!-- Next Flashcard -->
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="Next Flashcard" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+              <Border Grid.Row="0" Grid.Column="1" Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
+                <TextBlock Text="&gt;" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+              </Border>
+              
+              <!-- Previous Flashcard -->
+              <TextBlock Grid.Row="1" Grid.Column="0" Text="Previous Flashcard" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <Border Grid.Row="1" Grid.Column="1" Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <TextBlock Text="&lt;" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+              </Border>
+              
+              <!-- Flip Flashcard -->
+              <TextBlock Grid.Row="2" Grid.Column="0" Text="Flip Flashcard" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <Border Grid.Row="2" Grid.Column="1" Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="60" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <TextBlock Text="Space" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+              </Border>
+            </Grid>
+          </StackPanel>
+        </StackPanel>
+      </ScrollViewer>
+    </Grid>
+  </Border>
+</UserControl> 

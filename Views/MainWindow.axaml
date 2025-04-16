@@ -38,15 +38,15 @@
 
         <!-- Window Control Buttons -->
         <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0,0,7,0" VerticalAlignment="Center" HorizontalAlignment="Right">
-          <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" Command="{Binding CloseButtonCommand}">
+          <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" Command="{Binding CloseButtonCommand}" Cursor="Hand">
             <Ellipse Width="16" Height="16" Fill="#FF5F57"/>
           </Button>
 
-          <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" Command="{Binding MinimizeButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+          <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" Command="{Binding MinimizeButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Cursor="Hand">
             <Ellipse Width="16" Height="16" Fill="#FDBC2C"/>
           </Button>
 
-          <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" Command="{Binding FullscreenButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+          <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" Command="{Binding FullscreenButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Cursor="Hand">
             <Ellipse Width="16" Height="16" Fill="#28C840"/>
           </Button>
 
@@ -77,7 +77,7 @@
               </Grid.ColumnDefinitions>
               <Image Source="{SvgImage /Assets/Icons/Mnemo.svg}" Width="150" HorizontalAlignment="Left" Grid.Column="0" IsVisible="{Binding IsSidebarExpanded}"/>
               <Border Grid.Column="1" HorizontalAlignment="Right">
-                <Button Background="Transparent" Command="{Binding TriggerSidebarCommand}">
+                <Button Background="Transparent" Command="{Binding TriggerSidebarCommand}" Cursor="Hand">
                   <PathIcon Data="{StaticResource SidebarIcon}" Foreground="White" Width="16" Height="16"/>
                 </Button>
               </Border>
@@ -87,10 +87,26 @@
             <StackPanel Grid.Row="1" Margin="0,15,0,0" IsVisible="{Binding IsSidebarExpanded}">
               <ListBox Classes="Sidebar"
                        ItemsSource="{Binding Items}"
-                       SelectedItem="{Binding SelectedSidebarItem}"
-                       SelectedIndex="0"
+                       SelectedItem="{Binding SelectedSidebarItem, Mode=TwoWay}"
+                       SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                        ItemTemplate="{StaticResource ItemTemplateSelector}">
               </ListBox>
+            </StackPanel>
+
+            <!-- Quick Actions -->
+            <StackPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,40" Spacing="10">
+              <Label Content="Quick Actions" Foreground="White" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18"/>
+              <Button Command="{Binding ShowShortcutsOverlayCommand}" Cursor="Hand">
+              <StackPanel Orientation="Horizontal" Spacing="15">
+                <Border Height="48" Width="48" Background="#262626" CornerRadius="8">
+                  <Image Source="{SvgImage avares://MnemoProject/Assets/Icons/ShortcutsMenuIcon.svg}" Height="24" Width="24"/>
+                </Border>
+                <StackPanel>
+                  <Label Content="Shortcut Menu" Foreground="White" FontSize="16"/>
+                  <Label Content="Ctrl + Shift + C" Foreground="#797979" FontSize="14" FontWeight="Regular"/>
+                </StackPanel>
+              </StackPanel>
+              </Button>
             </StackPanel>
 
             <!-- Bottom Label -->

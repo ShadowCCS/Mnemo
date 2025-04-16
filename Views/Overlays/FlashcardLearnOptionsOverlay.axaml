@@ -1,0 +1,114 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MnemoProject.ViewModels.Overlays"
+             mc:Ignorable="d" d:DesignWidth="950" d:DesignHeight="380"
+             x:DataType="vm:FlashcardLearnOptionsOverlayViewModel"
+             x:CompileBindings="False"
+             x:Class="MnemoProject.Views.Overlays.FlashcardLearnOptionsOverlay">
+
+  <UserControl.Styles>
+    <!-- Style for enabled option buttons -->
+    <Style Selector="Button.optionButton">
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.optionButton:pointerover Border">
+      <Setter Property="Background" Value="#363636"/>
+      <Setter Property="RenderTransform" Value="scale(1.02)"/>
+      <Setter Property="Transitions">
+        <Transitions>
+          <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"/>
+          <BrushTransition Property="Background" Duration="0:0:0.1"/>
+        </Transitions>
+      </Setter>
+    </Style>
+    
+    <!-- Style for disabled option buttons -->
+    <Style Selector="Button.optionButton:disabled">
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.optionButton:disabled:pointerover Border">
+      <Setter Property="Background" Value="#2D2D2D"/>
+      <Setter Property="Opacity" Value="0.8"/>
+      <Setter Property="Transitions">
+        <Transitions>
+          <DoubleTransition Property="Opacity" Duration="0:0:0.1"/>
+          <BrushTransition Property="Background" Duration="0:0:0.1"/>
+        </Transitions>
+      </Setter>
+    </Style>
+  </UserControl.Styles>
+
+  <Border Background="#1A1A1A" CornerRadius="8" Width="950" Height="380">
+    <Grid Margin="24">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/> <!-- Header -->
+        <RowDefinition Height="*"/>    <!-- Content -->
+        <RowDefinition Height="Auto"/> <!-- Close button -->
+      </Grid.RowDefinitions>
+      
+      <!-- Header with close button -->
+      <Grid Grid.Row="0">
+        <StackPanel HorizontalAlignment="Center">
+          <TextBlock Text="Choose Mode" Foreground="White" FontSize="32" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+          <TextBlock Text="{Binding DeckTitle}" Foreground="#CCC" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+        </StackPanel>
+        <Button Content="✖" Command="{Binding CloseCommand}" 
+                Background="Transparent" Foreground="White" 
+                VerticalAlignment="Top" HorizontalAlignment="Right"/>
+      </Grid>
+      
+      <!-- Learning options -->
+      <StackPanel Grid.Row="1" Spacing="15" Margin="0,30,0,0">
+        <!--<TextBlock Text="Choose Mode" Foreground="White" FontSize="28" Margin="0,0,0,10" HorizontalAlignment="Center"/>-->
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="15">
+          
+          <!-- Standard Practice Option (now Endless Mode) -->
+          <Button HorizontalAlignment="Stretch" Height="190" Width="290" Command="{Binding StandardPracticeCommand}" 
+                  Background="Transparent" Padding="0" CornerRadius="8" Classes="optionButton">
+            <Border CornerRadius="16" Background="#262626" Width="300" Height="190">
+              <Grid RowDefinitions="Auto, Auto, *">
+                <Image Grid.Row="0" Source="{SvgImage avares://MnemoProject/Assets/Icons/FlashcardEndlessMode.svg}" Width="64" Height="64" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Text="Endless Mode" FontWeight="Bold" FontSize="18" Foreground="White" HorizontalAlignment="Center" Margin="0,15,0,5"/>
+                <TextBlock Grid.Row="2" Text="Review cards one by one at your own pace with no limit" Foreground="#969696" FontSize="12" HorizontalAlignment="Center" 
+                           TextAlignment="Center" TextWrapping="Wrap" Margin="20,0,20,20"/>
+              </Grid>
+            </Border>
+          </Button>
+
+          <!-- Spaced Repetition -->
+          <Button HorizontalAlignment="Stretch" Height="190" Width="290" IsEnabled="False" 
+                  Background="Transparent" Padding="0" CornerRadius="8" Classes="optionButton">
+            <Border CornerRadius="16" Background="#262626" Width="300" Height="190">
+              <Grid RowDefinitions="Auto, Auto, *">
+                <Image Grid.Row="0" Source="{SvgImage avares://MnemoProject/Assets/Icons/FlashcardSpacedRepMode.svg}" Width="64" Height="64" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Text="Spaced Repetition" FontWeight="Bold" FontSize="18" Foreground="#2D2D2D" HorizontalAlignment="Center" Margin="0,15,0,5"/>
+                <TextBlock Grid.Row="2" Text="Study with difficult cards appearing more often and learned ones resurfacing later" Foreground="#2D2D2D" FontSize="12" HorizontalAlignment="Center" 
+                           TextAlignment="Center" TextWrapping="Wrap" Margin="20,0,20,20"/>
+              </Grid>
+            </Border>
+          </Button>
+
+          <!-- Batch Learning -->
+          <Button HorizontalAlignment="Stretch" Height="190" Width="290" IsEnabled="False" 
+                  Background="Transparent" Padding="0" CornerRadius="8" Classes="optionButton">
+            <Border CornerRadius="16" Background="#262626" Width="300" Height="190">
+              <Grid RowDefinitions="Auto, Auto, *">
+                <Image Grid.Row="0" Source="{SvgImage avares://MnemoProject/Assets/Icons/FlashcardBatchMode.svg}" Width="64" Height="64" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Text="Batch Learning" FontWeight="Bold" FontSize="18" Foreground="#2D2D2D" HorizontalAlignment="Center" Margin="0,15,0,5"/>
+                <TextBlock Grid.Row="2" Text="Learn in small groups—once mastered, new cards unlock for structured progress" Foreground="#2D2D2D" FontSize="12" HorizontalAlignment="Center"
+                           TextAlignment="Center" TextWrapping="Wrap" Margin="20,0,20,20"/>
+              </Grid>
+            </Border>
+          </Button>
+          
+        </StackPanel>
+      </StackPanel>
+      
+    </Grid>
+  </Border>
+</UserControl> 

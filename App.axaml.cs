@@ -25,16 +25,26 @@ public static class ZIndexes
 public partial class App : Application
 {
     private IClassicDesktopStyleApplicationLifetime? _desktopLifetime;
+    private static Task _databaseInitTask;
 
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
 
-        //using (var db = new LearningPathContext())
-        //{
-        //    db.Database.EnsureCreated();
-        //}
-
+        // Start database initialization as early as possible
+        _databaseInitTask = Task.Run(async () => 
+        {
+            try
+            {
+                var dbService = new DatabaseService();
+                await dbService.InitializeAsync();
+                Console.WriteLine("Database initialized at application startup");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error initializing database at startup: {ex.Message}");
+            }
+        });
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -61,6 +71,12 @@ public partial class App : Application
             {
                 try 
                 {
+                    // Wait for database initialization before loading settings
+                    if (_databaseInitTask != null)
+                    {
+                        await _databaseInitTask;
+                    }
+                    
                     // Load widget settings in background
                     await widgetService.LoadSettingsAsync();
                 }

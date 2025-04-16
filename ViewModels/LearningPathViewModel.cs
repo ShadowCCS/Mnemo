@@ -16,6 +16,8 @@ namespace MnemoProject.ViewModels
     {
         private readonly NavigationService _navigationService;
         private readonly DatabaseService _databaseService = new();
+        private bool _isInitialized = false;
+        private Task _initializationTask = null;
 
         [ObservableProperty]
         private bool _isLoading = true;
@@ -30,12 +32,44 @@ namespace MnemoProject.ViewModels
             DeleteLearningPathCommand = new RelayCommand<Guid>(ExecuteDeleteLearningPath);
             OpenLearningPathCommand = new RelayCommand<Guid>(ExecuteOpenLearningPath);
 
-            InitializeAsync();
+            // Start initialization immediately but don't wait for it
+            _initializationTask = Task.Run(async () => 
+            {
+                try 
+                {
+                    await _databaseService.InitializeAsync();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error in background initialization: {ex.Message}");
+                }
+            });
+            
+            // Then post to UI thread to load data and update UI
+            Dispatcher.UIThread.Post(async () => await InitializeAsync());
         }
 
-        private async void InitializeAsync()
+        private async Task InitializeAsync()
         {
-            await LoadLearningPaths();
+            if (_isInitialized) return;
+            
+            IsLoading = true;
+            try
+            {
+                // Wait for background initialization to complete if it hasn't already
+                if (_initializationTask != null)
+                {
+                    await _initializationTask;
+                    _initializationTask = null;
+                }
+                
+                await LoadLearningPaths();
+                _isInitialized = true;
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
 
@@ -57,18 +91,49 @@ namespace MnemoProject.ViewModels
 
         private async Task LoadLearningPaths()
         {
-            IsLoading = true;
-            var learningPaths = await Task.Run(() => _databaseService.GetAllLearningPaths());
-            
-            await Dispatcher.UIThread.InvokeAsync(() => 
+            try
             {
-                LearningPaths.Clear();
-                foreach (var learningPath in learningPaths)
+                System.Diagnostics.Debug.WriteLine("Starting to load learning paths...");
+                
+                // Run the database query on a background thread
+                var learningPaths = await Task.Run(async () => 
                 {
-                    LearningPaths.Add(learningPath);
+                    try
+                    {
+                        return await _databaseService.GetAllLearningPaths();
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Error in GetAllLearningPaths: {ex.Message}");
+                        if (ex.InnerException != null)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Inner exception: {ex.InnerException.Message}");
+                        }
+                        throw;
+                    }
+                });
+                
+                System.Diagnostics.Debug.WriteLine($"Retrieved {learningPaths.Count} learning paths");
+                
+                // Update UI on the UI thread
+                await Dispatcher.UIThread.InvokeAsync(() => 
+                {
+                    LearningPaths.Clear();
+                    foreach (var learningPath in learningPaths)
+                    {
+                        LearningPaths.Add(learningPath);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in LoadLearningPaths: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Inner exception: {ex.InnerException.Message}");
                 }
-                IsLoading = false;
-            });
+                // You might want to show an error message to the user here
+            }
         }
 
         private async void ExecuteDeleteLearningPath(Guid learningPathId)

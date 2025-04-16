@@ -41,12 +41,13 @@ namespace MnemoProject.Services
     {
         private static readonly string LogFilePath = Path.Combine(
             AppDomain.CurrentDomain.BaseDirectory, "log.txt");
-        
+
         private static int _nextId = 1;
         private static readonly ObservableCollection<Notification> _notifications = new();
+        private const int MaxNotifications = 2;
 
         public static ObservableCollection<Notification> Notifications => _notifications;
-        
+
         // Command for closing notifications from the UI
         public static RelayCommand<int> CloseNotification { get; } = new RelayCommand<int>(RemoveNotification);
 
@@ -54,7 +55,7 @@ namespace MnemoProject.Services
         {
             // Ensure log directory exists
             Directory.CreateDirectory(Path.GetDirectoryName(LogFilePath));
-            
+
             // Log application startup
             LogToFile($"Application started at {DateTime.Now}");
         }
@@ -67,15 +68,21 @@ namespace MnemoProject.Services
         public static void ShowNotification(string message, NotificationType type = NotificationType.Info, string title = null)
         {
             var notification = new Notification(message, type, title);
-            
+
             // Log to file
             LogToFile($"[{type}] {(title != null ? $"{title}: " : "")}  {message}");
-            
+
             // Show on UI
             Dispatcher.UIThread.Post(() =>
             {
+                // Remove the oldest notification if the limit is reached
+                if (_notifications.Count >= MaxNotifications)
+                {
+                    _notifications.RemoveAt(0);
+                }
+
                 _notifications.Add(notification);
-                
+
                 // Auto-remove notifications after a delay
                 Task.Delay(type == NotificationType.Error ? 10000 : 5000).ContinueWith(_ =>
                 {
@@ -109,7 +116,7 @@ namespace MnemoProject.Services
         {
             ShowNotification(message, NotificationType.Error, title);
         }
-        
+
         public static void AIGeneration(string message, string title = null)
         {
             ShowNotification(message, NotificationType.AIGeneration, title);
@@ -121,7 +128,7 @@ namespace MnemoProject.Services
             {
                 // Format: [2023-01-01 12:34:56] [INFO] Message
                 string formattedMessage = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}";
-                
+
                 // Append to log file
                 File.AppendAllText(LogFilePath, formattedMessage + Environment.NewLine);
             }
@@ -131,7 +138,7 @@ namespace MnemoProject.Services
                 System.Diagnostics.Debug.WriteLine($"Failed to write to log file: {ex.Message}");
             }
         }
-        
+
         private static void RemoveNotification(int id)
         {
             Dispatcher.UIThread.Post(() =>
@@ -144,4 +151,5 @@ namespace MnemoProject.Services
             });
         }
     }
-} 
+
+}

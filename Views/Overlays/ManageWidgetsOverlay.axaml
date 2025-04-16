@@ -20,7 +20,8 @@
         <TextBlock Text="Select Widgets" Foreground="White" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Left"/>
         <Button Content="✖" Command="{Binding CloseCommand}" 
                 Background="Transparent" Foreground="White" 
-                VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                VerticalAlignment="Top" HorizontalAlignment="Right"
+                Cursor="Hand"/>
       </Grid>
       
       <!-- Main content -->
@@ -59,18 +60,21 @@
                       <Button Command="{Binding DataContext.MoveWidgetUpCommand, 
                                 RelativeSource={RelativeSource AncestorType=UserControl}}" 
                               CommandParameter="{Binding}"
+                              Cursor="Hand"
                               Background="Transparent" Foreground="#CCCCCC">↑</Button>
                       
                       <!-- Move Down button -->
                       <Button Command="{Binding DataContext.MoveWidgetDownCommand, 
                                 RelativeSource={RelativeSource AncestorType=UserControl}}" 
                               CommandParameter="{Binding}"
+                              Cursor="Hand"
                               Background="Transparent" Foreground="#CCCCCC">↓</Button>
                       
                       <!-- Disable button -->
                       <Button Command="{Binding DataContext.DisableWidgetCommand, 
                                 RelativeSource={RelativeSource AncestorType=UserControl}}" 
                               CommandParameter="{Binding}"
+                              Cursor="Hand"
                               Background="Transparent" Foreground="#CCCCCC">−</Button>
                     </StackPanel>
                   </Grid>
@@ -105,6 +109,7 @@
                     
                     <!-- Enable button -->
                     <Button Grid.Column="2" Content="+" 
+                            Cursor="Hand"
                             Command="{Binding DataContext.EnableWidgetCommand, 
                               RelativeSource={RelativeSource AncestorType=UserControl}}" 
                             CommandParameter="{Binding}"

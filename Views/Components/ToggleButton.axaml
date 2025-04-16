@@ -26,6 +26,10 @@
     </Setter>
   </Style>
 
+
+  <Style Selector="controls|ToggleButton:pointerover">
+    <Setter Property="Cursor" Value="Hand"/>
+  </Style>
   <Style Selector="controls|ToggleButton:not(:checked) /template/ Border#PART_Border">
     <Setter Property="Background" Value="{Binding UncheckedBackground, RelativeSource={RelativeSource TemplatedParent}}" />
   </Style>

@@ -1,0 +1,225 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:FlashcardPracticeViewModel"
+             x:Class="MnemoProject.Views.FlashcardPracticeView"
+             Background="#121212">
+
+  <StackPanel Margin="80,20,80,0" VerticalAlignment="Center">
+    <Grid Margin="30,20">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <!-- Header -->
+        <RowDefinition Height="Auto"/>
+        <!-- Progress indicators -->
+        <RowDefinition Height="*"/>
+        <!-- Main content -->
+        <RowDefinition Height="Auto"/>
+        <!-- Controls -->
+        <RowDefinition Height="Auto"/>
+        <!-- Spacebar hint -->
+      </Grid.RowDefinitions>
+
+      <!-- Header with title and end session button -->
+      <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+        <TextBlock Grid.Column="0"
+                  Text="Flashcards"
+                  FontSize="24"
+                  FontWeight="Bold"
+                  HorizontalAlignment="Left"/>
+
+        <Button Grid.Column="1"
+                Cursor="Hand"
+                Content="End Session"
+                Foreground="#FF5C5C"
+                Background="Transparent"
+                Command="{Binding GoBackCommand}"/>
+      </Grid>
+
+      <!-- Progress indicators -->
+      <Grid Grid.Row="1" Margin="0,20,0,10">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <!-- Row for ProgressText -->
+          <RowDefinition Height="Auto"/>
+          <!-- Row for ProgressBar -->
+          <RowDefinition Height="Auto"/>
+          <!-- Row for NextReviewInfo -->
+        </Grid.RowDefinitions>
+
+        <!-- ProgressText -->
+        <TextBlock Grid.Row="0"
+                   Text="{Binding ProgressText}"
+                   Margin="0,0,0,5"
+                   HorizontalAlignment="Left"/>
+
+        <!-- ProgressBar -->
+        <ProgressBar Grid.Row="1"
+                     Value="{Binding ProgressPercentage}"
+                     Maximum="100"
+                     Height="8"
+                     Foreground="#2881b1"
+                     Background="#333333"/>
+
+        <!-- NextReviewInfo -->
+        <TextBlock Grid.Row="2"
+                   Text="{Binding NextReviewInfo}"
+                   Margin="0,5,0,0"
+                   FontSize="12"
+                   Foreground="#696969"
+                   HorizontalAlignment="Right"/>
+      </Grid>
+
+      <!-- Main content area -->
+      <Grid Grid.Row="2" Margin="0,20,0,0">
+        <!-- Completion message overlay (shown when session is completed) -->
+        <Border Background="#262626"
+                CornerRadius="8"
+                Padding="25"
+                Margin="0,10,0,10"
+                IsVisible="{Binding ShowCompletionMessage}">
+          <StackPanel>
+            <Image Source="{SvgImage avares://MnemoProject/Assets/Icons/CheckCircle.svg}"
+                   Width="64" Height="64"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+            <TextBlock Text="Daily Review Complete!"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,15"/>
+            <TextBlock Text="{Binding CompletionMessage}"
+                       TextWrapping="Wrap"
+                       FontSize="16"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       Foreground="#CCCCCC"/>
+            <Button Content="Return to Decks"
+                    Command="{Binding GoBackCommand}"
+                    HorizontalAlignment="Center"
+                    Margin="0,25,0,5"
+                    Padding="15,8"
+                    Background="#2881b1"/>
+          </StackPanel>
+        </Border>
+
+        <Grid IsVisible="{Binding !ShowCompletionMessage}">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Question header -->
+            <RowDefinition Height="Auto"/>
+            <!-- Question content -->
+            <RowDefinition Height="Auto"/>
+            <!-- Answer header -->
+            <RowDefinition Height="*"/>
+            <!-- Answer content -->
+          </Grid.RowDefinitions>
+
+          <StackPanel Spacing="15">
+            <StackPanel>
+              <!-- Question section -->
+              <TextBlock Text="Question" FontWeight="Bold" FontSize="18"/>
+              <TextBlock Text="{Binding CurrentCard.Front}" TextWrapping="Wrap" Foreground="#696969" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+              <!-- Answer section -->
+              <TextBlock Grid.Column="0" Text="Answer" FontWeight="SemiBold" Foreground="#2881b1" FontSize="18" IsVisible="{Binding !IsShowingFront}"/>
+
+              <TextBlock Text="{Binding CurrentCard.Back}" TextWrapping="Wrap" FontSize="16" Foreground="#696969" IsVisible="{Binding !IsShowingFront}"/>
+            </StackPanel>
+            <Button Grid.Column="1" HorizontalAlignment="Right" Content="{Binding AnswerToggleButtonText}" Command="{Binding FlipCardCommand}" Background="#333333" Padding="10,5" CornerRadius="4" Cursor="Hand"/>
+          </StackPanel>
+        </Grid>
+      </Grid>
+      
+      <!-- Controls -->
+      <Grid Grid.Row="3" Margin="0,30,0,0" IsVisible="{Binding !ShowCompletionMessage}">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Auto Play button -->
+        <Button Grid.Column="0"
+                Background="#1A1A1A"
+                CornerRadius="20"
+                Padding="15,8"
+                Cursor="Hand"
+                Command="{Binding ToggleAutoPlayCommand}">
+          <StackPanel Orientation="Horizontal">
+            <Ellipse Width="20" Height="20" Fill="#4C8BF5" Margin="0,0,8,0">
+              <Ellipse.OpacityMask>
+                <DrawingBrush>
+                  <DrawingBrush.Drawing>
+                    <GeometryDrawing Brush="White">
+                      <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                          <PathFigure StartPoint="6,4" IsClosed="True">
+                            <LineSegment Point="14,10"/>
+                            <LineSegment Point="6,16"/>
+                          </PathFigure>
+                        </PathGeometry>
+                      </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                  </DrawingBrush.Drawing>
+                </DrawingBrush>
+              </Ellipse.OpacityMask>
+            </Ellipse>
+            <TextBlock Text="{Binding AutoPlayingButtonText}" VerticalAlignment="Center"/>
+          </StackPanel>
+        </Button>
+        
+
+        <!-- Rating buttons -->
+        <StackPanel Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Spacing="10">
+          <Button Content="Again"
+                  Cursor="Hand"
+                  Background="#2D2D2D"
+                  Padding="15,8"
+                  CornerRadius="4"
+                  Command="{Binding RateDifficultyCommand}"
+                  CommandParameter="Again"/>
+
+          <Button Content="Hard"
+                  Cursor="Hand"
+                  Background="#2D2D2D"
+                  Padding="15,8"
+                  CornerRadius="4"
+                  Command="{Binding RateDifficultyCommand}"
+                  CommandParameter="Hard"/>
+
+          <Button Content="Good"
+                  Cursor="Hand"
+                  Background="#2D2D2D"
+                  Padding="15,8"
+                  CornerRadius="4"
+                  Command="{Binding RateDifficultyCommand}"
+                  CommandParameter="Good"/>
+
+          <Button Content="Easy"
+                  Cursor="Hand"
+                  Background="#2D2D2D"
+                  Padding="15,8"
+                  CornerRadius="4"
+                  Command="{Binding RateDifficultyCommand}"
+                  CommandParameter="Easy"/>
+        </StackPanel>
+      </Grid>
+
+      <!-- Spacebar hint -->
+      <TextBlock Grid.Row="4"
+                Text="Spacebar to continue"
+                Foreground="#888888"
+                FontSize="12"
+                HorizontalAlignment="Center"
+                Margin="0,30,0,0"
+                IsVisible="{Binding !ShowCompletionMessage}"/>
+    </Grid>
+  </StackPanel>
+</UserControl>

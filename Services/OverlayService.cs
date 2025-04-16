@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.Collections.Generic;
 
 namespace MnemoProject.Services
 {
@@ -13,6 +14,7 @@ namespace MnemoProject.Services
         public event EventHandler OverlayClosed;
 
         private UserControl _currentOverlay;
+        private Stack<UserControl> _overlayStack;
         
         public UserControl CurrentOverlay
         {
@@ -31,6 +33,7 @@ namespace MnemoProject.Services
         private OverlayService()
         {
             IsOverlayVisible = false;
+            _overlayStack = new Stack<UserControl>();
         }
 
         public void ShowOverlay(UserControl overlay)
@@ -39,6 +42,12 @@ namespace MnemoProject.Services
             {
                 NotificationService.Warning("Attempted to show a null overlay");
                 return;
+            }
+
+            // If there's a current overlay, push it onto the stack
+            if (CurrentOverlay != null)
+            {
+                _overlayStack.Push(CurrentOverlay);
             }
 
             CurrentOverlay = overlay;
@@ -50,9 +59,20 @@ namespace MnemoProject.Services
         {
             if (IsOverlayVisible)
             {
-                NotificationService.LogToFile($"Closed overlay: {CurrentOverlay?.GetType().Name}");
-                CurrentOverlay = null;
-                IsOverlayVisible = false;
+                var closingOverlay = CurrentOverlay;
+                NotificationService.LogToFile($"Closed overlay: {closingOverlay?.GetType().Name}");
+                
+                // Check if we have previous overlays to restore
+                if (_overlayStack.Count > 0)
+                {
+                    CurrentOverlay = _overlayStack.Pop();
+                    NotificationService.LogToFile($"Restored previous overlay: {CurrentOverlay?.GetType().Name}");
+                }
+                else
+                {
+                    CurrentOverlay = null;
+                    IsOverlayVisible = false;
+                }
                 
                 // Raise the OverlayClosed event
                 OverlayClosed?.Invoke(this, EventArgs.Empty);

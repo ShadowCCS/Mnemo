@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Linq;
+using MnemoProject.Models;
 
 namespace MnemoProject.ViewModels
 {
@@ -32,7 +33,8 @@ namespace MnemoProject.ViewModels
         [ObservableProperty]
         private bool _isGeneratingMore = false;
         
-        private List<Flashcard> _flashcards = new List<Flashcard>();
+        // Use a collection of temporary FlashcardItem objects instead of database entities
+        private List<FlashcardItem> _flashcards = new List<FlashcardItem>();
         
         public string CurrentQuestion
         {
@@ -51,7 +53,7 @@ namespace MnemoProject.ViewModels
             get
             {
                 string result = _flashcards.Count > 0 && CurrentIndex < _flashcards.Count 
-                    ? _flashcards[CurrentIndex].Answer 
+                    ? _flashcards[CurrentIndex].Answer ?? "No answer available"
                     : "No answer available";
                 System.Diagnostics.Debug.WriteLine($"CurrentAnswer accessed, returning: {result}");
                 return result;
@@ -62,6 +64,12 @@ namespace MnemoProject.ViewModels
         
         public bool CanGoPrevious => _flashcards.Count > 0 && CurrentIndex > 0;
 
+        // Simple non-entity class for flashcards
+        private class FlashcardItem
+        {
+            public string Question { get; set; } = string.Empty;
+            public string Answer { get; set; } = string.Empty;
+        }
 
         public UnitFlashcardsViewModel(string unitContent)
         {
@@ -126,38 +134,39 @@ namespace MnemoProject.ViewModels
                     PropertyNameCaseInsensitive = true
                 };
                 
-                var generatedFlashcards = System.Text.Json.JsonSerializer.Deserialize<List<Flashcard>>(flashcardsJson, jsonOptions);
+                // Create a temporary class to deserialize the AI response
+                var tempFlashcards = System.Text.Json.JsonSerializer.Deserialize<List<AIFlashcard>>(flashcardsJson, jsonOptions);
                 
                 // Check what was actually deserialized
-                if (generatedFlashcards != null)
+                if (tempFlashcards != null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Deserialized {generatedFlashcards.Count} flashcards");
-                    foreach (var card in generatedFlashcards.Take(3)) // Show just the first 3 for brevity
+                    System.Diagnostics.Debug.WriteLine($"Deserialized {tempFlashcards.Count} flashcards");
+                    foreach (var card in tempFlashcards.Take(3)) // Show just the first 3 for brevity
                     {
-                        System.Diagnostics.Debug.WriteLine($"Deserialized card: {card}");
+                        System.Diagnostics.Debug.WriteLine($"Deserialized card: Q='{card.question}', A='{card.answer}'");
                     }
                 }
                 
-                if (generatedFlashcards != null && generatedFlashcards.Count > 0)
+                if (tempFlashcards != null && tempFlashcards.Count > 0)
                 {
-                    // Create a fresh list of new flashcard objects
-                    var newFlashcards = new List<Flashcard>();
+                    // Create a fresh list of new flashcard items (not entity objects)
+                    var newFlashcards = new List<FlashcardItem>();
                     
-                    for (int i = 0; i < generatedFlashcards.Count; i++)
+                    for (int i = 0; i < tempFlashcards.Count; i++)
                     {
-                        var card = generatedFlashcards[i];
-                        string question = card.Question?.Trim() ?? string.Empty;
-                        string answer = card.Answer?.Trim() ?? string.Empty;
+                        var card = tempFlashcards[i];
+                        string question = card.question?.Trim() ?? string.Empty;
+                        string answer = card.answer?.Trim() ?? string.Empty;
                         
                         System.Diagnostics.Debug.WriteLine($"Processing card {i+1}: Q='{question}', A='{answer}'");
                         
                         if (!string.IsNullOrWhiteSpace(question) && !string.IsNullOrWhiteSpace(answer))
                         {
-                            // Create a brand new Flashcard object
-                            newFlashcards.Add(new Flashcard 
+                            // Create a simple FlashcardItem instead of database entity
+                            newFlashcards.Add(new FlashcardItem 
                             { 
                                 Question = question, 
-                                Answer = answer 
+                                Answer = answer
                             });
                         }
                     }
@@ -168,12 +177,12 @@ namespace MnemoProject.ViewModels
                         System.Diagnostics.Debug.WriteLine($"Created {newFlashcards.Count} new flashcards from AI response");
                         
                         // Completely replace the flashcards list instead of clearing and adding
-                        _flashcards = new List<Flashcard>(newFlashcards);
+                        _flashcards = new List<FlashcardItem>(newFlashcards);
                         
                         // Log each flashcard to verify content
                         for (int i = 0; i < Math.Min(3, _flashcards.Count); i++)
                         {
-                            System.Diagnostics.Debug.WriteLine($"New AI flashcard {i+1}: {_flashcards[i]}");
+                            System.Diagnostics.Debug.WriteLine($"New AI flashcard {i+1}: Q='{_flashcards[i].Question}', A='{_flashcards[i].Answer}'");
                         }
                         
                         // Reset to the first card
@@ -328,24 +337,24 @@ Unit Content:
                     PropertyNameCaseInsensitive = true
                 };
                 
-                var additionalFlashcards = System.Text.Json.JsonSerializer.Deserialize<List<Flashcard>>(flashcardsJson, jsonOptions);
+                var additionalAIFlashcards = System.Text.Json.JsonSerializer.Deserialize<List<AIFlashcard>>(flashcardsJson, jsonOptions);
                 
-                if (additionalFlashcards != null && additionalFlashcards.Count > 0)
+                if (additionalAIFlashcards != null && additionalAIFlashcards.Count > 0)
                 {
                     // Create a fresh list for truly unique flashcards
-                    var uniqueNewFlashcards = new List<Flashcard>();
+                    var uniqueNewFlashcards = new List<FlashcardItem>();
                     
-                    foreach (var card in additionalFlashcards)
+                    foreach (var card in additionalAIFlashcards)
                     {
-                        string question = card.Question?.Trim() ?? string.Empty;
-                        string answer = card.Answer?.Trim() ?? string.Empty;
+                        string question = card.question?.Trim() ?? string.Empty;
+                        string answer = card.answer?.Trim() ?? string.Empty;
                         
                         // Only add if both fields have content and question is unique
                         if (!string.IsNullOrWhiteSpace(question) && 
                             !string.IsNullOrWhiteSpace(answer) && 
                             !existingQuestions.Contains(question.ToLowerInvariant()))
                         {
-                            uniqueNewFlashcards.Add(new Flashcard { Question = question, Answer = answer });
+                            uniqueNewFlashcards.Add(new FlashcardItem { Question = question, Answer = answer });
                             existingQuestions.Add(question.ToLowerInvariant()); // Add to prevent duplicates within new batch
                         }
                     }
@@ -365,7 +374,7 @@ Unit Content:
                         for (int i = 0; i < Math.Min(3, uniqueNewFlashcards.Count); i++)
                         {
                             var card = uniqueNewFlashcards[i];
-                            System.Diagnostics.Debug.WriteLine($"New additional flashcard {i+1}: {card}");
+                            System.Diagnostics.Debug.WriteLine($"New additional flashcard {i+1}: Q='{card.Question}', A='{card.Answer}'");
                         }
                         
                         // Update UI
@@ -413,41 +422,11 @@ Unit Content:
             }
         }
     }
-    
-    public class Flashcard
+
+    // Keep this class for deserialization
+    public class AIFlashcard
     {
-        // Backing fields
-        private string _question = string.Empty;
-        private string _answer = string.Empty;
-        
-        public string Question 
-        { 
-            get => _question; 
-            set
-            {
-                if (value != null)
-                {
-                    _question = value;
-                }
-            }
-        }
-        
-        public string Answer 
-        { 
-            get => _answer; 
-            set
-            {
-                if (value != null)
-                {
-                    _answer = value;
-                }
-            }
-        }
-        
-        // For debugging
-        public override string ToString()
-        {
-            return $"Q: '{Question}', A: '{Answer}'";
-        }
+        public string question { get; set; } = string.Empty;
+        public string answer { get; set; } = string.Empty;
     }
 } 

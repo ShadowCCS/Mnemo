@@ -56,6 +56,7 @@
                   <Button Command="{Binding OpenWidgetManagementCommand}"
                           Background="#1A1A1A" 
                           CornerRadius="8" Padding="10" 
+                          Cursor="Hand"
                           Width="130" Height="100" Margin="0,0,10,10">
                     <StackPanel VerticalAlignment="Center">
                       <Grid>

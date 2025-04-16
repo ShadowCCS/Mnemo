@@ -31,7 +31,6 @@
                          Margin="0,5,0,0"
                          TextWrapping="Wrap"/>
               
-              <!-- Loading Indicator - moved inside main StackPanel -->
               <StackPanel IsVisible="{TemplateBinding IsGenerating}" 
                          Margin="0,15,0,0">
                 <TextBlock Text="Generating next unit..." 
@@ -49,12 +48,12 @@
       </ControlTemplate>
     </Setter>
 
-    <!-- Hover effect for entire button -->
     <Style Selector="^:pointerover">
       <Setter Property="Background" Value="#2C2C2C"/>
       <Setter Property="Cursor" Value="Hand"/>
     </Style>
-    <!-- Disabled state styles -->
+
+    
     <Style Selector="^:disabled /template/ Border#PART_Border">
       <Setter Property="Background" Value="#151515"/>
       <Setter Property="CornerRadius" Value="20"/>

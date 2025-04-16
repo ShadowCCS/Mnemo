@@ -300,7 +300,7 @@ namespace MnemoProject.ViewModels
         {
             try
             {
-                using var db = new LearningPathContext();
+                using var db = new MnemoContext();
 
                 var existingUnit = await db.Units.AsTracking().FirstOrDefaultAsync(u => u.Id == unit.Id);
                 if (existingUnit != null)
