@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:SettingsViewModel"
              x:Class="MnemoProject.Views.SettingsView"
@@ -17,13 +18,13 @@
              HorizontalAlignment="Stretch">
     <SplitView.Pane>
       <StackPanel Background="#121212">
-        <Label Content="Settings" FontSize="24" FontWeight="Medium" Foreground="White" Margin="10"/>
+        <Label Content="{loc:Localization Settings_Title}" FontSize="24" FontWeight="Medium" Foreground="White" Margin="10"/>
         <ListBox Classes="Sidebar" SelectedIndex="{Binding SelectedIndex}">
-          <ListBoxItem Content="Appearance" Background="{x:Null}"/>
-          <ListBoxItem Content="Preferences" Background="{x:Null}"/>
-          <ListBoxItem Content="Data &amp; Storage" Background="{x:Null}"/>
-          <ListBoxItem Content="About &amp; Support" Background="{x:Null}"/>
-          <ListBoxItem Content="Experimental" Background="{x:Null}"/>
+          <ListBoxItem Content="{loc:Localization Settings_Appearance}" Background="{x:Null}"/>
+          <ListBoxItem Content="{loc:Localization Settings_Preferences}" Background="{x:Null}"/>
+          <ListBoxItem Content="{loc:Localization Settings_DataStorage}" Background="{x:Null}"/>
+          <ListBoxItem Content="{loc:Localization Settings_AboutSupport}" Background="{x:Null}"/>
+          <ListBoxItem Content="{loc:Localization Settings_Experimental}" Background="{x:Null}"/>
         </ListBox>
       </StackPanel>
     </SplitView.Pane>

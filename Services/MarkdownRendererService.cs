@@ -1305,7 +1305,7 @@ namespace MnemoProject.Services
                                 catch (Exception ex)
                                 {
                                     // Handle any errors
-                                    Console.WriteLine($"Error opening URL: {ex.Message}");
+                                    System.Diagnostics.Debug.WriteLine($"Error opening URL: {ex.Message}");
                                 }
                             };
                             

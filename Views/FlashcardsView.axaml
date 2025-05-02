@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:FlashcardsViewModel"
              x:Class="MnemoProject.Views.FlashcardsView">
@@ -11,16 +12,16 @@
   <Grid>
     <!-- Show "No Flashcards" message when HasFlashcards is false -->
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding !HasFlashcards}">
-      <Label Content="No Flashcards Found" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
+      <Label Content="{loc:Localization Flashcards_Title}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
       <Label Content="Create your first flashcard deck to get started" HorizontalAlignment="Center" FontSize="16" Foreground="#696969"/>
-      <Button Content="Create Deck" Command="{Binding CreateDeckCommand}" Margin="0,20,0,0" Classes="accent" HorizontalAlignment="Center" Background="#262626"/>
+      <Button Content="{loc:Localization Flashcards_CreateDeck}" Command="{Binding CreateDeckCommand}" Margin="0,20,0,0" Classes="accent" HorizontalAlignment="Center" Background="#262626"/>
     </StackPanel>
     
     <!-- Show Flashcards UI when HasFlashcards is true -->
     <Grid IsVisible="{Binding HasFlashcards}" ColumnDefinitions="300,*">
       <!-- Left sidebar with decks list -->
       <Grid Grid.Column="0" RowDefinitions="Auto,*,Auto">
-        <TextBlock Grid.Row="0" Text="Flashcard Decks" FontWeight="Bold" Margin="15,20,15,10" FontSize="32" Foreground="White"/>
+        <TextBlock Grid.Row="0" Text="{loc:Localization Flashcards_Title}" FontWeight="Bold" Margin="15,20,15,10" FontSize="32" Foreground="White"/>
         
         <!-- List of Flashcard Decks -->
         <ListBox Grid.Row="1" 
@@ -44,7 +45,7 @@
         
         <!-- Create Button -->
         <Button Grid.Row="2" 
-                Content="+ Create Deck" 
+                Content="{loc:Localization Flashcards_CreateDeck}" 
                 Command="{Binding CreateDeckCommand}" 
                 HorizontalAlignment="Stretch" 
                 Margin="15,10,15,15"/>
@@ -87,14 +88,14 @@
                     Margin="0,20,0,0" 
                     Spacing="10"
                     IsVisible="{Binding IsDeckSelected}">
-          <Button Content="Learn" 
+          <Button Content="{loc:Localization UnitLearnMode_Start}" 
                   Command="{Binding LearnDeckCommand}"
                   CommandParameter="{Binding SelectedDeck}"
                   Classes="accent"/>
-          <Button Content="Edit Deck" 
+          <Button Content="{loc:Localization Flashcards_Edit}" 
                   Command="{Binding EditDeckCommand}"
                   CommandParameter="{Binding SelectedDeck}"/>
-          <Button Content="Delete" 
+          <Button Content="{loc:Localization Flashcards_Delete}" 
                   Command="{Binding DeleteDeckCommand}"
                   CommandParameter="{Binding SelectedDeck}"
                   Classes="danger"/>

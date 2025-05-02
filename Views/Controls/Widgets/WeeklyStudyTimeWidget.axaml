@@ -2,11 +2,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
+             xmlns:models="clr-namespace:MnemoProject.Models"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="100"
+             x:DataType="models:Widget"
              x:Class="MnemoProject.Views.Controls.Widgets.WeeklyStudyTimeWidget">
   
   <StackPanel>
-    <TextBlock Text="28 h" Foreground="White" FontSize="24" FontWeight="Bold"/>
-    <TextBlock Text="Time spent studying this week" Foreground="#a0a0a0" FontSize="12" MaxWidth="180" TextWrapping="Wrap"/>
+    <TextBlock Text="{Binding Tag, StringFormat={}{0} h}" Foreground="White" FontSize="24" FontWeight="Bold"/>
+    <TextBlock Text="{loc:Localization Widget_TimeSpentStudying}" Foreground="#a0a0a0" FontSize="12" MaxWidth="180" TextWrapping="Wrap"/>
   </StackPanel>
 </UserControl> 

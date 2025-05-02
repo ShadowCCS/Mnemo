@@ -2,14 +2,224 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             xmlns:vm="using:MnemoProject.ViewModels"
+             xmlns:models="using:MnemoProject.Models"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="MnemoProject.Views.UnitLearnModeView"
              x:DataType="vm:UnitLearnModeViewModel">
-  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-    <Image Source="{SvgImage avares://MnemoProject/Assets/notImplemented.svg}" Height="200" Margin="20"/>
-    <Label Content="Learn Mode" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
-    <Label Content="Feature Under Development" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24"/>
-    <Label Content="We're working on bringing this functionality to you soon." Foreground="#696969" HorizontalAlignment="Center" FontSize="16"/>
+
+  <StackPanel Spacing="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0">
+    <Border Height="512" Width="680" BorderThickness="2" BorderBrush="#262626" CornerRadius="8" Background="#1e1e1e">
+      <Grid>
+        <!-- Loading state -->
+        <StackPanel IsVisible="{Binding IsLoading}"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+          <TextBlock Text="{loc:Localization UnitLearnMode_GeneratingContent}" 
+                     FontSize="24" 
+                     FontWeight="Bold" 
+                     HorizontalAlignment="Center" 
+                     Foreground="White"
+                     Margin="0,0,0,20"/>
+          <TextBlock Text="{Binding LoadingStatus}" 
+                     FontSize="16" 
+                     HorizontalAlignment="Center" 
+                     Foreground="#2880b1"
+                     Margin="0,0,0,30"/>
+          <ProgressBar IsIndeterminate="True" 
+                       Width="200" 
+                       Height="4" 
+                       Margin="0,0,0,30"
+                       IsVisible="{Binding IsLoadingStatusError}"/>
+          
+          <!-- Return to Unit Guide button shown only if there's an error -->
+          <Button Content="{loc:Localization UnitLearnMode_ReturnToUnitGuide}" 
+                  Command="{Binding NavigateBackToUnitGuideCommand}"
+                  Background="#2880b1"
+                  Foreground="White"
+                  Padding="15,8"
+                  HorizontalAlignment="Center"
+                  IsVisible="{Binding IsLoadingStatusError}"/>
+        </StackPanel>
+        
+        <!-- Main content when loaded -->
+        <Grid IsVisible="{Binding !IsLoading}" Margin="15">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          
+          <!-- Progress bar at the top -->
+          <ProgressBar Grid.Row="0" 
+                       Value="{Binding ProgressValue}" 
+                       Maximum="100" 
+                       Width="300" 
+                       Height="6" 
+                       Margin="0,0,0,15" 
+                       HorizontalAlignment="Center"
+                       Foreground="White" 
+                       Background="#3a3a3a"/>
+          
+          <!-- Content area - This section changes based on whether we're in theory or question mode -->
+          <ScrollViewer Grid.Row="1" 
+                        HorizontalScrollBarVisibility="Disabled" 
+                        VerticalScrollBarVisibility="Auto" 
+                        Padding="0,0,10,0">
+            <Border Background="#262626" 
+                    BorderBrush="#3a3a3a" 
+                    BorderThickness="1" 
+                    CornerRadius="8" 
+                    Padding="25" 
+                    MinHeight="350"
+                    Width="620"
+                    HorizontalAlignment="Center">
+              
+              <!-- Content wrapper to ensure Border has only one child -->
+              <Panel>
+                <!-- Theory mode content -->
+                <StackPanel IsVisible="{Binding !IsInQuestionMode}" Spacing="15">
+                  <TextBlock Text="{loc:Localization UnitLearnMode_Theory}" 
+                             FontSize="18" 
+                             FontWeight="Bold" 
+                             Foreground="#2880b1"
+                             HorizontalAlignment="Center"
+                             Margin="0,0,0,10"/>
+                  <TextBlock Text="{Binding CurrentTheory}" 
+                             FontSize="18" 
+                             TextWrapping="Wrap" 
+                             Foreground="White"
+                             TextAlignment="Left"
+                             LineHeight="24"/>
+                </StackPanel>
+                
+                <!-- Question mode content -->
+                <StackPanel IsVisible="{Binding IsInQuestionMode}" Spacing="15">
+                  <TextBlock Text="{loc:Localization UnitLearnMode_Question}" 
+                             FontSize="18" 
+                             FontWeight="Bold" 
+                             Foreground="#2880b1"
+                             HorizontalAlignment="Center"
+                             Margin="0,0,0,10"/>
+                  <TextBlock Text="{Binding CurrentQuestion.Question}" 
+                             FontSize="22" 
+                             TextWrapping="Wrap" 
+                             Foreground="White"
+                             TextAlignment="Center"
+                             Margin="0,0,0,20"/>
+                  
+                  <!-- Multiple choice questions - with null check for Options -->
+                  <StackPanel IsVisible="{Binding ShowMultipleChoice}" Spacing="10">
+                    <ListBox ItemsSource="{Binding CurrentQuestion.Options}" 
+                             SelectionMode="Single"
+                             SelectedIndex="{Binding SelectedMultipleChoiceIndex}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" 
+                                           Foreground="White"
+                                           Margin="5" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                  </StackPanel>
+                  
+                  <!-- Fill in the blank questions -->
+                  <StackPanel IsVisible="{Binding ShowFillInBlank}" Spacing="10">
+                    <Grid x:Name="FillInBlankGrid" Tag="{Binding UserAnswer}">
+                      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                        <ItemsControl ItemsSource="{Binding CurrentQuestion.Options}">
+                          <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                              <StackPanel Orientation="Horizontal" Spacing="8"/>
+                            </ItemsPanelTemplate>
+                          </ItemsControl.ItemsPanel>
+                          <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                              <Button Content="{Binding}"
+                                     Background="#3a3a3a"
+                                     Padding="15,8"
+                                     Margin="5,0"
+                                     BorderThickness="2"
+                                     Click="FillInBlankOption_Click"
+                                     Tag="{Binding}">
+                              </Button>
+                            </DataTemplate>
+                          </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                      </StackPanel>
+                    </Grid>
+                  </StackPanel>
+                  
+                  <!-- Free write questions -->
+                  <StackPanel IsVisible="{Binding ShowFreeWrite}" Spacing="10">
+                    <TextBox Watermark="{loc:Localization UnitLearnMode_FillInBlankPlaceholder}"
+                             Text="{Binding UserAnswer, Mode=TwoWay}"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             MinHeight="100"
+                             Margin="0,5,0,10"/>
+                  </StackPanel>
+                  
+                  <!-- Feedback area, shown after answering -->
+                  <Border IsVisible="{Binding HasAnsweredQuestion}"
+                          Background="{Binding IsFeedbackCorrect, Converter={x:Static vm:BooleanToBrushConverter.Instance}, ConverterParameter='#2a4a2a,#4a2a2a'}"
+                          BorderBrush="{Binding IsFeedbackCorrect, Converter={x:Static vm:BooleanToBrushConverter.Instance}, ConverterParameter='#3a6a3a,#6a3a3a'}"
+                          BorderThickness="1"
+                          CornerRadius="4"
+                          Padding="15"
+                          Margin="0,10,0,5">
+                    <TextBlock Text="{Binding FeedbackMessage}" 
+                              TextWrapping="Wrap" 
+                              Foreground="White"/>
+                  </Border>
+                  
+                  <!-- Add back the Check Answer button only for questions -->
+                  <Button Content="{loc:Localization UnitLearnMode_CheckAnswer}" 
+                          Command="{Binding CheckAnswerCommand}" 
+                          Background="#2880b1" 
+                          Foreground="White"
+                          Padding="15,8"
+                          HorizontalAlignment="Center"
+                          IsVisible="{Binding !HasAnsweredQuestion}"/>
+                </StackPanel>
+              </Panel>
+            </Border>
+          </ScrollViewer>
+          
+          <!-- Navigation controls at the bottom -->
+          <Grid Grid.Row="2" Margin="0,15,0,0">
+            <Button Command="{Binding PreviousCommand}"
+                    IsEnabled="{Binding CanGoPrevious}"
+                    HorizontalAlignment="Left">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock Text="←" Margin="0,0,5,0"/>
+                  <TextBlock Text="{loc:Localization UnitLearnMode_Previous}"/>
+                </StackPanel>
+              </Button.Content>
+            </Button>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+              <Button Command="{Binding SkipQuestionCommand}"
+                      IsVisible="{Binding IsInQuestionMode}"
+                      Background="#3a3a3a" 
+                      Foreground="White"
+                      Padding="15,8">
+                <TextBlock Text="{loc:Localization UnitLearnMode_Skip}"/>
+              </Button>
+              
+              <Button Command="{Binding ContinueCommand}"
+                      Background="#2880b1" 
+                      Foreground="White"
+                      IsEnabled="{Binding CanContinue}"
+                      Padding="15,8">
+                <TextBlock Text="{loc:Localization UnitLearnMode_Continue}"/>
+              </Button>
+            </StackPanel>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Border>
   </StackPanel>
 </UserControl> 

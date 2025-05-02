@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              x:Class="MnemoProject.Views.Settings_DataStorageView"
              VerticalAlignment="Stretch"
              HorizontalAlignment="Stretch">
@@ -11,13 +12,13 @@
     <ScrollViewer VerticalScrollBarVisibility="Visible"
                   HorizontalScrollBarVisibility="Disabled">
       <StackPanel Margin="30" Spacing="30">
-        <Label Content="Storage &amp; Data" FontWeight="SemiBold" FontSize="32"/>
+        <Label Content="{loc:Localization Settings_Storage_Title}" FontWeight="SemiBold" FontSize="32"/>
 
         <!-- Storage Location Section -->
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="Storage Location" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Where your flashcards, quizzes, and other data are stored" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_Storage_Location}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_Storage_Location_Desc}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
             <Grid ColumnDefinitions="*, Auto" Margin="0,5,0,0">
               <Border Grid.Column="0"
                      Background="#252525"
@@ -25,14 +26,13 @@
                      Padding="15,10"
                      Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
-                  <PathIcon Data="M1 7L1 17L19 17L19 7M1 3L1 7L19 7L19 3L1 3Z" Width="18" Height="18" Margin="0,0,10,0"/>
                   <TextBlock Text="C:\Users\SamThompson\AppData\Flashcards"
                           VerticalAlignment="Center"
                           Foreground="#EEEEEE"/>
                 </StackPanel>
               </Border>
               <Button Grid.Column="1"
-                     Content="Change"
+                     Content="{loc:Localization Settings_Storage_Change}"
                      Padding="15,10"
                      Background="#333333"
                      CornerRadius="6">
@@ -44,7 +44,7 @@
               </Button>
             </Grid>
             <ProgressBar Value="45" Maximum="100" Height="6" Margin="0,5,0,0"/>
-            <TextBlock Text="45% of available space used (10.2 GB free)" 
+            <TextBlock Text="{loc:Localization Settings_Storage_SpaceUsed, 45, '10.2 GB'}" 
                       Foreground="#777777" 
                       FontSize="12" 
                       Margin="0,0,0,0"/>
@@ -54,8 +54,8 @@
         <!-- Cache Management Section -->
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="Cache Management" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Temporary storage for frequently accessed data" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_Cache_Management}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_Cache_Description}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
             <Grid ColumnDefinitions="*, Auto" Margin="0,5,0,0">
               <Border Grid.Column="0"
                      Background="#252525"
@@ -63,14 +63,13 @@
                      Padding="15,10"
                      Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
-                  <PathIcon Data="M20 6L4 6L6.03 20L17.97 20L20 6Z M14 3L10 3L9 4L5 4L5 6L19 6L19 4L15 4L14 3Z" Width="18" Height="18" Margin="0,0,10,0"/>
                   <TextBlock Text="C:\Users\SamThompson\AppData\Flashcards\Cache"
                           VerticalAlignment="Center"
                           Foreground="#EEEEEE"/>
                 </StackPanel>
               </Border>
               <Button Grid.Column="1"
-                     Content="Change"
+                     Content="{loc:Localization Settings_Storage_Change}"
                      Padding="15,10"
                      Background="#333333"
                      CornerRadius="6">
@@ -83,9 +82,9 @@
             </Grid>
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,5,0,0">
-              <TextBlock Grid.Column="0" Text="Current cache size: 230 MB" VerticalAlignment="Center" Foreground="#969696"/>
+              <TextBlock Grid.Column="0" Text="{loc:Localization Settings_Cache_Size, '230 MB'}" VerticalAlignment="Center" Foreground="#969696"/>
               <Button Grid.Column="2" 
-                     Content="Clear Cache" 
+                     Content="{loc:Localization Settings_Cache_Clear}" 
                      Background="#B33A3A" 
                      Foreground="White" 
                      Padding="15,8" 
@@ -103,8 +102,8 @@
         <!-- Backup & Restore Section -->
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="Backup &amp; Restore" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Securely back up and restore your data" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_Backup_Title}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_Backup_Description}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
             <Grid ColumnDefinitions="*, Auto" Margin="0,5,0,0">
               <Border Grid.Column="0"
                      Background="#252525"
@@ -112,14 +111,13 @@
                      Padding="15,10"
                      Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
-                  <PathIcon Data="M19 11L19 20L5 20L5 11M12 4L8 8L16 8L12 4Z M12 8L12 16" Width="18" Height="18" Margin="0,0,10,0"/>
                   <TextBlock Text="C:\Users\SamThompson\AppData\Flashcards\Backup"
                           VerticalAlignment="Center"
                           Foreground="#EEEEEE"/>
                 </StackPanel>
               </Border>
               <Button Grid.Column="1"
-                     Content="Change"
+                     Content="{loc:Localization Settings_Storage_Change}"
                      Padding="15,10"
                      Background="#333333"
                      CornerRadius="6">
@@ -133,7 +131,7 @@
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
               <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="15">
-                <Button Content="Create Backup"
+                <Button Content="{loc:Localization Settings_Backup_Create}"
                        Background="#2D6CA7"
                        Foreground="White"
                        Padding="15,10"
@@ -144,7 +142,7 @@
                     </Style>
                   </Button.Styles>
                 </Button>
-                <Button Content="Restore Backup"
+                <Button Content="{loc:Localization Settings_Backup_Restore}"
                        Background="#3A8C54"
                        Foreground="White"
                        Padding="15,10"
@@ -158,7 +156,7 @@
               </StackPanel>
               
               <TextBlock Grid.Column="2" 
-                        Text="Last backup: Today, 2:30 PM" 
+                        Text="{loc:Localization Settings_Backup_LastBackup, 'Today', '2:30 PM'}" 
                         VerticalAlignment="Center" 
                         Foreground="#969696"
                         HorizontalAlignment="Right"/>
@@ -166,35 +164,7 @@
           </StackPanel>
         </Border>
         
-        <!-- Cloud Storage Section -->
-        <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
-          <StackPanel Spacing="15">
-            <Label Content="Cloud Storage" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Sync your flashcards across multiple devices" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
-            
-            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,5,0,0">
-              <TextBlock Grid.Column="0" Text="Enable cloud synchronization" VerticalAlignment="Center"/>
-              <Button Grid.Column="2" 
-                    Content="Connect" 
-                    Background="#2D6CA7" 
-                    Foreground="White" 
-                    Padding="15,8" 
-                    CornerRadius="6"
-                    HorizontalAlignment="Right">
-                <Button.Styles>
-                  <Style Selector="Button:pointerover /template/ ContentPresenter">
-                    <Setter Property="Background" Value="#367AB9"/>
-                  </Style>
-                </Button.Styles>
-              </Button>
-            </Grid>
-            
-            <TextBlock Text="Sign in to your cloud provider to enable automatic synchronization" 
-                      Foreground="#777777" 
-                      FontSize="12" 
-                      Margin="0,0,0,0"/>
-          </StackPanel>
-        </Border>
+     
       </StackPanel>
     </ScrollViewer>
   </Grid>

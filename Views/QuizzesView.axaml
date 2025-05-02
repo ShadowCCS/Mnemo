@@ -3,13 +3,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:QuizzesViewModel"
              x:Class="MnemoProject.Views.QuizzesView">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
     <Image Source="{SvgImage avares://MnemoProject/Assets/notImplemented.svg}" Height="200" Margin="20"/>
-    <Label Content="Quizzes" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
-    <Label Content="Feature Under Development" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24"/>
-    <Label Content="We're working on bringing this functionality to you soon." Foreground="#696969" HorizontalAlignment="Center" FontSize="16"/>
+    <Label Content="{loc:Localization Feature_Quizzes}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
+    <Label Content="{loc:Localization Feature_UnderDevelopment}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24"/>
+    <Label Content="{loc:Localization Feature_ComingSoon}" Foreground="#696969" HorizontalAlignment="Center" FontSize="16"/>
   </StackPanel>
 </UserControl>

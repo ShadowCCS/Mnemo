@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:MnemoProject.ViewModels.Overlays"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:DataType="vm:ShortcutsOverlayViewModel"
              x:CompileBindings="False"
@@ -17,7 +18,7 @@
       
       <!-- Header with close button -->
       <Grid Grid.Row="0">
-        <TextBlock Text="Shortcuts" Foreground="White" FontSize="36" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+        <TextBlock Text="{loc:Localization Shortcuts_Title}" Foreground="White" FontSize="36" FontWeight="SemiBold" HorizontalAlignment="Center"/>
         <Button Content="✖" Command="{Binding CloseCommand}" 
                 Background="Transparent" Foreground="White" 
                 VerticalAlignment="Top" HorizontalAlignment="Right"/>
@@ -28,11 +29,11 @@
         <StackPanel Spacing="30" Margin="20">
           <!-- Navigation Shortcuts -->
           <StackPanel>
-            <TextBlock Text="Navigation Shortcuts" Foreground="White" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,15"/>
+            <TextBlock Text="{loc:Localization Shortcuts_NavigationShortcuts}" Foreground="White" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,15"/>
             
             <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" Margin="0,0,0,10">
               <!-- Home -->
-              <TextBlock Grid.Row="0" Grid.Column="0" Text="Home" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="{loc:Localization Shortcuts_Home}" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
               <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Spacing="8">
                 <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
                   <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
@@ -43,7 +44,7 @@
               </StackPanel>
               
               <!-- Dashboard -->
-              <TextBlock Grid.Row="1" Grid.Column="0" Text="Dashboard" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <TextBlock Grid.Row="1" Grid.Column="0" Text="{loc:Localization Shortcuts_Dashboard}" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
               <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
                 <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
                   <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
@@ -54,7 +55,7 @@
               </StackPanel>
               
               <!-- Learning Path -->
-              <TextBlock Grid.Row="2" Grid.Column="0" Text="Learning Path" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <TextBlock Grid.Row="2" Grid.Column="0" Text="{loc:Localization Shortcuts_LearningPath}" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
               <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
                 <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
                   <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
@@ -65,7 +66,7 @@
               </StackPanel>
               
               <!-- Notes -->
-              <TextBlock Grid.Row="3" Grid.Column="0" Text="Notes" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <TextBlock Grid.Row="3" Grid.Column="0" Text="{loc:Localization Shortcuts_Notes}" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
               <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
                 <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
                   <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
@@ -76,7 +77,7 @@
               </StackPanel>
               
               <!-- Flashcards -->
-              <TextBlock Grid.Row="4" Grid.Column="0" Text="Flashcards" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <TextBlock Grid.Row="4" Grid.Column="0" Text="{loc:Localization Shortcuts_Flashcards}" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
               <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
                 <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
                   <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
@@ -87,7 +88,7 @@
               </StackPanel>
               
               <!-- Quizzes -->
-              <TextBlock Grid.Row="5" Grid.Column="0" Text="Quizzes" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <TextBlock Grid.Row="5" Grid.Column="0" Text="{loc:Localization Shortcuts_Quizzes}" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
               <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
                 <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
                   <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
@@ -98,7 +99,7 @@
               </StackPanel>
               
               <!-- Games -->
-              <TextBlock Grid.Row="6" Grid.Column="0" Text="Games" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <TextBlock Grid.Row="6" Grid.Column="0" Text="{loc:Localization Shortcuts_Games}" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
               <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
                 <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
                   <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
@@ -109,7 +110,7 @@
               </StackPanel>
               
               <!-- Settings -->
-              <TextBlock Grid.Row="7" Grid.Column="0" Text="Settings" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <TextBlock Grid.Row="7" Grid.Column="0" Text="{loc:Localization Shortcuts_Settings}" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
               <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
                 <Border Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
                   <TextBlock Text="Ctrl" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
@@ -123,23 +124,23 @@
           
           <!-- Flashcard Controls -->
           <StackPanel>
-            <TextBlock Text="Flashcard Controls" Foreground="White" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,15"/>
+            <TextBlock Text="{loc:Localization Shortcuts_FlashcardControls}" Foreground="White" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,15"/>
             
             <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto,Auto,Auto" Margin="0,0,0,10">
               <!-- Next Flashcard -->
-              <TextBlock Grid.Row="0" Grid.Column="0" Text="Next Flashcard" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="{loc:Localization Shortcuts_NextFlashcard}" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
               <Border Grid.Row="0" Grid.Column="1" Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center">
                 <TextBlock Text="&gt;" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
               </Border>
               
               <!-- Previous Flashcard -->
-              <TextBlock Grid.Row="1" Grid.Column="0" Text="Previous Flashcard" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <TextBlock Grid.Row="1" Grid.Column="0" Text="{loc:Localization Shortcuts_PreviousFlashcard}" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
               <Border Grid.Row="1" Grid.Column="1" Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="32" HorizontalAlignment="Center" Margin="0,10,0,0">
                 <TextBlock Text="&lt;" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
               </Border>
               
               <!-- Flip Flashcard -->
-              <TextBlock Grid.Row="2" Grid.Column="0" Text="Flip Flashcard" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
+              <TextBlock Grid.Row="2" Grid.Column="0" Text="{loc:Localization Shortcuts_FlipFlashcard}" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,10,0,0"/>
               <Border Grid.Row="2" Grid.Column="1" Background="#262626" CornerRadius="4" Padding="6,4" MinWidth="60" HorizontalAlignment="Center" Margin="0,10,0,0">
                 <TextBlock Text="Space" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
               </Border>

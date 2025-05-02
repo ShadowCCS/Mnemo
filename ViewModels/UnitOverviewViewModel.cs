@@ -14,6 +14,15 @@ using MnemoProject.Helpers;
 
 namespace MnemoProject.ViewModels
 {
+    // Content placeholders used consistently across view models
+    public static class ContentPlaceholders
+    {
+        public const string FutureGeneration = "Content will be generated when you open this unit.";
+        public const string Generating = "Generating content...";
+        public const string DefaultContent = "Default generated content.";
+        public const string ErrorContent = "Failed to generate content. Please try again later.";
+    }
+
     public partial class UnitOverviewViewModel : ViewModelBase
     {
         private readonly NavigationService _navigationService;
@@ -47,13 +56,13 @@ namespace MnemoProject.ViewModels
                     // If current unit has empty content but previous unit has content,
                     // it means we need to generate content for this unit
                     if ((string.IsNullOrWhiteSpace(unit.UnitContent) || 
-                         unit.UnitContent == "Content will be generated when you open this unit.") && 
+                         unit.UnitContent == ContentPlaceholders.FutureGeneration) && 
                         !string.IsNullOrWhiteSpace(prevUnit.UnitContent) &&
-                        prevUnit.UnitContent != "Content will be generated when you open this unit." &&
-                        prevUnit.UnitContent != "Generating content...")
+                        prevUnit.UnitContent != ContentPlaceholders.FutureGeneration &&
+                        prevUnit.UnitContent != ContentPlaceholders.Generating)
                     {
                         // If the previous unit already has content, we should update this unit's content placeholder
-                        unit.UnitContent = "Content will be generated when you open this unit.";
+                        unit.UnitContent = ContentPlaceholders.FutureGeneration;
                         await _databaseService.UpdateUnit(unit);
                     }
                 }
@@ -74,8 +83,7 @@ namespace MnemoProject.ViewModels
             
             // Only generate if content is empty or contains the placeholder text
             bool needsGeneration = string.IsNullOrWhiteSpace(nextUnit.UnitContent) || 
-                                   // Do not remove the content in this line
-                                   nextUnit.UnitContent == "Content will be generated when you open this unit.";
+                                   nextUnit.UnitContent == ContentPlaceholders.FutureGeneration;
                                    
             if (needsGeneration)
             {
@@ -94,7 +102,7 @@ namespace MnemoProject.ViewModels
                 var aiService = new AIService(new GeminiProvider(), new AIWorker());
                 await aiService.GenerateUnitContent(nextUnit.Title, theoryContent, async content =>
                 {
-                    nextUnit.UnitContent = string.IsNullOrWhiteSpace(content) ? "Default generated content." : content;
+                    nextUnit.UnitContent = string.IsNullOrWhiteSpace(content) ? ContentPlaceholders.DefaultContent : content;
                     await _databaseService.UpdateUnit(nextUnit);
                     
                     // Update UI after content is generated
@@ -160,8 +168,8 @@ namespace MnemoProject.ViewModels
 
             // If the unit already has content (not Unit 1), it should be enabled
             if (unit.UnitNumber > 1 && !string.IsNullOrWhiteSpace(unit.UnitContent) && 
-                unit.UnitContent != "Content will be generated when you open this unit." &&
-                unit.UnitContent != "Generating content...")
+                unit.UnitContent != ContentPlaceholders.FutureGeneration &&
+                unit.UnitContent != ContentPlaceholders.Generating)
             {
                 _isManuallyEnabled = true;
             }

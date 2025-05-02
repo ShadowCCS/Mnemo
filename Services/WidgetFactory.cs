@@ -65,7 +65,7 @@ namespace MnemoProject.Services
             catch (Exception ex)
             {
                 // Log error
-                Console.WriteLine($"Error scanning widget types: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error scanning widget types: {ex.Message}");
             }
         }
         
@@ -100,7 +100,12 @@ namespace MnemoProject.Services
             }
             
             // Fallback for types without specific implementation
-            return new Widget(type, type.ToString(), $"Widget for {type}");
+            string title = GetLocalizedWidgetTitle(type);
+            string description = string.Format(
+                LocalizationService.Instance.GetString("Widget_WidgetForX", "Widget for {0}"), 
+                title);
+            
+            return new Widget(type, title, description);
         }
 
         public static UserControl CreateNewWidgetButton()
@@ -121,11 +126,29 @@ namespace MnemoProject.Services
                 }
                 else
                 {
-                    samples.Add(new Widget(type, type.ToString(), $"Widget for {type}"));
+                    string title = GetLocalizedWidgetTitle(type);
+                    string description = string.Format(
+                        LocalizationService.Instance.GetString("Widget_WidgetForX", "Widget for {0}"), 
+                        title);
+                        
+                    samples.Add(new Widget(type, title, description));
                 }
             }
             
             return samples;
+        }
+        
+        // Helper method to get localized widget title based on type
+        public static string GetLocalizedWidgetTitle(WidgetType type)
+        {
+            return type switch
+            {
+                WidgetType.WeeklyStudyTime => LocalizationService.Instance.GetString("Widget_WeeklyStudyTime", "Weekly Study Time"),
+                WidgetType.Retention => LocalizationService.Instance.GetString("Widget_RetentionRate", "Retention Rate"),
+                WidgetType.StudyGoal => LocalizationService.Instance.GetString("Widget_StudyGoal", "Study Goal"),
+                WidgetType.LongestStreak => LocalizationService.Instance.GetString("Widget_LongestStreak", "Longest Streak"),
+                _ => type.ToString()
+            };
         }
         
         // Get a widget thumbnail/preview for display in the ManageWidgets overlay
@@ -195,7 +218,7 @@ namespace MnemoProject.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error creating widget preview: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error creating widget preview: {ex.Message}");
                 return null;
             }
         }

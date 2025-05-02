@@ -32,7 +32,11 @@ public class AppSettings : INotifyPropertyChanged
     public string SelectedLanguage
     {
         get => _selectedLanguage;
-        set => SetProperty(ref _selectedLanguage, value, nameof(SelectedLanguage), Save);
+        set 
+        {
+            System.Diagnostics.Debug.WriteLine($"Setting SelectedLanguage to: {value}");
+            SetProperty(ref _selectedLanguage, value, nameof(SelectedLanguage), Save);
+        }
     }
 
     private string _selectedTheme = "Dark";
@@ -227,7 +231,7 @@ public class AppSettings : INotifyPropertyChanged
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error loading settings: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Error loading settings: {ex.Message}");
         }
         return new AppSettings();
     }
@@ -244,7 +248,7 @@ public class AppSettings : INotifyPropertyChanged
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error loading settings asynchronously: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Error loading settings asynchronously: {ex.Message}");
         }
         return new AppSettings();
     }
@@ -258,10 +262,12 @@ public class AppSettings : INotifyPropertyChanged
 
             var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(SettingsFilePath, json);
+            
+            System.Diagnostics.Debug.WriteLine($"Settings saved. SelectedLanguage is now: {SelectedLanguage}");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error saving settings: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Error saving settings: {ex.Message}");
         }
     }
 
@@ -277,7 +283,7 @@ public class AppSettings : INotifyPropertyChanged
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error saving settings asynchronously: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Error saving settings asynchronously: {ex.Message}");
         }
     }
 }

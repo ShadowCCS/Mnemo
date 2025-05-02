@@ -38,6 +38,10 @@ namespace MnemoProject.Models
         [ObservableProperty]
         private int _widthFactor = 1; // Default width factor (1 = standard width, 2 = double width, etc.)
         
+        // Dynamic data for the widget (could be a percentage, count, etc.)
+        [ObservableProperty]
+        private object _tag;
+        
         // Returns the actual width based on standard widget width and factor
         public double ActualWidth => 190 * WidthFactor; // 190 is the standard width
         
@@ -54,6 +58,7 @@ namespace MnemoProject.Models
             IsEnabled = isEnabled;
             DisplayOrder = 0; // Default display order, will be updated when added to collection
             WidthFactor = widthFactor;
+            Tag = null; // Default tag value
         }
     }
 } 

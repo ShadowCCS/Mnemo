@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MnemoProject"
         xmlns:controls="clr-namespace:MnemoProject.Views.Controls"
         xmlns:converters="clr-namespace:MnemoProject.Converters"
+        xmlns:loc="clr-namespace:MnemoProject.Helpers"
         mc:Ignorable="d" d:DesignWidth="1300" d:DesignHeight="800"
         x:Class="MnemoProject.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -14,7 +15,7 @@
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
         ExtendClientAreaTitleBarHeightHint="-1"
-        Title="Mnemo">
+        Title="{loc:Localization MainWindow_Title}">
 
   <Window.Resources>
     <local:ItemTemplateSelector x:Key="ItemTemplateSelector"/>
@@ -58,59 +59,83 @@
 
       <SplitView Grid.Row="1" IsPaneOpen="{Binding IsSidebarExpanded}" OpenPaneLength="300" CompactPaneLength="48" DisplayMode="CompactInline" PaneBackground="#1a1a1a">
         <SplitView.Pane>
-          <!-- Using Grid to allow positioning the label at the bottom -->
-          <Grid Margin="20,25">
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-              <!-- For the logo and toggle button -->
-              <RowDefinition Height="*"/>
-              <!-- For the sidebar items -->
-              <RowDefinition Height="Auto"/>
-              <!-- For the bottom label -->
-            </Grid.RowDefinitions>
+          <!-- Container Grid with different margin layouts -->
+          <Grid>
+            <!-- Grid for expanded sidebar with proper margins -->
+            <Grid Margin="20,25" IsVisible="{Binding IsSidebarExpanded}">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- For the logo and toggle button -->
+                <RowDefinition Height="*"/>
+                <!-- For the sidebar items -->
+                <RowDefinition Height="Auto"/>
+                <!-- For the bottom label -->
+              </Grid.RowDefinitions>
 
-            <!-- Logo and Toggle Button -->
-            <Grid Grid.Row="0">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-              </Grid.ColumnDefinitions>
-              <Image Source="{SvgImage /Assets/Icons/Mnemo.svg}" Width="150" HorizontalAlignment="Left" Grid.Column="0" IsVisible="{Binding IsSidebarExpanded}"/>
-              <Border Grid.Column="1" HorizontalAlignment="Right">
-                <Button Background="Transparent" Command="{Binding TriggerSidebarCommand}" Cursor="Hand">
+              <!-- Logo and Toggle Button -->
+              <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{SvgImage /Assets/Icons/Mnemo.svg}" Width="150" HorizontalAlignment="Left" Grid.Column="0"/>
+                <Border Grid.Column="1" HorizontalAlignment="Right"/>
+                
+                <!-- Toggle button for expanded sidebar state -->
+                <Button Grid.Column="1" 
+                        Background="Transparent" 
+                        Command="{Binding TriggerSidebarCommand}" 
+                        Cursor="Hand"
+                        HorizontalAlignment="Right">
                   <PathIcon Data="{StaticResource SidebarIcon}" Foreground="White" Width="16" Height="16"/>
                 </Button>
-              </Border>
-            </Grid>
+              </Grid>
 
-            <!-- Sidebar Items -->
-            <StackPanel Grid.Row="1" Margin="0,15,0,0" IsVisible="{Binding IsSidebarExpanded}">
-              <ListBox Classes="Sidebar"
-                       ItemsSource="{Binding Items}"
-                       SelectedItem="{Binding SelectedSidebarItem, Mode=TwoWay}"
-                       SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
-                       ItemTemplate="{StaticResource ItemTemplateSelector}">
-              </ListBox>
-            </StackPanel>
-
-            <!-- Quick Actions -->
-            <StackPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,40" Spacing="10">
-              <Label Content="Quick Actions" Foreground="White" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18"/>
-              <Button Command="{Binding ShowShortcutsOverlayCommand}" Cursor="Hand">
-              <StackPanel Orientation="Horizontal" Spacing="15">
-                <Border Height="48" Width="48" Background="#262626" CornerRadius="8">
-                  <Image Source="{SvgImage avares://MnemoProject/Assets/Icons/ShortcutsMenuIcon.svg}" Height="24" Width="24"/>
-                </Border>
-                <StackPanel>
-                  <Label Content="Shortcut Menu" Foreground="White" FontSize="16"/>
-                  <Label Content="Ctrl + Shift + C" Foreground="#797979" FontSize="14" FontWeight="Regular"/>
-                </StackPanel>
+              <!-- Sidebar Items -->
+              <StackPanel Grid.Row="1" Margin="0,15,0,0">
+                <ListBox Classes="Sidebar"
+                         ItemsSource="{Binding Items}"
+                         SelectedItem="{Binding SelectedSidebarItem, Mode=TwoWay}"
+                         SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                         ItemTemplate="{StaticResource ItemTemplateSelector}">
+                </ListBox>
               </StackPanel>
-              </Button>
-            </StackPanel>
 
-            <!-- Bottom Label -->
-            <TextBlock Grid.Row="2" Text="{Binding AppVersion}" Foreground="#797979" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,15,0,0" IsVisible="{Binding IsSidebarExpanded}"/>
+              <!-- Quick Actions -->
+              <StackPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,40" Spacing="10">
+                <Label Content="{loc:Localization MainWindow_QuickActions}" Foreground="White" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18"/>
+                <Button Command="{Binding ShowShortcutsOverlayCommand}" Cursor="Hand" Width="260">
+                <StackPanel Orientation="Horizontal" Spacing="15">
+                  <Border Height="48" Width="48" Background="#262626" CornerRadius="8">
+                    <Image Source="{SvgImage avares://MnemoProject/Assets/Icons/ShortcutsMenuIcon.svg}" Height="24" Width="24"/>
+                  </Border>
+                  <StackPanel>
+                    <Label Content="{loc:Localization MainWindow_ShortcutMenu}" Foreground="White" FontSize="16"/>
+                    <Label Content="{loc:Localization MainWindow_ShortcutKey}" Foreground="#797979" FontSize="14" FontWeight="Regular"/>
+                  </StackPanel>
+                </StackPanel>
+                </Button>
+              </StackPanel>
+
+              <!-- Bottom Label -->
+              <TextBlock Grid.Row="2" Text="{Binding AppVersion}" Foreground="#797979" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,15,0,0"/>
+            </Grid>
+            
+            <!-- Grid for collapsed sidebar with centered toggle button -->
+            <Grid Margin="0,25,0,25" IsVisible="{Binding !IsSidebarExpanded}">
+              <!-- Centered button for collapsed sidebar state -->
+              <Button Background="Transparent" 
+                      Command="{Binding TriggerSidebarCommand}" 
+                      Cursor="Hand"
+                      Width="32"
+                      Height="32"
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Top"
+                      Padding="0"
+                      Margin="0,10,0,0">
+                <PathIcon Data="{StaticResource SidebarIcon}" Foreground="White" Width="16" Height="16"/>
+              </Button>
+            </Grid>
           </Grid>
         </SplitView.Pane>
         <SplitView.Content>

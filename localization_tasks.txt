@@ -1,0 +1,81 @@
+# Localization Tasks - Files with Hardcoded Text
+
+## Phase 1: Core UI & Settings
+### Views
+- Settings_ApperanceView.axaml
+- Settings_PreferencesView.axaml
+- Settings_DataStorageView.axaml
+- Settings_ExperimentalView.axaml
+- Settings_AboutSupportView.axaml
+- MainWindow.axaml
+
+### ViewModels
+- Settings_ApperanceViewModel.cs
+- Settings_PreferencesViewModel.cs
+- Settings_DataStorageViewModel.cs
+- Settings_ExperimentalViewModel.cs
+- Settings_AboutSupportViewModel.cs
+- SettingsViewModel.cs
+- MainWindowViewModel.cs
+
+## Phase 2: Learning Content & Features
+### Views
+- FlashcardsView.axaml
+- FlashcardPracticeView.axaml
+- UnitLearnModeView.axaml
+- UnitFlashcardsView.axaml
+- UnitQuestionsView.axaml
+- UnitOverviewView.axaml
+- UnitGuideView.axaml
+- UnitGuideContentView.axaml
+
+### ViewModels
+- FlashcardsViewModel.cs
+- FlashcardPracticeViewModel.cs
+- UnitLearnModeViewModel.cs
+- UnitFlashcardsViewModel.cs
+- UnitQuestionsViewModel.cs
+- UnitOverviewViewModel.cs
+- UnitGuideViewModel.cs
+- UnitGuideContentViewModel.cs
+
+## Phase 3: Dashboard & Navigation
+### Views
+- DashboardView.axaml
+- LearningPathView.axaml
+- LearningPathCreateView.axaml
+- CreatePathView.axaml
+
+### ViewModels
+- DashboardViewModel.cs
+- LearningPathViewModel.cs
+- learningPathCreateViewModel.cs
+- CreatePathViewModel.cs
+
+## Phase 4: Secondary Features
+### Views
+- GamesView.axaml
+- QuizzesView.axaml
+- NotesView.axaml
+- ExtensionsView.axaml
+
+### ViewModels
+- GamesViewModel.cs
+- QuizzesViewModel.cs
+- NotesViewModel.cs
+- ExtensionsViewModel.cs
+
+## Phase 5: Models & Services
+### Models
+- AppSettings.cs
+- LanguageItem.cs
+- ThemesItem.cs
+- UserStatistics.cs
+
+### Services
+- LocalizationService.cs
+- NotificationService.cs
+- NavigationService.cs
+- AIService.cs
+- StatisticsService.cs
+- WidgetService.cs

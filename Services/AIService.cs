@@ -273,6 +273,80 @@ Unit Content:
         });
     }
 
+    public async Task GenerateComplexOutput(string prompt, Action<string> onComplete)
+    {
+        await _worker.Enqueue(async () =>
+        {
+            try
+            {
+                System.Diagnostics.Debug.WriteLine("Calling AI provider to generate complex output...");
+                string response = await _aiProvider.GenerateTextAsync(prompt);
+                
+                System.Diagnostics.Debug.WriteLine($"Received raw response from AI: [{response.Substring(0, Math.Min(100, response.Length))}...]");
+                
+                // Attempt to clean the response to ensure valid JSON
+                response = CleanJsonResponse(response);
+                
+                System.Diagnostics.Debug.WriteLine($"Cleaned response: [{response.Substring(0, Math.Min(100, response.Length))}...]");
+                
+                // For debugging, provide a fallback response if empty
+                if (string.IsNullOrEmpty(response) || response.Trim() == "[]")
+                {
+                    System.Diagnostics.Debug.WriteLine("Empty response received, using fallback content");
+                    response = @"[
+                        {
+                            ""theory"": ""This is a sample theory section because the AI didn't generate valid content."",
+                            ""questions"": [
+                                {
+                                    ""question"": ""What is this content?"",
+                                    ""type"": ""MultipleChoice"",
+                                    ""options"": [
+                                        ""Real AI-generated content"", 
+                                        ""Fallback content due to an error"", 
+                                        ""User-created content"", 
+                                        ""None of the above""
+                                    ],
+                                    ""correctOptionIndex"": 1,
+                                    ""explanation"": ""This is fallback content shown because the AI response was empty or invalid.""
+                                }
+                            ]
+                        }
+                    ]";
+                }
+                
+                System.Diagnostics.Debug.WriteLine($"Sending complex output response to ViewModel: {response}");
+                onComplete(response);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error generating complex output: {ex.Message}");
+                
+                // Return fallback response instead of empty array
+                string fallbackJson = @"[
+                    {
+                        ""theory"": ""An error occurred while generating this content."",
+                        ""questions"": [
+                            {
+                                ""question"": ""What error occurred?"",
+                                ""type"": ""MultipleChoice"",
+                                ""options"": [
+                                    ""The system is working correctly"", 
+                                    ""There was a network issue"", 
+                                    """ + ex.Message.Replace("\"", "'") + @""", 
+                                    ""The content was too complex""
+                                ],
+                                ""correctOptionIndex"": 2,
+                                ""explanation"": ""This error prevented the AI from generating proper content.""
+                            }
+                        ]
+                    }
+                ]";
+                
+                onComplete(fallbackJson);
+            }
+        });
+    }
+
     private string CleanJsonResponse(string response)
     {
         try

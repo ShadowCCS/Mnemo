@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="100"
              x:DataType="vm:DashboardViewModel"
              x:Class="MnemoProject.Views.Controls.Widgets.NewWidgetButton">
@@ -17,7 +18,7 @@
         <TextBlock Text="+" HorizontalAlignment="Center" VerticalAlignment="Center" 
                    FontSize="20" FontWeight="Bold" Foreground="White"/>
       </Border>
-      <TextBlock Text="New Widget" HorizontalAlignment="Center" Margin="0,8,0,0" 
+      <TextBlock Text="{loc:Localization Widget_NewWidget}" HorizontalAlignment="Center" Margin="0,8,0,0" 
                  Foreground="White" FontSize="12"/>
     </StackPanel>
   </Button>

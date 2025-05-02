@@ -7,6 +7,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+    <!-- Disable default resource inclusion since we'll manage them explicitly -->
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +32,34 @@
 
   <ItemGroup>
     <Content Include="Assets\icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Languages\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <LogicalName>MnemoProject.Languages.Strings.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Strings.de.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+      <LogicalName>MnemoProject.Languages.Strings.de.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Strings.es.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+      <LogicalName>MnemoProject.Languages.Strings.es.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Strings.fr.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+      <LogicalName>MnemoProject.Languages.Strings.fr.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Languages\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

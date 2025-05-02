@@ -6,24 +6,34 @@ namespace MnemoProject.Widgets.StudyGoal
 {
     public class StudyGoal : Widget
     {
-        // Properties specific to this widget
-        public int GoalMinutes { get; set; }
-        public int CompletedMinutes { get; set; }
-        
-        // Constructor
+        // Constructor - use generic default values that will be replaced by localized versions
         public StudyGoal() : base(
             WidgetType.StudyGoal, 
             "Study Goal", 
             "Track your progress toward your daily study goal")
         {
-            // Get data from statistics service
-            var stats = StatisticsService.Instance.LoadStatistics();
-            GoalMinutes = stats.StudyGoalMinutes;
-            CompletedMinutes = stats.CurrentStudyGoalMinutes;
+            // Note: We don't need to fetch data here as WidgetService will set the Tag property
         }
         
-        // Helper properties for the view
-        public int ProgressPercentage => (GoalMinutes > 0) ? (int)(CompletedMinutes * 100 / GoalMinutes) : 0;
-        public string FormattedProgress => $"{CompletedMinutes}/{GoalMinutes} min";
+        // Get the goal progress percentage from Tag property
+        public int ProgressPercentage => Tag != null ? Convert.ToInt32(Tag) : 0;
+        
+        // Load these from the stats service when needed (not cached)
+        private void GetGoalStats(out int goalMinutes, out int completedMinutes)
+        {
+            var stats = StatisticsService.Instance.LoadStatistics();
+            goalMinutes = stats.StudyGoalMinutes;
+            completedMinutes = stats.CurrentStudyGoalMinutes;
+        }
+        
+        // Show actual progress values in the formatted output
+        public string FormattedProgress 
+        { 
+            get
+            {
+                GetGoalStats(out int goalMinutes, out int completedMinutes);
+                return $"{completedMinutes}/{goalMinutes} min";
+            }
+        }
     }
 } 

@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:svg="clr-namespace:Avalonia.Svg;assembly=Avalonia.Svg"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              x:DataType="vm:LearningPathViewModel"
@@ -13,7 +14,7 @@
       <Border Padding="5" Margin="5">
         <StackPanel Spacing="15">
           <Border Height="30"/>
-          <Label Foreground="White" Content="Learning Paths" FontSize="24" FontWeight="Medium" />
+          <Label Foreground="White" Content="{loc:Localization LearningPath_Title}" FontSize="24" FontWeight="Medium" />
           <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Spacing="10">
             <Button Command="{Binding NavigateToCreatePath}" 
                     Width="260" Height="110" 
@@ -40,8 +41,8 @@
                     </Border>
                     
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <Label Foreground="White" Padding="0,0,0,2">New Lesson</Label>
-                        <TextBlock Foreground="#797979" MaxWidth="180" TextWrapping="Wrap">Learn something new!</TextBlock>
+                        <Label Foreground="White" Padding="0,0,0,2" Content="{loc:Localization LearningPath_NewLesson}" />
+                        <TextBlock Foreground="#797979" MaxWidth="180" TextWrapping="Wrap" Text="{loc:Localization LearningPath_LearnSomethingNew}" />
                     </StackPanel>
                 </Grid>
             </Button>
@@ -68,8 +69,8 @@
                     </Border>
                     
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <Label Foreground="#2D2D2D" Padding="0,0,0,2">Problem Solver</Label>
-                        <TextBlock Foreground="#2D2D2D" MaxWidth="180" TextWrapping="Wrap">Helps you solve your problems.</TextBlock>
+                        <Label Foreground="#2D2D2D" Padding="0,0,0,2" Content="{loc:Localization LearningPath_ProblemSolver}" />
+                        <TextBlock Foreground="#2D2D2D" MaxWidth="180" TextWrapping="Wrap" Text="{loc:Localization LearningPath_HelpsSolveProblems}" />
                     </StackPanel>
                 </Grid>
             </Button>
@@ -79,14 +80,14 @@
       </Border>
       <StackPanel>
         <TabControl>
-          <TabItem Header="All" FontSize="24" Foreground="White" Cursor="Hand">
+          <TabItem Header="{loc:Localization LearningPath_AllTab}" FontSize="24" Foreground="White" Cursor="Hand">
             <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="400">
               <StackPanel Spacing="10">
                 <!-- Loading indicator -->
                 <StackPanel Orientation="Horizontal"
                             IsVisible="{Binding IsLoading}"
                             Spacing="5">
-                  <TextBlock Text="Loading..." VerticalAlignment="Center" Margin="10"/>
+                  <TextBlock Text="{loc:Localization LearningPath_Loading}" VerticalAlignment="Center" Margin="10"/>
                   <ProgressBar IsIndeterminate="True"
                                Width="20"
                                Height="2"
@@ -104,12 +105,12 @@
                         <Button Command="{Binding $parent[UserControl].((vm:LearningPathViewModel)DataContext).OpenLearningPathCommand}"
                                 CommandParameter="{Binding Id}"
                                 Cursor="Hand">
-                          <TextBlock Text="Continue" Foreground="White"/>
+                          <TextBlock Text="{loc:Localization LearningPath_Continue}" Foreground="White"/>
                         </Button>
                         <Button Command="{Binding $parent[UserControl].((vm:LearningPathViewModel)DataContext).DeleteLearningPathCommand}"
                                 CommandParameter="{Binding Id}"
                                 Cursor="Hand">
-                          <TextBlock Text="Delete" Foreground="White"/>
+                          <TextBlock Text="{loc:Localization LearningPath_Delete}" Foreground="White"/>
                         </Button>
                       </StackPanel>
                     </DataTemplate>
@@ -118,20 +119,20 @@
               </StackPanel>
             </ScrollViewer>
           </TabItem>
-          <TabItem Header="Lessons" FontSize="24" Foreground="White">
+          <TabItem Header="{loc:Localization LearningPath_LessonsTab}" FontSize="24" Foreground="White">
             <StackPanel Spacing="10">
               <StackPanel Orientation="Horizontal">
                 <TextBlock Foreground="White" Margin="5" FontSize="16">Biology - Human Respiratory System</TextBlock>
-                <TextBlock Foreground="#797979" Margin="5" FontSize="16">Unit 2/5</TextBlock>
-                <TextBlock Foreground="#797979" Margin="5" FontSize="16">23 hours ago</TextBlock>
+                <TextBlock Foreground="#797979" Margin="5" FontSize="16" Text="{loc:Localization LearningPath_Unit, 2, 5}" />
+                <TextBlock Foreground="#797979" Margin="5" FontSize="16" Text="{loc:Localization LearningPath_TimeAgo, 23}" />
               </StackPanel>
             </StackPanel>
           </TabItem>
-          <TabItem Header="Problems" FontSize="24" Foreground="White">
+          <TabItem Header="{loc:Localization LearningPath_ProblemsTab}" FontSize="24" Foreground="White">
             <StackPanel Spacing="10">
               <StackPanel Orientation="Horizontal">
                 <TextBlock Foreground="White" Margin="5" FontSize="16">Solve for X</TextBlock>
-                <TextBlock Foreground="#797979" Margin="5" FontSize="16">21 hours ago</TextBlock>
+                <TextBlock Foreground="#797979" Margin="5" FontSize="16" Text="{loc:Localization LearningPath_TimeAgo, 21}" />
               </StackPanel>
             </StackPanel>
           </TabItem>

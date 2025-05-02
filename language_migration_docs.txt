@@ -1,0 +1,40 @@
+# MnemoProject Language System
+
+The application uses a dual-approach localization system:
+
+1. **ResourceManager (.resx files)**: The project uses standard .NET resource files (`.resx`) with different language variants (e.g., `Strings.es.resx` for Spanish).
+
+2. **JSON-based Language Files**: The application also supports JSON language files stored in a Languages directory.
+
+## Key Components:
+
+1. **LocalizationService**: Manages .resx resources using a ResourceManager to access localized strings by key.
+
+2. **LanguageService**: Handles JSON-based language files with nested key structure (e.g., `section.subsection.key`).
+
+3. **LocalizationProvider**: Acts as a bridge between the UI and localization services, implementing INotifyPropertyChanged to update UI when language changes.
+
+4. **LocalizationExtension**: XAML markup extension to enable binding to localized strings in UI.
+
+## How to Replace Hardcoded Text:
+
+1. **Identify hardcoded text** (see `localization_tasks.txt` for files with hardcoded text)
+
+2. **Add string keys to resource files**:
+   - Add new entries to `Languages/Strings.resx` in the format:
+   ```xml
+   <data name="KeyName" xml:space="preserve">
+     <value>Text value in English</value>
+   </data>
+   ```
+   - Do not add to the other files, these will be made later (`.de.resx`, `.es.resx`, etc.)
+
+3. **Replace hardcoded text in code**:
+   - In C# code: `LocalizationService.Instance.GetString("KeyName", "Default fallback text")`
+   - In ViewModels: Use binding to `LocalizationProvider`
+
+4. **Replace hardcoded text in XAML**:
+   - Add the namespace: `xmlns:loc="clr-namespace:MnemoProject.Helpers"`
+   - Replace text with: `Content="{loc:Localization KeyName}"`
+
+The system automatically updates the UI when the language changes, notifying all bindings through the PropertyChanged event.

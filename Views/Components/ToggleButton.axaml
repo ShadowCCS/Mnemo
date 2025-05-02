@@ -13,7 +13,7 @@
                 Width="50"
                 Height="30"
                 CornerRadius="15"
-                Background="{TemplateBinding CheckedBackground}"
+                Background="#2881b1"
                 ClipToBounds="True">
           <Ellipse x:Name="PART_Indicator"
                    Width="26"
@@ -31,7 +31,7 @@
     <Setter Property="Cursor" Value="Hand"/>
   </Style>
   <Style Selector="controls|ToggleButton:not(:checked) /template/ Border#PART_Border">
-    <Setter Property="Background" Value="{Binding UncheckedBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+    <Setter Property="Background" Value="#2D2D2D" />
   </Style>
 
   <Style Selector="controls|ToggleButton:not(:checked) /template/ Ellipse#PART_Indicator">

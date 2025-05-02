@@ -6,19 +6,17 @@ namespace MnemoProject.Widgets.Retention
 {
     public class Retention : Widget
     {
-        // Retention percentage
-        public double RetentionPercentage { get; set; }
-        
-        // Constructor
+        // Constructor - use generic default values that will be replaced by localized versions
         public Retention() : base(
             WidgetType.Retention, 
             "Retention", 
-            "Shows how well you remember your flashcards")
+            "Shows retention rate")
         {
-            // Get data from statistics service
-            var stats = StatisticsService.Instance.LoadStatistics();
-            RetentionPercentage = stats.Retention;
+            // Note: We don't need to fetch data here as WidgetService will set the Tag property
         }
+        
+        // Use the Tag property to get the current retention percentage
+        public double RetentionPercentage => Tag != null ? Convert.ToDouble(Tag) : 0;
         
         // Format the percentage for display
         public string FormattedRetention => $"{RetentionPercentage:F1}%";

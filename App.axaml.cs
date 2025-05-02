@@ -26,10 +26,14 @@ public partial class App : Application
 {
     private IClassicDesktopStyleApplicationLifetime? _desktopLifetime;
     private static Task _databaseInitTask;
+    private static readonly string LanguagesDirectory = Path.Combine(AppContext.BaseDirectory, "Languages");
 
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+
+        // Ensure languages directory exists
+        EnsureLanguagesDirectory();
 
         // Start database initialization as early as possible
         _databaseInitTask = Task.Run(async () => 
@@ -38,13 +42,26 @@ public partial class App : Application
             {
                 var dbService = new DatabaseService();
                 await dbService.InitializeAsync();
-                Console.WriteLine("Database initialized at application startup");
+                System.Diagnostics.Debug.WriteLine("Database initialized at application startup");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error initializing database at startup: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error initializing database at startup: {ex.Message}");
             }
         });
+    }
+
+    private void EnsureLanguagesDirectory()
+    {
+        try
+        {
+            // Ensure languages directory exists
+            Directory.CreateDirectory(LanguagesDirectory);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error ensuring languages directory: {ex.Message}");
+        }
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -53,6 +70,9 @@ public partial class App : Application
         var overlayService = OverlayService.Instance;
         var widgetService = WidgetService.Instance;
         var statisticsService = StatisticsService.Instance;
+        
+        // Initialize localization service
+        var localizationService = LocalizationService.Instance;
         
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
@@ -79,10 +99,16 @@ public partial class App : Application
                     
                     // Load widget settings in background
                     await widgetService.LoadSettingsAsync();
+                    
+                    // Force refresh widget data to ensure statistics are loaded
+                    widgetService.ForceRefreshWidgetData();
+                    
+                    // Log that we've completed initialization
+                    LogService.Log.Info("Application initialization completed, widgets refreshed with latest statistics");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error loading settings: {ex.Message}");
+                    System.Diagnostics.Debug.WriteLine($"Error loading settings: {ex.Message}");
                 }
             });
         }

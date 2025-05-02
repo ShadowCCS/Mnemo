@@ -31,7 +31,7 @@ namespace MnemoProject.ViewModels
         {
             if (string.IsNullOrWhiteSpace(UserInput))
             {
-                NotificationService.Warning("Please enter a topic for your learning path");
+                NotificationService.Warning(LocalizationService.Instance.GetString("CreatePath_EmptyInputWarning", "Please enter a topic for your learning path"));
                 return;
             }
             
@@ -42,7 +42,10 @@ namespace MnemoProject.ViewModels
             }
             catch (Exception ex)
             {
-                NotificationService.Error($"Error generating learning path: {ex.Message}");
+                string errorMessage = string.Format(
+                    LocalizationService.Instance.GetString("CreatePath_Error", "Error generating learning path: {0}"), 
+                    ex.Message);
+                NotificationService.Error(errorMessage);
                 NotificationService.LogToFile($"[ERROR] ExecuteGenerate: {ex}");
             }
         }

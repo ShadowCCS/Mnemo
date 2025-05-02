@@ -349,11 +349,33 @@
   <Style Selector="ToggleButton.nav-button">
     <Setter Property="Background" Value="Transparent"/>
     <Setter Property="Foreground" Value="White"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <ContentPresenter x:Name="PART_ContentPresenter" 
+                          Background="{TemplateBinding Background}"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          Content="{TemplateBinding Content}"
+                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                          Padding="{TemplateBinding Padding}"
+                          CornerRadius="4"/>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="ToggleButton.nav-button:pointerover">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="White"/>
   </Style>
 
   <Style Selector="ToggleButton.nav-button:checked">
-    <Setter Property="Background" Value="#242424"/>
+    <Setter Property="Background" Value="#2880b1"/>
     <Setter Property="Foreground" Value="White"/>
+  </Style>
+  
+  <Style Selector="ToggleButton.nav-button:checked /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="#2880b1"/>
   </Style>
 
   <Style Selector="ProgressBar">

@@ -3,6 +3,7 @@
              x:Class="MnemoProject.App"
              xmlns:local="using:MnemoProject"
              xmlns:converters="using:MnemoProject.Converters"
+             xmlns:loc="using:MnemoProject.Helpers"
              RequestedThemeVariant="Default">
   <Application.Resources>
     <FontFamily x:Key="LexendFont">avares://MnemoProject/Assets/Fonts#Lexend</FontFamily>

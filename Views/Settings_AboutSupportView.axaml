@@ -4,20 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              x:DataType="vm:Settings_AboutSupportViewModel"
              x:Class="MnemoProject.Views.Settings_AboutSupportView">
 
   <ScrollViewer Padding="15">
     <StackPanel Margin="15" Spacing="15">
-      <Label Content="About &amp; Support" FontWeight="SemiBold" FontSize="30"/>
+      <Label Content="{loc:Localization Settings_About_Title}" FontWeight="SemiBold" FontSize="30"/>
 
       <StackPanel Spacing="5">
-        <Label Content="App Version" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="{loc:Localization Settings_About_AppVersion}" FontWeight="SemiBold" FontSize="24"/>
         <Label Content="{Binding AppVersion}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
       </StackPanel>
 
       <StackPanel Spacing="1">
-        <Label Content="Webpages" FontWeight="SemiBold" FontSize="24"/>
+        <Label Content="{loc:Localization Settings_About_Webpages}" FontWeight="SemiBold" FontSize="24"/>
 
         <HyperlinkButton NavigateUri="https://Mnemo.github.net/Home">
           <StackPanel Orientation="Horizontal">
@@ -49,13 +50,13 @@
       </StackPanel>
 
       <StackPanel Spacing="5">
-        <Label Content="License" FontWeight="SemiBold" FontSize="24"/>
-        <TextBlock  MaxWidth="1200" FontSize="14" Foreground="#969696" HorizontalAlignment="Left" TextWrapping="Wrap" Text="This software is licensed under a combination of the MIT and Creative Commons Non-Commercial (BY-NC) licenses. You can freely modify and use it for non-commercial purposes, but it cannot be sold or used for commercial gain. This keeps the software free and open source. For more information, see the full MIT License and Creative Commons Non-Commercial License"/>
+        <Label Content="{loc:Localization Settings_About_License}" FontWeight="SemiBold" FontSize="24"/>
+        <TextBlock MaxWidth="1200" FontSize="14" Foreground="#969696" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{loc:Localization Settings_About_License_Text}"/>
         <HyperlinkButton NavigateUri="https://opensource.org/licenses/MIT">
-          <TextBlock Text="MIT License" Foreground="#0078D7" FontWeight="SemiBold"/>
+          <TextBlock Text="{loc:Localization Settings_About_MIT_License}" Foreground="#0078D7" FontWeight="SemiBold"/>
         </HyperlinkButton>
                 <HyperlinkButton NavigateUri="https://creativecommons.org/licenses/by-nc/4.0/">
-          <TextBlock Text="Creative Commons Non-Commercial License" Foreground="#0078D7" FontWeight="SemiBold"/>
+          <TextBlock Text="{loc:Localization Settings_About_CC_License}" Foreground="#0078D7" FontWeight="SemiBold"/>
         </HyperlinkButton>
       </StackPanel>
 

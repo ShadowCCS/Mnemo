@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:MnemoProject.ViewModels.Overlays"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
              x:DataType="vm:ManageWidgetsOverlayViewModel"
              x:CompileBindings="False"
@@ -17,7 +18,7 @@
       
       <!-- Header with close button -->
       <Grid Grid.Row="0">
-        <TextBlock Text="Select Widgets" Foreground="White" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Left"/>
+        <TextBlock Text="{loc:Localization Widget_SelectWidgets}" Foreground="White" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Left"/>
         <Button Content="✖" Command="{Binding CloseCommand}" 
                 Background="Transparent" Foreground="White" 
                 VerticalAlignment="Top" HorizontalAlignment="Right"
@@ -28,10 +29,14 @@
       <ScrollViewer Grid.Row="1" Margin="0,20,0,0">
         <StackPanel Spacing="15">
           <!-- Enabled Widgets -->
-          <TextBlock Text="Active Widgets" Foreground="#CCCCCC" FontSize="18" FontWeight="Medium" Margin="0,0,0,5"/>
-          <TextBlock Foreground="#999999" FontSize="12" Margin="0,0,0,5">
-            <Run Text="{Binding EnabledWidgets.Count}"/> of <Run Text="{Binding MaxWidgets}"/> widgets active
-          </TextBlock>
+          <TextBlock Text="{loc:Localization Widget_ActiveWidgets}" Foreground="#CCCCCC" FontSize="18" FontWeight="Medium" Margin="0,0,0,5"/>
+          <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+            <TextBlock Text="{Binding EnabledWidgets.Count}" Foreground="#999999" FontSize="12"/>
+            <TextBlock Text=" of " Foreground="#999999" FontSize="12"/>
+            <TextBlock Text="{Binding MaxWidgets}" Foreground="#999999" FontSize="12"/>
+            <TextBlock Text=" " Foreground="#999999" FontSize="12"/>
+            <TextBlock Text="{loc:Localization Widget_WidgetsActive}" Foreground="#999999" FontSize="12"/>
+          </StackPanel>
           <ItemsControl ItemsSource="{Binding EnabledWidgets}">
             <ItemsControl.ItemTemplate>
               <DataTemplate>
@@ -84,7 +89,7 @@
           </ItemsControl>
           
           <!-- Disabled Widgets -->
-          <TextBlock Text="Available Widgets" Foreground="#CCCCCC" FontSize="18" FontWeight="Medium" Margin="0,15,0,5"/>
+          <TextBlock Text="{loc:Localization Widget_AvailableWidgets}" Foreground="#CCCCCC" FontSize="18" FontWeight="Medium" Margin="0,15,0,5"/>
           <ItemsControl ItemsSource="{Binding DisabledWidgets}">
             <ItemsControl.ItemTemplate>
               <DataTemplate>

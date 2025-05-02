@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MnemoProject.Services
 {
-    public class WidgetService
+    public class WidgetService : IDisposable
     {
         private static WidgetService _instance;
         public static WidgetService Instance => _instance ??= new WidgetService();
@@ -41,6 +41,13 @@ namespace MnemoProject.Services
 
         private WidgetService()
         {
+            // Subscribe to statistics updates
+            StatisticsService.StatisticsUpdated += OnStatisticsUpdated;
+            
+            // Subscribe to language/culture changes
+            LocalizationService.Instance.CultureChanged += OnCultureChanged;
+            
+            // Initialize widgets
             InitializeWidgets();
         }
 
@@ -80,6 +87,42 @@ namespace MnemoProject.Services
             // Add them to main collection
             foreach (var widget in widgetSamples)
             {
+                // Set tag values for specific widgets from StatisticsService
+                switch (widget.Type)
+                {
+                    case WidgetType.Retention:
+                        // Get as object first and then convert to avoid direct casting issues
+                        var retentionObj = StatisticsService.Get("Retention");
+                        double retention = Convert.ToDouble(retentionObj);
+                        widget.Tag = Math.Round(retention); // Round to nearest integer for display
+                        break;
+                        
+                    case WidgetType.WeeklyStudyTime:
+                        var studyTimeObj = StatisticsService.Get("WeeklyStudyTimeSeconds");
+                        int studyTimeSeconds = Convert.ToInt32(studyTimeObj);
+                        double studyTimeHours = Math.Round(studyTimeSeconds / 3600.0, 1); // Convert to hours with 1 decimal place
+                        widget.Tag = studyTimeHours;
+                        break;
+                        
+                    case WidgetType.StudyGoal:
+                        var goalMinutesObj = StatisticsService.Get("StudyGoalMinutes");
+                        var currentMinutesObj = StatisticsService.Get("CurrentStudyGoalMinutes");
+                        int goalMinutes = Convert.ToInt32(goalMinutesObj);
+                        int currentMinutes = Convert.ToInt32(currentMinutesObj);
+                        int percentage = goalMinutes > 0 ? (int)Math.Min(100, (currentMinutes * 100) / goalMinutes) : 0;
+                        widget.Tag = percentage;
+                        break;
+                        
+                    case WidgetType.LongestStreak:
+                        var streakObj = StatisticsService.Get("LongestStreak");
+                        int streak = Convert.ToInt32(streakObj);
+                        widget.Tag = streak;
+                        break;
+                }
+                
+                // Set localized title and description
+                UpdateWidgetLocalization(widget);
+                
                 _widgets.Add(widget);
             }
             
@@ -93,12 +136,13 @@ namespace MnemoProject.Services
                 if (widgetSamples.Count > 0 && _enabledWidgets.Count == 0)
                 {
                     // Enable Weekly Study Time widget
-                    EnableWidget(widgetSamples[0]);
+                    EnableWidget(widgetSamples.FirstOrDefault(w => w.Type == WidgetType.WeeklyStudyTime) ?? widgetSamples[0]);
                     
                     // Enable Retention widget if available
-                    if (widgetSamples.Count > 2)
+                    var retentionWidget = widgetSamples.FirstOrDefault(w => w.Type == WidgetType.Retention);
+                    if (retentionWidget != null)
                     {
-                        EnableWidget(widgetSamples[2]);
+                        EnableWidget(retentionWidget);
                     }
                     
                     // Save initial configuration to settings
@@ -324,8 +368,14 @@ namespace MnemoProject.Services
             // Re-add all widgets to the main collection
             foreach (var widget in widgetSamples)
             {
+                // Update localizations for the widget
+                UpdateWidgetLocalization(widget);
+                
                 _widgets.Add(widget);
             }
+            
+            // Update widget data from statistics service
+            RefreshWidgetData();
             
             // Re-enable previously enabled widgets in their original order
             foreach (var widgetInfo in enabledWidgetsInfo)
@@ -357,6 +407,143 @@ namespace MnemoProject.Services
             
             // Save changes to settings
             SaveWidgetConfigToSettings();
+        }
+        
+        // Update widget data from statistics service
+        public void RefreshWidgetData()
+        {
+            try
+            {
+                foreach (var widget in _widgets)
+                {
+                    try
+                    {
+                        // Update tag values from StatisticsService
+                        switch (widget.Type)
+                        {
+                            case WidgetType.Retention:
+                                var retentionObj = StatisticsService.Get("Retention");
+                                double retention = Convert.ToDouble(retentionObj);
+                                widget.Tag = Math.Round(retention);
+                                break;
+                                
+                            case WidgetType.WeeklyStudyTime:
+                                var studyTimeObj = StatisticsService.Get("WeeklyStudyTimeSeconds");
+                                int studyTimeSeconds = Convert.ToInt32(studyTimeObj);
+                                double studyTimeHours = Math.Round(studyTimeSeconds / 3600.0, 1);
+                                widget.Tag = studyTimeHours;
+                                break;
+                                
+                            case WidgetType.StudyGoal:
+                                var goalMinutesObj = StatisticsService.Get("StudyGoalMinutes");
+                                var currentMinutesObj = StatisticsService.Get("CurrentStudyGoalMinutes");
+                                int goalMinutes = Convert.ToInt32(goalMinutesObj);
+                                int currentMinutes = Convert.ToInt32(currentMinutesObj);
+                                int percentage = goalMinutes > 0 ? (int)Math.Min(100, (currentMinutes * 100) / goalMinutes) : 0;
+                                widget.Tag = percentage;
+                                break;
+                                
+                            case WidgetType.LongestStreak:
+                                var streakObj = StatisticsService.Get("LongestStreak");
+                                int streak = Convert.ToInt32(streakObj);
+                                widget.Tag = streak;
+                                break;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LogService.Log.Error($"Error updating widget {widget.Type}: {ex.Message}");
+                        // Apply default values based on widget type if we can't get data
+                        ApplyDefaultWidgetValue(widget);
+                    }
+                }
+                LogService.Log.Info("Widget data refreshed successfully");
+            }
+            catch (Exception ex)
+            {
+                LogService.Log.Error($"Error refreshing widget data: {ex.Message}");
+            }
+        }
+
+        // Apply default values to widgets when data can't be loaded
+        private void ApplyDefaultWidgetValue(Widget widget)
+        {
+            switch (widget.Type)
+            {
+                case WidgetType.Retention:
+                    widget.Tag = 0;
+                    break;
+                    
+                case WidgetType.WeeklyStudyTime:
+                    widget.Tag = 0.0;
+                    break;
+                    
+                case WidgetType.StudyGoal:
+                    widget.Tag = 0;
+                    break;
+                    
+                case WidgetType.LongestStreak:
+                    widget.Tag = 0;
+                    break;
+            }
+        }
+
+        // Force a refresh of widget data - can be called from UI
+        public void ForceRefreshWidgetData()
+        {
+            LogService.Log.Info("Forcing refresh of widget data from statistics file");
+            
+            try
+            {
+                // Force the statistics service to reload data from disk by clearing cache first
+                var stats = StatisticsService.ForceReload();
+                
+                // Then refresh the widgets with the latest data
+                RefreshWidgetData();
+                
+                LogService.Log.Info("Widget data force refresh completed successfully");
+            }
+            catch (Exception ex)
+            {
+                LogService.Log.Error($"Error during force refresh of widget data: {ex.Message}");
+            }
+        }
+
+        // Handle statistics updates
+        private void OnStatisticsUpdated(object sender, EventArgs e)
+        {
+            // Update widget data from the new statistics
+            RefreshWidgetData();
+        }
+
+        // Handle language/culture changes
+        private void OnCultureChanged(object sender, EventArgs e)
+        {
+            // Update widget titles and descriptions when language changes
+            foreach (var widget in _widgets)
+            {
+                // Update title and description with localized versions
+                UpdateWidgetLocalization(widget);
+            }
+        }
+        
+        // Update widget titles and descriptions with localized values
+        private void UpdateWidgetLocalization(Widget widget)
+        {
+            widget.Title = WidgetFactory.GetLocalizedWidgetTitle(widget.Type);
+            
+            // Update description based on the type
+            widget.Description = string.Format(
+                LocalizationService.Instance.GetString("Widget_WidgetForX", "Widget for {0}"),
+                widget.Title);
+        }
+
+        // Dispose method to clean up event subscriptions
+        public void Dispose()
+        {
+            // Unsubscribe from events
+            StatisticsService.StatisticsUpdated -= OnStatisticsUpdated;
+            LocalizationService.Instance.CultureChanged -= OnCultureChanged;
         }
     }
 } 

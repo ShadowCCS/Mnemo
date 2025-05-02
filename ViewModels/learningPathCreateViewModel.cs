@@ -29,7 +29,7 @@ namespace MnemoProject.ViewModels
         private string _aiResponse;
 
         [ObservableProperty]
-        private string _genStatus = "Initializing...";
+        private string _genStatus = "";
 
         // Regular properties for HasUnits and IsGenerationComplete
         private bool _hasUnits;
@@ -61,8 +61,8 @@ namespace MnemoProject.ViewModels
 
             _userInput = userInput;
 
-            GenStatus = "Analyzing request...";
-            NotificationService.Info("Starting learning path generation...");
+            GenStatus = LocalizationService.Instance.GetString("LearningPathCreate_Initializing", "Initializing...");
+            NotificationService.Info(LocalizationService.Instance.GetString("LearningPathCreate_StartingGeneration", "Starting learning path generation..."));
 
             InitializeAsync();
         }
@@ -93,19 +93,23 @@ namespace MnemoProject.ViewModels
         {
             try
             {
+                GenStatus = LocalizationService.Instance.GetString("LearningPathCreate_AnalyzingRequest", "Analyzing request...");
+                
                 await _aiService.GenerateLearningPathOutline(UserInput, async content =>
                 {
                     if (_learningPathProcessed) return;
                     _learningPathProcessed = true;
 
-                    GenStatus = "Creating learning structure...";
+                    GenStatus = LocalizationService.Instance.GetString("LearningPathCreate_CreatingStructure", "Creating learning structure...");
                     
                     var learningPath = await SaveLearningPathToDatabase(content);
                     if (learningPath != null && learningPath.Units.Any())
                     {
                         _learningPathId = learningPath.Id;
                         System.Diagnostics.Debug.WriteLine("[GenerateLearningPath] Processing learningPath with units.");
-                        NotificationService.Info($"Creating learning path: {learningPath.Title}");
+                        NotificationService.Info(string.Format(
+                            LocalizationService.Instance.GetString("LearningPathCreate_Creating", "Creating learning path: {0}"), 
+                            learningPath.Title));
                         
                         // Store the total number of units for progress display
                         int totalUnits = learningPath.Units.Count;
@@ -131,8 +135,13 @@ namespace MnemoProject.ViewModels
                             // Only generate content for the first unit (Unit 1)
                             if (processedUnits == 1)
                             {
-                                GenStatus = $"Generating unit {processedUnits}/{totalUnits}: {unit.Title}";
-                                NotificationService.Info($"Generating unit {processedUnits}/{totalUnits}: {unit.Title}");
+                                GenStatus = string.Format(
+                                    LocalizationService.Instance.GetString("LearningPathCreate_GeneratingUnit", "Generating unit {0}/{1}: {2}"), 
+                                    processedUnits, totalUnits, unit.Title);
+                                
+                                NotificationService.Info(string.Format(
+                                    LocalizationService.Instance.GetString("LearningPathCreate_GeneratingUnit", "Generating unit {0}/{1}: {2}"), 
+                                    processedUnits, totalUnits, unit.Title));
 
                                 // Prepare theory content
                                 string theoryContent = !string.IsNullOrWhiteSpace(unit.TheoryContent)
@@ -148,16 +157,19 @@ namespace MnemoProject.ViewModels
                             else
                             {
                                 // Just save the unit with placeholder content for now
+                                // Don't localize this placeholder as it may affect future AI processing
                                 unit.UnitContent = "Content will be generated when you open this unit.";
                                 await SaveUnitToDatabase(unit);
                             }
                             
                             // Update UI after processing
-                            GenStatus = $"Unit {processedUnits}/{totalUnits} processed";
+                            GenStatus = string.Format(
+                                LocalizationService.Instance.GetString("LearningPathCreate_UnitProcessed", "Unit {0}/{1} processed"), 
+                                processedUnits, totalUnits);
                         }
 
-                        GenStatus = "Learning path creation complete!";
-                        NotificationService.Success("Learning path created successfully!");
+                        GenStatus = LocalizationService.Instance.GetString("LearningPathCreate_Complete", "Learning path creation complete!");
+                        NotificationService.Success(LocalizationService.Instance.GetString("LearningPathCreate_Success", "Learning path created successfully!"));
                         IsGenerationComplete = true;
                         
                         // Automatically navigate to unit overview when complete
@@ -165,16 +177,18 @@ namespace MnemoProject.ViewModels
                     }
                     else
                     {
-                        GenStatus = "Failed to create learning path";
-                        NotificationService.Error("Failed to create learning path. Please try again.");
+                        GenStatus = LocalizationService.Instance.GetString("LearningPathCreate_Failed", "Failed to create learning path");
+                        NotificationService.Error(LocalizationService.Instance.GetString("LearningPathCreate_Error", "Failed to create learning path. Please try again."));
                         IsGenerationComplete = true;
                     }
                 });
             }
             catch (Exception ex)
             {
-                GenStatus = "Error occurred";
-                NotificationService.Error($"Error generating learning path: {ex.Message}");
+                GenStatus = LocalizationService.Instance.GetString("LearningPathCreate_GenerationError", "Error occurred");
+                NotificationService.Error(string.Format(
+                    LocalizationService.Instance.GetString("LearningPathCreate_GenerationErrorDetail", "Error generating learning path: {0}"), 
+                    ex.Message));
                 NotificationService.LogToFile($"[ERROR] GenerateLearningPath: {ex}");
                 IsGenerationComplete = true;
             }
@@ -208,8 +222,9 @@ namespace MnemoProject.ViewModels
                 string aiContent = await tcs.Task;
                 System.Diagnostics.Debug.WriteLine($"[GenerateUnitContent] AI content awaited for unit: {unit.Title}: {aiContent}");
 
+                // Don't localize the default content for unit generation as it may impact AI processing
                 unit.UnitContent = string.IsNullOrWhiteSpace(aiContent)
-                    ? "Default generated content."
+                    ? "Default generated content." // Use fixed string instead of localized string
                     : aiContent;
 
                 // Update the unit in the collection to refresh UI
@@ -224,8 +239,12 @@ namespace MnemoProject.ViewModels
             }
             catch (Exception ex)
             {
-                NotificationService.Error($"Error generating content for unit {unit.Title}: {ex.Message}");
+                NotificationService.Error(string.Format(
+                    LocalizationService.Instance.GetString("LearningPathCreate_UnitContentError_Detail", "Error generating content for unit {0}: {1}"), 
+                    unit.Title, ex.Message));
                 NotificationService.LogToFile($"[ERROR] GenerateUnitContent for {unit.Title}: {ex}");
+                
+                // Don't localize the error content as it may affect future AI processing
                 unit.UnitContent = "Failed to generate content. Please try again later.";
                 
                 // Still update the unit in collection to show error
@@ -246,7 +265,7 @@ namespace MnemoProject.ViewModels
 
                 if (string.IsNullOrEmpty(jsonContent) || !IsValidJson(jsonContent))
                 {
-                    NotificationService.Error("Failed to parse AI response as valid JSON");
+                    NotificationService.Error(LocalizationService.Instance.GetString("LearningPathCreate_InvalidJSON", "Failed to parse AI response as valid JSON"));
                     NotificationService.LogToFile($"[ERROR] Invalid JSON from AI: {aiOutput}");
                     return null;
                 }
@@ -256,7 +275,7 @@ namespace MnemoProject.ViewModels
 
                 if (learningPath == null)
                 {
-                    NotificationService.Error("Failed to deserialize learning path data");
+                    NotificationService.Error(LocalizationService.Instance.GetString("LearningPathCreate_FailedDeserialize", "Failed to deserialize learning path data"));
                     return null;
                 }
 
@@ -290,7 +309,9 @@ namespace MnemoProject.ViewModels
                 {
                     System.Diagnostics.Debug.WriteLine("Inner exception: " + ex.InnerException.Message);
                 }
-                NotificationService.Error($"Error saving learning path: {ex.Message}");
+                NotificationService.Error(string.Format(
+                    LocalizationService.Instance.GetString("LearningPathCreate_ErrorSaving", "Error saving learning path: {0}"),
+                    ex.Message));
                 NotificationService.LogToFile($"[ERROR] SaveLearningPathToDatabase: {ex}");
                 return null;
             }
@@ -325,7 +346,9 @@ namespace MnemoProject.ViewModels
                 {
                     System.Diagnostics.Debug.WriteLine("Inner exception: " + ex.InnerException.ToString());
                 }
-                NotificationService.Error($"Error saving unit: {ex.Message}");
+                NotificationService.Error(string.Format(
+                    LocalizationService.Instance.GetString("LearningPathCreate_ErrorSavingUnit", "Error saving unit: {0}"),
+                    ex.Message));
                 NotificationService.LogToFile($"[ERROR] SaveUnitToDatabase for {unit.Title}: {ex}");
             }
         }

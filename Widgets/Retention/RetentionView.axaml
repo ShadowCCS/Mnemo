@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="using:MnemoProject.Widgets.Retention"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="190" d:DesignHeight="100"
              x:Class="MnemoProject.Widgets.Retention.RetentionView"
              x:DataType="local:Retention">
@@ -25,7 +26,7 @@
           <TextBlock Text="{Binding FormattedRetention}"
                      Foreground="#2196F3" FontSize="28" 
                      FontWeight="Bold" HorizontalAlignment="Center"/>
-          <TextBlock Text="Card Retention" 
+          <TextBlock Text="{loc:Localization Widget_CardRetention}" 
                      Foreground="#CCCCCC" FontSize="11" 
                      HorizontalAlignment="Center" Margin="0,2,0,0"/>
         </StackPanel>

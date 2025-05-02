@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              xmlns:components="clr-namespace:MnemoProject.Views.Components"
              xmlns:converters="clr-namespace:MnemoProject.Converters"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:UnitOverviewViewModel"
              x:Class="MnemoProject.Views.UnitOverviewView">
@@ -19,14 +20,15 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5" Margin="10">
-      <Button Command="{Binding GoHome}" Background="{x:Null}">
-        <Image Source="{SvgImage /Assets/Icons/DashboardIcon.svg}" Height="25" Width="25"/>
+    <!-- Left Navigation Elements -->
+    <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="5" Margin="10">
+      <Button Command="{Binding GoHome}" Background="{x:Null}" Cursor="Hand" Height="32" Width="32">
+        <Image Source="{SvgImage /Assets/Icons/DashboardIcon.svg}" Height="24" Width="24"/>
       </Button>
-      <Button Command="{Binding GoBack}" Background="{x:Null}">
+      <Button Command="{Binding GoBack}" Background="{x:Null}" Cursor="Hand" Height="32" Width="32">
         <Image Source="{SvgImage /Assets/Icons/arrow.svg}" Height="18" Width="18"/>
       </Button>
-      <Label Content="Unit Overview" Foreground="#777777" VerticalAlignment="Center"/>
+      <Label Content="{loc:Localization UnitOverview_Title}" Foreground="#777777" VerticalAlignment="Center"/>
     </StackPanel>
 
     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">

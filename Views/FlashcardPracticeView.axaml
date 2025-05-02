@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:FlashcardPracticeViewModel"
              x:Class="MnemoProject.Views.FlashcardPracticeView"
@@ -26,14 +27,14 @@
       <!-- Header with title and end session button -->
       <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
         <TextBlock Grid.Column="0"
-                  Text="Flashcards"
+                  Text="{loc:Localization FlashcardPractice_Title}"
                   FontSize="24"
                   FontWeight="Bold"
                   HorizontalAlignment="Left"/>
 
         <Button Grid.Column="1"
                 Cursor="Hand"
-                Content="End Session"
+                Content="{loc:Localization FlashcardPractice_EndSession}"
                 Foreground="#FF5C5C"
                 Background="Transparent"
                 Command="{Binding GoBackCommand}"/>
@@ -86,7 +87,7 @@
                    Width="64" Height="64"
                    HorizontalAlignment="Center"
                    Margin="0,0,0,20"/>
-            <TextBlock Text="Daily Review Complete!"
+            <TextBlock Text="{loc:Localization FlashcardPractice_ReviewComplete}"
                        FontSize="28"
                        FontWeight="Bold"
                        HorizontalAlignment="Center"
@@ -97,7 +98,7 @@
                        HorizontalAlignment="Center"
                        TextAlignment="Center"
                        Foreground="#CCCCCC"/>
-            <Button Content="Return to Decks"
+            <Button Content="{loc:Localization FlashcardPractice_ReturnToDecks}"
                     Command="{Binding GoBackCommand}"
                     HorizontalAlignment="Center"
                     Margin="0,25,0,5"
@@ -121,12 +122,12 @@
           <StackPanel Spacing="15">
             <StackPanel>
               <!-- Question section -->
-              <TextBlock Text="Question" FontWeight="Bold" FontSize="18"/>
+              <TextBlock Text="{loc:Localization FlashcardPractice_Question}" FontWeight="Bold" FontSize="18"/>
               <TextBlock Text="{Binding CurrentCard.Front}" TextWrapping="Wrap" Foreground="#696969" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="10">
               <!-- Answer section -->
-              <TextBlock Grid.Column="0" Text="Answer" FontWeight="SemiBold" Foreground="#2881b1" FontSize="18" IsVisible="{Binding !IsShowingFront}"/>
+              <TextBlock Grid.Column="0" Text="{loc:Localization FlashcardPractice_Answer}" FontWeight="SemiBold" Foreground="#2881b1" FontSize="18" IsVisible="{Binding !IsShowingFront}"/>
 
               <TextBlock Text="{Binding CurrentCard.Back}" TextWrapping="Wrap" FontSize="16" Foreground="#696969" IsVisible="{Binding !IsShowingFront}"/>
             </StackPanel>
@@ -178,7 +179,7 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Spacing="10">
-          <Button Content="Again"
+          <Button Content="{loc:Localization FlashcardPractice_Again}"
                   Cursor="Hand"
                   Background="#2D2D2D"
                   Padding="15,8"
@@ -186,7 +187,7 @@
                   Command="{Binding RateDifficultyCommand}"
                   CommandParameter="Again"/>
 
-          <Button Content="Hard"
+          <Button Content="{loc:Localization FlashcardPractice_Hard}"
                   Cursor="Hand"
                   Background="#2D2D2D"
                   Padding="15,8"
@@ -194,7 +195,7 @@
                   Command="{Binding RateDifficultyCommand}"
                   CommandParameter="Hard"/>
 
-          <Button Content="Good"
+          <Button Content="{loc:Localization FlashcardPractice_Good}"
                   Cursor="Hand"
                   Background="#2D2D2D"
                   Padding="15,8"
@@ -202,7 +203,7 @@
                   Command="{Binding RateDifficultyCommand}"
                   CommandParameter="Good"/>
 
-          <Button Content="Easy"
+          <Button Content="{loc:Localization FlashcardPractice_Easy}"
                   Cursor="Hand"
                   Background="#2D2D2D"
                   Padding="15,8"
@@ -214,7 +215,7 @@
 
       <!-- Spacebar hint -->
       <TextBlock Grid.Row="4"
-                Text="Spacebar to continue"
+                Text="{loc:Localization FlashcardPractice_SpacebarHint}"
                 Foreground="#888888"
                 FontSize="12"
                 HorizontalAlignment="Center"

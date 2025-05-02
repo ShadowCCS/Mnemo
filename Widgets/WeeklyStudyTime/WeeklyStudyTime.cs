@@ -6,31 +6,30 @@ namespace MnemoProject.Widgets.WeeklyStudyTime
 {
     public class WeeklyStudyTime : Widget
     {
-        // Time spent studying in the current week (in minutes)
-        public int WeeklyStudyTimeMinutes { get; set; }
-        
-        // Constructor
+        // Constructor - use generic default values that will be replaced by localized versions
         public WeeklyStudyTime() : base(
             WidgetType.WeeklyStudyTime, 
             "Weekly Study Time", 
-            "Shows you how much you have studied the last week")
+            "Shows weekly study time")
         {
-            // Get data from statistics service
-            var stats = StatisticsService.Instance.LoadStatistics();
-            WeeklyStudyTimeMinutes = stats.WeeklyStudyTimeSeconds / 60; // Convert seconds to minutes
+            // Note: We don't need to fetch data here as WidgetService will set the Tag property
         }
+        
+        // Get study time in hours from Tag property
+        public double StudyTimeHours => Tag != null ? Convert.ToDouble(Tag) : 0;
         
         // Format the time for display
         public string FormattedStudyTime
         {
             get
             {
-                int hours = WeeklyStudyTimeMinutes / 60;
-                int minutes = WeeklyStudyTimeMinutes % 60;
+                double hours = StudyTimeHours;
+                int wholeHours = (int)Math.Floor(hours);
+                int minutes = (int)Math.Round((hours - wholeHours) * 60);
                 
-                if (hours > 0)
+                if (wholeHours > 0)
                 {
-                    return $"{hours}h {minutes}m";
+                    return $"{wholeHours}h {minutes}m";
                 }
                 else
                 {

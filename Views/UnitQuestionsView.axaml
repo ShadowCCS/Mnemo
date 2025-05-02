@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="MnemoProject.Views.UnitQuestionsView"
              x:DataType="vm:UnitQuestionsViewModel">
@@ -14,7 +15,7 @@
         <StackPanel IsVisible="{Binding IsLoading}"
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center">
-          <TextBlock Text="Generating Questions" 
+          <TextBlock Text="{loc:Localization UnitQuestions_Generating}" 
                      FontSize="24" 
                      FontWeight="Bold" 
                      HorizontalAlignment="Center" 
@@ -49,7 +50,7 @@
           <Grid VerticalAlignment="Center" Margin="0,20,0,0">
             <!-- Question text -->
             <StackPanel Margin="0,0,0,20">
-              <TextBlock Text="Question" 
+              <TextBlock Text="{loc:Localization UnitQuestions_Question}" 
                          Foreground="#2880b1"
                          FontSize="16"
                          HorizontalAlignment="Center"
@@ -165,7 +166,7 @@
               
               <!-- Confirmation button and Try Again button -->
               <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
-                <Button Content="Submit Answer" 
+                <Button Content="{loc:Localization UnitQuestions_SubmitAnswer}" 
                         Command="{Binding SubmitAnswerCommand}"
                         IsEnabled="{Binding HasSelectedAnswer}"
                         IsVisible="{Binding !HasSubmittedAnswer}"
@@ -174,7 +175,7 @@
                         Background="#2880b1"
                         Foreground="White"/>
                         
-                <Button Content="Try Again" 
+                <Button Content="{loc:Localization UnitQuestions_TryAgain}" 
                         Command="{Binding TryAgainCommand}"
                         IsVisible="{Binding HasSubmittedAnswer}"
                         HorizontalAlignment="Center"
@@ -193,7 +194,7 @@
               <Button.Content>
                 <StackPanel Orientation="Horizontal">
                   <TextBlock Text="←" Margin="0,0,5,0"/>
-                  <TextBlock Text="Previous"/>
+                  <TextBlock Text="{loc:Localization UnitQuestions_Previous}"/>
                 </StackPanel>
               </Button.Content>
             </Button>
@@ -203,7 +204,7 @@
                     HorizontalAlignment="Right">
               <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                  <TextBlock Text="Next"/>
+                  <TextBlock Text="{loc:Localization UnitQuestions_Next}"/>
                   <TextBlock Text="→" Margin="5,0,0,0"/>
                 </StackPanel>
               </Button.Content>
@@ -226,7 +227,7 @@
       <StackPanel Orientation="Horizontal"
                   HorizontalAlignment="Center"
                   Spacing="10">
-        <TextBlock Text="Want more questions?"
+        <TextBlock Text="{loc:Localization UnitQuestions_WantMore}"
                    Foreground="White"
                    VerticalAlignment="Center"/>
         <Button Command="{Binding GenerateMoreQuestionsCommand}"
@@ -236,14 +237,14 @@
                 Foreground="White">
           <Panel>
             <!-- Button content -->
-            <TextBlock Text="Generate More"
+            <TextBlock Text="{loc:Localization UnitQuestions_GenerateMore}"
                        IsVisible="{Binding !IsGeneratingMore}"/>
 
             <!-- Loading indicator -->
             <StackPanel Orientation="Horizontal"
                         IsVisible="{Binding IsGeneratingMore}"
                         Spacing="5">
-              <TextBlock Text="Generating..." VerticalAlignment="Center"/>
+              <TextBlock Text="{loc:Localization UnitQuestions_Generating}" VerticalAlignment="Center"/>
               <ProgressBar IsIndeterminate="True"
                            Width="20"
                            Height="2"

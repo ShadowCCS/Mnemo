@@ -113,6 +113,9 @@ namespace MnemoProject.ViewModels
                     IsQuestionsSelected = false;
                     IsFlashcardsSelected = false;
                     ActiveViewModel = _unitLearnModeViewModel;
+                    
+                    // Activate the view model to load learn content (async fire-and-forget)
+                    _ = _unitLearnModeViewModel.OnActivated();
                 }
             }
         }
@@ -151,7 +154,9 @@ namespace MnemoProject.ViewModels
             System.Diagnostics.Debug.WriteLine($"Initializing UnitFlashcardsViewModel with content length: {_unitGuideText?.Length ?? 0}");
             _unitFlashcardsViewModel = new UnitFlashcardsViewModel(_unitGuideText ?? string.Empty);
             
-            _unitLearnModeViewModel = new UnitLearnModeViewModel();
+            // Pass the unit content to the Learn Mode view model
+            System.Diagnostics.Debug.WriteLine($"Initializing UnitLearnModeViewModel with content length: {_unitGuideText?.Length ?? 0}");
+            _unitLearnModeViewModel = new UnitLearnModeViewModel(_unitGuideText ?? string.Empty, _navigationService);
         }
 
         [RelayCommand]

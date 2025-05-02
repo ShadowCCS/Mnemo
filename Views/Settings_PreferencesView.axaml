@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:controls="clr-namespace:MnemoProject.Views.Components"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              x:Class="MnemoProject.Views.Settings_PreferencesView"
              x:DataType="vm:Settings_PreferencesViewModel"
              x:Name="PreferencesView"
@@ -14,15 +15,15 @@
     <ScrollViewer VerticalScrollBarVisibility="Visible"
                   HorizontalScrollBarVisibility="Disabled">
       <StackPanel Margin="30" Spacing="30">
-        <Label Content="Flashcard Preferences" FontWeight="SemiBold" FontSize="32"/>
+        <Label Content="{loc:Localization Settings_Preferences_Title}" FontWeight="SemiBold" FontSize="32"/>
 
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="Export Options" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Configure your default export settings" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_Export_Options}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_Export_Description}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
             
             <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" Margin="0,10,0,0">
-              <TextBlock Grid.Row="0" Grid.Column="0" Text="Default export format" VerticalAlignment="Center"/>
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="{loc:Localization Settings_Export_Format}" VerticalAlignment="Center"/>
               <ComboBox Grid.Row="0" Grid.Column="1" 
                        x:Name="DefaultExportFormatComboBox"
                        SelectedIndex="0" 
@@ -35,9 +36,9 @@
                     <Setter Property="Padding" Value="10,5"/>
                   </Style>
                 </ComboBox.Styles>
-                <ComboBoxItem Content="Standard (.fcs)" />
-                <ComboBoxItem Content="Anki (.apkg)" />
-                <ComboBoxItem Content="Quizlet (.qzl)" />
+                <ComboBoxItem Content="{loc:Localization Settings_Export_Format_Standard}" />
+                <ComboBoxItem Content="{loc:Localization Settings_Export_Format_Anki}" />
+                <ComboBoxItem Content="{loc:Localization Settings_Export_Format_Quizlet}" />
               </ComboBox>
             </Grid>
           </StackPanel>
@@ -45,13 +46,13 @@
 
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="Study Session" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Configure your flashcard study behavior" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_Study_Session}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_Study_Description}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
               <StackPanel Grid.Column="0" Spacing="5">
-                <TextBlock Text="Cards per session" FontWeight="SemiBold"/>
-                <TextBlock Text="Maximum number of cards to study in one session" FontSize="12" Foreground="#969696"/>
+                <TextBlock Text="{loc:Localization Settings_Study_CardsPerSession}" FontWeight="SemiBold"/>
+                <TextBlock Text="{loc:Localization Settings_Study_CardsPerSession_Desc}" FontSize="12" Foreground="#969696"/>
               </StackPanel>
               <NumericUpDown Grid.Column="2" 
                             Value="{Binding CardsPerSession}"
@@ -64,21 +65,21 @@
             </Grid>
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,15,0,0">
-              <TextBlock Grid.Column="0" Text="Auto-play audio" VerticalAlignment="Center"/>
+              <TextBlock Grid.Column="0" Text="{loc:Localization Settings_Study_AutoPlayAudio}" VerticalAlignment="Center"/>
               <controls:ToggleButton Grid.Column="2" IsChecked="{Binding AutoPlayAudio, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
-            <TextBlock Text="When enabled, audio files on flashcards will play automatically" 
+            <TextBlock Text="{loc:Localization Settings_Study_AutoPlayAudio_Desc}" 
                       Foreground="#777777" 
                       FontSize="12" 
                       Margin="0,0,0,10"/>
                       
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
-              <TextBlock Grid.Column="0" Text="Preload multimedia content" VerticalAlignment="Center"/>
+              <TextBlock Grid.Column="0" Text="{loc:Localization Settings_Study_PreloadMultimedia}" VerticalAlignment="Center"/>
               <controls:ToggleButton Grid.Column="2" IsChecked="{Binding PreloadMultimedia, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
-            <TextBlock Text="Improves performance by loading multimedia before playing with large decks" 
+            <TextBlock Text="{loc:Localization Settings_Study_PreloadMultimedia_Desc}" 
                       Foreground="#777777" 
                       FontSize="12" 
                       Margin="0,0,0,10"/>
@@ -87,11 +88,11 @@
         
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="Auto-Play Mode" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Configure automatic flashcard progression" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_AutoPlay_Mode}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_AutoPlay_Description}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
             
             <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" Margin="0,10,0,0">
-              <TextBlock Grid.Row="0" Grid.Column="0" Text="Auto-play mode" VerticalAlignment="Center"/>
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="{loc:Localization Settings_AutoPlay_Mode_Label}" VerticalAlignment="Center"/>
               <ComboBox Grid.Row="0" Grid.Column="2" 
                        x:Name="AutoPlayModeComboBox"
                        SelectedIndex="0" 
@@ -104,16 +105,16 @@
                     <Setter Property="Padding" Value="10,5"/>
                   </Style>
                 </ComboBox.Styles>
-                <ComboBoxItem Content="Interval" />
-                <ComboBoxItem Content="Timer" />
-                <ComboBoxItem Content="Smart" />
+                <ComboBoxItem Content="{loc:Localization Settings_AutoPlay_Mode_Interval}" />
+                <ComboBoxItem Content="{loc:Localization Settings_AutoPlay_Mode_Timer}" />
+                <ComboBoxItem Content="{loc:Localization Settings_AutoPlay_Mode_Smart}" />
               </ComboBox>
             </Grid>
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="30,15,0,0">
               <StackPanel Grid.Column="0" Spacing="5">
-                <TextBlock Text="Interval duration" FontWeight="SemiBold"/>
-                <TextBlock Text="Seconds between cards (for Interval mode)" FontSize="12" Foreground="#969696"/>
+                <TextBlock Text="{loc:Localization Settings_AutoPlay_IntervalDuration}" FontWeight="SemiBold"/>
+                <TextBlock Text="{loc:Localization Settings_AutoPlay_IntervalDuration_Desc}" FontSize="12" Foreground="#969696"/>
               </StackPanel>
               <NumericUpDown Grid.Column="2" 
                             Value="{Binding IntervalDuration}"
@@ -129,21 +130,21 @@
         
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="Review Reminders" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Configure spaced repetition reminders" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_Review_Reminders}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_Review_Description}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
-              <TextBlock Grid.Column="0" Text="Enable review reminders" VerticalAlignment="Center"/>
+              <TextBlock Grid.Column="0" Text="{loc:Localization Settings_Review_Enable}" VerticalAlignment="Center"/>
               <controls:ToggleButton Grid.Column="2" IsChecked="{Binding EnableReviewReminders, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
-            <TextBlock Text="Sends notifications when it's time to review your flashcards" 
+            <TextBlock Text="{loc:Localization Settings_Review_Enable_Desc}" 
                       Foreground="#777777" 
                       FontSize="12" 
                       Margin="0,0,0,5"/>
                       
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,15,0,0">
-              <TextBlock Grid.Column="0" Text="Quiet hours" VerticalAlignment="Center"/>
+              <TextBlock Grid.Column="0" Text="{loc:Localization Settings_Review_QuietHours}" VerticalAlignment="Center"/>
               <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
                 <ComboBox x:Name="QuietHoursStartComboBox" SelectedIndex="3" Width="100" SelectedItem="{Binding QuietHoursStart}">
                   <ComboBoxItem Content="8:00 PM"/>
@@ -152,7 +153,7 @@
                   <ComboBoxItem Content="11:00 PM"/>
                   <ComboBoxItem Content="12:00 AM"/>
                 </ComboBox>
-                <TextBlock Text="to" VerticalAlignment="Center"/>
+                <TextBlock Text="{loc:Localization Settings_Review_QuietHours_To}" VerticalAlignment="Center"/>
                 <ComboBox x:Name="QuietHoursEndComboBox" SelectedIndex="1" Width="100" SelectedItem="{Binding QuietHoursEnd}">
                   <ComboBoxItem Content="6:00 AM"/>
                   <ComboBoxItem Content="7:00 AM"/>

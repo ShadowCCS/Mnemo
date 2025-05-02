@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              xmlns:controls="clr-namespace:MnemoProject.Views.Components"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:Settings_ApperanceViewModel"
              x:Class="MnemoProject.Views.Settings_ApperanceView"
@@ -14,12 +15,12 @@
     <ScrollViewer VerticalScrollBarVisibility="Visible"
                   HorizontalScrollBarVisibility="Disabled">
       <StackPanel Margin="30" Spacing="30">
-        <Label Content="Appearance" FontWeight="SemiBold" FontSize="32"/>
+        <Label Content="{loc:Localization Settings_Appearance}" FontWeight="SemiBold" FontSize="32"/>
 
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="Language" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Choose your preferred application language" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_Language}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_Language_Select}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
 
             <ComboBox ItemsSource="{Binding Languages}" 
                      SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}" 
@@ -29,20 +30,24 @@
               <ComboBox.ItemTemplate>
                 <DataTemplate>
                   <StackPanel Orientation="Horizontal">
-                    <Image Source="{Binding Icon, FallbackValue='Assets/Icons/english.png'}"
-                           Width="20" Height="20" Margin="5,0"/>
-                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                    <Image Source="{Binding Icon}" Width="16" Height="16" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding NativeName}" VerticalAlignment="Center" FontWeight="Normal"/>
                   </StackPanel>
                 </DataTemplate>
               </ComboBox.ItemTemplate>
             </ComboBox>
+            
+            <TextBlock Text="{loc:Localization Settings_Language_RestartRequired}" 
+                       Foreground="#777777" 
+                       FontSize="12" 
+                       Margin="0,5,0,0"/>
           </StackPanel>
         </Border>
 
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="Theme" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Select your preferred application theme" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_Theme}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_Theme_Select}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
             
             <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" Margin="0,5,0,0">
               <ComboBox Grid.Row="0" Grid.Column="0"
@@ -82,15 +87,15 @@
 
         <Border Background="#1A1A1A" CornerRadius="8" Padding="20">
           <StackPanel Spacing="15">
-            <Label Content="UI Effects" FontWeight="SemiBold" FontSize="22"/>
-            <Label Content="Configure animation and visual effects settings" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
+            <Label Content="{loc:Localization Settings_UIEffects}" FontWeight="SemiBold" FontSize="22"/>
+            <Label Content="{loc:Localization Settings_UIEffects_Description}" FontWeight="Regular" FontSize="14" Foreground="#969696"/>
             
             <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,10,0,0">
-              <TextBlock Grid.Column="0" Text="Enable animations" VerticalAlignment="Center"/>
+              <TextBlock Grid.Column="0" Text="{loc:Localization Settings_UIEffects_EnableAnimations}" VerticalAlignment="Center"/>
               <controls:ToggleButton Grid.Column="2" IsChecked="{Binding AnimationToggle, Mode=TwoWay}" HorizontalAlignment="Right"/>
             </Grid>
             
-            <TextBlock Text="Disabling animations may improve performance on older devices" 
+            <TextBlock Text="{loc:Localization Settings_UIEffects_AnimationsHint}" 
                       Foreground="#777777" 
                       FontSize="12" 
                       Margin="0,5,0,0"/>

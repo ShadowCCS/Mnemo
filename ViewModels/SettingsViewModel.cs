@@ -34,6 +34,9 @@ namespace MnemoProject.ViewModels
         {
             _navigationService = navigationService;
             NavigateToAppearance();
+            NotificationService.Info(
+                LocalizationService.Instance.GetString("MainWindow_Settings_Placeholder", "A large portion of the settings menu consists of non-functional placeholders."), 
+                LocalizationService.Instance.GetString("MainWindow_Settings_Placeholder_Title", "Heads Up"));
         }
 
 

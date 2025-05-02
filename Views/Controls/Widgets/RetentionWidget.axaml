@@ -2,7 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
+             xmlns:models="clr-namespace:MnemoProject.Models"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="100"
+             x:DataType="models:Widget"
              x:Class="MnemoProject.Views.Controls.Widgets.RetentionWidget">
 
   <Grid>
@@ -12,15 +15,15 @@
     </Grid.ColumnDefinitions>
     
     <StackPanel Grid.Column="0">
-      <TextBlock Text="78%" Foreground="White" FontSize="24" FontWeight="Bold"/>
-      <TextBlock Text="Retention Rate" Foreground="#a0a0a0" FontSize="12"/>
+      <TextBlock Text="{Binding Tag, StringFormat={}{0}%}" Foreground="White" FontSize="24" FontWeight="Bold"/>
+      <TextBlock Text="{loc:Localization Widget_RetentionRate}" Foreground="#a0a0a0" FontSize="12"/>
     </StackPanel>
 
     <Canvas Width="50" Height="50" Grid.Column="1" HorizontalAlignment="Right">
       <!-- Background Circle -->
       <Ellipse Width="50" Height="50" Fill="Transparent" Stroke="#333333" StrokeThickness="4"/>
       
-      <!-- Progress Arc (approx 78% complete) -->
+      <!-- Progress Arc (calculated based on retention rate) -->
       <Path Stroke="#4a6cd0" StrokeThickness="4" StrokeLineCap="Round">
         <Path.Data>
           <PathGeometry>

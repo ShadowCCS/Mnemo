@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="MnemoProject.Views.UnitFlashcardsView"
              x:DataType="vm:UnitFlashcardsViewModel">
@@ -14,7 +15,7 @@
       <StackPanel IsVisible="{Binding IsLoading}"
                   HorizontalAlignment="Center" 
                   VerticalAlignment="Center">
-        <TextBlock Text="Generating Flashcards" 
+        <TextBlock Text="{loc:Localization UnitFlashcards_Generating}" 
                    FontSize="24" 
                    FontWeight="Bold" 
                    HorizontalAlignment="Center" 
@@ -41,7 +42,7 @@
             <Button.Content>
               <StackPanel Orientation="Horizontal">
                 <TextBlock Text="💡" FontSize="14" Margin="0,0,5,0"/>
-                <TextBlock Text="Flip" FontSize="14"/>
+                <TextBlock Text="{loc:Localization UnitFlashcards_Flip}" FontSize="14"/>
               </StackPanel>
             </Button.Content>
           </Button>
@@ -70,7 +71,7 @@
                       HorizontalAlignment="Center" 
                       Margin="20">
             <!-- Side label: Question or Answer -->
-            <TextBlock Text="{Binding IsFlipped, Converter={StaticResource BoolToContentConverter}, ConverterParameter='Question|Answer'}"
+            <TextBlock Text="{Binding IsFlipped, Converter={StaticResource BoolToContentConverter}, ConverterParameter='{loc:Localization UnitFlashcards_Question}|{loc:Localization UnitFlashcards_Answer}'}"
                        Foreground="#2880b1"
                        FontSize="16"
                        HorizontalAlignment="Center"
@@ -106,7 +107,7 @@
             <Button.Content>
               <StackPanel Orientation="Horizontal">
                 <TextBlock Text="←" Margin="0,0,5,0"/>
-                <TextBlock Text="Previous"/>
+                <TextBlock Text="{loc:Localization UnitFlashcards_Previous}"/>
               </StackPanel>
             </Button.Content>
           </Button>
@@ -116,7 +117,7 @@
                   HorizontalAlignment="Right">
             <Button.Content>
               <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Next"/>
+                <TextBlock Text="{loc:Localization UnitFlashcards_Next}"/>
                 <TextBlock Text="→" Margin="5,0,0,0"/>
               </StackPanel>
             </Button.Content>
@@ -139,7 +140,7 @@
     <StackPanel Orientation="Horizontal"
                 HorizontalAlignment="Center"
                 Spacing="10">
-      <TextBlock Text="Need more practice?"
+      <TextBlock Text="{loc:Localization UnitFlashcards_NeedMorePractice}"
                  Foreground="White"
                  VerticalAlignment="Center"/>
       <Button Command="{Binding GenerateMoreCardsCommand}"
@@ -149,14 +150,14 @@
               Foreground="White">
         <Panel>
           <!-- Button content -->
-          <TextBlock Text="Generate More"
+          <TextBlock Text="{loc:Localization UnitFlashcards_GenerateMore}"
                      IsVisible="{Binding !IsGeneratingMore}"/>
 
           <!-- Loading indicator -->
           <StackPanel Orientation="Horizontal"
                       IsVisible="{Binding IsGeneratingMore}"
                       Spacing="5">
-            <TextBlock Text="Generating..." VerticalAlignment="Center"/>
+            <TextBlock Text="{loc:Localization UnitFlashcards_Generating}" VerticalAlignment="Center"/>
             <ProgressBar IsIndeterminate="True"
                          Width="20"
                          Height="2"

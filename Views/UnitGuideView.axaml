@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MnemoProject.ViewModels"
              xmlns:views="clr-namespace:MnemoProject.Views"
+             xmlns:loc="clr-namespace:MnemoProject.Helpers"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="MnemoProject.Views.UnitGuideView"
              x:DataType="vm:UnitGuideViewModel">
@@ -24,10 +25,10 @@
 
       <!-- Left Navigation Elements -->
       <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="5">
-        <Button Command="{Binding GoHome}" Background="{x:Null}">
-          <Image Source="{SvgImage /Assets/Icons/DashboardIcon.svg}" Height="25" Width="25"/>
+        <Button Command="{Binding GoHome}" Background="{x:Null}" Cursor="Hand" Height="32" Width="32">
+          <Image Source="{SvgImage /Assets/Icons/DashboardIcon.svg}" Height="24" Width="24"/>
         </Button>
-        <Button Command="{Binding GoBack}" Background="{x:Null}">
+        <Button Command="{Binding GoBack}" Background="{x:Null}" Cursor="Hand" Height="32" Width="32">
           <Image Source="{SvgImage /Assets/Icons/arrow.svg}" Height="18" Width="18"/>
         </Button>
         <Label Content="{Binding UnitTitle}" Foreground="#777777" VerticalAlignment="Center"/>
@@ -39,31 +40,31 @@
         <ToggleButton IsChecked="{Binding IsUnitGuideSelected}" Classes="nav-button">
           <StackPanel Orientation="Horizontal" Spacing="5">
             <Image Source="{SvgImage /Assets/Icons/UnitGuideIcon.svg}" Height="18" Width="18"/>
-            <TextBlock Text="Unit Guide"/>
+            <TextBlock Text="{loc:Localization UnitGuide_Title}"/>
           </StackPanel>
         </ToggleButton>
         <ToggleButton IsChecked="{Binding IsQuestionsSelected}" Classes="nav-button">
           <StackPanel Orientation="Horizontal" Spacing="5">
             <Image Source="{SvgImage /Assets/Icons/QuestionsIcon.svg}" Height="18" Width="18"/>
-            <TextBlock Text="Questions"/>
+            <TextBlock Text="{loc:Localization UnitQuestions_Title}"/>
           </StackPanel>
         </ToggleButton>
         <ToggleButton IsChecked="{Binding IsFlashcardsSelected}" Classes="nav-button">
           <StackPanel Orientation="Horizontal" Spacing="5">
             <Image Source="{SvgImage /Assets/Icons/FlashcardsIcon.svg}" Height="18" Width="18"/>
-            <TextBlock Text="Flashcards"/>
+            <TextBlock Text="{loc:Localization UnitFlashcards_Title}"/>
           </StackPanel>
         </ToggleButton>
         <ToggleButton IsChecked="{Binding IsLearnModeSelected}" Classes="nav-button">
           <StackPanel Orientation="Horizontal" Spacing="5">
             <Image Source="{SvgImage /Assets/Icons/LearnModeIcon.svg}" Height="18" Width="18"/>
-            <TextBlock Text="Learn Mode"/>
+            <TextBlock Text="{loc:Localization UnitLearnMode_Title}"/>
           </StackPanel>
         </ToggleButton>
       </StackPanel>
 
       <!-- Right Side Export Button -->
-      <Button Grid.Column="2" Content="Export" Classes="nav-button"
+      <Button Grid.Column="2" Content="{loc:Localization UnitFlashcards_Export}" Classes="nav-button"
               HorizontalAlignment="Right" />
     </Grid>
 

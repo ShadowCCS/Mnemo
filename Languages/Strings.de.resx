@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="__LanguageNativeName" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
+
+  <!-- Common -->
+  <data name="Common_Save" xml:space="preserve">
+    <value>Speichern Sie</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>bearbeiten</value>
+  </data>
+  <data name="Common_Add" xml:space="preserve">
+    <value>hinzufügen</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>entfernen</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Bestätigen Sie</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Common_Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+
+  <!-- Dashboard -->
+  <data name="Dashboard_Statistics" xml:space="preserve">
+    <value>Statistik</value>
+  </data>
+  <data name="Dashboard_LoadingWidgets" xml:space="preserve">
+    <value>Widgets laden...</value>
+  </data>
+  <data name="Dashboard_ManageWidgets" xml:space="preserve">
+    <value>Widgets verwalten</value>
+  </data>
+  <data name="Dashboard_ContinueLearning" xml:space="preserve">
+    <value>Weiteres Lernen</value>
+  </data>
+  <data name="Dashboard_LearningPaths" xml:space="preserve">
+    <value>Lernpfade</value>
+  </data>
+  <data name="Dashboard_Notes" xml:space="preserve">
+    <value>Anmerkungen</value>
+  </data>
+  <data name="Dashboard_Flashcards" xml:space="preserve">
+    <value>Flashcards</value>
+  </data>
+  
+  <!-- Menu Items -->
+  <data name="Menu_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Menu_LearningPath" xml:space="preserve">
+    <value>Lernpfad</value>
+  </data>
+  <data name="Menu_Notes" xml:space="preserve">
+    <value>Anmerkungen</value>
+  </data>
+  <data name="Menu_Flashcards" xml:space="preserve">
+    <value>Flashcards</value>
+  </data>
+  <data name="Menu_Quizzes" xml:space="preserve">
+    <value>Quizze</value>
+  </data>
+  <data name="Menu_Games" xml:space="preserve">
+    <value>Spiele</value>
+  </data>
+  <data name="Menu_Extensions" xml:space="preserve">
+    <value>Erweiterungen</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  
+  <!-- Shortcuts Overlay -->
+  <data name="Shortcuts_Title" xml:space="preserve">
+    <value>Abkürzungen</value>
+  </data>
+  <data name="Shortcuts_NavigationShortcuts" xml:space="preserve">
+    <value>Navigationskurzbefehle</value>
+  </data>
+  <data name="Shortcuts_FlashcardControls" xml:space="preserve">
+    <value>Flashcard-Steuerungen</value>
+  </data>
+  <data name="Shortcuts_Home" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="Shortcuts_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Shortcuts_LearningPath" xml:space="preserve">
+    <value>Lernpfad</value>
+  </data>
+  <data name="Shortcuts_Notes" xml:space="preserve">
+    <value>Anmerkungen</value>
+  </data>
+  <data name="Shortcuts_Flashcards" xml:space="preserve">
+    <value>Flashcards</value>
+  </data>
+  <data name="Shortcuts_Quizzes" xml:space="preserve">
+    <value>Quizze</value>
+  </data>
+  <data name="Shortcuts_Games" xml:space="preserve">
+    <value>Spiele</value>
+  </data>
+  <data name="Shortcuts_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Shortcuts_NextFlashcard" xml:space="preserve">
+    <value>Nächste Flashcard</value>
+  </data>
+  <data name="Shortcuts_PreviousFlashcard" xml:space="preserve">
+    <value>Vorherige Flashcard</value>
+  </data>
+  <data name="Shortcuts_FlipFlashcard" xml:space="preserve">
+    <value>Flip Flashcard</value>
+  </data>
+  
+  <!-- Main Window -->
+  <data name="MainWindow_Title" xml:space="preserve">
+    <value>Mnemo</value>
+  </data>
+  <data name="MainWindow_QuickActions" xml:space="preserve">
+    <value>Quick Actions</value>
+  </data>
+  <data name="MainWindow_ShortcutMenu" xml:space="preserve">
+    <value>Shortcut-Menü</value>
+  </data>
+  <data name="MainWindow_ShortcutKey" xml:space="preserve">
+    <value>Strg + Umschalt + C</value>
+  </data>
+  <data name="MainWindow_SidebarLabel_MainHub" xml:space="preserve">
+    <value>Hauptnabe</value>
+  </data>
+  <data name="MainWindow_SidebarLabel_ExtraContent" xml:space="preserve">
+    <value>Extra Inhalt</value>
+  </data>
+  <data name="MainWindow_SidebarLabel_Utility" xml:space="preserve">
+    <value>Utility &amp; Personalisierung</value>
+  </data>
+  <data name="MainWindow_Welcome_Title" xml:space="preserve">
+    <value>Willkommen bei Mnemo!</value>
+  </data>
+  <data name="MainWindow_Welcome_Message" xml:space="preserve">
+    <value>Sie führen {0}</value>
+  </data>
+  <data name="MainWindow_Settings_Placeholder" xml:space="preserve">
+    <value>Ein großer Teil des Einstellungsmenüs besteht aus nicht funktionierenden Platzhaltern.</value>
+  </data>
+  <data name="MainWindow_Settings_Placeholder_Title" xml:space="preserve">
+    <value>Aufgepasst</value>
+  </data>
+
+  <!-- Settings -->
+  <data name="Settings_Title" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Settings_Appearance" xml:space="preserve">
+    <value>Erscheinungsbild</value>
+  </data>
+  <data name="Settings_Preferences" xml:space="preserve">
+    <value>Präferenzen</value>
+  </data>
+  <data name="Settings_DataStorage" xml:space="preserve">
+    <value>Daten &amp; Speicherung</value>
+  </data>
+  <data name="Settings_AboutSupport" xml:space="preserve">
+    <value>Über &amp; Unterstützung</value>
+  </data>
+  <data name="Settings_Experimental" xml:space="preserve">
+    <value>Experimentelle</value>
+  </data>
+  <data name="Settings_Language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="Settings_Language_Select" xml:space="preserve">
+    <value>Wählen Sie Ihre bevorzugte Bewerbungssprache</value>
+  </data>
+  <data name="Settings_Language_RestartRequired" xml:space="preserve">
+    <value>Neustart erforderlich, um Sprachänderungen zu übernehmen</value>
+  </data>
+  <data name="Settings_Language_ChangeNotification" xml:space="preserve">
+    <value>Bitte starten Sie die Anwendung neu, damit die Sprachänderung vollständig wirksam wird.</value>
+  </data>
+  <data name="Settings_Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Settings_Theme_Select" xml:space="preserve">
+    <value>Wählen Sie Ihr bevorzugtes Anwendungsthema</value>
+  </data>
+  <data name="Settings_UIEffects" xml:space="preserve">
+    <value>UI-Effekte</value>
+  </data>
+  <data name="Settings_UIEffects_Description" xml:space="preserve">
+    <value>Konfigurieren Sie die Einstellungen für Animationen und visuelle Effekte</value>
+  </data>
+  <data name="Settings_UIEffects_EnableAnimations" xml:space="preserve">
+    <value>Aktivieren von Animationen</value>
+  </data>
+  <data name="Settings_UIEffects_AnimationsHint" xml:space="preserve">
+    <value>Die Deaktivierung von Animationen kann die Leistung auf älteren Geräten verbessern</value>
+  </data>
+  
+  <!-- Preferences Settings -->
+  <data name="Settings_Preferences_Title" xml:space="preserve">
+    <value>Flashcard-Einstellungen</value>
+  </data>
+  <data name="Settings_Export_Options" xml:space="preserve">
+    <value>Export Optionen</value>
+  </data>
+  <data name="Settings_Export_Description" xml:space="preserve">
+    <value>Konfigurieren Sie Ihre Standard-Exporteinstellungen</value>
+  </data>
+  <data name="Settings_Export_Format" xml:space="preserve">
+    <value>Standard-Exportformat</value>
+  </data>
+  <data name="Settings_Export_Format_Standard" xml:space="preserve">
+    <value>Standard (.fcs)</value>
+  </data>
+  <data name="Settings_Export_Format_Anki" xml:space="preserve">
+    <value>Anki (.apkg)</value>
+  </data>
+  <data name="Settings_Export_Format_Quizlet" xml:space="preserve">
+    <value>Quizlet (.qzl)</value>
+  </data>
+  <data name="Settings_Study_Session" xml:space="preserve">
+    <value>Studiensitzung</value>
+  </data>
+  <data name="Settings_Study_Description" xml:space="preserve">
+    <value>Konfigurieren Sie Ihr Lernverhalten mit Lernkarten</value>
+  </data>
+  <data name="Settings_Study_CardsPerSession" xml:space="preserve">
+    <value>Karten pro Sitzung</value>
+  </data>
+  <data name="Settings_Study_CardsPerSession_Desc" xml:space="preserve">
+    <value>Maximale Anzahl von Karten, die in einer Sitzung studiert werden können</value>
+  </data>
+  <data name="Settings_Study_AutoPlayAudio" xml:space="preserve">
+    <value>Automatische Audiowiedergabe</value>
+  </data>
+  <data name="Settings_Study_AutoPlayAudio_Desc" xml:space="preserve">
+    <value>Wenn diese Funktion aktiviert ist, werden die Audiodateien auf den Karteikarten automatisch abgespielt.</value>
+  </data>
+  <data name="Settings_Study_PreloadMultimedia" xml:space="preserve">
+    <value>Multimedia-Inhalte vorladen</value>
+  </data>
+  <data name="Settings_Study_PreloadMultimedia_Desc" xml:space="preserve">
+    <value>Verbessert die Leistung durch das Laden von Multimediadateien vor der Wiedergabe von großen Decks</value>
+  </data>
+  <data name="Settings_AutoPlay_Mode" xml:space="preserve">
+    <value>Auto-Play-Modus</value>
+  </data>
+  <data name="Settings_AutoPlay_Description" xml:space="preserve">
+    <value>Konfigurieren Sie den automatischen Ablauf der Lernkarten</value>
+  </data>
+  <data name="Settings_AutoPlay_Mode_Label" xml:space="preserve">
+    <value>Automatischer Wiedergabemodus</value>
+  </data>
+  <data name="Settings_AutoPlay_Mode_Interval" xml:space="preserve">
+    <value>Interval</value>
+  </data>
+  <data name="Settings_AutoPlay_Mode_Timer" xml:space="preserve">
+    <value>Zeitschaltuhr</value>
+  </data>
+  <data name="Settings_AutoPlay_Mode_Smart" xml:space="preserve">
+    <value>Smart</value>
+  </data>
+  <data name="Settings_AutoPlay_IntervalDuration" xml:space="preserve">
+    <value>Intervalldauer</value>
+  </data>
+  <data name="Settings_AutoPlay_IntervalDuration_Desc" xml:space="preserve">
+    <value>Sekunden zwischen den Karten (für den Intervallmodus)</value>
+  </data>
+  <data name="Settings_Review_Reminders" xml:space="preserve">
+    <value>Überprüfungserinnerungen</value>
+  </data>
+  <data name="Settings_Review_Description" xml:space="preserve">
+    <value>Konfigurieren Sie Erinnerungen zur Wiederholung in Abständen</value>
+  </data>
+  <data name="Settings_Review_Enable" xml:space="preserve">
+    <value>Überprüfungserinnerungen aktivieren</value>
+  </data>
+  <data name="Settings_Review_Enable_Desc" xml:space="preserve">
+    <value>Sendet Benachrichtigungen, wenn es Zeit ist, Ihre Karteikarten zu überprüfen</value>
+  </data>
+  <data name="Settings_Review_QuietHours" xml:space="preserve">
+    <value>Ruhige Stunden</value>
+  </data>
+  <data name="Settings_Review_QuietHours_To" xml:space="preserve">
+    <value>zu</value>
+  </data>
+  
+  <!-- DataStorage Settings -->
+  <data name="Settings_Storage_Title" xml:space="preserve">
+    <value>Speicherung &amp; Daten</value>
+  </data>
+  <data name="Settings_Storage_Location" xml:space="preserve">
+    <value>Speicherort</value>
+  </data>
+  <data name="Settings_Storage_Location_Desc" xml:space="preserve">
+    <value>Wo Ihre Lernkarten, Quizfragen und andere Daten gespeichert werden</value>
+  </data>
+  <data name="Settings_Storage_Change" xml:space="preserve">
+    <value>Ändern Sie</value>
+  </data>
+  <data name="Settings_Storage_SpaceUsed" xml:space="preserve">
+    <value>{0}% des verfügbaren Platzes belegt ({1} frei)</value>
+  </data>
+  <data name="Settings_Cache_Management" xml:space="preserve">
+    <value>Cache Management</value>
+  </data>
+  <data name="Settings_Cache_Description" xml:space="preserve">
+    <value>Zwischenspeicher für häufig genutzte Daten</value>
+  </data>
+  <data name="Settings_Cache_Size" xml:space="preserve">
+    <value>Aktuelle Cache-Größe: {0}</value>
+  </data>
+  <data name="Settings_Cache_Clear" xml:space="preserve">
+    <value>Cache löschen</value>
+  </data>
+  <data name="Settings_Backup_Title" xml:space="preserve">
+    <value>Backup &amp; Restore</value>
+  </data>
+  <data name="Settings_Backup_Description" xml:space="preserve">
+    <value>Sicheres Sichern und Wiederherstellen Ihrer Daten</value>
+  </data>
+  <data name="Settings_Backup_Create" xml:space="preserve">
+    <value>Sicherung erstellen</value>
+  </data>
+  <data name="Settings_Backup_Restore" xml:space="preserve">
+    <value>Backup wiederherstellen</value>
+  </data>
+  <data name="Settings_Backup_LastBackup" xml:space="preserve">
+    <value>Letzte Sicherung: {0}</value>
+  </data>
+  
+  <!-- Experimental Settings -->
+  <data name="Settings_AI_Features" xml:space="preserve">
+    <value>AI-Funktionen</value>
+  </data>
+  <data name="Settings_AI_Important_Info" xml:space="preserve">
+    <value>Wichtige Informationen</value>
+  </data>
+  <data name="Settings_AI_Experimental_Warning" xml:space="preserve">
+    <value>Diese Funktionen sind experimentell und funktionieren möglicherweise nicht wie vorgesehen. Außerdem gibt es keine Garantie, dass sie in zukünftigen Updates enthalten sein werden.</value>
+  </data>
+  <data name="Settings_AI_API_Warning" xml:space="preserve">
+    <value>Um kostenlos auf die KI-Funktionen zugreifen zu können, müssen Sie Ihren eigenen API-Schlüssel von dem ausgewählten Modell erhalten (für den persönlichen Gebrauch völlig kostenlos). Die Bereitstellung des kostenlosen Zugangs für Nutzer ist mit erheblichen Kosten verbunden, so dass dieser Schritt leider notwendig ist, aber er muss nur einmal durchgeführt werden. Bitte beachten Sie, dass KI-Funktionen auch falsche oder unerwartete Antworten liefern können</value>
+  </data>
+  <data name="Settings_AI_Enable" xml:space="preserve">
+    <value>AI-Funktionen aktivieren</value>
+  </data>
+  <data name="Settings_AI_Enable_Description" xml:space="preserve">
+    <value>Muss aktiviert sein, damit die KI-Tools zugänglich sind</value>
+  </data>
+  <data name="Settings_AI_Model_Settings" xml:space="preserve">
+    <value>AI-Modell-Einstellungen</value>
+  </data>
+  <data name="Settings_AI_Provider" xml:space="preserve">
+    <value>AI-Anbieter</value>
+  </data>
+  <data name="Settings_AI_Provider_OpenAI" xml:space="preserve">
+    <value>OpenAI (GPT-4)</value>
+  </data>
+  <data name="Settings_AI_Provider_Anthropic" xml:space="preserve">
+    <value>Anthropisch (Claude)</value>
+  </data>
+  <data name="Settings_AI_Provider_Gemini" xml:space="preserve">
+    <value>Zwillinge Pro</value>
+  </data>
+  <data name="Settings_AI_API_Key" xml:space="preserve">
+    <value>API-Schlüssel</value>
+  </data>
+  <data name="Settings_AI_Verify" xml:space="preserve">
+    <value>Überprüfen Sie</value>
+  </data>
+  <data name="Settings_AI_Key_Storage" xml:space="preserve">
+    <value>Ihr API-Schlüssel wird lokal gespeichert und niemals weitergegeben.</value>
+  </data>
+  <data name="Settings_AI_Usage_Privacy" xml:space="preserve">
+    <value>Usage &amp; Privacy</value>
+  </data>
+  <data name="Settings_AI_Local_Processing" xml:space="preserve">
+    <value>Daten wenn möglich lokal verarbeiten</value>
+  </data>
+  <data name="Settings_AI_Local_Processing_Desc" xml:space="preserve">
+    <value>Wenn diese Funktion aktiviert ist, werden kleinere KI-Aufgaben auf Ihrem Gerät verarbeitet, um den Datenschutz zu verbessern.</value>
+  </data>
+  <data name="Settings_AI_Save_Usage" xml:space="preserve">
+    <value>AI-Nutzungsdaten speichern</value>
+  </data>
+  <data name="Settings_AI_Save_Usage_Desc" xml:space="preserve">
+    <value>Wenn diese Funktion aktiviert ist, wird Ihre KI-Nutzung in Ihrem Konto gespeichert, um zukünftige Ergebnisse zu verbessern.</value>
+  </data>
+  <data name="Settings_AI_Clear_History" xml:space="preserve">
+    <value>AI-Nutzungsverlauf löschen</value>
+  </data>
+  
+  <!-- About & Support Settings -->
+  <data name="Settings_About_Title" xml:space="preserve">
+    <value>Über &amp; Unterstützung</value>
+  </data>
+  <data name="Settings_About_AppVersion" xml:space="preserve">
+    <value>App Version</value>
+  </data>
+  <data name="Settings_About_Webpages" xml:space="preserve">
+    <value>Webseiten</value>
+  </data>
+  <data name="Settings_About_Home" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="Settings_About_Tutorials" xml:space="preserve">
+    <value>Anleitungen</value>
+  </data>
+  <data name="Settings_About_Documentation" xml:space="preserve">
+    <value>Dokumentation</value>
+  </data>
+  <data name="Settings_About_Support" xml:space="preserve">
+    <value>Unterstützung</value>
+  </data>
+  <data name="Settings_About_License" xml:space="preserve">
+    <value>Lizenz</value>
+  </data>
+  <data name="Settings_About_License_Text" xml:space="preserve">
+    <value>Diese Software ist unter einer Kombination der MIT- und Creative Commons Non-Commercial (BY-NC) Lizenzen lizenziert. Sie können sie frei verändern und für nicht-kommerzielle Zwecke verwenden, aber sie darf nicht verkauft oder für kommerzielle Zwecke verwendet werden. Dadurch bleibt die Software frei und quelloffen. Weitere Informationen finden Sie in der vollständigen MIT-Lizenz und der Creative Commons Non-Commercial-Lizenz</value>
+  </data>
+  <data name="Settings_About_MIT_License" xml:space="preserve">
+    <value>MIT-Lizenz</value>
+  </data>
+  <data name="Settings_About_CC_License" xml:space="preserve">
+    <value>Creative Commons Nicht-Kommerzielle Lizenz</value>
+  </data>
+  
+  <!-- Learning Content & Features -->
+  <!-- Flashcards -->
+  <data name="Flashcards_Title" xml:space="preserve">
+    <value>Flashcards</value>
+  </data>
+  <data name="Flashcards_MyDecks" xml:space="preserve">
+    <value>Meine Decks</value>
+  </data>
+  <data name="Flashcards_RecentDecks" xml:space="preserve">
+    <value>Neueste Decks</value>
+  </data>
+  <data name="Flashcards_CreateDeck" xml:space="preserve">
+    <value>Deck erstellen</value>
+  </data>
+  <data name="Flashcards_ImportDeck" xml:space="preserve">
+    <value>Deck importieren</value>
+  </data>
+  <data name="Flashcards_Search" xml:space="preserve">
+    <value>Decks suchen...</value>
+  </data>
+  <data name="Flashcards_Cards" xml:space="preserve">
+    <value>Karten</value>
+  </data>
+  <data name="Flashcards_GetStarted" xml:space="preserve">
+    <value>Erstellen Sie Ihr erstes Karteikartendeck, um loszulegen</value>
+  </data>
+  <data name="Flashcards_LastStudied" xml:space="preserve">
+    <value>Zuletzt studiert</value>
+  </data>
+  <data name="Flashcards_StudyAll" xml:space="preserve">
+    <value>Alle studieren</value>
+  </data>
+  <data name="Flashcards_StudyDue" xml:space="preserve">
+    <value>Studie fällig</value>
+  </data>
+  <data name="Flashcards_Edit" xml:space="preserve">
+    <value>bearbeiten</value>
+  </data>
+  <data name="Flashcards_Share" xml:space="preserve">
+    <value>Teilen Sie</value>
+  </data>
+  <data name="Flashcards_Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  
+  <!-- Flashcard Practice -->
+  <data name="FlashcardPractice_Title" xml:space="preserve">
+    <value>Praxis</value>
+  </data>
+  <data name="FlashcardPractice_Mode" xml:space="preserve">
+    <value>Praxis-Modus</value>
+  </data>
+  <data name="FlashcardPractice_Mode_Regular" xml:space="preserve">
+    <value>Regelmäßig</value>
+  </data>
+  <data name="FlashcardPractice_Mode_Spaced" xml:space="preserve">
+    <value>Abgestufte Wiederholung</value>
+  </data>
+  <data name="FlashcardPractice_Mode_Endless" xml:space="preserve">
+    <value>Endlos</value>
+  </data>
+  <data name="FlashcardPractice_ShowHint" xml:space="preserve">
+    <value>Hinweis anzeigen</value>
+  </data>
+  <data name="FlashcardPractice_DifficultyRating" xml:space="preserve">
+    <value>Schwierigkeitsgrad</value>
+  </data>
+  <data name="FlashcardPractice_Easy" xml:space="preserve">
+    <value>Einfach</value>
+  </data>
+  <data name="FlashcardPractice_Medium" xml:space="preserve">
+    <value>Mittel</value>
+  </data>
+  <data name="FlashcardPractice_Hard" xml:space="preserve">
+    <value>Hard</value>
+  </data>
+  <data name="FlashcardPractice_Skip" xml:space="preserve">
+    <value>Überspringen</value>
+  </data>
+  <data name="FlashcardPractice_Correct" xml:space="preserve">
+    <value>Richtig</value>
+  </data>
+  <data name="FlashcardPractice_Wrong" xml:space="preserve">
+    <value>Falsch</value>
+  </data>
+  <data name="FlashcardPractice_Progress" xml:space="preserve">
+    <value>Fortschritt: {0}/{1}</value>
+  </data>
+  <data name="FlashcardPractice_Flip" xml:space="preserve">
+    <value>Klappkarte</value>
+  </data>
+  <data name="FlashcardPractice_NextCard" xml:space="preserve">
+    <value>Nächste Karte</value>
+  </data>
+  <data name="FlashcardPractice_PrevCard" xml:space="preserve">
+    <value>Vorherige Karte</value>
+  </data>
+  <data name="FlashcardPractice_EndSession" xml:space="preserve">
+    <value>Sitzung beenden</value>
+  </data>
+  <data name="FlashcardPractice_Question" xml:space="preserve">
+    <value>Frage</value>
+  </data>
+  <data name="FlashcardPractice_Answer" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="FlashcardPractice_ReviewComplete" xml:space="preserve">
+    <value>Tagesrückblick abgeschlossen!</value>
+  </data>
+  <data name="FlashcardPractice_ReturnToDecks" xml:space="preserve">
+    <value>Zurück zu Decks</value>
+  </data>
+  <data name="FlashcardPractice_Again" xml:space="preserve">
+    <value>Nochmals</value>
+  </data>
+  <data name="FlashcardPractice_Good" xml:space="preserve">
+    <value>Gut</value>
+  </data>
+  <data name="FlashcardPractice_SpacebarHint" xml:space="preserve">
+    <value>Leertaste zum Fortfahren</value>
+  </data>
+  
+  <!-- Unit Learn Mode -->
+  <data name="UnitLearnMode_Title" xml:space="preserve">
+    <value>Lernmodus</value>
+  </data>
+  <data name="UnitLearnMode_Start" xml:space="preserve">
+    <value>Lernen beginnen</value>
+  </data>
+  <data name="UnitLearnMode_Continue" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="UnitLearnMode_Restart" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="UnitLearnMode_Progress" xml:space="preserve">
+    <value>Fortschritt</value>
+  </data>
+  <data name="UnitLearnMode_Complete" xml:space="preserve">
+    <value>Vollständig</value>
+  </data>
+  <data name="UnitLearnMode_Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="UnitLearnMode_Previous" xml:space="preserve">
+    <value>Vorherige</value>
+  </data>
+  <data name="UnitLearnMode_GeneratingContent" xml:space="preserve">
+    <value>Generierung von Lerninhalten</value>
+  </data>
+  <data name="UnitLearnMode_ReturnToUnitGuide" xml:space="preserve">
+    <value>Zurück zum Handbuch der Einheit</value>
+  </data>
+  <data name="UnitLearnMode_Theory" xml:space="preserve">
+    <value>Theorie</value>
+  </data>
+  <data name="UnitLearnMode_Question" xml:space="preserve">
+    <value>Frage</value>
+  </data>
+  <data name="UnitLearnMode_CheckAnswer" xml:space="preserve">
+    <value>Antwort prüfen</value>
+  </data>
+  <data name="UnitLearnMode_Skip" xml:space="preserve">
+    <value>Überspringen</value>
+  </data>
+  <data name="UnitLearnMode_FillInBlankPlaceholder" xml:space="preserve">
+    <value>Schreiben Sie Ihre Antwort hier...</value>
+  </data>
+  
+  <!-- Unit Flashcards -->
+  <data name="UnitFlashcards_Title" xml:space="preserve">
+    <value>Einheit Flashcards</value>
+  </data>
+  <data name="UnitFlashcards_Study" xml:space="preserve">
+    <value>Studie</value>
+  </data>
+  <data name="UnitFlashcards_Review" xml:space="preserve">
+    <value>Überprüfung</value>
+  </data>
+  <data name="UnitFlashcards_Export" xml:space="preserve">
+    <value>Exportieren</value>
+  </data>
+  <data name="UnitFlashcards_AddNew" xml:space="preserve">
+    <value>Neu hinzufügen</value>
+  </data>
+  <data name="UnitFlashcards_Front" xml:space="preserve">
+    <value>Vorderseite</value>
+  </data>
+  <data name="UnitFlashcards_Back" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="UnitFlashcards_EditCard" xml:space="preserve">
+    <value>Karte bearbeiten</value>
+  </data>
+  <data name="UnitFlashcards_Generating" xml:space="preserve">
+    <value>Erzeugen von Flashcards</value>
+  </data>
+  <data name="UnitFlashcards_Flip" xml:space="preserve">
+    <value>Flip</value>
+  </data>
+  <data name="UnitFlashcards_Question" xml:space="preserve">
+    <value>Frage</value>
+  </data>
+  <data name="UnitFlashcards_Answer" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="UnitFlashcards_Previous" xml:space="preserve">
+    <value>Vorherige</value>
+  </data>
+  <data name="UnitFlashcards_Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="UnitFlashcards_NeedMorePractice" xml:space="preserve">
+    <value>Sie brauchen mehr Übung?</value>
+  </data>
+  <data name="UnitFlashcards_GenerateMore" xml:space="preserve">
+    <value>Mehr generieren</value>
+  </data>
+  
+  <!-- Unit Questions -->
+  <data name="UnitQuestions_Title" xml:space="preserve">
+    <value>Fragen</value>
+  </data>
+  <data name="UnitQuestions_Practice" xml:space="preserve">
+    <value>Fragen zur Praxis</value>
+  </data>
+  <data name="UnitQuestions_MultipleChoice" xml:space="preserve">
+    <value>Multiple Choice</value>
+  </data>
+  <data name="UnitQuestions_FillInTheBlank" xml:space="preserve">
+    <value>Füllen Sie das Feld aus</value>
+  </data>
+  <data name="UnitQuestions_TrueFalse" xml:space="preserve">
+    <value>True/False</value>
+  </data>
+  <data name="UnitQuestions_SubmitAnswer" xml:space="preserve">
+    <value>Submit Answer</value>
+  </data>
+  <data name="UnitQuestions_YourAnswer" xml:space="preserve">
+    <value>Your Answer</value>
+  </data>
+  <data name="UnitQuestions_CorrectAnswer" xml:space="preserve">
+    <value>Richtige Antwort</value>
+  </data>
+  <data name="UnitQuestions_Generating" xml:space="preserve">
+    <value>Fragen generieren</value>
+  </data>
+  <data name="UnitQuestions_Question" xml:space="preserve">
+    <value>Frage</value>
+  </data>
+  <data name="UnitQuestions_TryAgain" xml:space="preserve">
+    <value>Erneut versuchen</value>
+  </data>
+  <data name="UnitQuestions_Previous" xml:space="preserve">
+    <value>Vorherige</value>
+  </data>
+  <data name="UnitQuestions_Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="UnitQuestions_WantMore" xml:space="preserve">
+    <value>Want more questions?</value>
+  </data>
+  <data name="UnitQuestions_GenerateMore" xml:space="preserve">
+    <value>Mehr generieren</value>
+  </data>
+  
+  <!-- Unit Overview -->
+  <data name="UnitOverview_Title" xml:space="preserve">
+    <value>Übersicht</value>
+  </data>
+  <data name="UnitOverview_Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="UnitOverview_Objectives" xml:space="preserve">
+    <value>Lernziele</value>
+  </data>
+  <data name="UnitOverview_Requirements" xml:space="preserve">
+    <value>Anforderungen</value>
+  </data>
+  <data name="UnitOverview_Contents" xml:space="preserve">
+    <value>Inhalt</value>
+  </data>
+  <data name="UnitOverview_TimeToComplete" xml:space="preserve">
+    <value>Geschätzte Zeit bis zur Fertigstellung: {0}</value>
+  </data>
+  <data name="UnitOverview_Begin" xml:space="preserve">
+    <value>Begin</value>
+  </data>
+  
+  <!-- Unit Guide -->
+  <data name="UnitGuide_Title" xml:space="preserve">
+    <value>Leitfaden</value>
+  </data>
+  <data name="UnitGuide_Contents" xml:space="preserve">
+    <value>Inhaltsübersicht</value>
+  </data>
+  <data name="UnitGuide_PreviousSection" xml:space="preserve">
+    <value>Vorheriger Abschnitt</value>
+  </data>
+  <data name="UnitGuide_NextSection" xml:space="preserve">
+    <value>Nächster Abschnitt</value>
+  </data>
+  <data name="UnitGuide_RelatedLinks" xml:space="preserve">
+    <value>Verwandte Links</value>
+  </data>
+  <data name="UnitGuide_Notes" xml:space="preserve">
+    <value>Anmerkungen</value>
+  </data>
+  <data name="UnitGuide_AddNote" xml:space="preserve">
+    <value>Notiz hinzufügen</value>
+  </data>
+  
+  <!-- Unit Guide Content -->
+  <data name="UnitGuideContent_Section" xml:space="preserve">
+    <value>Abschnitt</value>
+  </data>
+  <data name="UnitGuideContent_KeyTerms" xml:space="preserve">
+    <value>Schlüsselbegriffe</value>
+  </data>
+  <data name="UnitGuideContent_Summary" xml:space="preserve">
+    <value>Zusammenfassung</value>
+  </data>
+  <data name="UnitGuideContent_Example" xml:space="preserve">
+    <value>Beispiel</value>
+  </data>
+  <data name="UnitGuideContent_ImportantNote" xml:space="preserve">
+    <value>Wichtiger Hinweis</value>
+  </data>
+  
+  <!-- Error Messages -->
+  <data name="Error_LanguageFileNotFound" xml:space="preserve">
+    <value>Sprachdatei nicht gefunden, Standardsprache verwenden</value>
+  </data>
+  <data name="Error_FailedToLoadLanguage" xml:space="preserve">
+    <value>Sprachdatei konnte nicht geladen werden, Standardsprache verwenden</value>
+  </data>
+
+  <!-- Learning Path -->
+  <data name="LearningPath_Title" xml:space="preserve">
+    <value>Lernpfade</value>
+  </data>
+  <data name="LearningPath_NewLesson" xml:space="preserve">
+    <value>Neue Lektion</value>
+  </data>
+  <data name="LearningPath_LearnSomethingNew" xml:space="preserve">
+    <value>Lernen Sie etwas Neues!</value>
+  </data>
+  <data name="LearningPath_ProblemSolver" xml:space="preserve">
+    <value>Problem Solver</value>
+  </data>
+  <data name="LearningPath_HelpsSolveProblems" xml:space="preserve">
+    <value>Hilft Ihnen, Ihre Probleme zu lösen.</value>
+  </data>
+  <data name="LearningPath_Loading" xml:space="preserve">
+    <value>Laden...</value>
+  </data>
+  <data name="LearningPath_Continue" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="LearningPath_Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="LearningPath_AllTab" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="LearningPath_LessonsTab" xml:space="preserve">
+    <value>Gelernte Lektionen</value>
+  </data>
+  <data name="LearningPath_ProblemsTab" xml:space="preserve">
+    <value>Probleme</value>
+  </data>
+  <data name="LearningPath_Unit" xml:space="preserve">
+    <value>Einheit {0}/{1}</value>
+  </data>
+  <data name="LearningPath_TimeAgo" xml:space="preserve">
+    <value>vor {0} Stunden</value>
+  </data>
+  
+  <!-- Create Path -->
+  <data name="CreatePath_Title" xml:space="preserve">
+    <value>Neuen Pfad erstellen</value>
+  </data>
+  <data name="CreatePath_Heading" xml:space="preserve">
+    <value>Lernpfade</value>
+  </data>
+  <data name="CreatePath_Subheading" xml:space="preserve">
+    <value>Entdecken Sie neue Dinge! Fügen Sie PDFs, YouTube-Links, Kamerabilder und mehr hinzu.</value>
+  </data>
+  <data name="CreatePath_Watermark" xml:space="preserve">
+    <value>Ich möchte etwas über das Herz-Kreislauf-System lernen...</value>
+  </data>
+  <data name="CreatePath_AddPDF" xml:space="preserve">
+    <value>PDF hinzufügen</value>
+  </data>
+  <data name="CreatePath_Others" xml:space="preserve">
+    <value>Andere</value>
+  </data>
+  <data name="CreatePath_EmptyInputWarning" xml:space="preserve">
+    <value>Bitte geben Sie ein Thema für Ihren Lernpfad ein</value>
+  </data>
+  <data name="CreatePath_Error" xml:space="preserve">
+    <value>Fehler erzeugender Lernpfad: {0}</value>
+  </data>
+
+  <!-- LearningPathCreate -->
+  <data name="LearningPathCreate_Initializing" xml:space="preserve">
+    <value>Initialisierung...</value>
+  </data>
+  <data name="LearningPathCreate_AnalyzingRequest" xml:space="preserve">
+    <value>Analyse der Anfrage...</value>
+  </data>
+  <data name="LearningPathCreate_StartingGeneration" xml:space="preserve">
+    <value>Beginn der Lernpfaderstellung...</value>
+  </data>
+  <data name="LearningPathCreate_CreatingStructure" xml:space="preserve">
+    <value>Schaffung von Lernstrukturen...</value>
+  </data>
+  <data name="LearningPathCreate_Creating" xml:space="preserve">
+    <value>Lernpfad erstellen: {0}</value>
+  </data>
+  <data name="LearningPathCreate_GeneratingUnit" xml:space="preserve">
+    <value>Erzeugende Einheit {0}/{1}: {2}</value>
+  </data>
+  <data name="LearningPathCreate_GeneratingContent" xml:space="preserve">
+    <value>Inhalte generieren...</value>
+  </data>
+  <data name="LearningPathCreate_UnitProcessed" xml:space="preserve">
+    <value>Einheit {0}/{1} verarbeitet</value>
+  </data>
+  <data name="LearningPathCreate_Complete" xml:space="preserve">
+    <value>Erstellung des Lernpfads abgeschlossen!</value>
+  </data>
+  <data name="LearningPathCreate_Success" xml:space="preserve">
+    <value>Lernpfad erfolgreich erstellt!</value>
+  </data>
+  <data name="LearningPathCreate_Failed" xml:space="preserve">
+    <value>Lernpfad konnte nicht erstellt werden</value>
+  </data>
+  <data name="LearningPathCreate_Error" xml:space="preserve">
+    <value>Lernpfad konnte nicht erstellt werden. Bitte versuchen Sie es erneut.</value>
+  </data>
+  <data name="LearningPathCreate_GenerationError" xml:space="preserve">
+    <value>Fehler aufgetreten</value>
+  </data>
+  <data name="LearningPathCreate_GenerationErrorDetail" xml:space="preserve">
+    <value>Fehler erzeugender Lernpfad: {0}</value>
+  </data>
+  <data name="LearningPathCreate_UnitContentFuture" xml:space="preserve">
+    <value>Der Inhalt wird generiert, wenn Sie diese Einheit öffnen.</value>
+  </data>
+  <data name="LearningPathCreate_UnitContentError" xml:space="preserve">
+    <value>Der Inhalt konnte nicht generiert werden. Bitte versuchen Sie es später noch einmal.</value>
+  </data>
+  <data name="LearningPathCreate_UnitContentDefault" xml:space="preserve">
+    <value>Standardmäßig generierter Inhalt.</value>
+  </data>
+  <data name="LearningPathCreate_UnitContentError_Detail" xml:space="preserve">
+    <value>Fehler beim Erzeugen des Inhalts für Einheit {0}: {1}</value>
+  </data>
+  <data name="LearningPathCreate_InvalidJSON" xml:space="preserve">
+    <value>AI-Antwort konnte nicht als gültiges JSON geparst werden</value>
+  </data>
+  <data name="LearningPathCreate_FailedDeserialize" xml:space="preserve">
+    <value>Deserialisierung von Lernpfaddaten fehlgeschlagen</value>
+  </data>
+  <data name="LearningPathCreate_ErrorSaving" xml:space="preserve">
+    <value>Fehler beim Speichern des Lernpfads: {0}</value>
+  </data>
+  <data name="LearningPathCreate_ErrorSavingUnit" xml:space="preserve">
+    <value>Fehler beim Speichern der Einheit: {0}</value>
+  </data>
+
+  <!-- Widget Text -->
+  <data name="Widget_NewWidget" xml:space="preserve">
+    <value>Neues Widget</value>
+  </data>
+  <data name="Widget_RetentionRate" xml:space="preserve">
+    <value>Retention Rate</value>
+  </data>
+  <data name="Widget_WeeklyStudyTime" xml:space="preserve">
+    <value>Wöchentliche Studienzeit</value>
+  </data>
+  <data name="Widget_StudyGoal" xml:space="preserve">
+    <value>Ziel der Studie</value>
+  </data>
+  <data name="Widget_LongestStreak" xml:space="preserve">
+    <value>Längste Serie</value>
+  </data>
+  <data name="Widget_AddNewWidget" xml:space="preserve">
+    <value>Neues Widget hinzufügen</value>
+  </data>
+  <data name="Widget_WidgetForX" xml:space="preserve">
+    <value>Widget für {0}</value>
+  </data>
+  <data name="Widget_SelectWidgets" xml:space="preserve">
+    <value>Widgets auswählen</value>
+  </data>
+  <data name="Widget_ActiveWidgets" xml:space="preserve">
+    <value>Aktive Widgets</value>
+  </data>
+  <data name="Widget_WidgetsActiveCount" xml:space="preserve">
+    <value>{0} von {1} Widgets aktiv</value>
+  </data>
+  <data name="Widget_WidgetsActive" xml:space="preserve">
+    <value>Widgets aktiv</value>
+  </data>
+  <data name="Widget_AvailableWidgets" xml:space="preserve">
+    <value>Verfügbare Widgets</value>
+  </data>
+  <data name="Widget_TimeSpentStudying" xml:space="preserve">
+    <value>Zeitaufwand für das Studium in dieser Woche</value>
+  </data>
+  <data name="Widget_Days" xml:space="preserve">
+    <value>Tage</value>
+  </data>
+  <data name="Widget_ThisWeek" xml:space="preserve">
+    <value>Diese Woche</value>
+  </data>
+  <data name="Widget_CardRetention" xml:space="preserve">
+    <value>Kartenaufbewahrung</value>
+  </data>
+
+  <!-- Feature Pages -->
+  <data name="Feature_Notes" xml:space="preserve">
+    <value>Anmerkungen</value>
+  </data>
+  <data name="Feature_Quizzes" xml:space="preserve">
+    <value>Quizze</value>
+  </data>
+  <data name="Feature_Games" xml:space="preserve">
+    <value>Spiele</value>
+  </data>
+  <data name="Feature_Extensions" xml:space="preserve">
+    <value>Erweiterungen</value>
+  </data>
+  <data name="Feature_UnderDevelopment" xml:space="preserve">
+    <value>Funktion in Entwicklung</value>
+  </data>
+  <data name="Feature_ComingSoon" xml:space="preserve">
+    <value>Wir arbeiten daran, Ihnen diese Funktion bald zur Verfügung zu stellen.</value>
+  </data>
+</root> 
