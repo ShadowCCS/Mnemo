@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -58,12 +58,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-
   <data name="__LanguageNativeName" xml:space="preserve">
     <value>Deutsch</value>
   </data>
-
-  <!-- Common -->
   <data name="Common_Save" xml:space="preserve">
     <value>Speichern Sie</value>
   </data>
@@ -91,8 +88,6 @@
   <data name="Common_Next" xml:space="preserve">
     <value>Weiter</value>
   </data>
-
-  <!-- Dashboard -->
   <data name="Dashboard_Statistics" xml:space="preserve">
     <value>Statistik</value>
   </data>
@@ -114,8 +109,6 @@
   <data name="Dashboard_Flashcards" xml:space="preserve">
     <value>Flashcards</value>
   </data>
-  
-  <!-- Menu Items -->
   <data name="Menu_Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
@@ -140,8 +133,6 @@
   <data name="Menu_Settings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
-  
-  <!-- Shortcuts Overlay -->
   <data name="Shortcuts_Title" xml:space="preserve">
     <value>Abkürzungen</value>
   </data>
@@ -184,8 +175,6 @@
   <data name="Shortcuts_FlipFlashcard" xml:space="preserve">
     <value>Flip Flashcard</value>
   </data>
-  
-  <!-- Main Window -->
   <data name="MainWindow_Title" xml:space="preserve">
     <value>Mnemo</value>
   </data>
@@ -205,7 +194,7 @@
     <value>Extra Inhalt</value>
   </data>
   <data name="MainWindow_SidebarLabel_Utility" xml:space="preserve">
-    <value>Utility &amp; Personalisierung</value>
+    <value>Nützlichkeit &amp; Personalisierung</value>
   </data>
   <data name="MainWindow_Welcome_Title" xml:space="preserve">
     <value>Willkommen bei Mnemo!</value>
@@ -219,8 +208,6 @@
   <data name="MainWindow_Settings_Placeholder_Title" xml:space="preserve">
     <value>Aufgepasst</value>
   </data>
-
-  <!-- Settings -->
   <data name="Settings_Title" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
@@ -248,9 +235,6 @@
   <data name="Settings_Language_RestartRequired" xml:space="preserve">
     <value>Neustart erforderlich, um Sprachänderungen zu übernehmen</value>
   </data>
-  <data name="Settings_Language_ChangeNotification" xml:space="preserve">
-    <value>Bitte starten Sie die Anwendung neu, damit die Sprachänderung vollständig wirksam wird.</value>
-  </data>
   <data name="Settings_Theme" xml:space="preserve">
     <value>Theme</value>
   </data>
@@ -269,8 +253,6 @@
   <data name="Settings_UIEffects_AnimationsHint" xml:space="preserve">
     <value>Die Deaktivierung von Animationen kann die Leistung auf älteren Geräten verbessern</value>
   </data>
-  
-  <!-- Preferences Settings -->
   <data name="Settings_Preferences_Title" xml:space="preserve">
     <value>Flashcard-Einstellungen</value>
   </data>
@@ -358,8 +340,6 @@
   <data name="Settings_Review_QuietHours_To" xml:space="preserve">
     <value>zu</value>
   </data>
-  
-  <!-- DataStorage Settings -->
   <data name="Settings_Storage_Title" xml:space="preserve">
     <value>Speicherung &amp; Daten</value>
   </data>
@@ -388,7 +368,7 @@
     <value>Cache löschen</value>
   </data>
   <data name="Settings_Backup_Title" xml:space="preserve">
-    <value>Backup &amp; Restore</value>
+    <value>Sichern und Wiederherstellen</value>
   </data>
   <data name="Settings_Backup_Description" xml:space="preserve">
     <value>Sicheres Sichern und Wiederherstellen Ihrer Daten</value>
@@ -402,8 +382,6 @@
   <data name="Settings_Backup_LastBackup" xml:space="preserve">
     <value>Letzte Sicherung: {0}</value>
   </data>
-  
-  <!-- Experimental Settings -->
   <data name="Settings_AI_Features" xml:space="preserve">
     <value>AI-Funktionen</value>
   </data>
@@ -414,7 +392,7 @@
     <value>Diese Funktionen sind experimentell und funktionieren möglicherweise nicht wie vorgesehen. Außerdem gibt es keine Garantie, dass sie in zukünftigen Updates enthalten sein werden.</value>
   </data>
   <data name="Settings_AI_API_Warning" xml:space="preserve">
-    <value>Um kostenlos auf die KI-Funktionen zugreifen zu können, müssen Sie Ihren eigenen API-Schlüssel von dem ausgewählten Modell erhalten (für den persönlichen Gebrauch völlig kostenlos). Die Bereitstellung des kostenlosen Zugangs für Nutzer ist mit erheblichen Kosten verbunden, so dass dieser Schritt leider notwendig ist, aber er muss nur einmal durchgeführt werden. Bitte beachten Sie, dass KI-Funktionen auch falsche oder unerwartete Antworten liefern können</value>
+    <value>Um kostenlos auf die KI-Funktionen zugreifen zu können, müssen Sie Ihren eigenen API-Schlüssel von dem ausgewählten Modell erhalten (für den persönlichen Gebrauch völlig kostenlos). Da die Bereitstellung des kostenlosen Zugangs für Nutzer mit erheblichen Kosten verbunden ist, ist dieser Schritt leider notwendig, aber er muss nur einmal durchgeführt werden. Bitte beachten Sie, dass KI-Funktionen auch falsche oder unerwartete Antworten liefern können</value>
   </data>
   <data name="Settings_AI_Enable" xml:space="preserve">
     <value>AI-Funktionen aktivieren</value>
@@ -464,8 +442,6 @@
   <data name="Settings_AI_Clear_History" xml:space="preserve">
     <value>AI-Nutzungsverlauf löschen</value>
   </data>
-  
-  <!-- About & Support Settings -->
   <data name="Settings_About_Title" xml:space="preserve">
     <value>Über &amp; Unterstützung</value>
   </data>
@@ -499,9 +475,6 @@
   <data name="Settings_About_CC_License" xml:space="preserve">
     <value>Creative Commons Nicht-Kommerzielle Lizenz</value>
   </data>
-  
-  <!-- Learning Content & Features -->
-  <!-- Flashcards -->
   <data name="Flashcards_Title" xml:space="preserve">
     <value>Flashcards</value>
   </data>
@@ -544,8 +517,6 @@
   <data name="Flashcards_Delete" xml:space="preserve">
     <value>Löschen</value>
   </data>
-  
-  <!-- Flashcard Practice -->
   <data name="FlashcardPractice_Title" xml:space="preserve">
     <value>Praxis</value>
   </data>
@@ -621,8 +592,6 @@
   <data name="FlashcardPractice_SpacebarHint" xml:space="preserve">
     <value>Leertaste zum Fortfahren</value>
   </data>
-  
-  <!-- Unit Learn Mode -->
   <data name="UnitLearnMode_Title" xml:space="preserve">
     <value>Lernmodus</value>
   </data>
@@ -668,8 +637,6 @@
   <data name="UnitLearnMode_FillInBlankPlaceholder" xml:space="preserve">
     <value>Schreiben Sie Ihre Antwort hier...</value>
   </data>
-  
-  <!-- Unit Flashcards -->
   <data name="UnitFlashcards_Title" xml:space="preserve">
     <value>Einheit Flashcards</value>
   </data>
@@ -718,8 +685,6 @@
   <data name="UnitFlashcards_GenerateMore" xml:space="preserve">
     <value>Mehr generieren</value>
   </data>
-  
-  <!-- Unit Questions -->
   <data name="UnitQuestions_Title" xml:space="preserve">
     <value>Fragen</value>
   </data>
@@ -765,8 +730,6 @@
   <data name="UnitQuestions_GenerateMore" xml:space="preserve">
     <value>Mehr generieren</value>
   </data>
-  
-  <!-- Unit Overview -->
   <data name="UnitOverview_Title" xml:space="preserve">
     <value>Übersicht</value>
   </data>
@@ -788,8 +751,6 @@
   <data name="UnitOverview_Begin" xml:space="preserve">
     <value>Begin</value>
   </data>
-  
-  <!-- Unit Guide -->
   <data name="UnitGuide_Title" xml:space="preserve">
     <value>Leitfaden</value>
   </data>
@@ -811,8 +772,6 @@
   <data name="UnitGuide_AddNote" xml:space="preserve">
     <value>Notiz hinzufügen</value>
   </data>
-  
-  <!-- Unit Guide Content -->
   <data name="UnitGuideContent_Section" xml:space="preserve">
     <value>Abschnitt</value>
   </data>
@@ -828,217 +787,10 @@
   <data name="UnitGuideContent_ImportantNote" xml:space="preserve">
     <value>Wichtiger Hinweis</value>
   </data>
-  
-  <!-- Error Messages -->
   <data name="Error_LanguageFileNotFound" xml:space="preserve">
     <value>Sprachdatei nicht gefunden, Standardsprache verwenden</value>
   </data>
   <data name="Error_FailedToLoadLanguage" xml:space="preserve">
     <value>Sprachdatei konnte nicht geladen werden, Standardsprache verwenden</value>
   </data>
-
-  <!-- Learning Path -->
-  <data name="LearningPath_Title" xml:space="preserve">
-    <value>Lernpfade</value>
-  </data>
-  <data name="LearningPath_NewLesson" xml:space="preserve">
-    <value>Neue Lektion</value>
-  </data>
-  <data name="LearningPath_LearnSomethingNew" xml:space="preserve">
-    <value>Lernen Sie etwas Neues!</value>
-  </data>
-  <data name="LearningPath_ProblemSolver" xml:space="preserve">
-    <value>Problem Solver</value>
-  </data>
-  <data name="LearningPath_HelpsSolveProblems" xml:space="preserve">
-    <value>Hilft Ihnen, Ihre Probleme zu lösen.</value>
-  </data>
-  <data name="LearningPath_Loading" xml:space="preserve">
-    <value>Laden...</value>
-  </data>
-  <data name="LearningPath_Continue" xml:space="preserve">
-    <value>Weiter</value>
-  </data>
-  <data name="LearningPath_Delete" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="LearningPath_AllTab" xml:space="preserve">
-    <value>Alle</value>
-  </data>
-  <data name="LearningPath_LessonsTab" xml:space="preserve">
-    <value>Gelernte Lektionen</value>
-  </data>
-  <data name="LearningPath_ProblemsTab" xml:space="preserve">
-    <value>Probleme</value>
-  </data>
-  <data name="LearningPath_Unit" xml:space="preserve">
-    <value>Einheit {0}/{1}</value>
-  </data>
-  <data name="LearningPath_TimeAgo" xml:space="preserve">
-    <value>vor {0} Stunden</value>
-  </data>
-  
-  <!-- Create Path -->
-  <data name="CreatePath_Title" xml:space="preserve">
-    <value>Neuen Pfad erstellen</value>
-  </data>
-  <data name="CreatePath_Heading" xml:space="preserve">
-    <value>Lernpfade</value>
-  </data>
-  <data name="CreatePath_Subheading" xml:space="preserve">
-    <value>Entdecken Sie neue Dinge! Fügen Sie PDFs, YouTube-Links, Kamerabilder und mehr hinzu.</value>
-  </data>
-  <data name="CreatePath_Watermark" xml:space="preserve">
-    <value>Ich möchte etwas über das Herz-Kreislauf-System lernen...</value>
-  </data>
-  <data name="CreatePath_AddPDF" xml:space="preserve">
-    <value>PDF hinzufügen</value>
-  </data>
-  <data name="CreatePath_Others" xml:space="preserve">
-    <value>Andere</value>
-  </data>
-  <data name="CreatePath_EmptyInputWarning" xml:space="preserve">
-    <value>Bitte geben Sie ein Thema für Ihren Lernpfad ein</value>
-  </data>
-  <data name="CreatePath_Error" xml:space="preserve">
-    <value>Fehler erzeugender Lernpfad: {0}</value>
-  </data>
-
-  <!-- LearningPathCreate -->
-  <data name="LearningPathCreate_Initializing" xml:space="preserve">
-    <value>Initialisierung...</value>
-  </data>
-  <data name="LearningPathCreate_AnalyzingRequest" xml:space="preserve">
-    <value>Analyse der Anfrage...</value>
-  </data>
-  <data name="LearningPathCreate_StartingGeneration" xml:space="preserve">
-    <value>Beginn der Lernpfaderstellung...</value>
-  </data>
-  <data name="LearningPathCreate_CreatingStructure" xml:space="preserve">
-    <value>Schaffung von Lernstrukturen...</value>
-  </data>
-  <data name="LearningPathCreate_Creating" xml:space="preserve">
-    <value>Lernpfad erstellen: {0}</value>
-  </data>
-  <data name="LearningPathCreate_GeneratingUnit" xml:space="preserve">
-    <value>Erzeugende Einheit {0}/{1}: {2}</value>
-  </data>
-  <data name="LearningPathCreate_GeneratingContent" xml:space="preserve">
-    <value>Inhalte generieren...</value>
-  </data>
-  <data name="LearningPathCreate_UnitProcessed" xml:space="preserve">
-    <value>Einheit {0}/{1} verarbeitet</value>
-  </data>
-  <data name="LearningPathCreate_Complete" xml:space="preserve">
-    <value>Erstellung des Lernpfads abgeschlossen!</value>
-  </data>
-  <data name="LearningPathCreate_Success" xml:space="preserve">
-    <value>Lernpfad erfolgreich erstellt!</value>
-  </data>
-  <data name="LearningPathCreate_Failed" xml:space="preserve">
-    <value>Lernpfad konnte nicht erstellt werden</value>
-  </data>
-  <data name="LearningPathCreate_Error" xml:space="preserve">
-    <value>Lernpfad konnte nicht erstellt werden. Bitte versuchen Sie es erneut.</value>
-  </data>
-  <data name="LearningPathCreate_GenerationError" xml:space="preserve">
-    <value>Fehler aufgetreten</value>
-  </data>
-  <data name="LearningPathCreate_GenerationErrorDetail" xml:space="preserve">
-    <value>Fehler erzeugender Lernpfad: {0}</value>
-  </data>
-  <data name="LearningPathCreate_UnitContentFuture" xml:space="preserve">
-    <value>Der Inhalt wird generiert, wenn Sie diese Einheit öffnen.</value>
-  </data>
-  <data name="LearningPathCreate_UnitContentError" xml:space="preserve">
-    <value>Der Inhalt konnte nicht generiert werden. Bitte versuchen Sie es später noch einmal.</value>
-  </data>
-  <data name="LearningPathCreate_UnitContentDefault" xml:space="preserve">
-    <value>Standardmäßig generierter Inhalt.</value>
-  </data>
-  <data name="LearningPathCreate_UnitContentError_Detail" xml:space="preserve">
-    <value>Fehler beim Erzeugen des Inhalts für Einheit {0}: {1}</value>
-  </data>
-  <data name="LearningPathCreate_InvalidJSON" xml:space="preserve">
-    <value>AI-Antwort konnte nicht als gültiges JSON geparst werden</value>
-  </data>
-  <data name="LearningPathCreate_FailedDeserialize" xml:space="preserve">
-    <value>Deserialisierung von Lernpfaddaten fehlgeschlagen</value>
-  </data>
-  <data name="LearningPathCreate_ErrorSaving" xml:space="preserve">
-    <value>Fehler beim Speichern des Lernpfads: {0}</value>
-  </data>
-  <data name="LearningPathCreate_ErrorSavingUnit" xml:space="preserve">
-    <value>Fehler beim Speichern der Einheit: {0}</value>
-  </data>
-
-  <!-- Widget Text -->
-  <data name="Widget_NewWidget" xml:space="preserve">
-    <value>Neues Widget</value>
-  </data>
-  <data name="Widget_RetentionRate" xml:space="preserve">
-    <value>Retention Rate</value>
-  </data>
-  <data name="Widget_WeeklyStudyTime" xml:space="preserve">
-    <value>Wöchentliche Studienzeit</value>
-  </data>
-  <data name="Widget_StudyGoal" xml:space="preserve">
-    <value>Ziel der Studie</value>
-  </data>
-  <data name="Widget_LongestStreak" xml:space="preserve">
-    <value>Längste Serie</value>
-  </data>
-  <data name="Widget_AddNewWidget" xml:space="preserve">
-    <value>Neues Widget hinzufügen</value>
-  </data>
-  <data name="Widget_WidgetForX" xml:space="preserve">
-    <value>Widget für {0}</value>
-  </data>
-  <data name="Widget_SelectWidgets" xml:space="preserve">
-    <value>Widgets auswählen</value>
-  </data>
-  <data name="Widget_ActiveWidgets" xml:space="preserve">
-    <value>Aktive Widgets</value>
-  </data>
-  <data name="Widget_WidgetsActiveCount" xml:space="preserve">
-    <value>{0} von {1} Widgets aktiv</value>
-  </data>
-  <data name="Widget_WidgetsActive" xml:space="preserve">
-    <value>Widgets aktiv</value>
-  </data>
-  <data name="Widget_AvailableWidgets" xml:space="preserve">
-    <value>Verfügbare Widgets</value>
-  </data>
-  <data name="Widget_TimeSpentStudying" xml:space="preserve">
-    <value>Zeitaufwand für das Studium in dieser Woche</value>
-  </data>
-  <data name="Widget_Days" xml:space="preserve">
-    <value>Tage</value>
-  </data>
-  <data name="Widget_ThisWeek" xml:space="preserve">
-    <value>Diese Woche</value>
-  </data>
-  <data name="Widget_CardRetention" xml:space="preserve">
-    <value>Kartenaufbewahrung</value>
-  </data>
-
-  <!-- Feature Pages -->
-  <data name="Feature_Notes" xml:space="preserve">
-    <value>Anmerkungen</value>
-  </data>
-  <data name="Feature_Quizzes" xml:space="preserve">
-    <value>Quizze</value>
-  </data>
-  <data name="Feature_Games" xml:space="preserve">
-    <value>Spiele</value>
-  </data>
-  <data name="Feature_Extensions" xml:space="preserve">
-    <value>Erweiterungen</value>
-  </data>
-  <data name="Feature_UnderDevelopment" xml:space="preserve">
-    <value>Funktion in Entwicklung</value>
-  </data>
-  <data name="Feature_ComingSoon" xml:space="preserve">
-    <value>Wir arbeiten daran, Ihnen diese Funktion bald zur Verfügung zu stellen.</value>
-  </data>
-</root> 
+</root>

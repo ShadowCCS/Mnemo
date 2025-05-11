@@ -87,7 +87,7 @@
                         Command="{Binding TriggerSidebarCommand}" 
                         Cursor="Hand"
                         HorizontalAlignment="Right">
-                  <PathIcon Data="{StaticResource SidebarIcon}" Foreground="White" Width="16" Height="16"/>
+                  <PathIcon Data="{StaticResource SidebarIcon}" Foreground="#797979" Width="16" Height="16"/>
                 </Button>
               </Grid>
 
@@ -133,7 +133,7 @@
                       VerticalAlignment="Top"
                       Padding="0"
                       Margin="0,10,0,0">
-                <PathIcon Data="{StaticResource SidebarIcon}" Foreground="White" Width="16" Height="16"/>
+                <PathIcon Data="{StaticResource SidebarIcon}" Foreground="#797979" Width="16" Height="16"/>
               </Button>
             </Grid>
           </Grid>

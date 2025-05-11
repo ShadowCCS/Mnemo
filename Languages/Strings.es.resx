@@ -248,9 +248,6 @@
   <data name="Settings_Language_RestartRequired" xml:space="preserve">
     <value>Es necesario reiniciar para aplicar los cambios de idioma</value>
   </data>
-  <data name="Settings_Language_ChangeNotification" xml:space="preserve">
-    <value>Por favor, reinicie la aplicación para que el cambio de idioma surta efecto completamente.</value>
-  </data>
   <data name="Settings_Theme" xml:space="preserve">
     <value>Tema</value>
   </data>

@@ -25,11 +25,51 @@ namespace MnemoProject.ViewModels
         private bool _isLoading;
         private bool _isInitialized = false;
         private Task _initializationTask = null;
+        private string _deckSearchQuery;
+        private string _cardSearchQuery;
+        private ObservableCollection<Flashcard> _filteredDecks;
+        private ObservableCollection<Deck> _filteredCards;
+
+        public string DeckSearchQuery
+        {
+            get => _deckSearchQuery;
+            set 
+            { 
+                if (SetProperty(ref _deckSearchQuery, value))
+                {
+                    FilterDecks();
+                }
+            }
+        }
+
+        public string CardSearchQuery
+        {
+            get => _cardSearchQuery;
+            set 
+            { 
+                if (SetProperty(ref _cardSearchQuery, value))
+                {
+                    FilterCards();
+                }
+            }
+        }
 
         public ObservableCollection<Flashcard> FlashcardDecks
         {
             get => _flashcardDecks;
             set => SetProperty(ref _flashcardDecks, value);
+        }
+
+        public ObservableCollection<Flashcard> FilteredDecks
+        {
+            get => _filteredDecks;
+            set => SetProperty(ref _filteredDecks, value);
+        }
+
+        public ObservableCollection<Deck> FilteredCards
+        {
+            get => _filteredCards;
+            set => SetProperty(ref _filteredCards, value);
         }
 
         public Flashcard SelectedDeck
@@ -49,6 +89,7 @@ namespace MnemoProject.ViewModels
                     OnPropertyChanged(nameof(EditDeckCommand));
                     OnPropertyChanged(nameof(DeleteDeckCommand));
                     OnPropertyChanged(nameof(LearnDeckCommand));
+                    OnPropertyChanged(nameof(ExportDeckCommand));
                 }
             }
         }
@@ -72,6 +113,7 @@ namespace MnemoProject.ViewModels
         public ICommand EditDeckCommand { get; }
         public ICommand DeleteDeckCommand { get; }
         public ICommand LearnDeckCommand { get; }
+        public ICommand ExportDeckCommand { get; }
 
         // Constructor with dependency injection
         public FlashcardsViewModel(NavigationService navigationService)
@@ -80,12 +122,15 @@ namespace MnemoProject.ViewModels
             _dbContext = new MnemoContext();
             _databaseService = new DatabaseService();
             FlashcardDecks = new ObservableCollection<Flashcard>();
+            FilteredDecks = new ObservableCollection<Flashcard>();
+            FilteredCards = new ObservableCollection<Deck>();
 
             // Initialize commands
             CreateDeckCommand = new RelayCommand(CreateDeck);
             EditDeckCommand = new RelayCommand<Flashcard>(EditDeck, CanExecuteDeckCommand);
             DeleteDeckCommand = new RelayCommand<Flashcard>(DeleteDeck, CanExecuteDeckCommand);
             LearnDeckCommand = new RelayCommand<Flashcard>(LearnDeck, CanExecuteDeckCommand);
+            ExportDeckCommand = new RelayCommand<Flashcard>(ExportDeck, CanExecuteDeckCommand);
 
             // Start initialization immediately in background
             _initializationTask = Task.Run(async () => 
@@ -150,16 +195,57 @@ namespace MnemoProject.ViewModels
 
                     HasFlashcards = FlashcardDecks.Count > 0;
                     
+                    // Update filtered decks
+                    FilterDecks();
+                    
                     // Set the first deck as selected if there are any decks
-                    if (HasFlashcards)
+                    if (HasFlashcards && FilteredDecks.Count > 0)
                     {
-                        SelectedDeck = FlashcardDecks.First();
+                        SelectedDeck = FilteredDecks.First();
                     }
                 });
             }
             catch (Exception ex)
             {
                 NotificationService.Error($"Failed to load flashcards: {ex.Message}");
+            }
+        }
+
+        private void FilterDecks()
+        {
+            FilteredDecks.Clear();
+            
+            var query = string.IsNullOrWhiteSpace(DeckSearchQuery) 
+                ? FlashcardDecks 
+                : FlashcardDecks.Where(d => d.Title.Contains(DeckSearchQuery, StringComparison.OrdinalIgnoreCase));
+                
+            foreach (var deck in query)
+            {
+                FilteredDecks.Add(deck);
+            }
+            
+            // If the currently selected deck is no longer in the filtered list, select the first filtered deck
+            if (SelectedDeck != null && !FilteredDecks.Contains(SelectedDeck) && FilteredDecks.Count > 0)
+            {
+                SelectedDeck = FilteredDecks.First();
+            }
+        }
+        
+        private void FilterCards()
+        {
+            if (SelectedDeck == null) return;
+            
+            FilteredCards.Clear();
+            
+            var query = string.IsNullOrWhiteSpace(CardSearchQuery)
+                ? SelectedDeck.Decks
+                : SelectedDeck.Decks.Where(c => 
+                    c.Front.Contains(CardSearchQuery, StringComparison.OrdinalIgnoreCase) || 
+                    c.Back.Contains(CardSearchQuery, StringComparison.OrdinalIgnoreCase));
+                
+            foreach (var card in query)
+            {
+                FilteredCards.Add(card);
             }
         }
 
@@ -188,6 +274,9 @@ namespace MnemoProject.ViewModels
                             {
                                 SelectedDeck.Decks.Add(card);
                             }
+                            
+                            // Update filtered cards
+                            FilterCards();
                         });
                     }
                 }
@@ -232,10 +321,20 @@ namespace MnemoProject.ViewModels
                 await _dbContext.SaveChangesAsync();
                 
                 FlashcardDecks.Remove(deck);
+                FilteredDecks.Remove(deck);
+                
                 HasFlashcards = FlashcardDecks.Count > 0;
                 
                 NotificationService.Success($"Deck '{deck.Title}' deleted successfully");
-                SelectedDeck = null;
+                
+                if (FilteredDecks.Count > 0)
+                {
+                    SelectedDeck = FilteredDecks.First();
+                }
+                else
+                {
+                    SelectedDeck = null;
+                }
             }
             catch (Exception ex)
             {
@@ -250,6 +349,14 @@ namespace MnemoProject.ViewModels
             // Show learn mode overlay with practice options
             var learnView = new Views.Overlays.FlashcardLearnOptionsOverlay(deck);
             OverlayService.Instance.ShowOverlay(learnView);
+        }
+
+        private void ExportDeck(Flashcard deck)
+        {
+            if (deck == null) return;
+
+            // Implement export functionality later
+            NotificationService.Info($"Export functionality for deck '{deck.Title}' will be implemented soon.");
         }
     }
 }

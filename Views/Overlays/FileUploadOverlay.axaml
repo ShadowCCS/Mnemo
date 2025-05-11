@@ -1,0 +1,136 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MnemoProject.ViewModels.Overlays"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+             x:DataType="vm:FileUploadOverlayViewModel"
+             x:CompileBindings="False"
+             x:Class="MnemoProject.Views.Overlays.FileUploadOverlay">
+
+  <Border Background="#1E1E1E" CornerRadius="8" Width="500" MaxHeight="700">
+    <Grid Margin="20">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/> <!-- Header -->
+        <RowDefinition Height="*"/>    <!-- Content -->
+        <RowDefinition Height="Auto"/> <!-- Buttons -->
+      </Grid.RowDefinitions>
+      
+      <!-- Header with title -->
+      <TextBlock Grid.Row="0" 
+                Text="Upload Your Files" 
+                Foreground="White" 
+                FontSize="32" 
+                FontWeight="SemiBold" 
+                HorizontalAlignment="Center"
+                Margin="0,0,0,20"/>
+      
+      <!-- Main content -->
+      <Grid Grid.Row="1">
+        <StackPanel Spacing="15">
+          <!-- Drag and drop area -->
+          <Border x:Name="DropArea" 
+                  Background="#262626" 
+                  BorderBrush="#333333" 
+                  BorderThickness="1" 
+                  CornerRadius="4"
+                  Height="150"
+                  DragDrop.AllowDrop="True">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+              <TextBlock Text="+" 
+                        FontSize="24" 
+                        FontWeight="Bold" 
+                        Foreground="#777777" 
+                        HorizontalAlignment="Center"/>
+              <TextBlock Text="Drag and Drop Here" 
+                        Foreground="#777777" 
+                        HorizontalAlignment="Center"/>
+            </StackPanel>
+          </Border>
+          
+          <!-- File selection button -->
+          <Button Content="Select Files" 
+                  Command="{Binding BrowseFilesCommand}"
+                  HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Center"
+                  Padding="15,10"
+                  Background="#333333"
+                  CornerRadius="4"/>
+          
+          <!-- Selected files list -->
+          <ItemsControl ItemsSource="{Binding SelectedFiles}" Margin="0,10,0,0">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Background="#262626" 
+                        CornerRadius="4" 
+                        Margin="0,5" 
+                        Padding="10">
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="Auto"/>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- File icon -->
+                    <Image Grid.Column="0" 
+                          Source="{Binding IconSource}" 
+                          Width="24" 
+                          Height="24" 
+                          Margin="0,0,10,0"/>
+                    
+                    <!-- File name and size -->
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                      <TextBlock Text="{Binding FileName}" 
+                                Foreground="White" 
+                                FontSize="14"/>
+                      <TextBlock Text="{Binding FileSize}" 
+                                Foreground="#777777" 
+                                FontSize="12"
+                                Margin="0,2,0,0"/>
+                    </StackPanel>
+                    
+                    <!-- Remove button -->
+                    <Button Grid.Column="2" 
+                            Content="✕"
+                            Command="{Binding $parent[ItemsControl].DataContext.RemoveFileCommand}"
+                            CommandParameter="{Binding}"
+                            Background="#4D4D4D" 
+                            Foreground="White" 
+                            Width="24"
+                            Height="24"
+                            CornerRadius="4"
+                            Padding="0"
+                            VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Center"/>
+                  </Grid>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Grid>
+      
+      <!-- Bottom buttons -->
+      <StackPanel Grid.Row="2" 
+                  Orientation="Horizontal" 
+                  HorizontalAlignment="Left" 
+                  Margin="0,20,0,0">
+        <Button Content="Go Back" 
+                Command="{Binding CloseCommand}"
+                Padding="15,8"
+                Background="#333333"
+                CornerRadius="4"/>
+      </StackPanel>
+      
+      <Button Grid.Row="2" 
+              Content="Upload Files" 
+              Command="{Binding UploadFilesCommand}" 
+              HorizontalAlignment="Right"
+              Margin="0,20,0,0"
+              Padding="15,8"
+              Background="#0066CC"
+              CornerRadius="4"/>
+    </Grid>
+  </Border>
+</UserControl> 

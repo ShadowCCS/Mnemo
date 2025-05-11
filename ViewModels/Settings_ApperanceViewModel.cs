@@ -71,23 +71,9 @@ namespace MnemoProject.ViewModels
             {
                 if (SetProperty(ref _selectedLanguageItem, value) && value != null)
                 {
-                    // Save previous language to check if it changed
-                    string previousLanguage = Settings.SelectedLanguage;
-                    
                     // Update the culture when language changes
                     _localizationService.ChangeCulture(value.GetCulture());
                     Settings.SelectedLanguage = value.CultureCode;
-                    
-                    // If language actually changed, show a notification about restart
-                    if (!string.Equals(previousLanguage, value.CultureCode, StringComparison.OrdinalIgnoreCase))
-                    {
-                        string notificationMsg = _localizationService.GetString(
-                            "Settings_Language_ChangeNotification", 
-                            "Please restart the application for the language change to take full effect.");
-                            
-                        string title = _localizationService.GetString("Settings_Language", "Language");
-                        NotificationService.Warning(notificationMsg, title);
-                    }
                     
                     // Notify that all items in the UI may need to refresh due to localization change
                     OnPropertyChanged(string.Empty);

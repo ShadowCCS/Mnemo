@@ -14,64 +14,111 @@
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding !HasFlashcards}">
       <Label Content="{loc:Localization Flashcards_Title}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="#696969"/>
       <Label Content="Create your first flashcard deck to get started" HorizontalAlignment="Center" FontSize="16" Foreground="#696969"/>
-      <Button Content="{loc:Localization Flashcards_CreateDeck}" Command="{Binding CreateDeckCommand}" Margin="0,20,0,0" Classes="accent" HorizontalAlignment="Center" Background="#262626"/>
+      <Button Content="{loc:Localization Flashcards_CreateDeck}" Command="{Binding CreateDeckCommand}" Margin="0,20,0,0" Classes="accent" HorizontalAlignment="Center" Background="#262626" CornerRadius="8"/>
     </StackPanel>
     
     <!-- Show Flashcards UI when HasFlashcards is true -->
     <Grid IsVisible="{Binding HasFlashcards}" ColumnDefinitions="300,*">
+      
       <!-- Left sidebar with decks list -->
-      <Grid Grid.Column="0" RowDefinitions="Auto,*,Auto">
-        <TextBlock Grid.Row="0" Text="{loc:Localization Flashcards_Title}" FontWeight="Bold" Margin="15,20,15,10" FontSize="32" Foreground="White"/>
+      <Grid Grid.Column="0" RowDefinitions="Auto,Auto,*,Auto" Background="Transparent">
+        <TextBlock Grid.Row="0" Text="Flashcard Decks" FontWeight="Bold" Margin="20" FontSize="24" Foreground="White" Background="Transparent"/>
+        
+        <!-- Search Box for Decks -->
+        <TextBox Grid.Row="1" 
+                 Watermark="Search Decks..." 
+                 Margin="20,0,20,10"
+                 Text="{Binding DeckSearchQuery}"
+                 CornerRadius="5"/>
         
         <!-- List of Flashcard Decks -->
-        <ListBox Grid.Row="1" 
-                 ItemsSource="{Binding FlashcardDecks}" 
-                 SelectedItem="{Binding SelectedDeck}"
-                 Margin="5,0,15,0"
-                 Background="Transparent">
-          <ListBox.ItemTemplate>
-            <DataTemplate>
-              <Grid ColumnDefinitions="*,Auto" Width="220">
-                <TextBlock Grid.Column="0" Text="{Binding Title}" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="1" 
-                           Text="{Binding CardCount, StringFormat='{}{0} cards'}" 
-                           Foreground="Gray" 
-                           FontSize="12" 
-                           VerticalAlignment="Center"/>
-              </Grid>
-            </DataTemplate>
-          </ListBox.ItemTemplate>
-        </ListBox>
-        
-        <!-- Create Button -->
-        <Button Grid.Row="2" 
-                Content="{loc:Localization Flashcards_CreateDeck}" 
-                Command="{Binding CreateDeckCommand}" 
-                HorizontalAlignment="Stretch" 
-                Margin="15,10,15,15"/>
+        <ScrollViewer Grid.Row="2" Margin="10,10,10,10">
+          <StackPanel>
+            <ListBox ItemsSource="{Binding FilteredDecks}" 
+                     SelectedItem="{Binding SelectedDeck}"
+                     Background="Transparent">
+              <ListBox.ItemTemplate>
+                <DataTemplate>
+                  <Grid ColumnDefinitions="*,Auto" Margin="10,5">
+                    <TextBlock Grid.Column="0" Text="{Binding Title}" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" 
+                               Text="{Binding CardCount, StringFormat='{}{0} cards'}" 
+                               Foreground="Gray" 
+                               FontSize="12" 
+                               VerticalAlignment="Center"/>
+                  </Grid>
+                </DataTemplate>
+              </ListBox.ItemTemplate>
+            </ListBox>
+            
+            <!-- Create Deck Button (now inside ScrollViewer) -->
+            <Button Command="{Binding CreateDeckCommand}" 
+                    HorizontalAlignment="Center"
+                    Background="#262626"
+                    Cursor="Hand"
+                    Width="200"
+                    Margin="0,10,0,20"
+                    CornerRadius="14">
+              <StackPanel Orientation="Horizontal" Spacing="20">
+                <Image Source="{SvgImage /Assets/Icons/flashcards_add_deck_Icon.svg}" Width="20" Height="20" Margin="10,0,0,0"/>
+                <TextBlock Text="Create Deck"/>
+              </StackPanel>
+            </Button>
+          </StackPanel>
+        </ScrollViewer>
       </Grid>
       
-      <!-- Right content area showing selected deck -->
-      <Grid Grid.Column="1" RowDefinitions="Auto,*,Auto" Margin="40,20,20,20">
-        <!-- Selected Deck Header -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20" Spacing="10" IsVisible="{Binding IsDeckSelected}">
-          <TextBlock Text="{Binding SelectedDeck.Title}" FontWeight="Bold" FontSize="24"/>
-          <TextBlock Text="{Binding SelectedDeck.CardCount, StringFormat='({0} cards)'}" 
-                     VerticalAlignment="Center" 
-                     Foreground="#262626"/>
+
+      <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" Margin="40,20,60,20">
+        <TextBlock Grid.Row="0" 
+                   Text="{Binding SelectedDeck.Title}" 
+                   FontWeight="Bold" 
+                   FontSize="36" 
+                   Margin="0,0,0,10" 
+                   IsVisible="{Binding IsDeckSelected}"/>
+        
+        <TextBlock Grid.Row="1" 
+                   Text="{Binding SelectedDeck.CardCount, StringFormat='{}{0} cards'}" 
+                   Margin="0,0,0,20"
+                   Foreground="Gray" 
+                   FontSize="16" 
+                   IsVisible="{Binding IsDeckSelected}"/>
+        
+        <!-- Filter Tabs -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    Margin="0,0,0,10" 
+                    Spacing="5" 
+                    IsVisible="{Binding IsDeckSelected}">
+          <Button Content="All" Classes="tab" CornerRadius="8" Cursor="Hand" Background="#292929"/>
+          <Button Content="Unstudied" Classes="tab" CornerRadius="8" Cursor="Hand"/>
+          <Button Content="Studied" Classes="tab" CornerRadius="8" Cursor="Hand"/>
         </StackPanel>
         
+        <!-- Search Box for Cards -->
+        <TextBox Grid.Row="3" 
+                 Watermark="Search Cards..." 
+                 Margin="0,0,15,10"
+                 Text="{Binding CardSearchQuery}"
+                 CornerRadius="5"
+                 IsVisible="{Binding IsDeckSelected}"/>
+        
         <!-- Cards List -->
-        <ScrollViewer Grid.Row="1" IsVisible="{Binding IsDeckSelected}">
-          <ItemsRepeater ItemsSource="{Binding SelectedDeck.Decks}">
+        <ScrollViewer Grid.Row="4" 
+                      IsVisible="{Binding IsDeckSelected}" 
+                      Margin="0,0,0,0"
+                      MaxHeight="400"
+                      VerticalAlignment="Top">
+          <ItemsRepeater ItemsSource="{Binding FilteredCards}">
             <ItemsRepeater.Layout>
-              <UniformGridLayout MinItemWidth="500" MinItemHeight="95" MinColumnSpacing="10" MinRowSpacing="10" Orientation="Vertical"/>
+              <StackLayout Spacing="10"/>
             </ItemsRepeater.Layout>
             <ItemsRepeater.ItemTemplate>
               <DataTemplate>
                 <Border Background="#262626" 
                         CornerRadius="5"
-                        Padding="15">
+                        Padding="15"
+                        Margin="0,0,15,5">
                   <Grid RowDefinitions="Auto,*">
                     <TextBlock Grid.Row="0" Text="{Binding Front}" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,5"/>
                     <TextBlock Grid.Row="1" Text="{Binding Back}" FontWeight="Light" FontSize="14" Foreground="#969696" TextWrapping="Wrap"/>
@@ -83,24 +130,79 @@
         </ScrollViewer>
         
         <!-- Action Buttons -->
-        <StackPanel Grid.Row="2" 
+        <StackPanel Grid.Row="5" 
                     Orientation="Horizontal" 
-                    Margin="0,20,0,0" 
+                    Margin="0,5,0,0" 
                     Spacing="10"
-                    IsVisible="{Binding IsDeckSelected}">
-          <Button Content="{loc:Localization UnitLearnMode_Start}" 
+                    IsVisible="{Binding IsDeckSelected}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+          <Button Content="Learn" 
                   Command="{Binding LearnDeckCommand}"
+                  Cursor="Hand"
                   CommandParameter="{Binding SelectedDeck}"
-                  Classes="accent"/>
-          <Button Content="{loc:Localization Flashcards_Edit}" 
+                  Classes="action-button"
+                  Foreground="White"
+                  CornerRadius="8"
+                  Padding="20,8"/>
+          <Button Content="Edit" 
                   Command="{Binding EditDeckCommand}"
-                  CommandParameter="{Binding SelectedDeck}"/>
-          <Button Content="{loc:Localization Flashcards_Delete}" 
-                  Command="{Binding DeleteDeckCommand}"
+                  Cursor="Hand"
                   CommandParameter="{Binding SelectedDeck}"
-                  Classes="danger"/>
+                  Foreground="White"
+                  Background="#262626"
+                  CornerRadius="8"
+                  Padding="20,8"/>
+          <Button Content="Export" 
+                  Command="{Binding ExportDeckCommand}"
+                  Cursor="Hand"
+                  CommandParameter="{Binding SelectedDeck}"
+                  Foreground="White"
+                  Background="#262626"
+                  CornerRadius="8"
+                  Padding="20,8"/>
+          <Button Content="Delete" 
+                  Command="{Binding DeleteDeckCommand}"
+                  Cursor="Hand"
+                  CommandParameter="{Binding SelectedDeck}"
+                  Classes="danger"
+                  Background="#C74A4C"
+                  Foreground="White"
+                  CornerRadius="8"
+                  Padding="20,8"/>
         </StackPanel>
       </Grid>
     </Grid>
   </Grid>
+  
+  <!-- Add Style Definitions -->
+  <UserControl.Styles>
+    <Style Selector="Button.tab">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Padding" Value="10,5"/>
+      <Setter Property="BorderThickness" Value="0,0,0,2"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="CornerRadius" Value="0"/>
+    </Style>
+    <Style Selector="Button.tab:pointerover">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderBrush" Value="#0E87CC"/>
+    </Style>
+    <Style Selector="Button.tab:pressed">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderBrush" Value="#0E87CC"/>
+    </Style>
+    
+    <!-- Learn Button Style -->
+    <Style Selector="Button.action-button">
+      <Setter Property="Background" Value="#2881B1"/>
+      <Setter Property="Foreground" Value="White"/>
+    </Style>
+    <Style Selector="Button.action-button:pointerover">
+      <Setter Property="Background" Value="#3091C1"/>
+    </Style>
+    <Style Selector="Button.action-button:pressed">
+      <Setter Property="Background" Value="#1E7191"/>
+    </Style>
+  </UserControl.Styles>
 </UserControl>

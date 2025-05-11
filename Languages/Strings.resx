@@ -248,9 +248,6 @@
   <data name="Settings_Language_RestartRequired" xml:space="preserve">
     <value>Restart required to apply language changes</value>
   </data>
-  <data name="Settings_Language_ChangeNotification" xml:space="preserve">
-    <value>Please restart the application for the language change to take full effect.</value>
-  </data>
   <data name="Settings_Theme" xml:space="preserve">
     <value>Theme</value>
   </data>
