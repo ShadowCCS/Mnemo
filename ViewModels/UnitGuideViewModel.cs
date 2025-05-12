@@ -9,6 +9,13 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using Avalonia.Controls;
 using Microsoft.EntityFrameworkCore.Diagnostics.Internal;
 using MnemoProject.Helpers;
+using MnemoProject.Views.Overlays;
+using MnemoProject.ViewModels.Overlays;
+using MnemoProject.Data;
+using MnemoProject.Models;
+using Microsoft.EntityFrameworkCore;
+using Avalonia;
+using System.Windows.Input;
 
 namespace MnemoProject.ViewModels
 {
@@ -19,6 +26,10 @@ namespace MnemoProject.ViewModels
         private const int UnitTitleMaxLength = 25;
         private readonly string _unitGuideText;
         private readonly MarkdownRendererService _markdownRenderer;
+        private readonly DatabaseService _databaseService = new();
+        private LearningPath _currentLearningPath;
+        private Unit _currentUnit;
+        private readonly Window _mainWindow;
 
         // Child view models for each tab
         private UnitGuideContentViewModel _unitGuideContentViewModel;
@@ -28,6 +39,11 @@ namespace MnemoProject.ViewModels
 
         // Active view model
         private ViewModelBase _activeViewModel;
+        
+        // Commands
+        public ICommand GoBackCommand { get; }
+        public ICommand GoHomeCommand { get; }
+        public ICommand ExportCommand { get; }
 
         public string UnitTitle
         {
@@ -134,6 +150,20 @@ namespace MnemoProject.ViewModels
             }
             
             _markdownRenderer = new MarkdownRendererService();
+            
+            // Get main window from application lifetime
+            if (Avalonia.Application.Current?.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                _mainWindow = desktop.MainWindow;
+            }
+
+            // Initialize commands
+            GoBackCommand = new RelayCommand(GoBack);
+            GoHomeCommand = new RelayCommand(GoHome);
+            ExportCommand = new RelayCommand(Export);
+
+            // Fetch current learning path and unit
+            _ = LoadLearningPathAndUnitAsync(unitTitle);
 
             // Initialize tab view models
             InitializeViewModels();
@@ -142,33 +172,63 @@ namespace MnemoProject.ViewModels
             IsUnitGuideSelected = true;
         }
 
+        private async Task LoadLearningPathAndUnitAsync(string unitTitle)
+        {
+            try
+            {
+                using (var context = new MnemoContext())
+                {
+                    // Find the unit with the matching title
+                    var unit = await context.Units
+                        .Include(u => u.LearningPath)
+                        .FirstOrDefaultAsync(u => u.Title == unitTitle);
+
+                    if (unit != null)
+                    {
+                        _currentUnit = unit;
+                        _currentLearningPath = unit.LearningPath;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                NotificationService.Error($"Failed to load learning path data: {ex.Message}");
+            }
+        }
+
         private void InitializeViewModels()
         {
             _unitGuideContentViewModel = new UnitGuideContentViewModel(_unitGuideText, _markdownRenderer);
-            
-            // Initialize with unit content
-            System.Diagnostics.Debug.WriteLine($"Initializing UnitQuestionsViewModel with content length: {_unitGuideText?.Length ?? 0}");
-            _unitQuestionsViewModel = new UnitQuestionsViewModel(_unitGuideText ?? string.Empty);
-            
-            // Ensure we're passing the unit content for flashcards generation
-            System.Diagnostics.Debug.WriteLine($"Initializing UnitFlashcardsViewModel with content length: {_unitGuideText?.Length ?? 0}");
-            _unitFlashcardsViewModel = new UnitFlashcardsViewModel(_unitGuideText ?? string.Empty);
-            
-            // Pass the unit content to the Learn Mode view model
-            System.Diagnostics.Debug.WriteLine($"Initializing UnitLearnModeViewModel with content length: {_unitGuideText?.Length ?? 0}");
-            _unitLearnModeViewModel = new UnitLearnModeViewModel(_unitGuideText ?? string.Empty, _navigationService);
+            _unitQuestionsViewModel = new UnitQuestionsViewModel(_unitGuideText);
+            _unitFlashcardsViewModel = new UnitFlashcardsViewModel(_unitGuideText);
+            _unitLearnModeViewModel = new UnitLearnModeViewModel(_unitGuideText, _navigationService);
         }
 
-        [RelayCommand]
-        public void GoBack()
+        private void GoBack()
         {
             _navigationService.GoBack();
         }
 
-        [RelayCommand]
-        public void GoHome()
+        private void GoHome()
         {
             _navigationService.NavigateTo(new LearningPathViewModel(_navigationService));
+        }
+
+        private void Export()
+        {
+            if (_currentLearningPath != null && _currentUnit != null)
+            {
+                var exportOverlay = new Views.Overlays.ExportOverlay
+                {
+                    DataContext = new ViewModels.Overlays.ExportOverlayViewModel(_mainWindow, ExportType.LearningPath, _currentLearningPath.Id)
+                };
+                
+                OverlayService.Instance.ShowOverlay(exportOverlay);
+            }
+            else
+            {
+                NotificationService.Warning("Unable to export: Learning path information not loaded.");
+            }
         }
     }
 }

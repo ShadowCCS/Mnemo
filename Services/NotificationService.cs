@@ -44,6 +44,11 @@ namespace MnemoProject.Services
         
         private static int _nextId = 1;
         private static readonly ObservableCollection<Notification> _notifications = new();
+        
+        /// <summary>
+        /// Maximum number of notifications that can be displayed at once
+        /// </summary>
+        public static int MaxNotifications { get; set; } = 3;
 
         public static ObservableCollection<Notification> Notifications => _notifications;
         
@@ -74,6 +79,14 @@ namespace MnemoProject.Services
             // Show on UI
             Dispatcher.UIThread.Post(() =>
             {
+                // Check if we've reached the maximum number of notifications
+                while (_notifications.Count >= MaxNotifications && _notifications.Count > 0)
+                {
+                    // Remove the oldest notification
+                    _notifications.RemoveAt(0);
+                }
+                
+                // Add the new notification
                 _notifications.Add(notification);
                 
                 // Auto-remove notifications after a delay

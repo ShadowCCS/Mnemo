@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -18,6 +20,7 @@ namespace MnemoProject.ViewModels
         private readonly DatabaseService _databaseService = new();
         private bool _isInitialized = false;
         private Task _initializationTask = null;
+        private Window _mainWindow;
 
         [ObservableProperty]
         private bool _isLoading = true;
@@ -31,6 +34,13 @@ namespace MnemoProject.ViewModels
             NavigateToCreatePath = new RelayCommand(ExecuteNavigateToCreatePath);
             DeleteLearningPathCommand = new RelayCommand<Guid>(ExecuteDeleteLearningPath);
             OpenLearningPathCommand = new RelayCommand<Guid>(ExecuteOpenLearningPath);
+            ImportLearningPathCommand = new RelayCommand(ExecuteImportLearningPath);
+
+            // Get main window from application lifetime
+            if (Avalonia.Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                _mainWindow = desktop.MainWindow;
+            }
 
             // Start initialization immediately but don't wait for it
             _initializationTask = Task.Run(async () => 
@@ -76,6 +86,7 @@ namespace MnemoProject.ViewModels
         public ICommand NavigateToCreatePath { get; }
         public ICommand DeleteLearningPathCommand { get; }
         public ICommand OpenLearningPathCommand { get; }
+        public ICommand ImportLearningPathCommand { get; }
 
         private void ExecuteNavigateToCreatePath()
         {
@@ -87,6 +98,34 @@ namespace MnemoProject.ViewModels
             _navigationService.NavigateTo(createPathViewModel);
             
             System.Diagnostics.Debug.WriteLine($"After navigation, CurrentView is: {_navigationService.CurrentView?.GetType().Name}");
+        }
+
+        private void ExecuteImportLearningPath()
+        {
+            var importViewModel = new ViewModels.Overlays.ImportOverlayViewModel();
+            importViewModel.ImportCompletedCallback = async () => await LoadLearningPaths();
+
+            var importOverlay = new Views.Overlays.ImportOverlay
+            {
+                DataContext = importViewModel
+            };
+
+            // Register for the overlay closed event
+            EventHandler handler = null;
+            handler = async (s, e) =>
+            {
+                // Unsubscribe to avoid memory leaks
+                OverlayService.Instance.OverlayClosed -= handler;
+                
+                // Refresh the learning paths
+                await LoadLearningPaths();
+            };
+            
+            OverlayService.Instance.OverlayClosed += handler;
+
+            // Show the overlay and set the host window
+            OverlayService.Instance.ShowOverlay(importOverlay);
+            importViewModel.SetHostWindow(_mainWindow);
         }
 
         private async Task LoadLearningPaths()

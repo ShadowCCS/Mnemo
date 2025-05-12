@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MnemoProject.ViewModels.Overlays"
+             mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="300"
+             x:Class="MnemoProject.Views.Overlays.ExportOverlay"
+             x:DataType="vm:ExportOverlayViewModel">
+  
+  <Border Background="#1E1E1E" CornerRadius="8" BoxShadow="0 4 8 0 #20000000" Width="450">
+    <Grid Margin="20">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <TextBlock Grid.Row="0" Text="Export" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,15" Foreground="White" />
+      
+      <StackPanel Grid.Row="1" Spacing="10" Margin="0,0,0,20">
+        <TextBlock Text="Format:" FontWeight="Medium" Foreground="White"/>
+        <ComboBox SelectedItem="{Binding SelectedExportType}" ItemsSource="{Binding ExportTypes}" Width="200" HorizontalAlignment="Left" />
+      </StackPanel>
+      
+      <StackPanel Grid.Row="2" Spacing="10" Margin="0,0,0,20">
+        <TextBlock Text="Export Location:" FontWeight="Medium" Foreground="White"/>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <TextBox Text="{Binding OutputPath}" IsReadOnly="True" Foreground="White"/>
+          <Button Grid.Column="1" Command="{Binding BrowseCommand}" Content="Browse" Margin="5,0,0,0" Foreground="White" />
+        </Grid>
+      </StackPanel>
+      
+      <StackPanel Grid.Row="3" Spacing="10" Margin="0,0,0,20" IsVisible="{Binding IsExporting}">
+        <TextBlock Text="{Binding ExportStatus}" FontWeight="Medium" Foreground="White"/>
+        <ProgressBar Value="{Binding Progress}" Maximum="100" Height="20" />
+      </StackPanel>
+      
+      <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+        <Button Command="{Binding CloseCommand}" Content="Cancel" Foreground="White"/>
+        <Button Command="{Binding ExportCommand}" Content="Export" 
+                IsEnabled="{Binding CanExport}" Classes="action-button" Foreground="White" />
+      </StackPanel>
+    </Grid>
+  </Border>
+
+  <UserControl.Styles>
+  <Style Selector="Button.action-button">
+    <Setter Property="Background" Value="#2881B1"/>
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+  <Style Selector="Button.action-button:pointerover">
+    <Setter Property="Background" Value="#3091C1"/>
+  </Style>
+  <Style Selector="Button.action-button:pressed">
+    <Setter Property="Background" Value="#1E7191"/>
+  </Style>
+  </UserControl.Styles>
+</UserControl> 

@@ -25,10 +25,10 @@
 
       <!-- Left Navigation Elements -->
       <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="5">
-        <Button Command="{Binding GoHome}" Background="{x:Null}" Cursor="Hand" Height="32" Width="32">
+        <Button Command="{Binding GoHomeCommand}" Background="{x:Null}" Cursor="Hand" Height="32" Width="32">
           <Image Source="{SvgImage /Assets/Icons/DashboardIcon.svg}" Height="24" Width="24"/>
         </Button>
-        <Button Command="{Binding GoBack}" Background="{x:Null}" Cursor="Hand" Height="32" Width="32">
+        <Button Command="{Binding GoBackCommand}" Background="{x:Null}" Cursor="Hand" Height="32" Width="32">
           <Image Source="{SvgImage /Assets/Icons/arrow.svg}" Height="18" Width="18"/>
         </Button>
         <Label Content="{Binding UnitTitle}" Foreground="#777777" VerticalAlignment="Center"/>
@@ -63,9 +63,14 @@
         </ToggleButton>
       </StackPanel>
 
-      <!-- Right Side Export Button -->
-      <Button Grid.Column="2" Content="{loc:Localization UnitFlashcards_Export}" Classes="nav-button"
-              HorizontalAlignment="Right" />
+      <!-- Right Navigation Elements -->
+      <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="5">
+        <Button Command="{Binding ExportCommand}" Background="{x:Null}" Cursor="Hand" Height="32" ToolTip.Tip="Export">
+          <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock Text="Export" VerticalAlignment="Center" />
+          </StackPanel>
+        </Button>
+      </StackPanel>
     </Grid>
 
     <!-- Content Area -->

@@ -114,8 +114,8 @@
       
       <!-- Bottom buttons -->
       <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,20,0,0">
-        <Button Content="Cancel" Command="{Binding CloseCommand}"/>
-        <Button Content="Save Deck" Command="{Binding SaveDeckCommand}" Classes="accent"/>
+        <Button Content="Save Deck" Command="{Binding SaveDeckCommand}" Classes="action-button" CornerRadius="8"/>
+        <Button Content="Cancel" Command="{Binding CloseCommand}" CornerRadius="8"/>
       </StackPanel>
       
       <!-- Busy indicator -->
@@ -124,4 +124,19 @@
       </Border>
     </Grid>
   </Border>
+
+  <!-- Add Style Definitions -->
+  <UserControl.Styles>
+    
+    <Style Selector="Button.action-button">
+      <Setter Property="Background" Value="#2881B1"/>
+      <Setter Property="Foreground" Value="White"/>
+    </Style>
+    <Style Selector="Button.action-button:pointerover">
+      <Setter Property="Background" Value="#3091C1"/>
+    </Style>
+    <Style Selector="Button.action-button:pressed">
+      <Setter Property="Background" Value="#1E7191"/>
+    </Style>
+  </UserControl.Styles>
 </UserControl> 
