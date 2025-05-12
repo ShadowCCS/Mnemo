@@ -5,7 +5,7 @@
 **A free and open-source flashcard and spaced repetition application to enhance your learning journey**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-0.3.0-green.svg)](https://github.com/ShadowCCS/mnemo/releases)
+[![Version](https://img.shields.io/badge/version-0.3.8-green.svg)](https://github.com/ShadowCCS/mnemo/releases)
 ![Framework](https://img.shields.io/badge/framework-.NET%208.0-purple.svg)
 ![UI](https://img.shields.io/badge/UI-Avalonia%2011-orange.svg)
 
