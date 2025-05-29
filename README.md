@@ -1,5 +1,13 @@
 <div align="center">
   
+> **🚧 MAJOR UPDATE IN PROGRESS 🚧**  
+> **Complete rewrite and UI overhaul underway - bringing Mnemo closer to v0.6-beta!**  
+> *Expect exciting new features, improved performance, and a fresh modern interface*  
+> *Current version: 0.3.8 → Next milestone: 0.6-beta*
+</div>
+
+<div align="center">
+  
 ![Mnemo Logo](./gitAssets/Mnemo.svg)
 
 **A free and open-source flashcard and spaced repetition application to enhance your learning journey**
