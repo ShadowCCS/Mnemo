@@ -1,10 +1,15 @@
-<div align="center">
-  
-> **🚧 MAJOR UPDATE IN PROGRESS 🚧**  
-> **Complete rewrite and UI overhaul underway - bringing Mnemo closer to v0.6-beta!**  
-> *Expect exciting new features, improved performance, and a fresh modern interface*  
-> *Current version: 0.3.8 → Next milestone: 0.6-beta*
-</div>
+<p align="center">
+    <strong>🚧 MAJOR UPDATE IN PROGRESS 🚧</strong><br>
+    <strong>Complete rewrite and UI overhaul underway - bringing Mnemo closer to v0.6-beta!</strong><br>
+    <em>Expect exciting new features, improved performance, and a fresh modern interface</em><br>
+    <em>Current version: 0.3.8 → Next milestone: 0.6-beta</em>
+</p>
+<p align="center">
+    <img src="./gitAssets/RebrandedUI.png" alt="Rebranded UI Sneak Peak" width="600">
+</p>
+<p align="center">
+    *Work in Progress*
+</p>
 
 <div align="center">
   
