@@ -5,10 +5,8 @@
     <em>Current development: Complete architectural redesign → Next milestone: v1.0-alpha</em>
 </p>
 <p align="center">
-    <img src="./gitAssets/NewUI2.png" alt="Rebranded UI Sneak Peak" width="600">
-</p>
-<p align="center">
-    *Work in Progress - 6th UI Iteration*
+  <img src="./gitAssets/NewDashboard.png" alt="Rebranded UI Sneak Peek" width="400"/>
+  <img src="./gitAssets/NewExtensions.png" alt="Rebranded UI Sneak Peek" width="400"/>
 </p>
 
 <div align="center">
