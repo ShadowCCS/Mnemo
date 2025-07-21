@@ -3,7 +3,7 @@ MIT License (Modified for Non-Commercial Use)
 Copyright (c) 2025 Mnemo
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the “Software”), to deal
+of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, and distribute copies of the Software,
 subject to the following conditions:
@@ -11,9 +11,9 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE MAY NOT BE USED FOR COMMERCIAL PURPOSES. This means you may not sell, license, or otherwise commercially benefit from this software or derivative works based on it.
+NON-COMMERCIAL USE RESTRICTION: This Software may not be used for commercial purposes, which includes but is not limited to: selling the Software, licensing it for profit, or using it as part of a commercial product or service. Any derivative works based on this Software are subject to the same commercial restrictions.
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -21,20 +21,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
----
-Monetization: While Mnemo remains completely free and open source with all its core features available to everyone, we plan to offer optional premium services in the future to simplify the setup process and add convenience.
+MONETIZATION AND PREMIUM SERVICES
 
-These premium features will include:
+While Mnemo's core features remain free and open source, we reserve the right to offer optional premium services designed to enhance user experience and simplify setup processes. These premium services may include:
 
-Automated AI model configuration, so users can easily get started without needing to manually input API keys or deal with setup.
+1. Automated AI Model Configuration
+   - Streamlined setup process
+   - No manual API key configuration required
+   - Automatic updates management
 
-Access to premium AI models (if available) with no need for individual configuration.
+2. Premium AI Model Access
+   - Direct access to premium AI models
+   - Pre-configured integration
+   - Managed updates and maintenance
 
-Users who prefer to set up their own AI models can still use Mnemo for free and will need to handle the setup themselves, including managing API keys and updates if the AI companies change them.
+Users may continue to use all core features of Mnemo without premium services. This includes the ability to configure and manage their own AI models, API keys, and updates independently.
 
-The premium features will provide a hassle-free experience and are available for a monthly subscription. However, they are completely optional—you will still be able to access all the features without these services, but it may require more effort to configure and maintain.
----
+Premium services are offered through a monthly subscription model and are entirely optional. They are designed to provide convenience and simplified management while ensuring that all essential functionality remains freely accessible to all users.
 
-All non-code content in this repository (such as documentation, icons, and UI assets) is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License.
+
+CONTENT LICENSING
+
+All non-code content in this repository (including documentation, icons, and UI assets created by Mnemo) is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License. This license does not apply to user-created content such as games, extensions, and other content not created by Mnemo.
 
 See https://creativecommons.org/licenses/by-nc/4.0/ for full details.
