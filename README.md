@@ -1,6 +1,7 @@
 <p align="center">
     <strong>📦 REPOSITORY RETIRED 📦</strong><br>
     <strong>This repository has been archived - development continues in a new repository with a complete rewrite!</strong><br>
+    <strong>NEW REPO: https://github.com/ShadowCCS/MnemoApp</strong>
 </p>
 </p>
 <p align="center">
